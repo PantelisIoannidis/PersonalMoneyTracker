@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div id="wrapper">
+        <div class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse-header">
+                        <i class="fa fa-fw fa-user"></i>
+                    </button>
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse-side">
+                        <i class="fa fa-fw fa-dollar"></i>
+                    </button>
+                    @Html.ActionLink("Personal Finance Agent", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse navbar-collapse-header collapse">
+
+                    @Html.Partial("_LoginPartial")
+                </div>
+
+            </div>
+        </div>
+        <div class="collapse navbar-collapse navbar-collapse-side">
+            <ul class="nav navbar-nav side-nav">
+                <li class="active">
+                    <a href="@Url.Action("Index","Home",null)" id="HomeLink"><i class="fa fa-fw fa-home"></i> Home</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index","Summary",null)" id="SummaryLink"><i class="fa fa-fw fa-balance-scale"></i> Summary</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index","Transactions",null)" id="TransactionsLink"><i class="fa fa-fw fa-list"></i> Transactions</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index","Accounts",null)" id="AccountsLink"><i class="fa fa-fw fa-bank"></i> Accounts</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index","Budget",null)" id="BudgetLink"><i class="fa fa-fw fa-hand-stop-o"></i> Budget</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index","Reports",null)" id="ReportsLink"><i class="fa fa-fw fa-bar-chart-o"></i> Reports</a>
+                </li>
+                <li>
+                    <a href="javascript:;" data-toggle="collapse" data-target="#settingssubmenu"><i class="fa fa-fw fa-gear"></i> Settings <i class="fa fa-fw fa-caret-down"></i></a>
+                    <ul id="settingssubmenu" class="collapse">
+                        <li>
+                            <a href="@Url.Action("Index","Categories",null)" id="CategoriesLink"><i class="fa fa-fw fa-list-alt"></i> Categories</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index","Recurring",null)" id="RecurringLink"><i class="fa fa-fw fa-calendar-minus-o"></i> Recurring</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index","Payee",null)" id="PayeeLink"><i class="fa fa-fw fa-users"></i> Payee</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index","Settings",null)" id="SettingsLink"><i class="fa fa-fw fa-dashboard"></i> Other...</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - Pantelis Ioannidis</p>
+            </footer>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
