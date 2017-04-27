@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMT.Web", "PMT.Web\PMT.Web.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMT.Web.Tests", "PMT.Web.Tests\PMT.Web.Tests.csproj", "{6262612B-1037-42F7-92FC-504A9D65B91B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMT.Entities", "PMT.Entities\PMT.Entities.csproj", "{9463F7D5-F927-4886-B9D3-5E67324752B4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{6262612B-1037-42F7-92FC-504A9D65B91B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6262612B-1037-42F7-92FC-504A9D65B91B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6262612B-1037-42F7-92FC-504A9D65B91B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9463F7D5-F927-4886-B9D3-5E67324752B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9463F7D5-F927-4886-B9D3-5E67324752B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9463F7D5-F927-4886-B9D3-5E67324752B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9463F7D5-F927-4886-B9D3-5E67324752B4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
