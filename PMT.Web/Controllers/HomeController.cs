@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PMT.DataLayer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,6 +11,8 @@ namespace PMT.Web.Controllers
     {
         public ActionResult Index()
         {
+            MainDb db = new MainDb();
+            var a =db.Categories;
             return View();
         }
 

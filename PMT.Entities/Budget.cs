@@ -13,8 +13,9 @@ namespace PMT.Entities
         [Required]
         public int BudgetId { get; set; }
 
+        [StringLength(128)]
         [Required]
-        public int UserId { get; set; }
+        public string UserId { get; set; }
 
         [Required]
         public int UserAccountId { get; set; }

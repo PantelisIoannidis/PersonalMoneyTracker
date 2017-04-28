@@ -3,8 +3,9 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.Diagnostics;
 
-namespace PMT.Web.Models
+namespace PMT.DataLayer
 {
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
@@ -18,16 +19,19 @@ namespace PMT.Web.Models
         }
     }
 
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class IdentityDb : IdentityDbContext<ApplicationUser>
     {
-        public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+        public IdentityDb()
+            : base("name=DefaultConnection", throwIfV1Schema: false)
         {
+#if DEBUG
+            Database.Log = msg => Debug.WriteLine(msg);
+#endif
         }
 
-        public static ApplicationDbContext Create()
+        public static IdentityDb Create()
         {
-            return new ApplicationDbContext();
+            return new IdentityDb();
         }
     }
 }

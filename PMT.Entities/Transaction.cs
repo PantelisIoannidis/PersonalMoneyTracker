@@ -12,7 +12,8 @@ namespace PMT.Entities
         [Required]
         public int TransactionId { get; set; }
         [Required]
-        public int UserId { get; set; }
+        [StringLength(128)]
+        public string UserId { get; set; }
         [Required]
         public int CategoryId { get; set; }
         [Required]

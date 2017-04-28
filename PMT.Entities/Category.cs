@@ -12,7 +12,7 @@ namespace PMT.Entities
         [Required]
         public int CategoryId { get; set; }
         [Required]
-        public int TransactionId { get; set; }
+        public int Type { get; set; }
         [Required]
         public string Name { get; set; }
     }
