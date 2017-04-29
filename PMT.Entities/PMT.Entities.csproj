@@ -48,7 +48,6 @@
     <Compile Include="Repeat.cs" />
     <Compile Include="SubCategory.cs" />
     <Compile Include="Transaction.cs" />
-    <Compile Include="TransactionType.cs" />
     <Compile Include="UserAccount.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

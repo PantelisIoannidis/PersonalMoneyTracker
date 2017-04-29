@@ -3,8 +3,7 @@ using PMT.Entities;
 
 namespace PMT.Contracts.Repositories
 {
-    public interface ICategoryRepository
+    public interface ICategoryRepository : IRepositoryBase<Category>
     {
-        List<Category> GetAll();
     }
 }

@@ -234,6 +234,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Adapter\SecurityAdapter.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -245,6 +246,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\UserAccountsController.cs" />
     <Compile Include="GlimpseSecurityPolicy.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -370,10 +372,16 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\UserAccounts\Create.cshtml" />
+    <Content Include="Views\UserAccounts\Delete.cshtml" />
+    <Content Include="Views\UserAccounts\Details.cshtml" />
+    <Content Include="Views\UserAccounts\Edit.cshtml" />
+    <Content Include="Views\UserAccounts\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="js\" />
+    <Folder Include="Views\UserAccount\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

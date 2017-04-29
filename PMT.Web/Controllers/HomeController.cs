@@ -10,14 +10,12 @@ namespace PMT.Web.Controllers
 {
     public class HomeController : Controller
     {
-        ICategoryRepository categoryRepository;
-        public HomeController(ICategoryRepository categoryRepository)
+        public HomeController()
         {
-            this.categoryRepository = categoryRepository;
+            
         }
         public ActionResult Index()
         {
-            var a = categoryRepository.GetAll();
             return View();
         }
 

@@ -1,5 +1,4 @@
-﻿using PMT.Contracts.Repositories;
-using PMT.Entities;
+﻿using PMT.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,14 +7,13 @@ using System.Threading.Tasks;
 
 namespace PMT.DataLayer.Repositories
 {
-    public class CategoryRepository : RepositoryBase<Category>, ICategoryRepository
+    public class UserAccountRepository : RepositoryBase<UserAccount>, IUserAccountRepository
     {
-        
-        public CategoryRepository() 
+       
+        public UserAccountRepository()
             :base(new MainDb())
         {
-            
+           
         }
-
     }
 }

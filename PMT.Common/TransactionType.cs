@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PMT.Entities
+namespace PMT.Common
 {
     public static class TransactionType
     {
