@@ -6,7 +6,7 @@ using Microsoft.AspNet.Identity;
 
 namespace PMT.Web.Helpers
 {
-    public class SecurityHelper
+    public class SecurityHelper : ISecurityHelper
     {
         public string GetUserId(HttpContextBase httpContext)
         {

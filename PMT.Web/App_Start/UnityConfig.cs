@@ -5,6 +5,12 @@ using PMT.DataLayer.Repositories;
 using PMT.Contracts.Repositories;
 using PMT.DataLayer;
 using PMT.DataLayer.Context;
+using System.Data.Entity;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using PMT.Web.Controllers;
+using PMT.Web.Helpers;
+using PMT.Common;
 
 namespace PMT.Web.App_Start
 {
@@ -42,8 +48,22 @@ namespace PMT.Web.App_Start
             // TODO: Register your types here
             // container.RegisterType<IProductRepository, ProductRepository>();
             //container.RegisterInstance<IUnityContainer>(container);
+
+            container.RegisterInstance<IUnityContainer>(container);
+
+            container.RegisterType<IUserStore<ApplicationUser>, UserStore<ApplicationUser>>();
+            container.RegisterType<UserManager<ApplicationUser>>();
+            container.RegisterType<DbContext, IdentityDb>();
+            container.RegisterType<ApplicationUserManager>();
+            container.RegisterType<AccountController>(new InjectionConstructor());
+            container.RegisterType<ManageController>(new InjectionConstructor());
+
+
+            container.RegisterType<ISecurityHelper, SecurityHelper>();
             container.RegisterType<ICategoryRepository, CategoryRepository>();
             container.RegisterType<IUserAccountRepository, UserAccountRepository>();
+
+            container.RegisterType<IUnityFactory, UnityFactory>();
 
         }
     }

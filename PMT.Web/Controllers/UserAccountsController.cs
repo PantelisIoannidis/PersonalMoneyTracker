@@ -10,6 +10,7 @@ using PMT.DataLayer;
 using PMT.Entities;
 using PMT.DataLayer.Repositories;
 using PMT.Web.Helpers;
+using PMT.Common;
 
 namespace PMT.Web.Controllers
 {
@@ -17,9 +18,11 @@ namespace PMT.Web.Controllers
     public class UserAccountsController : Controller
     {
         IUserAccountRepository userAccountRepository;
-        public UserAccountsController(IUserAccountRepository userAccountRepository)
+        IUnityFactory unityFactory;
+        public UserAccountsController(IUnityFactory unityFactory, IUserAccountRepository userAccountRepository)
         {
             this.userAccountRepository = userAccountRepository;
+            this.unityFactory = unityFactory;
         }
 
         // GET: UserAccounts
@@ -47,11 +50,9 @@ namespace PMT.Web.Controllers
         // GET: UserAccounts/Create
         public ActionResult Create()
         {
-            var securityHelper = new SecurityHelper();
-            var userId = securityHelper.GetUserId(this.HttpContext);
-            var userAccount = new UserAccount();
-            userAccount.UserId = userId;
-            return View();
+            var userId = unityFactory.GetObject<ISecurityHelper>().GetUserId(this.HttpContext);
+            var userAccount = new UserAccount() { UserId = userId};
+            return View(userAccount);
         }
 
         // POST: UserAccounts/Create

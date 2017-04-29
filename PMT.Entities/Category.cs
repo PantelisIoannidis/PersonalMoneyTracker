@@ -9,6 +9,7 @@ namespace PMT.Entities
 {
     public class Category
     {
+        //[HiddenInput(DisplayValue = false)]
         [Required]
         public int CategoryId { get; set; }
         [Required]
