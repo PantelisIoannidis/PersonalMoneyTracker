@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMT.DataLayer", "PMT.DataLa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMT.Common", "PMT.Common\PMT.Common.csproj", "{551CFA99-AF45-45B1-BB2E-37D4475F2107}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMT.Contracts", "PMT.Contracts\PMT.Contracts.csproj", "{F9FDBC50-F549-428B-AB7C-837601733C7F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMT.BusinessLayer", "PMT.BusinessLayer\PMT.BusinessLayer.csproj", "{C111441D-1853-418D-99A8-421A8F534AFD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{551CFA99-AF45-45B1-BB2E-37D4475F2107}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{551CFA99-AF45-45B1-BB2E-37D4475F2107}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{551CFA99-AF45-45B1-BB2E-37D4475F2107}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9FDBC50-F549-428B-AB7C-837601733C7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9FDBC50-F549-428B-AB7C-837601733C7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9FDBC50-F549-428B-AB7C-837601733C7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9FDBC50-F549-428B-AB7C-837601733C7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C111441D-1853-418D-99A8-421A8F534AFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C111441D-1853-418D-99A8-421A8F534AFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C111441D-1853-418D-99A8-421A8F534AFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C111441D-1853-418D-99A8-421A8F534AFD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

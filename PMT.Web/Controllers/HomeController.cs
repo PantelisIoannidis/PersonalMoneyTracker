@@ -1,4 +1,5 @@
-﻿using PMT.DataLayer;
+﻿using PMT.Contracts.Repositories;
+using PMT.DataLayer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +10,14 @@ namespace PMT.Web.Controllers
 {
     public class HomeController : Controller
     {
+        ICategoryRepository categoryRepository;
+        public HomeController(ICategoryRepository categoryRepository)
+        {
+            this.categoryRepository = categoryRepository;
+        }
         public ActionResult Index()
         {
-            MainDb db = new MainDb();
-            var a =db.Categories;
+            var a = categoryRepository.GetAll();
             return View();
         }
 
