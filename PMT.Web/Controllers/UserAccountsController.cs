@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using PMT.DataLayer;
 using PMT.Entities;
 using PMT.DataLayer.Repositories;
+using PMT.Web.Helpers;
 
 namespace PMT.Web.Controllers
 {
@@ -46,6 +47,10 @@ namespace PMT.Web.Controllers
         // GET: UserAccounts/Create
         public ActionResult Create()
         {
+            var securityHelper = new SecurityHelper();
+            var userId = securityHelper.GetUserId(this.HttpContext);
+            var userAccount = new UserAccount();
+            userAccount.UserId = userId;
             return View();
         }
 

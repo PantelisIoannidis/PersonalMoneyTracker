@@ -41,7 +41,7 @@ namespace PMT.Web.App_Start
 
             // TODO: Register your types here
             // container.RegisterType<IProductRepository, ProductRepository>();
-            container.RegisterInstance<IUnityContainer>(container);
+            //container.RegisterInstance<IUnityContainer>(container);
             container.RegisterType<ICategoryRepository, CategoryRepository>();
             container.RegisterType<IUserAccountRepository, UserAccountRepository>();
 
