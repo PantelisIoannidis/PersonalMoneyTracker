@@ -1,10 +1,11 @@
 ﻿body {
-    padding-top: 50px;
+    padding-top: 65px;
     padding-bottom: 20px;
 }
 
 /* Set padding to keep content from hitting the edges */
-.body-content {
+.mContent {
+
     width: 100%;
     padding: 0;
 }
@@ -14,24 +15,29 @@
         padding-left: 150px;
     }
 
-    #body-content {
+    #mContent {
         padding: 10px;
     }
 }
-
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
-.dl-horizontal dt {
-    white-space: normal;
+@media(max-width:360px) {
+    .navbar-brand {
+        display:none;
+    }
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
+    /* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+    /*.dl-horizontal dt {
+    white-space: normal;
+}*/
+
+    /* Set width on the form input elements since they're 100% wide by default */
+    /*input,
 select,
 textarea {
     max-width: 280px;
-}
+}*/
 
 .side-nav {
     position: fixed;
@@ -48,30 +54,34 @@ textarea {
     padding-bottom: 40px;
 }
 
-    .side-nav > li > a {
-        width: 150px;
-        color: #fff;
-    }
+.side-nav > li > a {
+    width: 150px;
+    color: #fff;
+}
 
-    .side-nav li a:hover,
-    .side-nav li a:focus {
-        outline: none;
-        color: #fff;
-        background-color: #97310e !important;
-    }
+.side-nav li a:hover,
+.side-nav li a:focus {
+    outline: none;
+    color: #fff;
+    background-color: #97310e !important;
+}
 
-    .side-nav > li > ul {
-        padding: 0;
-    }
+.side-nav > li > ul {
+    padding: 0;
+}
 
-        .side-nav > li > ul > li > a {
-            display: block;
-            padding: 10px 15px 10px 38px;
-            color: #fff;
-            text-decoration: none;
-        }
+.side-nav > li > ul > li > a {
+    display: block;
+    padding: 10px 15px 10px 38px;
+    color: #fff;
+    text-decoration: none;
+}
 
-            .side-nav > li > ul > li > a:hover {
-                background-color: #97310e !important;
-                color: #fff;
-            }
+.side-nav > li > ul > li > a:hover {
+    background-color: #97310e !important;
+    color: #fff;
+}
+
+.use-big-fonts {
+    font-size: 1.5em !important;
+}
