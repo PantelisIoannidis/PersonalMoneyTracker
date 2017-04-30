@@ -11,70 +11,71 @@
 </head>
 <body>
     <div id="wrapper">
-        <div class="navbar navbar-default navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse-header">
-                        <i class="fa fa-fw fa-user"></i>
-                    </button>
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse-side">
-                        <i class="fa fa-fw fa-dollar"></i>
-                    </button>
-                    @Html.ActionLink(@Resources.ApplicationName, "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                </div>
-                <div class="navbar-collapse navbar-collapse-header collapse">
+            <div class="navbar navbar-default navbar-fixed-top">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse-header">
+                            <i class="fa fa-fw fa-user"></i>
+                        </button>
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".my-bar-collapse-side">
+                            <i class="fa fa-fw fa-dollar"></i>
+                        </button>
+                        @Html.ActionLink(@Resources.ApplicationName, "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                    </div>
+                    <div class="navbar-collapse navbar-collapse-header collapse">
+                        @Html.Partial("_LoginPartial")
+                    </div>
 
-                    @Html.Partial("_LoginPartial")
                 </div>
-
             </div>
-        </div>
-        <div class="collapse navbar-collapse navbar-collapse-side">
-            <ul class="nav navbar-nav side-nav">
-                <li class="active">
-                    <a href="@Url.Action("Index","Home",null)" id="HomeLink"><i class="fa fa-fw fa-home"></i> @Resources.Home</a>
-                </li>
-                <li>
-                    <a href="@Url.Action("Index","Summary",null)" id="SummaryLink"><i class="fa fa-fw fa-balance-scale"></i> @Resources.Summary</a>
-                </li>
-                <li>
-                    <a href="@Url.Action("Index","Transactions",null)" id="TransactionsLink"><i class="fa fa-fw fa-list"></i> @Resources.Transactions</a>
-                </li>
-                <li>
-                    <a href="@Url.Action("Index","UserAccounts",null)" id="AccountsLink"><i class="fa fa-fw fa-bank"></i> @Resources.Accounts</a>
-                </li>
-                <li>
-                    <a href="@Url.Action("Index","Budget",null)" id="BudgetLink"><i class="fa fa-fw fa-hand-stop-o"></i> @Resources.Budget</a>
-                </li>
-                <li>
-                    <a href="@Url.Action("Index","Reports",null)" id="ReportsLink"><i class="fa fa-fw fa-bar-chart-o"></i> @Resources.Reports</a>
-                </li>
-                <li>
-                    <a href="javascript:;" data-toggle="collapse" data-target="#settingssubmenu"><i class="fa fa-fw fa-gear"></i> @Resources.Settings <i class="fa fa-fw fa-caret-down"></i></a>
-                    <ul id="settingssubmenu" class="collapse">
-                        <li>
-                            <a href="@Url.Action("Index","Categories",null)" id="CategoriesLink"><i class="fa fa-fw fa-list-alt"></i> @Resources.Categories</a>
-                        </li>
-                        <li>
-                            <a href="@Url.Action("Index","Recurring",null)" id="RecurringLink"><i class="fa fa-fw fa-calendar-minus-o"></i> @Resources.Recurring</a>
-                        </li>
-                        <li>
-                            <a href="@Url.Action("Index","Payee",null)" id="PayeeLink"><i class="fa fa-fw fa-users"></i> @Resources.Payee</a>
-                        </li>
-                        <li>
-                            <a href="@Url.Action("Index","Settings",null)" id="SettingsLink"><i class="fa fa-fw fa-dashboard"></i> @Resources.Other ...</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
+        <div class="row">
+            <div class=" col-md-3">
+                <ul class="my-bar-collapse-side my-bar use-big-fonts">
+                    <li class="active">
+                        <a href="@Url.Action("Index","Home",null)" id="HomeLink"><i class="fa fa-fw fa-home"></i> @Resources.Home</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","Summary",null)" id="SummaryLink"><i class="fa fa-fw fa-balance-scale"></i> @Resources.Summary</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","Transactions",null)" id="TransactionsLink"><i class="fa fa-fw fa-list"></i> @Resources.Transactions</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","UserAccounts",null)" id="AccountsLink"><i class="fa fa-fw fa-bank"></i> @Resources.Accounts</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","Budget",null)" id="BudgetLink"><i class="fa fa-fw fa-hand-stop-o"></i> @Resources.Budget</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","Reports",null)" id="ReportsLink"><i class="fa fa-fw fa-bar-chart-o"></i> @Resources.Reports</a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#settingssubmenu"><i class="fa fa-fw fa-gear"></i> @Resources.Settings <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="settingssubmenu" class="collapse">
+                            <li>
+                                <a href="@Url.Action("Index","Categories",null)" id="CategoriesLink"><i class="fa fa-fw fa-list-alt"></i> @Resources.Categories</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Index","Recurring",null)" id="RecurringLink"><i class="fa fa-fw fa-calendar-minus-o"></i> @Resources.Recurring</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Index","Payee",null)" id="PayeeLink"><i class="fa fa-fw fa-users"></i> @Resources.Payee</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Index","Settings",null)" id="SettingsLink"><i class="fa fa-fw fa-dashboard"></i> @Resources.Other ...</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
 
-        <div class="container mcontent">
-            @RenderBody()
-            <hr />
-            <footer>
-                <p>&copy; @DateTime.Now.Year - Pantelis Ioannidis</p>
-            </footer>
+            <div class="container mcontent col-md-9">
+                @RenderBody()
+                <hr />
+                <footer>
+                    <p>&copy; @DateTime.Now.Year - Pantelis Ioannidis</p>
+                </footer>
+            </div>
         </div>
     </div>
 

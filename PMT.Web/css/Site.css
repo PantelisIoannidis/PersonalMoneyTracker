@@ -1,87 +1,58 @@
 ﻿body {
-    padding-top: 65px;
-    padding-bottom: 20px;
+
 }
 
-/* Set padding to keep content from hitting the edges */
-.mContent {
-
-    width: 100%;
-    padding: 0;
+#wrapper {
+    padding-top: 60px;
+    padding-bottom: 10px;
+    padding-left: 2px;
+    padding-right: 15px;
 }
 
-@media(min-width:768px) {
-    #wrapper {
-        padding-left: 150px;
-    }
-
-    #mContent {
-        padding: 10px;
-    }
-}
-@media(max-width:360px) {
-    .navbar-brand {
-        display:none;
-    }
-}
-
-    /* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
-    /*.dl-horizontal dt {
-    white-space: normal;
-}*/
-
-    /* Set width on the form input elements since they're 100% wide by default */
-    /*input,
-select,
-textarea {
-    max-width: 280px;
-}*/
-
-.side-nav {
-    position: fixed;
-    top: 51px;
-    left: 150px;
-    width: 150px;
-    margin-left: -150px;
-    border: none;
-    border-radius: 0;
+.my-bar {
+    list-style: none;
+    text-decoration: none;
     overflow-y: auto;
     background-color: #dd4814;
-    bottom: 0;
     overflow-x: hidden;
-    padding-bottom: 40px;
+    padding:15px 5px 15px 10px;
 }
 
-.side-nav > li > a {
-    width: 150px;
+.my-bar > li > a {
+    text-decoration: none;
     color: #fff;
 }
 
-.side-nav li a:hover,
-.side-nav li a:focus {
+.my-bar li a:hover,
+.my-bar li a:focus {
     outline: none;
     color: #fff;
     background-color: #97310e !important;
 }
 
-.side-nav > li > ul {
-    padding: 0;
+.my-bar > li > ul {
+    list-style: none;
+    
 }
 
-.side-nav > li > ul > li > a {
+.my-bar > li > ul > li > a {
     display: block;
-    padding: 10px 15px 10px 38px;
+    padding: 5px 0px 5px 0px;
     color: #fff;
     text-decoration: none;
 }
 
-.side-nav > li > ul > li > a:hover {
+.my-bar > li > ul > li > a:hover {
     background-color: #97310e !important;
     color: #fff;
 }
 
 .use-big-fonts {
     font-size: 1.5em !important;
+}
+
+@media(max-width:768px) {
+    .navbar-brand {
+        display: none;
+    }
 }
