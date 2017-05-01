@@ -70,7 +70,7 @@ namespace PMT.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Personal Fianance Agent.
+        ///   Looks up a localized string similar to Personal Money Tracker.
         /// </summary>
         public static string ApplicationName {
             get {

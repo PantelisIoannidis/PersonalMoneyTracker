@@ -15,5 +15,10 @@ namespace PMT.DataLayer.Repositories
         {
            
         }
+
+        public List<UserAccount> GetAccounts(string userId)
+        {
+            return context.UserAccounts.Where(u => u.UserId == userId).ToList();
+        }
     }
 }

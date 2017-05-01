@@ -80,9 +80,12 @@
     <Compile Include="Context\MainMigrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\CategoryRepository.cs" />
+    <Compile Include="Repositories\IdentityRepository.cs" />
+    <Compile Include="Repositories\IIdentityRepository.cs" />
     <Compile Include="Repositories\IUserAccountRepository.cs" />
     <Compile Include="Repositories\RepositoryBase.cs" />
     <Compile Include="Repositories\UserAccountRepository.cs" />
+    <Compile Include="Seeding\ISeeding.cs" />
     <Compile Include="Seeding\Seeding.cs" />
   </ItemGroup>
   <ItemGroup>

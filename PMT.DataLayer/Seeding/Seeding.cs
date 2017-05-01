@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PMT.DataLayer.Seeding
 {
-    public class Seeding
+    public class Seeding : ISeeding
     {
         List<Category> MainCategoryList = new List<Category>();
         List<SubCategory> SubCategoryList = new List<SubCategory>();
@@ -17,22 +17,31 @@ namespace PMT.DataLayer.Seeding
 
         public Seeding()
         {
-            PrepareCategories();
-            PrepareRepeats();
+            
+            
+        }
+
+
+        public UserAccount GetDefaultAccountForNewUser(string userId)
+        {
+            return new UserAccount { UserId=userId,UserAccountId=0,Name="Personal"};
         }
 
         public List<Category> GetMainCategories()
         {
+            PrepareCategories();
             return MainCategoryList;
         }
 
         public List<SubCategory> GetSubCategries()
         {
+            PrepareCategories();
             return SubCategoryList;
         }
 
         public List<Repeat> GetRepeats()
         {
+            PrepareRepeats();
             return RepeatList;
         }
 
@@ -40,7 +49,9 @@ namespace PMT.DataLayer.Seeding
         {
             int i = 0;
             int y = 0;
-            
+
+            if (MainCategoryList.Count > 0) return;
+
             MainCategoryList.Add(new Category { CategoryId = i++, Type = TransactionType.Income, Name = "Salary" });
             MainCategoryList.Add(new Category { CategoryId = i++, Type = TransactionType.Income, Name = "Bonus" });
             MainCategoryList.Add(new Category { CategoryId = i++, Type = TransactionType.Income, Name = "Borrow" });
@@ -124,6 +135,9 @@ namespace PMT.DataLayer.Seeding
         private void PrepareRepeats()
         {
             int i = 0;
+
+            if (RepeatList.Count > 0) return;
+
             RepeatList.Add(new Repeat { RepeatId = i++, Description = "Daily", AddDays = 1, AddWeeks = 0, AddMonths = 0, AddYears = 0 });
             RepeatList.Add(new Repeat { RepeatId = i++, Description = "Weekly", AddDays = 0, AddWeeks = 1, AddMonths = 0, AddYears = 0 });
             RepeatList.Add(new Repeat { RepeatId = i++, Description = "Monthly", AddDays = 0, AddWeeks = 0, AddMonths = 1, AddYears = 0 });
@@ -133,5 +147,6 @@ namespace PMT.DataLayer.Seeding
             RepeatList.Add(new Repeat { RepeatId = i++, Description = "Quarterly", AddDays = 0, AddWeeks = 0, AddMonths = 3, AddYears = 0 });
 
         }
+
     }
 }

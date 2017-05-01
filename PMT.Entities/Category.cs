@@ -10,11 +10,12 @@ namespace PMT.Entities
     public class Category
     {
         //[HiddenInput(DisplayValue = false)]
-        [Required]
         public int CategoryId { get; set; }
-        [Required]
+
+        public int IconId { get; set; }
+
         public int Type { get; set; }
-        [Required]
         public string Name { get; set; }
+
     }
 }

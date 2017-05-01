@@ -13,7 +13,6 @@ namespace PMT.Contracts.Repositories
         void Delete(object id);
         void Dispose();
         IQueryable<TEntity> GetAll();
-        IQueryable<TEntity> GetAllOrderBy(Func<TEntity> orderby);
         TEntity GetById(object id);
         void Insert(TEntity entity);
         void Update(TEntity entity);

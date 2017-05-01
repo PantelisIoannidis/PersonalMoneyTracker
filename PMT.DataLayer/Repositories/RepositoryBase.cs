@@ -29,11 +29,6 @@ namespace PMT.DataLayer.Repositories
             return dbSet;
         }
 
-        public virtual IQueryable<TEntity> GetAllOrderBy(Func<TEntity> orderby)
-        {
-            return dbSet.OrderBy(o=>orderby);
-        }
-
 
         public virtual void Insert(TEntity entity)
         {

@@ -49,6 +49,7 @@ namespace PMT.DataLayer
             modelBuilder.Entity<Transaction>().Property(e => e.TransactionId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             modelBuilder.Entity<UserAccount>().Property(e => e.UserAccountId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 
+
             modelBuilder.Entity<Budget>()
                 .Property(e => e.Amount)
                 .HasPrecision(19, 4);

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Personal Financial Manager</title>
+    <title>@ViewBag.Title - @Resources.ApplicationName</title>
     @Styles.Render("~/Content/css")
     @Styles.Render("~/css")
     @Scripts.Render("~/bundles/modernizr")
@@ -11,25 +11,26 @@
 </head>
 <body>
     <div id="wrapper">
-            <div class="navbar navbar-default navbar-fixed-top">
-                <div class="container">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse-header">
-                            <i class="fa fa-fw fa-user"></i>
-                        </button>
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".my-bar-collapse-side">
-                            <i class="fa fa-fw fa-dollar"></i>
-                        </button>
-                        @Html.ActionLink(@Resources.ApplicationName, "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                    </div>
-                    <div class="navbar-collapse navbar-collapse-header collapse">
-                        @Html.Partial("_LoginPartial")
-                    </div>
-
+        <div class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse-header">
+                        <i class="fa fa-fw fa-user"></i>
+                    </button>
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".my-bar-collapse-side">
+                        <i class="fa fa-fw fa-dollar"></i>
+                    </button>
+                    @Html.ActionLink(@Resources.ApplicationName, "Index", "Home", new { area = "" }, new { @class = "navbar-brand navbar-brand-full" })
+                    @Html.ActionLink("PMT", "Index", "Home", new { area = "" }, new { @class = "navbar-brand navbar-brand-short" })
                 </div>
+                <div class="navbar-collapse navbar-collapse-header collapse">
+                    @Html.Partial("_LoginPartial")
+                </div>
+
             </div>
+        </div>
         <div class="row">
-            <div class=" col-md-3">
+            <div class=" col-sm-3">
                 <ul class="my-bar-collapse-side my-bar use-big-fonts">
                     <li class="active">
                         <a href="@Url.Action("Index","Home",null)" id="HomeLink"><i class="fa fa-fw fa-home"></i> @Resources.Home</a>
@@ -69,7 +70,7 @@
                 </ul>
             </div>
 
-            <div class="container mcontent col-md-9">
+            <div class="container mcontent col-sm-9">
                 @RenderBody()
                 <hr />
                 <footer>

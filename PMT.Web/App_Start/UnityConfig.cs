@@ -11,6 +11,8 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using PMT.Web.Controllers;
 using PMT.Web.Helpers;
 using PMT.Common;
+using PMT.BusinessLayer;
+using PMT.DataLayer.Seeding;
 
 namespace PMT.Web.App_Start
 {
@@ -51,18 +53,22 @@ namespace PMT.Web.App_Start
 
             container.RegisterInstance<IUnityContainer>(container);
 
+
+            container.RegisterType<IIdentityEngine, IdentityEngine>();
             container.RegisterType<IUserStore<ApplicationUser>, UserStore<ApplicationUser>>();
             container.RegisterType<UserManager<ApplicationUser>>();
             container.RegisterType<DbContext, IdentityDb>();
             container.RegisterType<ApplicationUserManager>();
-            container.RegisterType<AccountController>(new InjectionConstructor());
+            container.RegisterType<AccountController>(new InjectionConstructor(new ResolvedParameter<IIdentityEngine>()));
             container.RegisterType<ManageController>(new InjectionConstructor());
 
-
+            container.RegisterType<ISeeding, Seeding>();
+            
+            
             container.RegisterType<ISecurityHelper, SecurityHelper>();
             container.RegisterType<ICategoryRepository, CategoryRepository>();
             container.RegisterType<IUserAccountRepository, UserAccountRepository>();
-
+            container.RegisterType<IIdentityRepository, IdentityRepository>();
             container.RegisterType<IUnityFactory, UnityFactory>();
 
         }

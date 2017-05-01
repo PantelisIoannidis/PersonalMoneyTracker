@@ -9,11 +9,10 @@ namespace PMT.Entities
 {
     public class SubCategory
     {
-        [Required]
         public int SubCategoryId { get; set; }
-        [Required]
         public int CategoryId { get; set; }
-        [Required]
+        public int IconId { get; set; }
         public string Name { get; set; }
+
     }
 }

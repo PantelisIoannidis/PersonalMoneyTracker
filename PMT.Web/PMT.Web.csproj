@@ -252,6 +252,7 @@
     </Compile>
     <Compile Include="Helpers\ISecurityHelper.cs" />
     <Compile Include="Helpers\SecurityHelper.cs" />
+    <Compile Include="Helpers\UserPreferences.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -391,6 +392,10 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\PMT.BusinessLayer\PMT.BusinessLayer.csproj">
+      <Project>{c111441d-1853-418d-99a8-421a8f534afd}</Project>
+      <Name>PMT.BusinessLayer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PMT.Common\PMT.Common.csproj">
       <Project>{551cfa99-af45-45b1-bb2e-37d4475f2107}</Project>
       <Name>PMT.Common</Name>

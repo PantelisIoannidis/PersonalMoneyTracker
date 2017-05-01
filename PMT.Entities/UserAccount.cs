@@ -9,12 +9,9 @@ namespace PMT.Entities
 {
     public class UserAccount
     {
-        [Required]
         public int UserAccountId { get; set; }
-        [Required]
         [StringLength(128)]
         public string UserId { get; set; }
-        [Required]
         public string Name { get; set; }
     }
 }

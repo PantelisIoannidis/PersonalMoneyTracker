@@ -18,18 +18,19 @@ namespace PMT.Web.Controllers
     public class UserAccountsController : Controller
     {
         IUserAccountRepository userAccountRepository;
-        IUnityFactory unityFactory;
-        public UserAccountsController(IUnityFactory unityFactory, IUserAccountRepository userAccountRepository)
+        ISecurityHelper securityHelper;
+        public UserAccountsController(ISecurityHelper securityHelper, IUserAccountRepository userAccountRepository)
         {
             this.userAccountRepository = userAccountRepository;
-            this.unityFactory = unityFactory;
+            this.securityHelper = securityHelper;
         }
 
         // GET: UserAccounts
         public ActionResult Index()
         {
-            var a = userAccountRepository.GetAll();
-            return View( a );
+            var userId = securityHelper.GetUserId(this.HttpContext);
+            var userAccounts = userAccountRepository.GetAccounts(userId);
+            return View( userAccounts );
         }
 
         //GET: UserAccounts/Details/5
@@ -50,7 +51,8 @@ namespace PMT.Web.Controllers
         // GET: UserAccounts/Create
         public ActionResult Create()
         {
-            var userId = unityFactory.GetObject<ISecurityHelper>().GetUserId(this.HttpContext);
+
+            var userId = securityHelper.GetUserId(this.HttpContext);
             var userAccount = new UserAccount() { UserId = userId};
             return View(userAccount);
         }

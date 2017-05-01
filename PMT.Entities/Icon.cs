@@ -9,12 +9,11 @@ namespace PMT.Entities
 {
     public class Icon
     {
-        [Required]
         public int IconId { get; set; }
-        [Required]
         public string Description { get; set; }
         public string LocalPath { get; set; }
         public string AwesomeFont { get; set; }
         public string WebHostingHubFont { get; set; }
+
     }
 }

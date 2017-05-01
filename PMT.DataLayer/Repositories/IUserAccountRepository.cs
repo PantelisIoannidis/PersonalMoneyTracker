@@ -6,6 +6,6 @@ namespace PMT.DataLayer.Repositories
 {
     public interface IUserAccountRepository : IRepositoryBase<UserAccount>
     {
-        
+        List<UserAccount> GetAccounts(string userId);
     }
 }

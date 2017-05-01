@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using PMT.Web.Models;
 using PMT.DataLayer;
+using PMT.BusinessLayer;
 
 namespace PMT.Web.Controllers
 {
@@ -18,15 +19,18 @@ namespace PMT.Web.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private IIdentityEngine identityEngine;
 
-        public AccountController()
+        public AccountController(IIdentityEngine identityEngine)
         {
+            this.identityEngine = identityEngine;
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
         {
             UserManager = userManager;
             SignInManager = signInManager;
+            
         }
 
         public ApplicationSignInManager SignInManager
@@ -156,6 +160,7 @@ namespace PMT.Web.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    identityEngine.InitializeNewUser(user.Email);
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
