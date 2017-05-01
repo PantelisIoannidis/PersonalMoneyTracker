@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PMT.Common.Resources;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -12,6 +13,8 @@ namespace PMT.Entities
         public int UserAccountId { get; set; }
         [StringLength(128)]
         public string UserId { get; set; }
+
+        [Display(Name = nameof(ModelText.UserAccountName), ResourceType = typeof(ModelText))]
         public string Name { get; set; }
     }
 }

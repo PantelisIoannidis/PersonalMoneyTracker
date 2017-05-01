@@ -120,17 +120,29 @@
   <data name="Accounts" xml:space="preserve">
     <value>Accounts</value>
   </data>
+  <data name="Add" xml:space="preserve">
+    <value>Add</value>
+  </data>
   <data name="ApplicationName" xml:space="preserve">
     <value>Personal Money Tracker</value>
   </data>
   <data name="Back" xml:space="preserve">
     <value>Back</value>
   </data>
+  <data name="Balance" xml:space="preserve">
+    <value>Balance</value>
+  </data>
   <data name="Budget" xml:space="preserve">
     <value>Budget</value>
   </data>
   <data name="Categories" xml:space="preserve">
     <value>Categories</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>Create</value>
+  </data>
+  <data name="CreateNew" xml:space="preserve">
+    <value>Create New</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>Delete</value>
@@ -164,5 +176,11 @@
   </data>
   <data name="Transactions" xml:space="preserve">
     <value>Transactions</value>
+  </data>
+  <data name="UserAccountsViewIndexTitle" xml:space="preserve">
+    <value>Your Accounts</value>
+  </data>
+  <data name="UsersAccountsViewCreateTitle" xml:space="preserve">
+    <value>Add new account</value>
   </data>
 </root>

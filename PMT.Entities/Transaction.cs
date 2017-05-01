@@ -12,6 +12,7 @@ namespace PMT.Entities
         public int TransactionId { get; set; }
         [StringLength(128)]
         public string UserId { get; set; }
+        public int UserAccountId { get; set; }
         public int CategoryId { get; set; }
         public int SubCategoryId { get; set; }
         public int TransactionType { get; set; }

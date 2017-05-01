@@ -54,7 +54,11 @@ namespace PMT.Web.App_Start
             container.RegisterInstance<IUnityContainer>(container);
 
 
+            //Business Login
             container.RegisterType<IIdentityEngine, IdentityEngine>();
+            container.RegisterType<IUserAccountEngine, UserAccountEngine>();
+
+            //Account Login
             container.RegisterType<IUserStore<ApplicationUser>, UserStore<ApplicationUser>>();
             container.RegisterType<UserManager<ApplicationUser>>();
             container.RegisterType<DbContext, IdentityDb>();
@@ -62,14 +66,19 @@ namespace PMT.Web.App_Start
             container.RegisterType<AccountController>(new InjectionConstructor(new ResolvedParameter<IIdentityEngine>()));
             container.RegisterType<ManageController>(new InjectionConstructor());
 
+            //Helpers
             container.RegisterType<ISeeding, Seeding>();
-            
-            
+            container.RegisterType<IOperationStatus, OperationStatus>();
             container.RegisterType<ISecurityHelper, SecurityHelper>();
+            container.RegisterType<IUnityFactory, UnityFactory>();
+
+            //Repositories
+            container.RegisterType<MainDb>();
             container.RegisterType<ICategoryRepository, CategoryRepository>();
+            container.RegisterType<ITransactionRepository, TransactionRepository>();
             container.RegisterType<IUserAccountRepository, UserAccountRepository>();
             container.RegisterType<IIdentityRepository, IdentityRepository>();
-            container.RegisterType<IUnityFactory, UnityFactory>();
+            
 
         }
     }

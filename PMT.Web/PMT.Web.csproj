@@ -412,6 +412,10 @@
       <Project>{9463f7d5-f927-4886-b9d3-5e67324752b4}</Project>
       <Name>PMT.Entities</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PMT.Models\PMT.Models.csproj">
+      <Project>{43d49cb4-2fe4-4f4a-9255-d5071f21136f}</Project>
+      <Name>PMT.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

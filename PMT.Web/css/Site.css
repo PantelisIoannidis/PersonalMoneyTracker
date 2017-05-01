@@ -2,6 +2,12 @@
 
 }
 
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
 #wrapper {
     padding-top: 60px;
     padding-bottom: 10px;

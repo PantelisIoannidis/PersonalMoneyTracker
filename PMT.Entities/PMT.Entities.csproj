@@ -50,5 +50,11 @@
     <Compile Include="Transaction.cs" />
     <Compile Include="UserAccount.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PMT.Common\PMT.Common.csproj">
+      <Project>{551cfa99-af45-45b1-bb2e-37d4475f2107}</Project>
+      <Name>PMT.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -11,6 +11,8 @@ using PMT.Entities;
 using PMT.DataLayer.Repositories;
 using PMT.Web.Helpers;
 using PMT.Common;
+using PMT.Models;
+using PMT.BusinessLayer;
 
 namespace PMT.Web.Controllers
 {
@@ -19,10 +21,14 @@ namespace PMT.Web.Controllers
     {
         IUserAccountRepository userAccountRepository;
         ISecurityHelper securityHelper;
-        public UserAccountsController(ISecurityHelper securityHelper, IUserAccountRepository userAccountRepository)
+        IUserAccountEngine userAccountEngine;
+        public UserAccountsController(ISecurityHelper securityHelper, 
+                                        IUserAccountRepository userAccountRepository,
+                                        IUserAccountEngine userAccountEngine)
         {
             this.userAccountRepository = userAccountRepository;
             this.securityHelper = securityHelper;
+            this.userAccountEngine = userAccountEngine;
         }
 
         // GET: UserAccounts
@@ -52,8 +58,8 @@ namespace PMT.Web.Controllers
         public ActionResult Create()
         {
 
-            var userId = securityHelper.GetUserId(this.HttpContext);
-            var userAccount = new UserAccount() { UserId = userId};
+            var userId = securityHelper.GetUserId(HttpContext);
+            UserAccountCreateNewMV userAccount = new UserAccount() { UserId = userId } as UserAccountCreateNewMV;
             return View(userAccount);
         }
 
@@ -62,12 +68,12 @@ namespace PMT.Web.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "UserAccountId,UserId,Name")] UserAccount userAccount)
+        public ActionResult Create([Bind(Include = "Name,InitialAmount")] UserAccountCreateNewMV userAccount)
         {
             if (ModelState.IsValid)
             {
-                userAccountRepository.Insert(userAccount);
-                userAccountRepository.Save();
+                userAccount.UserId = securityHelper.GetUserId(HttpContext);
+                userAccountEngine.AddNewAccountWithInitialBalance(userAccount);
                 return RedirectToAction("Index");
             }
 
