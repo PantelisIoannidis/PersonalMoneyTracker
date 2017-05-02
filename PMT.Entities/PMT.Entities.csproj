@@ -48,7 +48,8 @@
     <Compile Include="Repeat.cs" />
     <Compile Include="SubCategory.cs" />
     <Compile Include="Transaction.cs" />
-    <Compile Include="UserAccount.cs" />
+    <Compile Include="MoneyAccount.cs" />
+    <Compile Include="TransactionType.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PMT.Common\PMT.Common.csproj">

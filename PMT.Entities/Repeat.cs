@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PMT.Common.Resources;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -10,6 +11,7 @@ namespace PMT.Entities
     public class Repeat
     {
         public int RepeatId { get; set; }
+        [Display(Name = nameof(ModelText.RepeatDescription), ResourceType = typeof(ModelText))]
         public string Description { get; set; }
         public int AddDays { get; set; }
         public int AddWeeks { get; set; }

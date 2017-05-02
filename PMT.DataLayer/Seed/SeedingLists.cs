@@ -6,25 +6,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PMT.DataLayer.Seeding
+namespace PMT.DataLayer.Seed
 {
-    public class Seeding : ISeeding
+    public class SeedingLists : ISeedingLists
     {
         List<Category> MainCategoryList = new List<Category>();
         List<SubCategory> SubCategoryList = new List<SubCategory>();
         List<Repeat> RepeatList = new List<Repeat>();
 
 
-        public Seeding()
+        public SeedingLists()
         {
             
             
         }
 
 
-        public UserAccount GetDefaultAccountForNewUser(string userId)
+        public MoneyAccount GetDefaultAccountForNewUser(string userId)
         {
-            return new UserAccount { UserId=userId,UserAccountId=0,Name="Personal"};
+            return new MoneyAccount { UserId=userId,MoneyAccountId=0,Name="Personal"};
         }
 
         public List<Category> GetMainCategories()

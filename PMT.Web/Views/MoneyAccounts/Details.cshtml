@@ -1,4 +1,4 @@
-﻿@model PMT.Entities.UserAccount
+﻿@model PMT.Entities.MoneyAccount
 
 @{
     ViewBag.Title = "Details";
@@ -7,7 +7,7 @@
 <h2>Details</h2>
 
 <div>
-    <h4>UserAccount</h4>
+    <h4>MoneyAccount</h4>
     <hr />
     <dl class="dl-horizontal">
 
@@ -22,6 +22,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.UserAccountId }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MoneyAccountId }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

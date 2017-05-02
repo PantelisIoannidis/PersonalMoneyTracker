@@ -245,7 +245,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\UserAccountsController.cs" />
+    <Compile Include="Controllers\MoneyAccountsController.cs" />
     <Compile Include="GlimpseSecurityPolicy.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -374,16 +374,15 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\UserAccounts\Create.cshtml" />
-    <Content Include="Views\UserAccounts\Delete.cshtml" />
-    <Content Include="Views\UserAccounts\Details.cshtml" />
-    <Content Include="Views\UserAccounts\Edit.cshtml" />
-    <Content Include="Views\UserAccounts\Index.cshtml" />
+    <Content Include="Views\MoneyAccounts\Create.cshtml" />
+    <Content Include="Views\MoneyAccounts\Delete.cshtml" />
+    <Content Include="Views\MoneyAccounts\Details.cshtml" />
+    <Content Include="Views\MoneyAccounts\Edit.cshtml" />
+    <Content Include="Views\MoneyAccounts\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="js\" />
-    <Folder Include="Views\UserAccount\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

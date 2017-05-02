@@ -11,35 +11,35 @@ using System.Threading.Tasks;
 
 namespace PMT.BusinessLayer
 {
-    public class UserAccountEngine : IUserAccountEngine
+    public class MoneyAccountEngine : IMoneyAccountEngine
     {
-        IUserAccountRepository userAccountRepository;
+        IMoneyAccountRepository MoneyAccountRepository;
         IOperationStatus operationStatus;
         ITransactionRepository transactionRepository;
-        public UserAccountEngine(IUserAccountRepository userAccountRepository,
+        public MoneyAccountEngine(IMoneyAccountRepository MoneyAccountRepository,
                                 ITransactionRepository transactionRepository,
                                 IOperationStatus operationStatus)
         {
-            this.userAccountRepository = userAccountRepository;
+            this.MoneyAccountRepository = MoneyAccountRepository;
             this.operationStatus = operationStatus;
             this.transactionRepository = transactionRepository;
         }
 
-        public IOperationStatus AddNewAccountWithInitialBalance(UserAccountCreateNewMV userAccountCreateNewMV)
+        public IOperationStatus AddNewAccountWithInitialBalance(MoneyAccountCreateNewMV MoneyAccountCreateNewMV)
         {
 
            try
             {
-                userAccountRepository.Insert(new Mapping().UserAccountCreateNewMV_ToUserAccount(userAccountCreateNewMV));
-                userAccountRepository.Save();
+                MoneyAccountRepository.Insert(new Mapping().MoneyAccountCreateNewMV_ToMoneyAccount(MoneyAccountCreateNewMV));
+                MoneyAccountRepository.Save();
                 var transaction = new Transaction()
                 {
-                    UserId = userAccountCreateNewMV.UserId,
-                    UserAccountId = userAccountCreateNewMV.UserAccountId,
+                    UserId = MoneyAccountCreateNewMV.UserId,
+                    MoneyAccountId = MoneyAccountCreateNewMV.MoneyAccountId,
                     TransactionType = TransactionType.Adjustment,
-                    Amount = userAccountCreateNewMV.InitialAmount,
+                    Amount = MoneyAccountCreateNewMV.InitialAmount,
                     TransactionDate = DateTime.UtcNow,
-                    Description = ModelText.UserAccountInitialAmount
+                    Description = ModelText.MoneyAccountInitialAmount
                 };
                 transactionRepository.Insert(transaction);
                 transactionRepository.Save();

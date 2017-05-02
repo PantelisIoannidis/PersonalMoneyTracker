@@ -9,11 +9,11 @@ namespace PMT.Models
 {
     public class Mapping
     {
-        public UserAccount UserAccountCreateNewMV_ToUserAccount(UserAccountCreateNewMV source)
+        public MoneyAccount MoneyAccountCreateNewMV_ToMoneyAccount(MoneyAccountCreateNewMV source)
         {
-            return new UserAccount() {
+            return new MoneyAccount() {
                 UserId = source.UserId,
-                UserAccountId = source.UserAccountId,
+                MoneyAccountId = source.MoneyAccountId,
                 Name=source.Name
             };
         }

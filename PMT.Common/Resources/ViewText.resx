@@ -153,6 +153,12 @@
   <data name="Home" xml:space="preserve">
     <value>Home</value>
   </data>
+  <data name="MoneyAccountsViewCreateTitle" xml:space="preserve">
+    <value>Add new account</value>
+  </data>
+  <data name="MoneyAccountsViewIndexTitle" xml:space="preserve">
+    <value>Your Accounts</value>
+  </data>
   <data name="New" xml:space="preserve">
     <value>New</value>
   </data>
@@ -176,11 +182,5 @@
   </data>
   <data name="Transactions" xml:space="preserve">
     <value>Transactions</value>
-  </data>
-  <data name="UserAccountsViewIndexTitle" xml:space="preserve">
-    <value>Your Accounts</value>
-  </data>
-  <data name="UsersAccountsViewCreateTitle" xml:space="preserve">
-    <value>Add new account</value>
   </data>
 </root>

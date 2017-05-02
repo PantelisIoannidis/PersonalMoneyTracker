@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using PMT.Entities;
 
-namespace PMT.DataLayer.Seeding
+namespace PMT.DataLayer.Seed
 {
-    public interface ISeeding
+    public interface ISeedingLists
     {
-        UserAccount GetDefaultAccountForNewUser(string userId);
+        MoneyAccount GetDefaultAccountForNewUser(string userId);
         List<Category> GetMainCategories();
         List<Repeat> GetRepeats();
         List<SubCategory> GetSubCategries();

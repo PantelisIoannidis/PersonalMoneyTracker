@@ -169,6 +169,24 @@ namespace PMT.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add new account.
+        /// </summary>
+        public static string MoneyAccountsViewCreateTitle {
+            get {
+                return ResourceManager.GetString("MoneyAccountsViewCreateTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your Accounts.
+        /// </summary>
+        public static string MoneyAccountsViewIndexTitle {
+            get {
+                return ResourceManager.GetString("MoneyAccountsViewIndexTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New.
         /// </summary>
         public static string New {
@@ -237,24 +255,6 @@ namespace PMT.Common.Resources {
         public static string Transactions {
             get {
                 return ResourceManager.GetString("Transactions", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Your Accounts.
-        /// </summary>
-        public static string UserAccountsViewIndexTitle {
-            get {
-                return ResourceManager.GetString("UserAccountsViewIndexTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Add new account.
-        /// </summary>
-        public static string UsersAccountsViewCreateTitle {
-            get {
-                return ResourceManager.GetString("UsersAccountsViewCreateTitle", resourceCulture);
             }
         }
     }

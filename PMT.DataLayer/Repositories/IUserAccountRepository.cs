@@ -4,8 +4,8 @@ using PMT.Contracts.Repositories;
 
 namespace PMT.DataLayer.Repositories
 {
-    public interface IUserAccountRepository : IRepositoryBase<UserAccount>
+    public interface IMoneyAccountRepository : IRepositoryBase<MoneyAccount>
     {
-        List<UserAccount> GetAccounts(string userId);
+        List<MoneyAccount> GetAccounts(string userId);
     }
 }

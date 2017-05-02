@@ -3,8 +3,8 @@ using PMT.Common;
 
 namespace PMT.BusinessLayer
 {
-    public interface IUserAccountEngine
+    public interface IMoneyAccountEngine
     {
-        IOperationStatus AddNewAccountWithInitialBalance(UserAccountCreateNewMV userAccountCreateNewModelView);
+        IOperationStatus AddNewAccountWithInitialBalance(MoneyAccountCreateNewMV MoneyAccountCreateNewModelView);
     }
 }

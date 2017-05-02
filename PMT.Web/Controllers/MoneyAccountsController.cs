@@ -17,123 +17,123 @@ using PMT.BusinessLayer;
 namespace PMT.Web.Controllers
 {
     [Authorize]
-    public class UserAccountsController : Controller
+    public class MoneyAccountsController : Controller
     {
-        IUserAccountRepository userAccountRepository;
+        IMoneyAccountRepository moneyAccountRepository;
         ISecurityHelper securityHelper;
-        IUserAccountEngine userAccountEngine;
-        public UserAccountsController(ISecurityHelper securityHelper, 
-                                        IUserAccountRepository userAccountRepository,
-                                        IUserAccountEngine userAccountEngine)
+        IMoneyAccountEngine moneyAccountEngine;
+        public MoneyAccountsController(ISecurityHelper securityHelper, 
+                                        IMoneyAccountRepository moneyAccountRepository,
+                                        IMoneyAccountEngine moneyAccountEngine)
         {
-            this.userAccountRepository = userAccountRepository;
+            this.moneyAccountRepository = moneyAccountRepository;
             this.securityHelper = securityHelper;
-            this.userAccountEngine = userAccountEngine;
+            this.moneyAccountEngine = moneyAccountEngine;
         }
 
-        // GET: UserAccounts
+        // GET: MoneyAccounts
         public ActionResult Index()
         {
             var userId = securityHelper.GetUserId(this.HttpContext);
-            var userAccounts = userAccountRepository.GetAccounts(userId);
-            return View( userAccounts );
+            var moneyAccounts = moneyAccountRepository.GetAccounts(userId);
+            return View( moneyAccounts );
         }
 
-        //GET: UserAccounts/Details/5
+        //GET: MoneyAccounts/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            UserAccount userAccount = userAccountRepository.GetById(id);
-            if (userAccount == null)
+            MoneyAccount moneyAccount = moneyAccountRepository.GetById(id);
+            if (moneyAccount == null)
             {
                 return HttpNotFound();
             }
-            return View(userAccount);
+            return View(moneyAccount);
         }
 
-        // GET: UserAccounts/Create
+        // GET: MoneyAccounts/Create
         public ActionResult Create()
         {
 
             var userId = securityHelper.GetUserId(HttpContext);
-            UserAccountCreateNewMV userAccount = new UserAccount() { UserId = userId } as UserAccountCreateNewMV;
-            return View(userAccount);
+            MoneyAccountCreateNewMV moneyAccount = new MoneyAccount() { UserId = userId } as MoneyAccountCreateNewMV;
+            return View(moneyAccount);
         }
 
-        // POST: UserAccounts/Create
+        // POST: MoneyAccounts/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Name,InitialAmount")] UserAccountCreateNewMV userAccount)
+        public ActionResult Create([Bind(Include = "Name,InitialAmount")] MoneyAccountCreateNewMV moneyAccount)
         {
             if (ModelState.IsValid)
             {
-                userAccount.UserId = securityHelper.GetUserId(HttpContext);
-                userAccountEngine.AddNewAccountWithInitialBalance(userAccount);
+                moneyAccount.UserId = securityHelper.GetUserId(HttpContext);
+                moneyAccountEngine.AddNewAccountWithInitialBalance(moneyAccount);
                 return RedirectToAction("Index");
             }
 
-            return View(userAccount);
+            return View(moneyAccount);
         }
 
-        // GET: UserAccounts/Edit/5
+        // GET: MoneyAccounts/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            UserAccount userAccount = userAccountRepository.GetById(id);
-            if (userAccount == null)
+            MoneyAccount moneyAccount = moneyAccountRepository.GetById(id);
+            if (moneyAccount == null)
             {
                 return HttpNotFound();
             }
-            return View(userAccount);
+            return View(moneyAccount);
         }
 
-        // POST: UserAccounts/Edit/5
+        // POST: MoneyAccounts/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "UserAccountId,UserId,Name")] UserAccount userAccount)
+        public ActionResult Edit([Bind(Include = "MoneyAccountId,UserId,Name")] MoneyAccount moneyAccount)
         {
             if (ModelState.IsValid)
             {
-                userAccountRepository.Update(userAccount);
-                userAccountRepository.Save();
+                moneyAccountRepository.Update(moneyAccount);
+                moneyAccountRepository.Save();
                 return RedirectToAction("Index");
             }
-            return View(userAccount);
+            return View(moneyAccount);
         }
 
-        // GET: UserAccounts/Delete/5
+        // GET: MoneyAccounts/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            UserAccount userAccount = userAccountRepository.GetById(id);
-            if (userAccount == null)
+            MoneyAccount moneyAccount = moneyAccountRepository.GetById(id);
+            if (moneyAccount == null)
             {
                 return HttpNotFound();
             }
-            return View(userAccount);
+            return View(moneyAccount);
         }
 
-        // POST: UserAccounts/Delete/5
+        // POST: MoneyAccounts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            UserAccount userAccount = userAccountRepository.GetById(id);
-            userAccountRepository.Delete(id);
-            userAccountRepository.Save();
+            MoneyAccount moneyAccount = moneyAccountRepository.GetById(id);
+            moneyAccountRepository.Delete(id);
+            moneyAccountRepository.Save();
             return RedirectToAction("Index");
         }
 
@@ -141,7 +141,7 @@ namespace PMT.Web.Controllers
         {
             if (disposing)
             {
-                userAccountRepository.Dispose();
+                moneyAccountRepository.Dispose();
             }
             base.Dispose(disposing);
         }

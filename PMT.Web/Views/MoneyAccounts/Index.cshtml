@@ -1,7 +1,7 @@
-﻿@model IEnumerable<PMT.Entities.UserAccount>
+﻿@model IEnumerable<PMT.Entities.MoneyAccount>
 
 @{
-    ViewBag.Title = ViewText.UserAccountsViewIndexTitle;
+    ViewBag.Title = ViewText.MoneyAccountsViewIndexTitle;
 }
 
 
@@ -31,8 +31,8 @@
                             $0000  
                         </td>
                         <td>
-                            <a href="@Url.Action("Edit","UserAccounts", new { id = item.UserAccountId })" class="btn btn-warning btn-xs"><i class="fa fa-fw fa-edit"></i> Edit</a>
-                            <a href="@Url.Action("Delete","UserAccounts", new { id = item.UserAccountId })" class="btn btn-danger btn-xs"><i class="fa fa-fw fa-trash"></i> Delete</a>
+                            <a href="@Url.Action("Edit","MoneyAccounts", new { id = item.MoneyAccountId })" class="btn btn-warning btn-xs"><i class="fa fa-fw fa-edit"></i> Edit</a>
+                            <a href="@Url.Action("Delete","MoneyAccounts", new { id = item.MoneyAccountId })" class="btn btn-danger btn-xs"><i class="fa fa-fw fa-trash"></i> Delete</a>
                         </td>
                     </tr>
                 }

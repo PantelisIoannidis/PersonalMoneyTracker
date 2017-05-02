@@ -2,7 +2,7 @@
 {
     public interface IIdentityEngine
     {
-        string GetUserAccountId(string userName);
+        string GetMoneyAccountId(string userName);
         void InitializeNewUser(string userName);
     }
 }

@@ -4,6 +4,7 @@ namespace PMT.DataLayer.Context.IdentityMigrations
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
+    using PMT.DataLayer.Seed;
 
     internal sealed class Configuration : DbMigrationsConfiguration<PMT.DataLayer.IdentityDb>
     {
@@ -15,7 +16,7 @@ namespace PMT.DataLayer.Context.IdentityMigrations
 
         protected override void Seed(PMT.DataLayer.IdentityDb context)
         {
-
+            new Seeding().Seed(context);
         }
     }
 }

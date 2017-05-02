@@ -86,9 +86,10 @@
     <Compile Include="Repositories\IUserAccountRepository.cs" />
     <Compile Include="Repositories\RepositoryBase.cs" />
     <Compile Include="Repositories\TransactionRepository.cs" />
-    <Compile Include="Repositories\UserAccountRepository.cs" />
-    <Compile Include="Seeding\ISeeding.cs" />
-    <Compile Include="Seeding\Seeding.cs" />
+    <Compile Include="Repositories\MoneyAccountRepository.cs" />
+    <Compile Include="Seed\ISeedingList.cs" />
+    <Compile Include="Seed\Seeding.cs" />
+    <Compile Include="Seed\SeedingLists.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

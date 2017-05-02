@@ -12,7 +12,7 @@ using PMT.Web.Controllers;
 using PMT.Web.Helpers;
 using PMT.Common;
 using PMT.BusinessLayer;
-using PMT.DataLayer.Seeding;
+using PMT.DataLayer.Seed;
 
 namespace PMT.Web.App_Start
 {
@@ -56,7 +56,7 @@ namespace PMT.Web.App_Start
 
             //Business Login
             container.RegisterType<IIdentityEngine, IdentityEngine>();
-            container.RegisterType<IUserAccountEngine, UserAccountEngine>();
+            container.RegisterType<IMoneyAccountEngine, MoneyAccountEngine>();
 
             //Account Login
             container.RegisterType<IUserStore<ApplicationUser>, UserStore<ApplicationUser>>();
@@ -67,7 +67,7 @@ namespace PMT.Web.App_Start
             container.RegisterType<ManageController>(new InjectionConstructor());
 
             //Helpers
-            container.RegisterType<ISeeding, Seeding>();
+            container.RegisterType<ISeedingLists, SeedingLists>();
             container.RegisterType<IOperationStatus, OperationStatus>();
             container.RegisterType<ISecurityHelper, SecurityHelper>();
             container.RegisterType<IUnityFactory, UnityFactory>();
@@ -76,7 +76,7 @@ namespace PMT.Web.App_Start
             container.RegisterType<MainDb>();
             container.RegisterType<ICategoryRepository, CategoryRepository>();
             container.RegisterType<ITransactionRepository, TransactionRepository>();
-            container.RegisterType<IUserAccountRepository, UserAccountRepository>();
+            container.RegisterType<IMoneyAccountRepository, MoneyAccountRepository>();
             container.RegisterType<IIdentityRepository, IdentityRepository>();
             
 

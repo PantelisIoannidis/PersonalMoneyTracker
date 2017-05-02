@@ -1,4 +1,4 @@
-﻿@model PMT.Entities.UserAccount
+﻿@model PMT.Entities.MoneyAccount
 
 @{
     ViewBag.Title = "Edit";
@@ -12,10 +12,10 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>UserAccount</h4>
+        <h4>MoneyAccount</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.UserAccountId)
+        @Html.HiddenFor(model => model.MoneyAccountId)
         @Html.HiddenFor(model => model.UserId)
 
         <div class="form-group">

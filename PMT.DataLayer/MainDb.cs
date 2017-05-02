@@ -1,5 +1,6 @@
 ﻿using PMT.DataLayer.Context;
 using PMT.Entities;
+using PMT.DataLayer.Seed;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -18,7 +19,8 @@ namespace PMT.DataLayer
         {
         #if DEBUG
             Database.Log = msg => Debug.WriteLine(msg);
-        #endif
+#endif
+            Database.SetInitializer(new MainDbInitializer());
         }
 
         public DbSet<Budget> Budgets { get; set; }
@@ -27,7 +29,7 @@ namespace PMT.DataLayer
         public DbSet<Repeat> Repeats { get; set; }
         public DbSet<SubCategory> SubCategories { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
-        public DbSet<UserAccount> UserAccounts { get; set; }
+        public DbSet<MoneyAccount> MoneyAccounts { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -39,7 +41,7 @@ namespace PMT.DataLayer
             modelBuilder.Entity<Repeat>().HasKey<int>(e => e.RepeatId);
             modelBuilder.Entity<SubCategory>().HasKey<int>(e => e.SubCategoryId);
             modelBuilder.Entity<Transaction>().HasKey<int>(e => e.TransactionId);
-            modelBuilder.Entity<UserAccount>().HasKey<int>(e => e.UserAccountId);
+            modelBuilder.Entity<MoneyAccount>().HasKey<int>(e => e.MoneyAccountId);
 
             modelBuilder.Entity<Budget>().Property(e => e.BudgetId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             modelBuilder.Entity<Category>().Property(e => e.CategoryId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
@@ -47,7 +49,7 @@ namespace PMT.DataLayer
             modelBuilder.Entity<Repeat>().Property(e => e.RepeatId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             modelBuilder.Entity<SubCategory>().Property(e => e.SubCategoryId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             modelBuilder.Entity<Transaction>().Property(e => e.TransactionId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
-            modelBuilder.Entity<UserAccount>().Property(e => e.UserAccountId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+            modelBuilder.Entity<MoneyAccount>().Property(e => e.MoneyAccountId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 
 
             modelBuilder.Entity<Budget>()
@@ -62,5 +64,16 @@ namespace PMT.DataLayer
 
             base.OnModelCreating(modelBuilder);
         }
+
+        public class MainDbInitializer : CreateDatabaseIfNotExists<MainDb>
+        {
+            protected override void Seed(MainDb context)
+            {
+                new Seeding().Seed(context);
+                base.Seed(context);
+            }
+        }
+
+
     }
 }

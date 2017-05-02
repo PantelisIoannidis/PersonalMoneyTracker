@@ -1,5 +1,5 @@
 ﻿using PMT.DataLayer.Repositories;
-using PMT.DataLayer.Seeding;
+using PMT.DataLayer.Seed;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,25 +11,25 @@ namespace PMT.BusinessLayer
     public class IdentityEngine : IIdentityEngine
     {
         IIdentityRepository identityRepository;
-        IUserAccountRepository userAccountRepository;
-        ISeeding seeding;
+        IMoneyAccountRepository MoneyAccountRepository;
+        ISeedingLists seeding;
         public IdentityEngine(IIdentityRepository identityRepository,
-            IUserAccountRepository userAccountRepository,  ISeeding seeding)
+            IMoneyAccountRepository MoneyAccountRepository,  ISeedingLists seeding)
         {
             this.identityRepository = identityRepository;
-            this.userAccountRepository = userAccountRepository;
+            this.MoneyAccountRepository = MoneyAccountRepository;
             this.seeding = seeding;
         }
-        public string GetUserAccountId(string userName)
+        public string GetMoneyAccountId(string userName)
         {
             return identityRepository.GetUserId(userName);
         }
 
         public void InitializeNewUser(string userName)
         {
-            var userAccount = seeding.GetDefaultAccountForNewUser(GetUserAccountId(userName));
-            userAccountRepository.Insert(userAccount);
-            userAccountRepository.Save();
+            var MoneyAccount = seeding.GetDefaultAccountForNewUser(GetMoneyAccountId(userName));
+            MoneyAccountRepository.Insert(MoneyAccount);
+            MoneyAccountRepository.Save();
         }
     }
 }

@@ -117,10 +117,61 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="UserAccountInitialAmount" xml:space="preserve">
+  <data name="BudgetAmount" xml:space="preserve">
+    <value>Amount</value>
+  </data>
+  <data name="BudgetFromDate" xml:space="preserve">
+    <value>From Date</value>
+  </data>
+  <data name="BudgetMoveForward" xml:space="preserve">
+    <value>Move Forward</value>
+  </data>
+  <data name="BudgetName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="CategoryName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="CategoryType" xml:space="preserve">
+    <value>Transaction Type</value>
+  </data>
+  <data name="IconName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="MoneyAccountInitialAmount" xml:space="preserve">
     <value>Initial Amount</value>
   </data>
-  <data name="UserAccountName" xml:space="preserve">
+  <data name="MoneyAccountName" xml:space="preserve">
     <value>Name</value>
+  </data>
+  <data name="RepeatDescription" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="SubCategoryName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="TransactionAmount" xml:space="preserve">
+    <value>Amount</value>
+  </data>
+  <data name="TransactionDate" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="TransactionDescription" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="TransactionTransactionType" xml:space="preserve">
+    <value>Transaction Type</value>
+  </data>
+  <data name="TransactionTypeAdjustment" xml:space="preserve">
+    <value>Adjustment</value>
+  </data>
+  <data name="TransactionTypeExpense" xml:space="preserve">
+    <value>Expense</value>
+  </data>
+  <data name="TransactionTypeIncome" xml:space="preserve">
+    <value>Income</value>
+  </data>
+  <data name="TransactionTypeTransfer" xml:space="preserve">
+    <value>Transfer</value>
   </data>
 </root>

@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace PMT.Entities
 {
-    public class UserAccount
+    public class MoneyAccount
     {
-        public int UserAccountId { get; set; }
+        public int MoneyAccountId { get; set; }
         [StringLength(128)]
         public string UserId { get; set; }
 
-        [Display(Name = nameof(ModelText.UserAccountName), ResourceType = typeof(ModelText))]
+        [Display(Name = nameof(ModelText.MoneyAccountName), ResourceType = typeof(ModelText))]
         public string Name { get; set; }
     }
 }

@@ -7,18 +7,18 @@ using System.Threading.Tasks;
 
 namespace PMT.DataLayer.Repositories
 {
-    public class UserAccountRepository : RepositoryBase<UserAccount>, IUserAccountRepository
+    public class MoneyAccountRepository : RepositoryBase<MoneyAccount>, IMoneyAccountRepository
     {
        
-        public UserAccountRepository()
+        public MoneyAccountRepository()
             :base(new MainDb())
         {
            
         }
 
-        public List<UserAccount> GetAccounts(string userId)
+        public List<MoneyAccount> GetAccounts(string userId)
         {
-            return context.UserAccounts.Where(u => u.UserId == userId).ToList();
+            return context.MoneyAccounts.Where(u => u.UserId == userId).ToList();
         }
     }
 }

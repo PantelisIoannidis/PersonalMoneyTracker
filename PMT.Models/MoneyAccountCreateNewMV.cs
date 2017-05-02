@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace PMT.Models
 {
-    public class UserAccountCreateNewMV : UserAccount
+    public class MoneyAccountCreateNewMV : MoneyAccount
     {
-        [Display(Name=nameof(ModelText.UserAccountInitialAmount),ResourceType =typeof(ModelText))]
+        [Display(Name=nameof(ModelText.MoneyAccountInitialAmount),ResourceType =typeof(ModelText))]
         public decimal InitialAmount { get; set; }
     }
 }

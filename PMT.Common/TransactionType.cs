@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PMT.Common
 {
-    public static class TransactionType
+    public static class TransactionTypes
     {
         public const int Income = 0;
         public const int Expense = 1;
@@ -14,11 +14,5 @@ namespace PMT.Common
         public const int Adjustment = 3;
     }
 
-    public enum TransactionTypeList
-    {
-        Income=0,
-        Expense=1,
-        Transfer=2,
-        Adjustment=3
-    }
+
 }
