@@ -1,4 +1,5 @@
-﻿using PMT.Contracts.Repositories;
+﻿using Microsoft.Extensions.Logging;
+using PMT.Contracts.Repositories;
 using PMT.DataLayer;
 using System;
 using System.Collections.Generic;
@@ -10,12 +11,15 @@ namespace PMT.Web.Controllers
 {
     public class HomeController : Controller
     {
-        public HomeController()
+        ILogger logger;
+        public HomeController(ILoggerFactory logger)
         {
-            
+            this.logger = logger.CreateLogger<HomeController>();
+
         }
         public ActionResult Index()
         {
+            logger.LogInformation("HomeController Index");
             return View();
         }
 

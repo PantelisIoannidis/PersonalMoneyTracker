@@ -13,6 +13,7 @@ using PMT.Web.Helpers;
 using PMT.Common;
 using PMT.BusinessLayer;
 using PMT.DataLayer.Seed;
+using Microsoft.Extensions.Logging;
 
 namespace PMT.Web.App_Start
 {
@@ -53,6 +54,7 @@ namespace PMT.Web.App_Start
 
             container.RegisterInstance<IUnityContainer>(container);
 
+            container.RegisterType<ILoggerFactory, LoggerFactory>( new ContainerControlledLifetimeManager ());
 
             //Business Login
             container.RegisterType<IIdentityEngine, IdentityEngine>();

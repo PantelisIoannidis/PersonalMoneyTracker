@@ -13,13 +13,14 @@ using PMT.Web.Helpers;
 using PMT.Common;
 using PMT.Models;
 using PMT.BusinessLayer;
-
+using Microsoft.Extensions.Logging;
 
 namespace PMT.Web.Controllers
 {
     [Authorize]
     public class MoneyAccountsController : Controller
     {
+        ILogger logger;
         IMoneyAccountRepository moneyAccountRepository;
         ISecurityHelper securityHelper;
         IMoneyAccountEngine moneyAccountEngine;
@@ -27,17 +28,22 @@ namespace PMT.Web.Controllers
         public MoneyAccountsController(ISecurityHelper securityHelper, 
                                         IMoneyAccountRepository moneyAccountRepository,
                                         IMoneyAccountEngine moneyAccountEngine,
-                                        ITransactionRepository transactionRepository)
+                                        ITransactionRepository transactionRepository,
+                                        ILoggerFactory logger)
         {
             this.moneyAccountRepository = moneyAccountRepository;
             this.securityHelper = securityHelper;
             this.moneyAccountEngine = moneyAccountEngine;
             this.transactionRepository = transactionRepository;
+            this.logger = logger.CreateLogger<MoneyAccountsController>();
         }
+
+
 
         // GET: MoneyAccounts
         public ActionResult Index()
         {
+            logger.LogInformation("MoneyAccountsController Index");
             var userId = securityHelper.GetUserId(this.HttpContext);
             ViewBag.TotalBalance = transactionRepository.GetBalance(userId);
             return View(moneyAccountEngine.GetMoneyAccountBalance(userId));
