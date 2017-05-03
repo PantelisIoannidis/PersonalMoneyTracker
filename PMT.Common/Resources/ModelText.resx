@@ -141,8 +141,14 @@
   <data name="MoneyAccountBalance" xml:space="preserve">
     <value>Balance</value>
   </data>
+  <data name="MoneyAccountInitialBalane" xml:space="preserve">
+    <value>Initial Balance</value>
+  </data>
   <data name="MoneyAccountName" xml:space="preserve">
     <value>Name</value>
+  </data>
+  <data name="MoneyBalanceAdjustment" xml:space="preserve">
+    <value>Adjustment</value>
   </data>
   <data name="RepeatDescription" xml:space="preserve">
     <value>Description</value>

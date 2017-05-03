@@ -4,7 +4,6 @@
     ViewBag.Title = ViewText.MoneyAccountsViewIndexTitle;
 }
 
-
 <div class="panel panel-primary use-big-fonts">
     <div class="panel-heading">@ViewBag.Title</div>
     <div class="panel-body">
@@ -33,14 +32,14 @@
                             @Html.DisplayFor(modelItem => item.Balance)
                         </td>
                         <td>
-                            <a href="@Url.Action("Edit","MoneyAccounts", new { id = item.MoneyAccountId })" class="btn btn-warning btn-xs"><i class="fa fa-fw fa-edit"></i> Edit</a>
-                            <a href="@Url.Action("Delete","MoneyAccounts", new { id = item.MoneyAccountId })" class="btn btn-danger btn-xs"><i class="fa fa-fw fa-trash"></i> Delete</a>
+                            <a href="@Url.Action("Edit","MoneyAccounts", new { id = item.MoneyAccountId })" class="btn btn-warning btn-xs"><i class="fa fa-fw fa-edit"></i> @ViewText.Edit</a>
+                            <a href="@Url.Action("Delete","MoneyAccounts", new { id = item.MoneyAccountId })" class="btn btn-danger btn-xs"><i class="fa fa-fw fa-trash"></i> @ViewText.Delete</a>
                         </td>
                     </tr>
                 }
                 <tr>
                     <td class="text-right">
-                        <strong>Total</strong>
+                        <strong>@ViewText.Total :</strong>
                     </td>
                     <td class="text-right">
                         <strong>@(((decimal)ViewBag.TotalBalance).ToString("C2"))</strong>
@@ -53,7 +52,8 @@
 
         </table>
         <p>
-            @Html.ActionLink(ViewText.CreateNew, "Create", null, new { @class = "btn btn-default" })
+            <a href="@Url.Action("Create","MoneyAccounts",null)" class="btn btn-default"><i class="fa fa-fw  fa-plus-circle"></i> @ViewText.CreateNew</a>
         </p>
     </div>
 </div>
+

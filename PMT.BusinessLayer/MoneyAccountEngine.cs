@@ -27,7 +27,6 @@ namespace PMT.BusinessLayer
 
         public IActionStatus AddNewAccountWithInitialBalance(MoneyAccount moneyAccount)
         {
-
            try
             {
                 moneyAccountRepository.Insert(moneyAccount);
@@ -39,7 +38,7 @@ namespace PMT.BusinessLayer
                     TransactionType = TransactionType.Adjustment,
                     Amount = moneyAccount.Balance,
                     TransactionDate = DateTime.UtcNow,
-                    Description = ModelText.MoneyAccountBalance
+                    Description = ModelText.MoneyAccountInitialBalane
                 };
                 transactionRepository.Insert(transaction);
                 transactionRepository.Save();
@@ -58,6 +57,32 @@ namespace PMT.BusinessLayer
             foreach(var moneyAccount in moneyAccounts)
                 moneyAccount.Balance = transactionRepository.GetBalancePerAccount(userId, moneyAccount.MoneyAccountId);
             return moneyAccounts;
+        }
+
+        public IActionStatus EditAccountNameAdjustBalance(MoneyAccount moneyAccount)
+        {
+            try
+            {
+                moneyAccountRepository.Update(moneyAccount);
+                moneyAccountRepository.Save();
+                var transaction = new Transaction()
+                {
+                    UserId = moneyAccount.UserId,
+                    MoneyAccountId = moneyAccount.MoneyAccountId,
+                    TransactionType = TransactionType.Adjustment,
+                    Amount = moneyAccount.Balance,
+                    TransactionDate = DateTime.UtcNow,
+                    Description = ModelText.MoneyBalanceAdjustment
+                };
+                transactionRepository.Insert(transaction);
+                transactionRepository.Save();
+            }
+            catch (Exception ex)
+            {
+                actionStatus = ActionStatus.CreateFromException("", ex);
+            }
+
+            return actionStatus;
         }
     }
 }

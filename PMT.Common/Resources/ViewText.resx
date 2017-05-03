@@ -180,6 +180,9 @@
   <data name="Summary" xml:space="preserve">
     <value>Summary</value>
   </data>
+  <data name="Total" xml:space="preserve">
+    <value>Total</value>
+  </data>
   <data name="Transactions" xml:space="preserve">
     <value>Transactions</value>
   </data>

@@ -43,21 +43,6 @@ namespace PMT.Web.Controllers
             return View(moneyAccountEngine.GetMoneyAccountBalance(userId));
         }
 
-        //GET: MoneyAccounts/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            MoneyAccount moneyAccount = moneyAccountRepository.GetById(id);
-            if (moneyAccount == null)
-            {
-                return HttpNotFound();
-            }
-            return View(moneyAccount);
-        }
-
         // GET: MoneyAccounts/Create
         public ActionResult Create()
         {
@@ -104,12 +89,11 @@ namespace PMT.Web.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MoneyAccountId,UserId,Name")] MoneyAccount moneyAccount)
+        public ActionResult Edit([Bind(Include = "MoneyAccountId,UserId,Name,Balance")] MoneyAccount moneyAccount)
         {
             if (ModelState.IsValid)
             {
-                moneyAccountRepository.Update(moneyAccount);
-                moneyAccountRepository.Save();
+                moneyAccountEngine.EditAccountNameAdjustBalance(moneyAccount);
                 return RedirectToAction("Index");
             }
             return View(moneyAccount);

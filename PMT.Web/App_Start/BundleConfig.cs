@@ -24,7 +24,7 @@ namespace PMT.Web
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.united.css",
+                      "~/Content/bootswatch/united/bootstrap.css",
                       "~/Content/font-awesome.css"));
 
             bundles.Add(new StyleBundle("~/css").Include(

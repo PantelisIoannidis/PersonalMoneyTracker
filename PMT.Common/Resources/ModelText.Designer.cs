@@ -133,11 +133,29 @@ namespace PMT.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Initial Balance.
+        /// </summary>
+        public static string MoneyAccountInitialBalane {
+            get {
+                return ResourceManager.GetString("MoneyAccountInitialBalane", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Name.
         /// </summary>
         public static string MoneyAccountName {
             get {
                 return ResourceManager.GetString("MoneyAccountName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Adjustment.
+        /// </summary>
+        public static string MoneyBalanceAdjustment {
+            get {
+                return ResourceManager.GetString("MoneyBalanceAdjustment", resourceCulture);
             }
         }
         
