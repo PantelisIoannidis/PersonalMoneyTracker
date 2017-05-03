@@ -6,6 +6,7 @@ namespace PMT.DataLayer.Repositories
 {
     public interface IMoneyAccountRepository : IRepositoryBase<MoneyAccount>
     {
-        List<MoneyAccount> GetAccounts(string userId);
+        List<MoneyAccount> GetMoneyAccounts(string userId);
+        MoneyAccount GetMoneyAccount(string userId, int moneyAccountId);
     }
 }

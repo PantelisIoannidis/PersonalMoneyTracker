@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +11,12 @@ namespace PMT.Entities
 {
     public class Category
     {
-        //[HiddenInput(DisplayValue = false)]
+
+        public Category()
+        {
+            SubCategories = new List<SubCategory>();
+        }
+        
         public int CategoryId { get; set; }
 
         public int IconId { get; set; }
@@ -19,5 +25,6 @@ namespace PMT.Entities
         [Display(Name = nameof(ModelText.CategoryName), ResourceType = typeof(ModelText))]
         public string Name { get; set; }
 
+        public ICollection<SubCategory> SubCategories { get; set; }
     }
 }

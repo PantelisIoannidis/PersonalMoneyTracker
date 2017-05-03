@@ -23,6 +23,79 @@ namespace PMT.DataLayer.Seed
 
         public void Seed(PMT.DataLayer.MainDb context)
         {
+            //int i = 0;
+            //context.Transactions.AddOrUpdate(p=>p.TransactionId, new Transaction{
+            //    TransactionId=i++,
+            //    CategoryId=1,
+            //    SubCategoryId=1,
+            //    TransactionDate=DateTime.Now,
+            //    TransactionType=TransactionType.Income,
+            //    Amount=1000
+            //});
+            //context.Transactions.AddOrUpdate(p => p.TransactionId, new Transaction
+            //{
+            //    TransactionId = i++,
+            //    CategoryId = 1,
+            //    SubCategoryId = 1,
+            //    TransactionDate = DateTime.Now,
+            //    TransactionType = TransactionType.Income,
+            //    Amount = -2000
+            //});
+            //context.Transactions.AddOrUpdate(p => p.TransactionId, new Transaction
+            //{
+            //    TransactionId = i++,
+            //    CategoryId = 1,
+            //    SubCategoryId = 1,
+            //    TransactionDate = DateTime.Now,
+            //    TransactionType = TransactionType.Expense,
+            //    Amount = 1000
+            //});
+            //context.Transactions.AddOrUpdate(p => p.TransactionId, new Transaction
+            //{
+            //    TransactionId = i++,
+            //    CategoryId = 1,
+            //    SubCategoryId = 1,
+            //    TransactionDate = DateTime.Now,
+            //    TransactionType = TransactionType.Expense,
+            //    Amount = -2000
+            //});
+            //context.Transactions.AddOrUpdate(p => p.TransactionId, new Transaction
+            //{
+            //    TransactionId = i++,
+            //    CategoryId = 1,
+            //    SubCategoryId = 1,
+            //    TransactionDate = DateTime.Now,
+            //    TransactionType = TransactionType.Transfer,
+            //    Amount = 1000
+            //});
+            //context.Transactions.AddOrUpdate(p => p.TransactionId, new Transaction
+            //{
+            //    TransactionId = i++,
+            //    CategoryId = 1,
+            //    SubCategoryId = 1,
+            //    TransactionDate = DateTime.Now,
+            //    TransactionType = TransactionType.Transfer,
+            //    Amount = -2000
+            //});
+            //context.Transactions.AddOrUpdate(p => p.TransactionId, new Transaction
+            //{
+            //    TransactionId = i++,
+            //    CategoryId = 1,
+            //    SubCategoryId = 1,
+            //    TransactionDate = DateTime.Now,
+            //    TransactionType = TransactionType.Adjustment,
+            //    Amount = 1000
+            //});
+            //context.Transactions.AddOrUpdate(p => p.TransactionId, new Transaction
+            //{
+            //    TransactionId = i++,
+            //    CategoryId = 1,
+            //    SubCategoryId = 1,
+            //    TransactionDate = DateTime.Now,
+            //    TransactionType = TransactionType.Adjustment,
+            //    Amount = -2000
+            //});
+
             var seedingLists = new SeedingLists();
 
             List<Category> MainCategoryList = seedingLists.GetMainCategories();

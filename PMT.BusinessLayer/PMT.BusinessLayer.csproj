@@ -41,11 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CalculationsEngine.cs" />
+    <Compile Include="ICalculationsEngine.cs" />
     <Compile Include="IdentityEngine.cs" />
     <Compile Include="IIdentityEngine.cs" />
-    <Compile Include="IUserAccountEngine.cs" />
+    <Compile Include="IMoneyAccountEngine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserAccountEngine.cs" />
+    <Compile Include="MoneyAccountEngine.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PMT.Common\PMT.Common.csproj">

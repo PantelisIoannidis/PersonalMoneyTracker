@@ -15,8 +15,10 @@
                     <th>
                         @Html.DisplayNameFor(model => model.Name)
                     </th>
-                    <th>@ViewText.Balance</th>
-                    <th></th>
+                    <th class="text-right">@Html.DisplayNameFor(model => model.Balance)</th>
+                    <th>
+
+                    </th>
                 </tr>
             </thead>
 
@@ -27,8 +29,8 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.Name)
                         </td>
-                        <td>
-                            $0000  
+                        <td class="text-right">
+                            @Html.DisplayFor(modelItem => item.Balance)
                         </td>
                         <td>
                             <a href="@Url.Action("Edit","MoneyAccounts", new { id = item.MoneyAccountId })" class="btn btn-warning btn-xs"><i class="fa fa-fw fa-edit"></i> Edit</a>
@@ -36,6 +38,17 @@
                         </td>
                     </tr>
                 }
+                <tr>
+                    <td class="text-right">
+                        <strong>Total</strong>
+                    </td>
+                    <td class="text-right">
+                        <strong>@(((decimal)ViewBag.TotalBalance).ToString("C2"))</strong>
+                    </td>
+                    <td>
+
+                    </td>
+                </tr>
             </tbody>
 
         </table>

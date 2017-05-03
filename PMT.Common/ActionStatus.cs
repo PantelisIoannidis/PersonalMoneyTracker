@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PMT.Common
 {
-    public class OperationStatus : IOperationStatus
+    public class ActionStatus : IActionStatus
     {
         public bool Status { get; set; }
         public string Message { get; set; }
@@ -15,9 +15,9 @@ namespace PMT.Common
         public string ExceptionInnerMessage { get; set; }
         public string ExceptionInnerStackTrace { get; set; }
 
-        public static OperationStatus CreateFromException(string message, Exception ex)
+        public static ActionStatus CreateFromException(string message, Exception ex)
         {
-            OperationStatus operationStatus = new OperationStatus
+            ActionStatus operationStatus = new ActionStatus
             {
                 Status = false,
                 Message = message,

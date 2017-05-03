@@ -124,11 +124,11 @@ namespace PMT.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Initial Amount.
+        ///   Looks up a localized string similar to Balance.
         /// </summary>
-        public static string MoneyAccountInitialAmount {
+        public static string MoneyAccountBalance {
             get {
-                return ResourceManager.GetString("MoneyAccountInitialAmount", resourceCulture);
+                return ResourceManager.GetString("MoneyAccountBalance", resourceCulture);
             }
         }
         
@@ -183,6 +183,15 @@ namespace PMT.Common.Resources {
         public static string TransactionDescription {
             get {
                 return ResourceManager.GetString("TransactionDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Summary.
+        /// </summary>
+        public static string TransactionSummary {
+            get {
+                return ResourceManager.GetString("TransactionSummary", resourceCulture);
             }
         }
         

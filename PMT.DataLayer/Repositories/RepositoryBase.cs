@@ -10,12 +10,12 @@ namespace PMT.DataLayer.Repositories
 {
     abstract public class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where TEntity : class
     {
-        internal MainDb context;
+        internal MainDb db;
         internal DbSet<TEntity> dbSet;
 
         public RepositoryBase(MainDb context)
         {
-            this.context = context;
+            this.db = context;
             this.dbSet = context.Set<TEntity>();
         }
 
@@ -38,12 +38,12 @@ namespace PMT.DataLayer.Repositories
         public virtual void Update(TEntity entity)
         {
             dbSet.Attach(entity);
-            context.Entry(entity).State = EntityState.Modified;
+            db.Entry(entity).State = EntityState.Modified;
         }
 
         public virtual void Delete(TEntity entity)
         {
-            if (context.Entry(entity).State == EntityState.Detached)
+            if (db.Entry(entity).State == EntityState.Detached)
                 dbSet.Attach(entity);
 
             dbSet.Remove(entity);
@@ -57,12 +57,12 @@ namespace PMT.DataLayer.Repositories
 
         public void Save()
         {
-            context.SaveChanges();
+            db.SaveChanges();
         }
 
         public virtual void Dispose()
         {
-            context.Dispose();
+            db.Dispose();
         }
 
 

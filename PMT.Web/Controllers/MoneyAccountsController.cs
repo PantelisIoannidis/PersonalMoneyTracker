@@ -14,6 +14,7 @@ using PMT.Common;
 using PMT.Models;
 using PMT.BusinessLayer;
 
+
 namespace PMT.Web.Controllers
 {
     [Authorize]
@@ -22,21 +23,24 @@ namespace PMT.Web.Controllers
         IMoneyAccountRepository moneyAccountRepository;
         ISecurityHelper securityHelper;
         IMoneyAccountEngine moneyAccountEngine;
+        ITransactionRepository transactionRepository;
         public MoneyAccountsController(ISecurityHelper securityHelper, 
                                         IMoneyAccountRepository moneyAccountRepository,
-                                        IMoneyAccountEngine moneyAccountEngine)
+                                        IMoneyAccountEngine moneyAccountEngine,
+                                        ITransactionRepository transactionRepository)
         {
             this.moneyAccountRepository = moneyAccountRepository;
             this.securityHelper = securityHelper;
             this.moneyAccountEngine = moneyAccountEngine;
+            this.transactionRepository = transactionRepository;
         }
 
         // GET: MoneyAccounts
         public ActionResult Index()
         {
             var userId = securityHelper.GetUserId(this.HttpContext);
-            var moneyAccounts = moneyAccountRepository.GetAccounts(userId);
-            return View( moneyAccounts );
+            ViewBag.TotalBalance = transactionRepository.GetBalance(userId);
+            return View(moneyAccountEngine.GetMoneyAccountBalance(userId));
         }
 
         //GET: MoneyAccounts/Details/5
@@ -59,7 +63,7 @@ namespace PMT.Web.Controllers
         {
 
             var userId = securityHelper.GetUserId(HttpContext);
-            MoneyAccountCreateNewMV moneyAccount = new MoneyAccount() { UserId = userId } as MoneyAccountCreateNewMV;
+            MoneyAccount moneyAccount = new MoneyAccount() { UserId = userId };
             return View(moneyAccount);
         }
 
@@ -68,7 +72,7 @@ namespace PMT.Web.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Name,InitialAmount")] MoneyAccountCreateNewMV moneyAccount)
+        public ActionResult Create([Bind(Include = "Name,Balance")] MoneyAccount moneyAccount)
         {
             if (ModelState.IsValid)
             {

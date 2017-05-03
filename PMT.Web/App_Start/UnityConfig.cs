@@ -57,6 +57,7 @@ namespace PMT.Web.App_Start
             //Business Login
             container.RegisterType<IIdentityEngine, IdentityEngine>();
             container.RegisterType<IMoneyAccountEngine, MoneyAccountEngine>();
+            container.RegisterType<ICalculationsEngine, CalculationsEngine>();
 
             //Account Login
             container.RegisterType<IUserStore<ApplicationUser>, UserStore<ApplicationUser>>();
@@ -68,7 +69,7 @@ namespace PMT.Web.App_Start
 
             //Helpers
             container.RegisterType<ISeedingLists, SeedingLists>();
-            container.RegisterType<IOperationStatus, OperationStatus>();
+            container.RegisterType<IActionStatus, ActionStatus>();
             container.RegisterType<ISecurityHelper, SecurityHelper>();
             container.RegisterType<IUnityFactory, UnityFactory>();
 

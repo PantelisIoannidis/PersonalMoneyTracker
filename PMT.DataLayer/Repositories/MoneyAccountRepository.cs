@@ -16,9 +16,13 @@ namespace PMT.DataLayer.Repositories
            
         }
 
-        public List<MoneyAccount> GetAccounts(string userId)
+        public List<MoneyAccount> GetMoneyAccounts(string userId)
         {
-            return context.MoneyAccounts.Where(u => u.UserId == userId).ToList();
+            return db.MoneyAccounts.Where(u => u.UserId == userId).ToList();
+        }
+        public MoneyAccount GetMoneyAccount(string userId,int moneyAccountId)
+        {
+            return db.MoneyAccounts.Where(u => u.UserId == userId && u.MoneyAccountId==moneyAccountId).FirstOrDefault();
         }
     }
 }

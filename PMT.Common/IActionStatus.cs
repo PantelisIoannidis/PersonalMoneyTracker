@@ -1,6 +1,6 @@
 ﻿namespace PMT.Common
 {
-    public interface IOperationStatus
+    public interface IActionStatus
     {
         string ExceptionInnerMessage { get; set; }
         string ExceptionInnerStackTrace { get; set; }

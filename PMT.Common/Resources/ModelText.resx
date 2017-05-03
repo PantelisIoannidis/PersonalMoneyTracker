@@ -138,8 +138,8 @@
   <data name="IconName" xml:space="preserve">
     <value>Name</value>
   </data>
-  <data name="MoneyAccountInitialAmount" xml:space="preserve">
-    <value>Initial Amount</value>
+  <data name="MoneyAccountBalance" xml:space="preserve">
+    <value>Balance</value>
   </data>
   <data name="MoneyAccountName" xml:space="preserve">
     <value>Name</value>
@@ -158,6 +158,9 @@
   </data>
   <data name="TransactionDescription" xml:space="preserve">
     <value>Description</value>
+  </data>
+  <data name="TransactionSummary" xml:space="preserve">
+    <value>Summary</value>
   </data>
   <data name="TransactionTransactionType" xml:space="preserve">
     <value>Transaction Type</value>
