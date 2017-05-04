@@ -24,7 +24,7 @@
                         @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
                     </div>
                     <hr />
-                    @Html.LabelFor(model => model.Balance, htmlAttributes: new { @class = "control-label col-md-3" })
+                    @Html.Label(ViewText.InitialBalance , htmlAttributes: new { @class = "control-label col-md-3" })
                     <div class="col-md-7">
                         @Html.EditorFor(model => model.Balance, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.Balance, "", new { @class = "text-danger" })
@@ -40,7 +40,7 @@
         }
 
         <div>
-            <a href="@Url.Action("Index","MoneyAccounts",null)" id="MoneyAccountsCreateBack"><i class="fa fa-fw fa-arrow-left"></i> @ViewText.Back</a>
+            <a href="@Url.Action("Index","MoneyAccounts",null)" class="btn btn-info"><i class="fa fa-fw fa-arrow-left"></i> @ViewText.Back</a>
         </div>
     </div>
 </div>

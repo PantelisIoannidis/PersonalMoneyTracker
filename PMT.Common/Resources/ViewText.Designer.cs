@@ -79,6 +79,15 @@ namespace PMT.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Adjustment.
+        /// </summary>
+        public static string Adjustment {
+            get {
+                return ResourceManager.GetString("Adjustment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Personal Money Tracker.
         /// </summary>
         public static string ApplicationName {
@@ -111,6 +120,15 @@ namespace PMT.Common.Resources {
         public static string Budget {
             get {
                 return ResourceManager.GetString("Budget", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string Cancel {
+            get {
+                return ResourceManager.GetString("Cancel", resourceCulture);
             }
         }
         
@@ -169,11 +187,38 @@ namespace PMT.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Initial Balance.
+        /// </summary>
+        public static string InitialBalance {
+            get {
+                return ResourceManager.GetString("InitialBalance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add new account.
         /// </summary>
         public static string MoneyAccountsViewCreateTitle {
             get {
                 return ResourceManager.GetString("MoneyAccountsViewCreateTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete Account.
+        /// </summary>
+        public static string MoneyAccountsViewDeleteTitle {
+            get {
+                return ResourceManager.GetString("MoneyAccountsViewDeleteTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Account.
+        /// </summary>
+        public static string MoneyAccountsViewEditTitle {
+            get {
+                return ResourceManager.GetString("MoneyAccountsViewEditTitle", resourceCulture);
             }
         }
         
@@ -228,6 +273,15 @@ namespace PMT.Common.Resources {
         public static string Reports {
             get {
                 return ResourceManager.GetString("Reports", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        public static string Save {
+            get {
+                return ResourceManager.GetString("Save", resourceCulture);
             }
         }
         

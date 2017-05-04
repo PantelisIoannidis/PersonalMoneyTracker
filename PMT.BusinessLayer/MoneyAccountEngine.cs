@@ -38,7 +38,7 @@ namespace PMT.BusinessLayer
                     TransactionType = TransactionType.Adjustment,
                     Amount = moneyAccount.Balance,
                     TransactionDate = DateTime.UtcNow,
-                    Description = ModelText.MoneyAccountInitialBalane
+                    Description = ViewText.InitialBalance
                 };
                 transactionRepository.Insert(transaction);
                 transactionRepository.Save();
@@ -72,7 +72,7 @@ namespace PMT.BusinessLayer
                     TransactionType = TransactionType.Adjustment,
                     Amount = moneyAccount.Balance,
                     TransactionDate = DateTime.UtcNow,
-                    Description = ModelText.MoneyBalanceAdjustment
+                    Description = ViewText.Adjustment
                 };
                 transactionRepository.Insert(transaction);
                 transactionRepository.Save();
