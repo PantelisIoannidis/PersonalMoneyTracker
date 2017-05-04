@@ -8,29 +8,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 
 namespace PMT.BusinessLayer
 {
     public class MoneyAccountEngine : IMoneyAccountEngine
     {
+        ILogger logger;
         IMoneyAccountRepository moneyAccountRepository;
         IActionStatus actionStatus;
         ITransactionRepository transactionRepository;
-        public MoneyAccountEngine(IMoneyAccountRepository MoneyAccountRepository,
+        public MoneyAccountEngine(ILoggerFactory logger,
+                                IMoneyAccountRepository MoneyAccountRepository,
                                 ITransactionRepository transactionRepository,
                                 IActionStatus operationStatus)
         {
             this.moneyAccountRepository = MoneyAccountRepository;
             this.actionStatus = operationStatus;
             this.transactionRepository = transactionRepository;
+            this.logger = logger.CreateLogger<MoneyAccountEngine>();
         }
 
         public IActionStatus AddNewAccountWithInitialBalance(MoneyAccount moneyAccount)
         {
            try
             {
-                moneyAccountRepository.Insert(moneyAccount);
-                moneyAccountRepository.Save();
                 var transaction = new Transaction()
                 {
                     UserId = moneyAccount.UserId,
@@ -40,12 +42,12 @@ namespace PMT.BusinessLayer
                     TransactionDate = DateTime.UtcNow,
                     Description = ViewText.InitialBalance
                 };
-                transactionRepository.Insert(transaction);
-                transactionRepository.Save();
+                actionStatus = moneyAccountRepository.AddNewAccountWithInitialBalance(moneyAccount, transaction);
             }
             catch(Exception ex)
             {
                 actionStatus = ActionStatus.CreateFromException("", ex);
+                logger.LogError(LoggingEvents.CALL_METHOD, ex, "AddNewAccountWithInitialBalance didn't run");
             }
 
             return actionStatus;
@@ -63,8 +65,6 @@ namespace PMT.BusinessLayer
         {
             try
             {
-                moneyAccountRepository.Update(moneyAccount);
-                moneyAccountRepository.Save();
                 var transaction = new Transaction()
                 {
                     UserId = moneyAccount.UserId,
@@ -74,12 +74,12 @@ namespace PMT.BusinessLayer
                     TransactionDate = DateTime.UtcNow,
                     Description = ViewText.Adjustment
                 };
-                transactionRepository.Insert(transaction);
-                transactionRepository.Save();
+                moneyAccountRepository.EditAccountNameAdjustBalance(moneyAccount, transaction);
             }
             catch (Exception ex)
             {
                 actionStatus = ActionStatus.CreateFromException("", ex);
+                logger.LogError(LoggingEvents.CALL_METHOD, ex, "EditAccountNameAdjustBalance didn't run");
             }
 
             return actionStatus;

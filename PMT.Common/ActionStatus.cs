@@ -8,7 +8,7 @@ namespace PMT.Common
 {
     public class ActionStatus : IActionStatus
     {
-        public bool Status { get; set; }
+        public bool Status { get; set; } = true;
         public string Message { get; set; }
         public string ExceptionMessage { get; set; }
         public string ExceptionStackTrace { get; set; }

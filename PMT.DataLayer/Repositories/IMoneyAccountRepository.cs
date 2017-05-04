@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using PMT.Entities;
 using PMT.Contracts.Repositories;
+using PMT.Common;
 
 namespace PMT.DataLayer.Repositories
 {
@@ -8,5 +9,7 @@ namespace PMT.DataLayer.Repositories
     {
         List<MoneyAccount> GetMoneyAccounts(string userId);
         MoneyAccount GetMoneyAccount(string userId, int moneyAccountId);
+        IActionStatus AddNewAccountWithInitialBalance(MoneyAccount moneyAccount, Transaction transaction);
+        IActionStatus EditAccountNameAdjustBalance(MoneyAccount moneyAccount, Transaction transaction);
     }
 }

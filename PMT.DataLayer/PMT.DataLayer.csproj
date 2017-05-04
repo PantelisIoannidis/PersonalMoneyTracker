@@ -113,7 +113,7 @@
     <Compile Include="Repositories\IdentityRepository.cs" />
     <Compile Include="Repositories\IIdentityRepository.cs" />
     <Compile Include="Repositories\ITransactionRepository.cs" />
-    <Compile Include="Repositories\IUserAccountRepository.cs" />
+    <Compile Include="Repositories\IMoneyAccountRepository.cs" />
     <Compile Include="Repositories\RepositoryBase.cs" />
     <Compile Include="Repositories\TransactionRepository.cs" />
     <Compile Include="Repositories\MoneyAccountRepository.cs" />

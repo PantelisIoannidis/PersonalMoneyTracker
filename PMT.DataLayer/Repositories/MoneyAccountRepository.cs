@@ -1,4 +1,7 @@
-﻿using PMT.Entities;
+﻿using Microsoft.Extensions.Logging;
+using PMT.Common;
+using PMT.Common.Resources;
+using PMT.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +12,13 @@ namespace PMT.DataLayer.Repositories
 {
     public class MoneyAccountRepository : RepositoryBase<MoneyAccount>, IMoneyAccountRepository
     {
-       
-        public MoneyAccountRepository()
+        ILogger logger;
+        IActionStatus actionStatus;
+        public MoneyAccountRepository(ILoggerFactory logger,IActionStatus actionStatus)
             :base(new MainDb())
         {
-           
+            this.actionStatus = actionStatus;
+            this.logger = logger.CreateLogger<MoneyAccountRepository>();
         }
 
         public List<MoneyAccount> GetMoneyAccounts(string userId)
@@ -23,6 +28,53 @@ namespace PMT.DataLayer.Repositories
         public MoneyAccount GetMoneyAccount(string userId,int moneyAccountId)
         {
             return db.MoneyAccounts.Where(u => u.UserId == userId && u.MoneyAccountId==moneyAccountId).FirstOrDefault();
+        }
+
+        public IActionStatus AddNewAccountWithInitialBalance(MoneyAccount moneyAccount, Transaction transaction)
+        {
+            using(var dbTransaction = db.Database.BeginTransaction()) { 
+                try
+                {
+                    db.MoneyAccounts.Add(moneyAccount);
+                    db.SaveChanges();
+                    transaction.MoneyAccountId = moneyAccount.MoneyAccountId;
+                    db.Transactions.Add(transaction);
+                    db.SaveChanges();
+                    dbTransaction.Commit();
+                }
+                catch (Exception ex)
+                {
+                    dbTransaction.Rollback();
+                    actionStatus = ActionStatus.CreateFromException("", ex);
+                    logger.LogError(LoggingEvents.INSERT_ITEM, ex, "Couldn't store new Account with initial balance");
+                }
+            }
+
+            return actionStatus;
+        }
+
+        public IActionStatus EditAccountNameAdjustBalance(MoneyAccount moneyAccount, Transaction transaction)
+        {
+            using (var dbTransaction = db.Database.BeginTransaction())
+            {
+                try
+                {
+                    var accountInDatabase = db.MoneyAccounts.SingleOrDefault(w => w.MoneyAccountId == moneyAccount.MoneyAccountId);
+                    accountInDatabase.Name = moneyAccount.Name;
+                    db.SaveChanges();
+                    db.Transactions.Add(transaction);
+                    db.SaveChanges();
+                    dbTransaction.Commit();
+                }
+                catch (Exception ex)
+                {
+                    dbTransaction.Rollback();
+                    actionStatus = ActionStatus.CreateFromException("", ex);
+                    logger.LogError(LoggingEvents.COMPLEX_ACTION, ex, "Couldn't update the Account and adjust balance");
+                }
+            }
+
+            return actionStatus;
         }
     }
 }
