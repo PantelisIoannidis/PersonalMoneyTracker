@@ -14,8 +14,8 @@ namespace PMT.Entities
         public int SubCategoryId { get; set; }
         [ForeignKey("Category")]
         public int CategoryId { get; set; }
-        public int IconId { get; set; }
-        public int ColorId { get; set; }
+        public string IconId { get; set; }
+        public string Color { get; set; }
         [Display(Name = nameof(ModelText.SubCategoryName), ResourceType = typeof(ModelText))]
         public string Name { get; set; }
 

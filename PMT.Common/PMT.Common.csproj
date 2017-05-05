@@ -113,6 +113,7 @@
     <Compile Include="Helpers\TimeDuration.cs" />
     <Compile Include="TransactionType.cs" />
     <Compile Include="UnityFactory.cs" />
+    <Compile Include="Utils.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

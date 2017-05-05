@@ -17,7 +17,7 @@ namespace PMT.DataLayer
         public MainDb()
             :base("name=DefaultConnection")
         {
-        #if DEBUG
+#if DEBUG
             Database.Log = msg => Debug.WriteLine(msg);
 #endif
             Database.SetInitializer(new MainDbInitializer());
@@ -37,7 +37,6 @@ namespace PMT.DataLayer
 
             modelBuilder.Entity<Budget>().HasKey<int>(e => e.BudgetId);
             modelBuilder.Entity<Category>().HasKey<int>(e => e.CategoryId);
-            modelBuilder.Entity<Icon>().HasKey<int>(e => e.IconId);
             modelBuilder.Entity<Repeat>().HasKey<int>(e => e.RepeatId);
             modelBuilder.Entity<SubCategory>().HasKey<int>(e => e.SubCategoryId);
             modelBuilder.Entity<Transaction>().HasKey<int>(e => e.TransactionId);
@@ -45,7 +44,7 @@ namespace PMT.DataLayer
 
             modelBuilder.Entity<Budget>().Property(e => e.BudgetId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             modelBuilder.Entity<Category>().Property(e => e.CategoryId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
-            modelBuilder.Entity<Icon>().Property(e => e.IconId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+            //modelBuilder.Entity<Icon>().Property(e => e.IconId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             modelBuilder.Entity<Repeat>().Property(e => e.RepeatId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             modelBuilder.Entity<SubCategory>().Property(e => e.SubCategoryId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             modelBuilder.Entity<Transaction>().Property(e => e.TransactionId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);

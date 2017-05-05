@@ -23,84 +23,22 @@ namespace PMT.DataLayer.Seed
 
         public void Seed(PMT.DataLayer.MainDb context)
         {
-            //int i = 0;
-            //context.Transactions.AddOrUpdate(p=>p.TransactionId, new Transaction{
-            //    TransactionId=i++,
-            //    CategoryId=1,
-            //    SubCategoryId=1,
-            //    TransactionDate=DateTime.Now,
-            //    TransactionType=TransactionType.Income,
-            //    Amount=1000
-            //});
-            //context.Transactions.AddOrUpdate(p => p.TransactionId, new Transaction
-            //{
-            //    TransactionId = i++,
-            //    CategoryId = 1,
-            //    SubCategoryId = 1,
-            //    TransactionDate = DateTime.Now,
-            //    TransactionType = TransactionType.Income,
-            //    Amount = -2000
-            //});
-            //context.Transactions.AddOrUpdate(p => p.TransactionId, new Transaction
-            //{
-            //    TransactionId = i++,
-            //    CategoryId = 1,
-            //    SubCategoryId = 1,
-            //    TransactionDate = DateTime.Now,
-            //    TransactionType = TransactionType.Expense,
-            //    Amount = 1000
-            //});
-            //context.Transactions.AddOrUpdate(p => p.TransactionId, new Transaction
-            //{
-            //    TransactionId = i++,
-            //    CategoryId = 1,
-            //    SubCategoryId = 1,
-            //    TransactionDate = DateTime.Now,
-            //    TransactionType = TransactionType.Expense,
-            //    Amount = -2000
-            //});
-            //context.Transactions.AddOrUpdate(p => p.TransactionId, new Transaction
-            //{
-            //    TransactionId = i++,
-            //    CategoryId = 1,
-            //    SubCategoryId = 1,
-            //    TransactionDate = DateTime.Now,
-            //    TransactionType = TransactionType.Transfer,
-            //    Amount = 1000
-            //});
-            //context.Transactions.AddOrUpdate(p => p.TransactionId, new Transaction
-            //{
-            //    TransactionId = i++,
-            //    CategoryId = 1,
-            //    SubCategoryId = 1,
-            //    TransactionDate = DateTime.Now,
-            //    TransactionType = TransactionType.Transfer,
-            //    Amount = -2000
-            //});
-            //context.Transactions.AddOrUpdate(p => p.TransactionId, new Transaction
-            //{
-            //    TransactionId = i++,
-            //    CategoryId = 1,
-            //    SubCategoryId = 1,
-            //    TransactionDate = DateTime.Now,
-            //    TransactionType = TransactionType.Adjustment,
-            //    Amount = 1000
-            //});
-            //context.Transactions.AddOrUpdate(p => p.TransactionId, new Transaction
-            //{
-            //    TransactionId = i++,
-            //    CategoryId = 1,
-            //    SubCategoryId = 1,
-            //    TransactionDate = DateTime.Now,
-            //    TransactionType = TransactionType.Adjustment,
-            //    Amount = -2000
-            //});
-
+            
             var seedingLists = new SeedingLists();
 
             List<Category> MainCategoryList = seedingLists.GetMainCategories();
             List<SubCategory> SubCategoryList = seedingLists.GetSubCategries();
             List<Repeat> RepeatList = seedingLists.GetRepeats();
+            List<Icon> IconList = seedingLists.GetIcons();
+
+
+            if (IconList.Count() > 0)
+            {
+                var entries = context.Icons;
+                context.Icons.RemoveRange(entries);
+                context.Icons.AddRange(IconList);
+                context.SaveChanges();
+            }
 
             foreach (var item in MainCategoryList)
                 context.Categories.AddOrUpdate(
@@ -109,7 +47,10 @@ namespace PMT.DataLayer.Seed
                     {
                         Type = item.Type,
                         CategoryId = item.CategoryId,
-                        Name = item.Name
+                        Name = item.Name,
+                        IconId=item.IconId,
+                        Color = item.Color
+                        
                     });
 
             foreach (var item in SubCategoryList)
@@ -119,7 +60,9 @@ namespace PMT.DataLayer.Seed
                     {
                         CategoryId = item.CategoryId,
                         SubCategoryId = item.SubCategoryId,
-                        Name = item.Name
+                        Name = item.Name,
+                        IconId = item.IconId,
+                        Color = item.Color
                     });
 
             foreach (var item in RepeatList)

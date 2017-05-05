@@ -19,7 +19,8 @@ namespace PMT.Entities
         
         public int CategoryId { get; set; }
 
-        public int IconId { get; set; }
+        public string IconId { get; set; }
+        public string Color { get; set; }
         [Display(Name = nameof(ModelText.CategoryType), ResourceType = typeof(ModelText))]
         public TransactionType Type { get; set; }
         [Display(Name = nameof(ModelText.CategoryName), ResourceType = typeof(ModelText))]

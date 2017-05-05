@@ -24,9 +24,9 @@ namespace PMT.DataLayer
         public IdentityDb()
             : base("name=DefaultConnection", throwIfV1Schema: false)
         {
-            #if DEBUG
-                Database.Log = msg => Debug.WriteLine(msg);
-            #endif
+#if DEBUG
+            Database.Log = msg => Debug.WriteLine(msg);
+#endif
         }
 
         public static IdentityDb Create()

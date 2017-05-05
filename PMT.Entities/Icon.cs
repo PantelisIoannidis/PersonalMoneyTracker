@@ -12,13 +12,11 @@ namespace PMT.Entities
     public class Icon
     {
         [Key]
-        public int IconId { get; set; }
+        public string IconId { get; set; }
         [Display(Name = nameof(ModelText.IconName), ResourceType = typeof(ModelText))]
         public string Name { get; set; }
-        public string LocalPath { get; set; }
-        public string AwesomeFont { get; set; }
-        public string WebHostingHubFont { get; set; }
 
-
+        public bool IsFontAwesome { get; set; }
+        public bool IsWebHostingHubGlyphs { get; set; }
     }
 }
