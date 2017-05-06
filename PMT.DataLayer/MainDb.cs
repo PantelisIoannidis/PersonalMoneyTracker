@@ -53,7 +53,6 @@ namespace PMT.DataLayer
 
             // We ignore these fields because we want to avoid using seperate modelviews for the simplest occutions
             modelBuilder.Entity<MoneyAccount>().Ignore(e => e.Balance);
-            modelBuilder.Entity<Transaction>().Ignore(e => e.Summary);
 
             modelBuilder.Entity<Budget>()
                 .Property(e => e.Amount)

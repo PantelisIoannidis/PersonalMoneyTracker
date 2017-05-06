@@ -2,7 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
@@ -23,7 +25,13 @@ namespace PMT.Web
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
-
+        protected void Application_BeginRequest()
+        {
+            //replace parenthesis with negative sign
+            string curCulture = System.Threading.Thread.CurrentThread.CurrentCulture.ToString();
+            System.Globalization.NumberFormatInfo currencyFormat = new System.Globalization.CultureInfo(curCulture).NumberFormat;
+            currencyFormat.CurrencyNegativePattern = 1;
+        }
         /// <summary>
         /// Disables the application insights locally.
         /// </summary>

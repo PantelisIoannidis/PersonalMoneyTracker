@@ -30,47 +30,44 @@
             </div>
         </div>
         <div class="row">
-            <div class=" col-sm-3">
-                <ul class="my-bar-collapse-side my-bar use-big-fonts">
-                    <li class="active">
-                        <a href="@Url.Action("Index","Home",null)" id="HomeLink"><i class="fa fa-fw fa-home"></i> @ViewText.Home</a>
+            <div class=" col-sm-3 col-md-2">
+                <ul class="my-bar-collapse-side my-bar text-center use-big-fonts">
+                    <li>
+                        <a href="@Url.Action("Index","Home",null)" id="HomeLink"><div class="iconInTile"><i class="fa fa-fw fa-home"></i></div> @ViewText.QuickView</a>
                     </li>
                     <li>
-                        <a href="@Url.Action("Index","Summary",null)" id="SummaryLink"><i class="fa fa-fw fa-balance-scale"></i> @ViewText.Summary</a>
+                        <a href="@Url.Action("Index","Transactions",null)" id="TransactionsLink"><div class="iconInTile"><i class="fa fa-fw icon-wallet"></i></div> @ViewText.Transactions</a>
                     </li>
                     <li>
-                        <a href="@Url.Action("Index","Transactions",null)" id="TransactionsLink"><i class="fa fa-fw icon-wallet"></i> @ViewText.Transactions</a>
+                        <a href="@Url.Action("Index","MoneyAccounts",null)" id="MoneyAccountsLink"><div class="iconInTile"><i class="fa fa-fw fa-book"></i></div> @ViewText.Accounts</a>
                     </li>
                     <li>
-                        <a href="@Url.Action("Index","MoneyAccounts",null)" id="AccountsLink"><i class="fa fa-fw fa-book"></i> @ViewText.Accounts</a>
+                        <a href="@Url.Action("Index","Categories",null)" id="CategoriesLink"><div class="iconInTile"><i class="fa fa-fw icon-list-alt"></i></div> @ViewText.Categories</a>
                     </li>
                     <li>
-                        <a href="@Url.Action("Index","Budget",null)" id="BudgetLink"><i class="fa fa-fw icon-piggybank"></i> @ViewText.Budget</a>
+                        <a href="@Url.Action("Index","Reports",null)" id="ReportsLink"><div class="iconInTile"><i class="fa fa-fw fa-pie-chart"></i></div> @ViewText.Reports</a>
                     </li>
                     <li>
-                        <a href="@Url.Action("Index","Reports",null)" id="ReportsLink"><i class="fa fa-fw fa-pie-chart"></i> @ViewText.Reports</a>
+                        <a href="@Url.Action("Index","Recurring",null)" id="RecurringLink"><div class="iconInTile"><i class="fa fa-fw fa-calendar-times-o "></i></div> @ViewText.Recurring</a>
                     </li>
                     <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#settingssubmenu"><i class="fa fa-fw fa-gear"></i> @ViewText.Settings <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="settingssubmenu" class="collapse">
-                            <li>
-                                <a href="@Url.Action("Index","Categories",null)" id="CategoriesLink"><i class="fa fa-fw icon-list-alt"></i> @ViewText.Categories</a>
-                            </li>
-                            <li>
-                                <a href="@Url.Action("Index","Recurring",null)" id="RecurringLink"><i class="fa fa-fw fa-calendar-times-o "></i> @ViewText.Recurring</a>
-                            </li>
-                            <li>
-                                <a href="@Url.Action("Index","Payee",null)" id="PayeeLink"><i class="fa fa-fw icon-workshirt"></i> @ViewText.Payee</a>
-                            </li>
-                            <li>
-                                <a href="@Url.Action("Index","Settings",null)" id="SettingsLink"><i class="fa fa-fw fa-dashboard"></i> @ViewText.Other ...</a>
-                            </li>
-                        </ul>
+                        <a href="@Url.Action("Index","Settings",null)" id="SettingsLink"><div class="iconInTile"><i class="fa fa-fw fa-dashboard"></i></div> @ViewText.Other ...</a>
                     </li>
                 </ul>
             </div>
+            @*<div class=" col-sm-3 col-md-2">
+                <div class="btn-group-vertical">
+                    <a class="btn btn-primary" href="@Url.Action("Index","Home",null)" id="HomeLink"><div class="iconInTile"><i class="fa fa-fw fa-home"></i></div> @ViewText.QuickView</a>
+                    <a class="btn btn-primary" href="@Url.Action("Index","Transactions",null)" id="TransactionsLink"><div class="iconInTile"><i class="fa fa-fw icon-wallet"></i></div> @ViewText.Transactions</a>
+                    <a class="btn btn-primary" href="@Url.Action("Index","MoneyAccounts",null)" id="MoneyAccountsLink"><div class="iconInTile"><i class="fa fa-fw fa-book"></i></div> @ViewText.Accounts</a>
+                    <a class="btn btn-primary" href="@Url.Action("Index","Categories",null)" id="CategoriesLink"><div class="iconInTile"><i class="fa fa-fw icon-list-alt"></i></div> @ViewText.Categories</a>
+                    <a class="btn btn-primary" href="@Url.Action("Index","Reports",null)" id="ReportsLink"><div class="iconInTile"><i class="fa fa-fw fa-pie-chart"></i></div> @ViewText.Reports</a>
+                    <a class="btn btn-primary" href="@Url.Action("Index","Recurring",null)" id="RecurringLink"><div class="iconInTile"><i class="fa fa-fw fa-calendar-times-o "></i></div> @ViewText.Recurring</a>
+                    <a class="btn btn-primary" href="@Url.Action("Index","Settings",null)" id="SettingsLink"><div class="iconInTile"><i class="fa fa-fw fa-dashboard"></i></div> @ViewText.Other ...</a>
+                </div>
+            </div>*@
 
-            <div class="container mcontent col-sm-9">
+            <div class="container mcontent col-sm-9 col-md-10">
                 @RenderBody()
                 <hr />
                 <footer>
@@ -80,8 +77,17 @@
         </div>
     </div>
 
+    <input type="hidden" name="myBarSelector" value="@((HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString()) + "Link")">
+
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/js/App.js"></script>
     @RenderSection("scripts", required: false)
+    <script type="text/javascript">
+            PMT.rootPath = '@Url.Content("~")';
+            $(document).ready(function () {
+                PMT.hookStageEvents();    
+            });
+    </script>
 </body>
 </html>

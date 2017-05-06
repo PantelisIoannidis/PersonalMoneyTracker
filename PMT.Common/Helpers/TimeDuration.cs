@@ -12,7 +12,7 @@ namespace PMT.Common.Helpers
         public DateTime FromDate { get; set; }
         public DateTime ToDate { get; set; }
 
-        public DateTime current { get; set; }
+        public DateTime CurrentDate { get; set; }
 
         private int weekOfYearNet;
         public int WeekOfYear { get; set; }
@@ -23,36 +23,39 @@ namespace PMT.Common.Helpers
 
         public TimeDuration()
         {
-            current = DateTime.UtcNow;
+            CurrentDate = DateTime.UtcNow;
             currentCulture = CultureInfo.CurrentCulture;
             CalculateDates();
         }
 
         public TimeDuration(DateTime current, CultureInfo currentCulture =null)
         {
-            this.current = current;
+            this.CurrentDate = current;
             if (currentCulture == null)
                 this.currentCulture = CultureInfo.CurrentCulture;
             else
                 this.currentCulture = currentCulture;
 
             CalculateDates();
+            FromDate = CurrentDate.AddDays(-10);
+            ToDate = CurrentDate.AddDays(10);
+
         }
 
         private void CalculateDates()
         {
             weekOfYearNet = currentCulture.Calendar.GetWeekOfYear(
-                current,
+                CurrentDate,
                 currentCulture.DateTimeFormat.CalendarWeekRule,
                 currentCulture.DateTimeFormat.FirstDayOfWeek);
 
-            var day = (int)currentCulture.Calendar.GetDayOfWeek(current);
+            var day = (int)currentCulture.Calendar.GetDayOfWeek(CurrentDate);
             WeekOfYear = currentCulture.Calendar.GetWeekOfYear(
-                current.AddDays(4 - (day == 0 ? 7 : day)), 
+                CurrentDate.AddDays(4 - (day == 0 ? 7 : day)), 
                 CalendarWeekRule.FirstFourDayWeek, 
                 DayOfWeek.Monday);
 
-            MonthOfYear = current.Month;
+            MonthOfYear = CurrentDate.Month;
 
 
         }

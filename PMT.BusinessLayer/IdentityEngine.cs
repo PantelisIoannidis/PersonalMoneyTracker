@@ -12,13 +12,13 @@ namespace PMT.BusinessLayer
     {
         IIdentityRepository identityRepository;
         IMoneyAccountRepository MoneyAccountRepository;
-        ISeedingLists seeding;
+        ISeedingLists seedingLists;
         public IdentityEngine(IIdentityRepository identityRepository,
-            IMoneyAccountRepository MoneyAccountRepository,  ISeedingLists seeding)
+            IMoneyAccountRepository MoneyAccountRepository,  ISeedingLists seedingLists)
         {
             this.identityRepository = identityRepository;
             this.MoneyAccountRepository = MoneyAccountRepository;
-            this.seeding = seeding;
+            this.seedingLists = seedingLists;
         }
         public string GetMoneyAccountId(string userName)
         {
@@ -27,7 +27,7 @@ namespace PMT.BusinessLayer
 
         public void InitializeNewUser(string userName)
         {
-            var MoneyAccount = seeding.GetDefaultAccountForNewUser(GetMoneyAccountId(userName));
+            var MoneyAccount = seedingLists.GetDefaultAccountForNewUser(GetMoneyAccountId(userName));
             MoneyAccountRepository.Insert(MoneyAccount);
             MoneyAccountRepository.Save();
         }

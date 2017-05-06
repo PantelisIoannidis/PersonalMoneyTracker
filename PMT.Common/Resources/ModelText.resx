@@ -127,28 +127,28 @@
     <value>Move Forward</value>
   </data>
   <data name="BudgetName" xml:space="preserve">
-    <value>Name</value>
+    <value>Budget Name</value>
   </data>
   <data name="CategoryName" xml:space="preserve">
-    <value>Name</value>
+    <value>Category Name</value>
   </data>
   <data name="CategoryType" xml:space="preserve">
     <value>Transaction Type</value>
   </data>
   <data name="IconName" xml:space="preserve">
-    <value>Name</value>
+    <value>Icon Name</value>
   </data>
   <data name="MoneyAccountBalance" xml:space="preserve">
     <value>Balance</value>
   </data>
   <data name="MoneyAccountName" xml:space="preserve">
-    <value>Name</value>
+    <value>Account</value>
   </data>
   <data name="RepeatDescription" xml:space="preserve">
     <value>Description</value>
   </data>
   <data name="SubCategoryName" xml:space="preserve">
-    <value>Name</value>
+    <value>Subcategory Name</value>
   </data>
   <data name="TransactionAmount" xml:space="preserve">
     <value>Amount</value>

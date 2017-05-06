@@ -7,8 +7,40 @@ using System.Threading.Tasks;
 
 namespace PMT.Models
 {
-    public class Mapping
+    public class Mapping : IMapping
     {
+        public TransactionVM TransactionToTransactionVM(Transaction source)
+        {
+            return new TransactionVM() {
+                UserId = source.UserId,
+                TransactionId = source.TransactionId,
+                TransactionType=source.TransactionType,
+                CategoryId = source.CategoryId,
+                SubCategoryId = source.SubCategoryId,
+                MoneyAccountId = source.MoneyAccountId,
+                Amount = source.Amount,
+                Description = source.Description,
+                MoveToAccount=source.MoveToAccount,
+                TransactionDate=source.TransactionDate,
+            };
+        }
+
+        public Transaction TransactionVMToTransaction(TransactionVM source)
+        {
+            return new Transaction()
+            {
+                UserId = source.UserId,
+                TransactionId = source.TransactionId,
+                TransactionType = source.TransactionType,
+                CategoryId = source.CategoryId,
+                SubCategoryId = source.SubCategoryId,
+                MoneyAccountId = source.MoneyAccountId,
+                Amount = source.Amount,
+                Description = source.Description,
+                MoveToAccount = source.MoveToAccount,
+                TransactionDate = source.TransactionDate,
+            };
+        }
 
     }
 }

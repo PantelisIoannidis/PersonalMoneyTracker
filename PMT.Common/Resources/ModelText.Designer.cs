@@ -88,7 +88,7 @@ namespace PMT.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Name.
+        ///   Looks up a localized string similar to Budget Name.
         /// </summary>
         public static string BudgetName {
             get {
@@ -97,7 +97,7 @@ namespace PMT.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Name.
+        ///   Looks up a localized string similar to Category Name.
         /// </summary>
         public static string CategoryName {
             get {
@@ -115,7 +115,7 @@ namespace PMT.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Name.
+        ///   Looks up a localized string similar to Icon Name.
         /// </summary>
         public static string IconName {
             get {
@@ -133,7 +133,7 @@ namespace PMT.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Name.
+        ///   Looks up a localized string similar to Account.
         /// </summary>
         public static string MoneyAccountName {
             get {
@@ -151,7 +151,7 @@ namespace PMT.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Name.
+        ///   Looks up a localized string similar to Subcategory Name.
         /// </summary>
         public static string SubCategoryName {
             get {

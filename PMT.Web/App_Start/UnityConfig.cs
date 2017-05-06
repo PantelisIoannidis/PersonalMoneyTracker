@@ -14,6 +14,7 @@ using PMT.Common;
 using PMT.BusinessLayer;
 using PMT.DataLayer.Seed;
 using Microsoft.Extensions.Logging;
+using PMT.Models;
 
 namespace PMT.Web.App_Start
 {
@@ -70,10 +71,11 @@ namespace PMT.Web.App_Start
             container.RegisterType<ManageController>(new InjectionConstructor());
 
             //Helpers
-            container.RegisterType<ISeedingLists, SeedingLists>();
             container.RegisterType<IActionStatus, ActionStatus>();
+            container.RegisterType<ISeedingLists, SeedingLists>();
             container.RegisterType<ISecurityHelper, SecurityHelper>();
             container.RegisterType<IUnityFactory, UnityFactory>();
+            container.RegisterType<IMapping, Mapping>();
 
             //Repositories
             container.RegisterType<MainDb>();

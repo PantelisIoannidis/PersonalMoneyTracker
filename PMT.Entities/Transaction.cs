@@ -25,10 +25,10 @@ namespace PMT.Entities
         [Display(Name = nameof(ModelText.TransactionTransactionType), ResourceType = typeof(ModelText))]
         public TransactionType TransactionType { get; set; }
 
-        [Display(Name = nameof(ModelText.TransactionDate),ResourceType =typeof(ModelText))]
+        [Display(Name = nameof(ModelText.TransactionDate), ResourceType = typeof(ModelText))]
         public DateTime TransactionDate { get; set; }
 
-        [Display(Name =nameof(ModelText.TransactionDescription),ResourceType =typeof(ModelText))]
+        [Display(Name = nameof(ModelText.TransactionDescription), ResourceType = typeof(ModelText))]
         public string Description { get; set; }
 
         [DataType(DataType.Currency)]
@@ -47,14 +47,10 @@ namespace PMT.Entities
             }
         }
 
-        [DataType(DataType.Currency)]
-        [Display(Name = nameof(ModelText.TransactionSummary), ResourceType = typeof(ModelText))]
-        public decimal Summary { get; set; }
 
         public int MoveToAccount { get; set; }
 
         public MoneyAccount MoneyAccount { get; set; }
-
         
     }
 }

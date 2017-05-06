@@ -22,6 +22,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMT.BusinessLayer", "PMT.Bu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMT.Models", "PMT.Models\PMT.Models.csproj", "{43D49CB4-2FE4-4F4A-9255-D5071F21136F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMT.Tests", "PMT.Tests\PMT.Tests.csproj", "{9E43BC03-CAAC-423C-96AE-9BD680462398}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{DE4E58F9-DE50-46F9-83F8-ACC47ADC47EF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -60,8 +64,16 @@ Global
 		{43D49CB4-2FE4-4F4A-9255-D5071F21136F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{43D49CB4-2FE4-4F4A-9255-D5071F21136F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{43D49CB4-2FE4-4F4A-9255-D5071F21136F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E43BC03-CAAC-423C-96AE-9BD680462398}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E43BC03-CAAC-423C-96AE-9BD680462398}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E43BC03-CAAC-423C-96AE-9BD680462398}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E43BC03-CAAC-423C-96AE-9BD680462398}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6262612B-1037-42F7-92FC-504A9D65B91B} = {DE4E58F9-DE50-46F9-83F8-ACC47ADC47EF}
+		{9E43BC03-CAAC-423C-96AE-9BD680462398} = {DE4E58F9-DE50-46F9-83F8-ACC47ADC47EF}
 	EndGlobalSection
 EndGlobal

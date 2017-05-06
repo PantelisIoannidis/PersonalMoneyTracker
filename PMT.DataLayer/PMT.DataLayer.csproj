@@ -118,7 +118,7 @@
     <Compile Include="Repositories\RepositoryBase.cs" />
     <Compile Include="Repositories\TransactionRepository.cs" />
     <Compile Include="Repositories\MoneyAccountRepository.cs" />
-    <Compile Include="Seed\ISeedingList.cs" />
+    <Compile Include="Seed\ISeedingLists.cs" />
     <Compile Include="Seed\SeedIcons.cs" />
     <Compile Include="Seed\Seeding.cs" />
     <Compile Include="Seed\SeedingLists.cs" />
@@ -139,6 +139,10 @@
     <ProjectReference Include="..\PMT.Entities\PMT.Entities.csproj">
       <Project>{9463f7d5-f927-4886-b9d3-5e67324752b4}</Project>
       <Name>PMT.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PMT.Models\PMT.Models.csproj">
+      <Project>{43D49CB4-2FE4-4F4A-9255-D5071F21136F}</Project>
+      <Name>PMT.Models</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

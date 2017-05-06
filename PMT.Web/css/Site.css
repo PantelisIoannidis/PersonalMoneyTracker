@@ -24,14 +24,17 @@ textarea {
     padding:15px 5px 15px 10px;
 }
 
-    .my-bar > li > a {
-        text-decoration: none;
-        color: #fff;
-    }
+.my-bar > li > a {
+    display: block;
+    text-decoration: none;
+    color: #fff;
+}
+
+
 
 .my-bar li a:hover,
 .my-bar li a:focus {
-    outline: none;
+
     color: #fff;
     background-color: #97310e !important;
 }
@@ -51,6 +54,39 @@ textarea {
 .my-bar > li > ul > li > a:hover {
     background-color: #97310e !important;
     color: #fff;
+}
+
+    .my-bar > li.active {
+        background-color: #ff6a00 !important;
+    }
+
+.fixedLengthElement {
+    text-overflow :clip;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.table .iconInTile {
+    font-size: 1.2em;
+}
+.negativeNumber{
+    color:red;
+}
+/*.TransactionsPanel{
+    display:inline-block;
+    width:100%;
+}
+
+.TranTile {
+    width: 33%;
+    background-color: burlywood;
+    float:left;
+}*/
+.my-bar .iconInTile {
+    font-size: 2em;
+}
+.clearfix {
+    clear: both
 }
 
 @media(min-width:768px) {

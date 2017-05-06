@@ -40,7 +40,7 @@ namespace PMT.BusinessLayer
                     TransactionType = TransactionType.Adjustment,
                     Amount = moneyAccount.Balance,
                     TransactionDate = DateTime.UtcNow,
-                    Description = ViewText.InitialBalance
+                    Description = ModelText.MoneyAccountName +" "+ ViewText.InitialBalance
                 };
                 actionStatus = moneyAccountRepository.AddNewAccountWithInitialBalance(moneyAccount, transaction);
             }
@@ -72,7 +72,7 @@ namespace PMT.BusinessLayer
                     TransactionType = TransactionType.Adjustment,
                     Amount = moneyAccount.Balance,
                     TransactionDate = DateTime.UtcNow,
-                    Description = ViewText.Adjustment
+                    Description = ModelText.MoneyAccountName + " " + ViewText.Adjustment
                 };
                 moneyAccountRepository.EditAccountNameAdjustBalance(moneyAccount, transaction);
             }

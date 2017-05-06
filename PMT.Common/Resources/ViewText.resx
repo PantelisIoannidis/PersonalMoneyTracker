@@ -204,4 +204,10 @@
   <data name="Transactions" xml:space="preserve">
     <value>Transactions</value>
   </data>
+  <data name="TransactionViewIndexTitle" xml:space="preserve">
+    <value>Your Transactions</value>
+  </data>
+  <data name="QuickView" xml:space="preserve">
+    <value>Quick View</value>
+  </data>
 </root>

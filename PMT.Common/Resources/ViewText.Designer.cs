@@ -259,6 +259,15 @@ namespace PMT.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Quick View.
+        /// </summary>
+        public static string QuickView {
+            get {
+                return ResourceManager.GetString("QuickView", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Recurring.
         /// </summary>
         public static string Recurring {
@@ -318,6 +327,15 @@ namespace PMT.Common.Resources {
         public static string Transactions {
             get {
                 return ResourceManager.GetString("Transactions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your Transactions.
+        /// </summary>
+        public static string TransactionViewIndexTitle {
+            get {
+                return ResourceManager.GetString("TransactionViewIndexTitle", resourceCulture);
             }
         }
     }
