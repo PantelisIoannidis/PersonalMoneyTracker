@@ -30,6 +30,12 @@ namespace PMT.Web
             bundles.Add(new StyleBundle("~/css").Include(
                       "~/css/whhg.css",
                       "~/css/site.css"));
+
+            bundles.Add(new ScriptBundle("~/js/app").Include(
+                        "~/js/App.CommonUI.js",
+                        "~/js/App.TransactionsUI.js",
+                        "~/js/App.js"
+                        ));
         }
     }
 }

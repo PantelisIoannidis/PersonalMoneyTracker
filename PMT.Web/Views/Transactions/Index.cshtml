@@ -12,7 +12,7 @@
                 @foreach (var item in Model)
                 {
                     
-                    <tr class="active">
+                    <tr>
                         <input type="hidden" class="transTableId" value="@item.TransactionId" />
                         <td class="col-md-1">
                             <div class="iconInTile text-center">
@@ -27,14 +27,14 @@
                         </td>
                         <td class="col-md-4">
                             <div>
-                                @Html.DisplayFor(m => item.TransactionDate)
+                                @Html.DisplayFor(m => item.FormattedDate)
                             </div>
 
                         </td>
                         
                         <td class="col-md-2 text-right @((item.Amount < 0) ? "negativeNumber":"")">
                             
-                            @Html.DisplayFor(m=>item.Amount)
+                            @Html.DisplayFor(m=>item.FormattedAmount)
                         </td>
                     </tr>
                 } 
@@ -56,12 +56,17 @@
                 </ul>
             </div>
             <div class="col-md-2">
-                <a href="@Url.Action("Edit","MoneyAccounts", null)" class="btn btn-warning btn-sm"><i class="fa fa-fw fa-edit"></i> @ViewText.Edit</a>
-                <a href="@Url.Action("Delete","MoneyAccounts",null)" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> @ViewText.Delete</a>
+                <a href="@Url.Action("Edit","Transaction", null)" id="transTableEditButton" class="btn btn-warning btn-sm"><i class="fa fa-fw fa-edit"></i> @ViewText.Edit</a>
+                <a href="@Url.Action("Delete","Transaction",null)" id="transTableDeleteButton" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> @ViewText.Delete</a>
             </div>
         </div>
-        
-
-
     </div>
 </div>
+
+@section Scripts { 
+    <script type="text/javascript">
+        $(function () {
+            pmt.onDocumentLoadTransaction();
+        });
+    </script>
+}

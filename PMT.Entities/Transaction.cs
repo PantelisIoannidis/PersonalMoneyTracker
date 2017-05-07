@@ -12,6 +12,7 @@ namespace PMT.Entities
     public class Transaction
     {
         private decimal _amount;
+        private DateTime _date;
 
         public int TransactionId { get; set; }
 
@@ -26,7 +27,14 @@ namespace PMT.Entities
         public TransactionType TransactionType { get; set; }
 
         [Display(Name = nameof(ModelText.TransactionDate), ResourceType = typeof(ModelText))]
-        public DateTime TransactionDate { get; set; }
+        public DateTime TransactionDate {
+            get {
+                return _date.ToLocalTime();
+            }
+            set {
+                _date = value.ToUniversalTime();
+            }
+        }
 
         [Display(Name = nameof(ModelText.TransactionDescription), ResourceType = typeof(ModelText))]
         public string Description { get; set; }
@@ -48,7 +56,7 @@ namespace PMT.Entities
         }
 
 
-        public int MoveToAccount { get; set; }
+        public int? MoveToAccount { get; set; }
 
         public MoneyAccount MoneyAccount { get; set; }
         

@@ -56,35 +56,30 @@ textarea {
     color: #fff;
 }
 
-    .my-bar > li.active {
-        background-color: #ff6a00 !important;
-    }
+.my-bar > li.active {
+    background-color: #ff6a00 !important;
+}
+
+.my-bar .iconInTile {
+    font-size: 2em;
+}
 
 .fixedLengthElement {
     text-overflow :clip;
     white-space: nowrap;
     overflow: hidden;
 }
+.transTable{
+    cursor:pointer;
+}
 
-.table .iconInTile {
+.transTable .iconInTile {
     font-size: 1.2em;
 }
 .negativeNumber{
     color:red;
 }
-/*.TransactionsPanel{
-    display:inline-block;
-    width:100%;
-}
 
-.TranTile {
-    width: 33%;
-    background-color: burlywood;
-    float:left;
-}*/
-.my-bar .iconInTile {
-    font-size: 2em;
-}
 .clearfix {
     clear: both
 }

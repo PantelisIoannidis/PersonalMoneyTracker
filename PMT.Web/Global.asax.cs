@@ -27,10 +27,10 @@ namespace PMT.Web
         }
         protected void Application_BeginRequest()
         {
-            //replace parenthesis with negative sign
-            string curCulture = System.Threading.Thread.CurrentThread.CurrentCulture.ToString();
-            System.Globalization.NumberFormatInfo currencyFormat = new System.Globalization.CultureInfo(curCulture).NumberFormat;
-            currencyFormat.CurrencyNegativePattern = 1;
+            
+            //string curCulture = System.Threading.Thread.CurrentThread.CurrentCulture.ToString();
+            //System.Globalization.NumberFormatInfo currencyFormat = new System.Globalization.CultureInfo(curCulture).NumberFormat;
+            //currencyFormat.CurrencyNegativePattern = 1;
         }
         /// <summary>
         /// Disables the application insights locally.

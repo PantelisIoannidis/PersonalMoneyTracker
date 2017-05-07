@@ -332,6 +332,7 @@
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="js\App.js" />
+    <Content Include="js\App.TransactionsUI.js" />
     <Content Include="moreFonts\webhostinghub-glyphs.svg" />
     <Content Include="Global.asax" />
     <Content Include="ApplicationInsights.config">
@@ -355,6 +356,7 @@
     <Content Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="js\App.CommonUI.js" />
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>

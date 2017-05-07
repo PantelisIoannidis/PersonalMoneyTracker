@@ -81,13 +81,13 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    <script src="~/js/App.js"></script>
-    @RenderSection("scripts", required: false)
-    <script type="text/javascript">
-            PMT.rootPath = '@Url.Content("~")';
-            $(document).ready(function () {
-                PMT.hookStageEvents();    
-            });
+    @Scripts.Render("~/js/app")
+    <script type="text/javascript">            
+        pmt.rootPath = '@Request.Url.Authority';
+        $(function () {
+            pmt.onDocumentLoadMaster(); 
+        });
     </script>
+    @RenderSection("scripts", required: false)
 </body>
 </html>
