@@ -80,6 +80,7 @@ namespace PMT.Web.App_Start
             //Repositories
             container.RegisterType<MainDb>();
             container.RegisterType<ICategoryRepository, CategoryRepository>();
+            container.RegisterType<ISubCategoryRepository, SubCategoryRepository>();
             container.RegisterType<ITransactionRepository, TransactionRepository>();
             container.RegisterType<IMoneyAccountRepository, MoneyAccountRepository>();
             container.RegisterType<IIdentityRepository, IdentityRepository>();

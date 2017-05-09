@@ -42,7 +42,7 @@
         </table>
         <div class="row  text-center">
             <div class="col-md-2">
-                <a href="@Url.Action("Create","Transaction",null)" class="btn btn-default"><i class="fa fa-fw  fa-plus-circle"></i> @ViewText.CreateNew</a>
+                <a href="@Url.Action("Create","Transactions",null)" class="btn btn-default"><i class="fa fa-fw  fa-plus-circle"></i> @ViewText.CreateNew</a>
             </div>
             <div class="col-md-8">
                 <ul class="pagination">
@@ -66,7 +66,7 @@
 @section Scripts { 
     <script type="text/javascript">
         $(function () {
-            pmt.onDocumentLoadTransaction();
+            pmt.onDocumentLoadIndexTransaction();
         });
     </script>
 }

@@ -13,11 +13,9 @@ namespace PMT.Models
         public TransactionVM()
         {
             //replace parenthesis with negative sign
-            if (currencyFormat == null) {
-                string curCulture = System.Threading.Thread.CurrentThread.CurrentCulture.ToString();
-                currencyFormat = new System.Globalization.CultureInfo(curCulture).NumberFormat;
-                currencyFormat.CurrencyNegativePattern = 1;
-            }
+            string curCulture = System.Threading.Thread.CurrentThread.CurrentCulture.ToString();
+            currencyFormat = new System.Globalization.CultureInfo(curCulture).NumberFormat;
+            currencyFormat.CurrencyNegativePattern = 1;
         }
         public string MoneyAccountName { get; set; }
         public string CategoryName { get; set; }

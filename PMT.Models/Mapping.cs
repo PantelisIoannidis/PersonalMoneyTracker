@@ -20,7 +20,7 @@ namespace PMT.Models
                 MoneyAccountId = source.MoneyAccountId,
                 Amount = source.Amount,
                 Description = source.Description,
-                MoveToAccount=source.MoveToAccount,
+                TransferTo = source.TransferTo,
                 TransactionDate=source.TransactionDate,
             };
         }
@@ -37,7 +37,7 @@ namespace PMT.Models
                 MoneyAccountId = source.MoneyAccountId,
                 Amount = source.Amount,
                 Description = source.Description,
-                MoveToAccount = source.MoveToAccount,
+                TransferTo = source.TransferTo,
                 TransactionDate = source.TransactionDate,
             };
         }

@@ -56,7 +56,7 @@ namespace PMT.Entities
         }
 
 
-        public int? MoveToAccount { get; set; }
+        public int? TransferTo { get; set; }
 
         public MoneyAccount MoneyAccount { get; set; }
         

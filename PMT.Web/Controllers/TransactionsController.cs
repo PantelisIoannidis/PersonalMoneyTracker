@@ -11,6 +11,7 @@ using PMT.Entities;
 using Microsoft.Extensions.Logging;
 using PMT.Web.Helpers;
 using PMT.DataLayer.Repositories;
+using PMT.Contracts.Repositories;
 
 namespace PMT.Web.Controllers
 {
@@ -20,13 +21,23 @@ namespace PMT.Web.Controllers
         ILogger logger;
         ISecurityHelper securityHelper;
         ITransactionRepository transactionRepository;
+        ICategoryRepository categoryRepository;
+        ISubCategoryRepository subCategoryRepository;
+        IMoneyAccountRepository moneyAccountRepository;
 
         public TransactionsController(ILoggerFactory logger,
                                         ISecurityHelper securityHelper,
-                                        ITransactionRepository transactionRepository)
+                                        ITransactionRepository transactionRepository,
+                                        ICategoryRepository categoryRepository,
+                                        ISubCategoryRepository subCategoryRepository,
+                                        IMoneyAccountRepository moneyAccountRepository
+                                        )
         {
             this.securityHelper = securityHelper;
             this.transactionRepository = transactionRepository;
+            this.categoryRepository = categoryRepository;
+            this.subCategoryRepository = subCategoryRepository;
+            this.moneyAccountRepository = moneyAccountRepository;
             this.logger = logger.CreateLogger<TransactionsController>();
         }
 
@@ -45,10 +56,38 @@ namespace PMT.Web.Controllers
             return null;
         }
 
+        public ActionResult GetAccountsAvailableForTransfer(int accountId)
+        {
+            var userId = securityHelper.GetUserId(HttpContext);
+            var accounts = moneyAccountRepository.GetMoneyAccountsExcludingCurrent(userId,accountId);
+            
+            return Json(accounts, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GetCategories(TransactionType type)
+        {
+            var categories = categoryRepository.GetGategory(type);
+            return Json(categories, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GetSubCategories(int categoryId)
+        {
+            var subCategories = subCategoryRepository.GetSubCategory(categoryId);
+            return Json(subCategories, JsonRequestBehavior.AllowGet);
+        }
+
         // GET: Transactions/Create
         public ActionResult Create()
         {
-            return View();
+            var userId = securityHelper.GetUserId(HttpContext);
+            var moneyAccounts = moneyAccountRepository.GetMoneyAccounts(userId);
+            ViewBag.MoneyAccountId = new SelectList(moneyAccounts, "MoneyAccountId", "Name",moneyAccounts.FirstOrDefault());
+            var transaction = new Transaction()
+            {
+                TransactionType = TransactionType.Expense,
+                TransactionDate = DateTime.Now,
+            };
+            return View(transaction);
         }
 
         // POST: Transactions/Create

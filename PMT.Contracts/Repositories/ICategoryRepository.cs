@@ -5,5 +5,6 @@ namespace PMT.Contracts.Repositories
 {
     public interface ICategoryRepository : IRepositoryBase<Category>
     {
+        List<Category> GetGategory(TransactionType transactionType);
     }
 }

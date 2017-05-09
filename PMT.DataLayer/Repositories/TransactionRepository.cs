@@ -39,7 +39,7 @@ namespace PMT.DataLayer.Repositories
                                    TransactionId=tran.TransactionId,
                                    TransactionType=tran.TransactionType,
                                    Amount=tran.Amount,
-                                   MoveToAccount=tran.MoveToAccount,
+                                   TransferTo = tran.TransferTo,
                                    CategoryName=category.Name,
                                    CategoryIcon = category.IconId,
                                    CategoryColor = category.Color,

@@ -9,6 +9,7 @@ namespace PMT.DataLayer.Repositories
     {
         List<MoneyAccount> GetMoneyAccounts(string userId);
         MoneyAccount GetMoneyAccount(string userId, int moneyAccountId);
+        List<MoneyAccount> GetMoneyAccountsExcludingCurrent(string userId, int moneyAccountId);
         IActionStatus AddNewAccountWithInitialBalance(MoneyAccount moneyAccount, Transaction transaction);
         IActionStatus EditAccountNameAdjustBalance(MoneyAccount moneyAccount, Transaction transaction);
     }

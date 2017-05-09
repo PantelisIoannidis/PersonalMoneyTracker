@@ -30,6 +30,11 @@ namespace PMT.DataLayer.Repositories
             return db.MoneyAccounts.Where(u => u.UserId == userId && u.MoneyAccountId==moneyAccountId).FirstOrDefault();
         }
 
+        public List<MoneyAccount> GetMoneyAccountsExcludingCurrent(string userId, int moneyAccountId)
+        {
+            return db.MoneyAccounts.Where(u => u.UserId == userId && u.MoneyAccountId != moneyAccountId).ToList();
+        }
+
         public IActionStatus AddNewAccountWithInitialBalance(MoneyAccount moneyAccount, Transaction transaction)
         {
             using(var dbTransaction = db.Database.BeginTransaction()) { 

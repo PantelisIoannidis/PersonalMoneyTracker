@@ -8,15 +8,20 @@ var pmt = function () {
         commonUI.calculateActiveElement();
     };
 
-    var onDocumentLoadTransaction = function () {
-        transactionsUI.calculateActiveElement();
-        transactionsUI.subscribeButtonEvents();
+    var onDocumentLoadIndexTransaction = function () {
+        transactionsUI.calculateIndexActiveElement();
+        transactionsUI.addIndexButtonEvents();
     };
+
+    var onDocumentTransactionCreate = function () {
+        transactionsUI.onLoadCreateInit();
+    }
 
     return {
         rootPath: rootPath,
         onDocumentLoadMaster: onDocumentLoadMaster,
-        onDocumentLoadTransaction: onDocumentLoadTransaction
+        onDocumentLoadIndexTransaction: onDocumentLoadIndexTransaction,
+        onDocumentTransactionCreate: onDocumentTransactionCreate,
     };
 
 }(); 

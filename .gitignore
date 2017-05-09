@@ -217,6 +217,3 @@ FakesAssemblies/
 **/*.Server/ModelManifest.xml
 _Pvt_Extensions
 
-/PMT.Web/Scripts
-/PMT.Web/fonts
-/PMT.Web/Content

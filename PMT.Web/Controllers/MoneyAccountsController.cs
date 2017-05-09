@@ -14,6 +14,7 @@ using PMT.Common;
 using PMT.Models;
 using PMT.BusinessLayer;
 using Microsoft.Extensions.Logging;
+using PMT.Contracts.Repositories;
 
 namespace PMT.Web.Controllers
 {
@@ -25,20 +26,32 @@ namespace PMT.Web.Controllers
         ISecurityHelper securityHelper;
         IMoneyAccountEngine moneyAccountEngine;
         ITransactionRepository transactionRepository;
+        ICategoryRepository categoryRepository;
+        ISubCategoryRepository subCategoryRepository;
         public MoneyAccountsController(ISecurityHelper securityHelper, 
                                         IMoneyAccountRepository moneyAccountRepository,
                                         IMoneyAccountEngine moneyAccountEngine,
                                         ITransactionRepository transactionRepository,
+                                        ICategoryRepository categoryRepository,
+                                        ISubCategoryRepository subCategoryRepository,
                                         ILoggerFactory logger)
         {
             this.moneyAccountRepository = moneyAccountRepository;
             this.securityHelper = securityHelper;
+            this.categoryRepository = categoryRepository;
+            this.subCategoryRepository = subCategoryRepository;
             this.moneyAccountEngine = moneyAccountEngine;
             this.transactionRepository = transactionRepository;
             this.logger = logger.CreateLogger<MoneyAccountsController>();
         }
 
-
+        [HttpGet]
+        public ActionResult GetCategories()
+        {
+            //var categories = categoryRepository.GetGategory(type);
+            var categories = categoryRepository.GetAll();
+            return Json(categories, JsonRequestBehavior.AllowGet);
+        }
 
         // GET: MoneyAccounts
         public ActionResult Index()
