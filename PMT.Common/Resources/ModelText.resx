@@ -165,6 +165,9 @@
   <data name="TransactionTransactionType" xml:space="preserve">
     <value>Transaction Type</value>
   </data>
+  <data name="TransactionTransferTo" xml:space="preserve">
+    <value>Transfer To</value>
+  </data>
   <data name="TransactionTypeAdjustment" xml:space="preserve">
     <value>Adjustment</value>
   </data>

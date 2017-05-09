@@ -331,6 +331,15 @@ namespace PMT.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add new transaction.
+        /// </summary>
+        public static string TransactionViewCreateTitle {
+            get {
+                return ResourceManager.GetString("TransactionViewCreateTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Your Transactions.
         /// </summary>
         public static string TransactionViewIndexTitle {

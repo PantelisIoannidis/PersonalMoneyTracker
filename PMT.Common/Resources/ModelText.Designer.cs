@@ -205,6 +205,15 @@ namespace PMT.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Transfer To.
+        /// </summary>
+        public static string TransactionTransferTo {
+            get {
+                return ResourceManager.GetString("TransactionTransferTo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Adjustment.
         /// </summary>
         public static string TransactionTypeAdjustment {
