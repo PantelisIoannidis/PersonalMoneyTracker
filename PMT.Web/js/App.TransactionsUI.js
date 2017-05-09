@@ -37,7 +37,10 @@
             success: function (data) {
                 $('#CategoryId option').remove();
                 $.each(data, function (id, option) {
-                    $('#CategoryId').append("<option value=" + option.CategoryId + "><i class='fa fa-fw  " + option.IconId + "'></i>" + option.Name + "</option>");
+                    var element = "<li><a data-id='" + option.CategoryId + "' href='#'><i class='fa fa-fw  " + option.IconId + "'></i> "
+                        + option.Name + "</a></li>";
+                    //$('#CategoryId').append("<option value=" + option.CategoryId + "><i class='fa fa-fw  " + option.IconId + "'></i>" + option.Name + "</option>");
+                    $('.dropdown-category').append(element);
                 })
             },
             error: function (jqXHR, exception) {
@@ -64,7 +67,8 @@
 
     var FillSubCategoryOnCategoryChange = function () {
         var tranGetSubCategoriesUrl = '/Transactions/GetSubCategories';
-        var categoryId = $("#CategoryId").val();
+        //var categoryId = $("#CategoryId").val();
+        var categoryId = $("#CategoryId").attr('data-id');
         $.getJSON(tranGetSubCategoriesUrl, { categoryId: categoryId }, function (data) {
             $('#SubCategoryId option').remove();
             $.each(data, function (id, option) {
@@ -109,7 +113,15 @@
                 onCategoryChange();
                 onAccountChange();
             });
-        
+
+        $(document.body).on('click', '.dropdown-category li > a', function () {
+                var element = $(this).html() + ' <span class="caret"></span>';
+                var id = $(this).data('id');
+                
+                $("#CategoryId").html(element);
+                $("#CategoryId").attr('data-id', id);
+                FillSubCategoryOnCategoryChange();
+        });
     };
 
     return {
