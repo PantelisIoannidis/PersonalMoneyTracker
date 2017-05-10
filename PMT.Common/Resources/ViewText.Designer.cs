@@ -340,6 +340,15 @@ namespace PMT.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Delete Transactions.
+        /// </summary>
+        public static string TransactionViewDeleteTitle {
+            get {
+                return ResourceManager.GetString("TransactionViewDeleteTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Your Transactions.
         /// </summary>
         public static string TransactionViewIndexTitle {

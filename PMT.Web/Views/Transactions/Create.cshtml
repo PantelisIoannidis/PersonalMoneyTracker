@@ -31,31 +31,33 @@
 
 
                 <div class="form-group categoryListDropDown">
-                    @Html.LabelFor(model => model.CategoryId, ModelText.CategoryName, htmlAttributes: new { @class = "control-label col-md-4" })
+                    @Html.Label("categoryBtn", ModelText.CategoryName, htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-7">
                         <div class="dropdown">
-                            <button class="btn btn-default dropdown-toggle" type="button" id="CategoryId" value="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            <button  href="#" class="btn btn-primary dropdown-toggle" type="button" id="categoryBtn" value="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                 <i>none selected</i>
                                 <span class="caret"></span>
                             </button>
-                            <ul class="dropdown-menu dropdown-category" aria-labelledby="CategoryId">
+                            <ul class="dropdown-menu dropdown-category" aria-labelledby="categoryBtn">
                                 
                             </ul>
                         </div>
+                        @Html.HiddenFor(model => model.CategoryId)
                         @Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
                 <div class="form-group subCategoryListDropDown">
-                    @Html.LabelFor(model => model.SubCategoryId, ModelText.SubCategoryName, htmlAttributes: new { @class = "control-label col-md-4" })
+                    @Html.Label("subCategoryBtn", ModelText.SubCategoryName, htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-7">
                         <div class="dropdown">
-                            <button class="btn btn-default dropdown-toggle" type="button" id="SubCategoryId" value="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            <button class="btn btn-primary dropdown-toggle" type="button" id="subCategoryBtn" value="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                 <i>none selected</i>
                                 <span class="caret"></span>
                             </button>
-                            <ul class="dropdown-menu dropdown-subcategory" aria-labelledby="SubCategoryId"></ul>
+                            <ul class="dropdown-menu dropdown-subcategory" aria-labelledby="subCategoryBtn"></ul>
                         </div>
+                        @Html.HiddenFor(model => model.SubCategoryId)
                         @Html.ValidationMessageFor(model => model.SubCategoryId, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -94,14 +96,14 @@
 
                 <div class="form-group">
                     <div class="col-md-offset-4 col-md-7">
-                        <input type="submit" value="Create" class="btn btn-default" />
+                        <input type="submit" value=@ViewText.Add class="btn btn-default" />
                     </div>
                 </div>
 
             </div>
         }
         <div>
-            @Html.ActionLink("Back to List", "Index")
+            <a href="@Url.Action("Index","Transactions",null)" class="btn btn-info"><i class="fa fa-fw fa-arrow-left"></i> @ViewText.Back</a>
         </div>
     </div>
 </div>

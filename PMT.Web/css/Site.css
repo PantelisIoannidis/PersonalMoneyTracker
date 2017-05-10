@@ -24,7 +24,7 @@ textarea {
     list-style: none;
     text-decoration: none;
     overflow-y: auto;
-    background-color: #dd4814;
+    background-color: #3C4147;
     overflow-x: hidden;
     padding:15px 5px 15px 10px;
 }
@@ -41,7 +41,7 @@ textarea {
 .my-bar li a:focus {
 
     color: #fff;
-    background-color: #97310e !important;
+    background-color: #7A8288 !important;
 }
 
 .my-bar > li > ul {
@@ -57,12 +57,12 @@ textarea {
 }
 
 .my-bar > li > ul > li > a:hover {
-    background-color: #97310e !important;
+    background-color: #fff !important;
     color: #fff;
 }
 
 .my-bar > li.active {
-    background-color: #ff6a00 !important;
+    background-color: #272B30 !important;
 }
 
 .my-bar .iconInTile {

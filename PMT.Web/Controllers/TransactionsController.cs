@@ -12,6 +12,7 @@ using Microsoft.Extensions.Logging;
 using PMT.Web.Helpers;
 using PMT.DataLayer.Repositories;
 using PMT.Contracts.Repositories;
+using PMT.Models;
 
 namespace PMT.Web.Controllers
 {
@@ -24,13 +25,15 @@ namespace PMT.Web.Controllers
         ICategoryRepository categoryRepository;
         ISubCategoryRepository subCategoryRepository;
         IMoneyAccountRepository moneyAccountRepository;
+        IMapping mapping;
 
         public TransactionsController(ILoggerFactory logger,
                                         ICommonHelper commonHelper,
                                         ITransactionRepository transactionRepository,
                                         ICategoryRepository categoryRepository,
                                         ISubCategoryRepository subCategoryRepository,
-                                        IMoneyAccountRepository moneyAccountRepository
+                                        IMoneyAccountRepository moneyAccountRepository,
+                                        IMapping mapping
                                         )
         {
             this.commonHelper = commonHelper;
@@ -38,6 +41,7 @@ namespace PMT.Web.Controllers
             this.categoryRepository = categoryRepository;
             this.subCategoryRepository = subCategoryRepository;
             this.moneyAccountRepository = moneyAccountRepository;
+            this.mapping = mapping;
             this.logger = logger.CreateLogger<TransactionsController>();
         }
 
@@ -128,7 +132,17 @@ namespace PMT.Web.Controllers
         // GET: Transactions/Delete/5
         public ActionResult Delete(int? id)
         {
-            return null;
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Transaction transaction = transactionRepository.GetById(id);
+            if (transaction == null)
+                return HttpNotFound();
+            TransactionVM vm = mapping.TransactionToTransactionVM(transaction);
+            vm.SubCategoryName = categoryRepository.GetById(transaction.SubCategoryId).Name;
+            
+            return View(vm);
         }
 
         // POST: Transactions/Delete/5

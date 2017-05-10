@@ -12,13 +12,13 @@
     function addIndexButtonEvents() {
         $("#transTableEditButton").click(function (e) {
             var transId = $(".transTable .active .transTableId").val();
-            var newUrl = pmt.rootPath + "/Transaction/Edit/" + transId;
+            var newUrl = "/Transactions/Edit/" + transId;
             document.location.href = newUrl;
             e.preventDefault();
         });
         $("#transTableDeleteButton").click(function (e) {
             var transId = $(".transTable .active .transTableId").val();
-            var newUrl = pmt.rootPath + "/Transaction/Delete/1";
+            var newUrl = "/Transactions/Delete/" + transId;
             document.location.href = newUrl;
             e.preventDefault();
         });
@@ -37,15 +37,15 @@
 
 
     function hideCategoryDropDown() {
-        var categoryId = $("#CategoryId");
-        var subCategoryId = $("#SubCategoryId");
+        var categoryBtn = $("#categoryBtn");
+        var subCategoryBtn = $("#subCategoryBtn");
         var categoryListDropDown = $(".categoryListDropDown");
         var subCategoryListDropDown = $(".subCategoryListDropDown");
 
-        categoryId.html("");
-        categoryId.val("");
-        subCategoryId.html("");
-        subCategoryId.val("");
+        categoryBtn.html("");
+        categoryBtn.val("");
+        subCategoryBtn.html("");
+        subCategoryBtn.val("");
         $('.dropdown-category  li').remove();
         $('.dropdown-subcategory  li').remove();
 
@@ -81,11 +81,21 @@
         fillCategory();
     }
 
+    function setCategoryId(value) {
+        $('#categoryBtn').val(value);
+        $('#CategoryId').val(value);
+    }
+
+    function setSubCategoryId(value) {
+        $('#subCategoryBtn').val(value);
+        $('#SubCategoryId').val(value);
+    }
+
     function fillCategory() {
         var tranGetCategoriesUrl = '/Transactions/GetCategories';
         var tranType = $('#TransactionType').val();
         var categoryId = $('#CategoryId').val();
-        var firstCategoryId = "";
+        var firstcategoryBtn = "";
         return $.ajax({
             contentType: "application/json; charset=utf-8",
             dataType: "json",
@@ -100,17 +110,17 @@
                         + option.Name + "</a></li>";
                     $('.dropdown-category').append(element);
 
-                    if (firstCategoryId == "")
-                        firstCategoryId = option.CategoryId;
-                    if (categoryId == "")
-                        categoryId = firstCategoryId;
+                    if (firstcategoryBtn == "")
+                        firstcategoryBtn = option.CategoryId;
+                    if (categoryId == "" || categoryId=="0")
+                        categoryId = firstcategoryBtn;
                     if (option.CategoryId == categoryId) {
                         var element = "<i class='fa fa-fw  " + option.IconId + "'></i> "
                         + option.Name + ' <span class="caret"></span>';
 
-                        $("#CategoryId").html(element);
-                        $("#CategoryId").val(categoryId);
-                        $("#SubCategoryId").val("");
+                        $("#categoryBtn").html(element);
+                        setCategoryId(categoryId);
+                        setSubCategoryId("");
                     }
                 });
                 fillSubCategoryOnCategoryChange();
@@ -140,25 +150,25 @@
 
     function fillSubCategoryOnCategoryChange() {
         var tranGetSubCategoriesUrl = '/Transactions/GetSubCategories';
-        var categoryId = $("#CategoryId").val();
-        var subcategoryId = $("#SubCategoryId").val();
-        var firstSubCategoryId = "";
-        $.getJSON(tranGetSubCategoriesUrl, { categoryId: categoryId }, function (data) {
+        var categoryBtn = $("#categoryBtn").val();
+        var subCategoryId = $("#SubCategoryId").val();
+        var firstsubCategoryBtn = "";
+        $.getJSON(tranGetSubCategoriesUrl, { CategoryId: categoryBtn }, function (data) {
             $('.dropdown-subcategory li').remove();
             $.each(data, function (id, option) {
                 var element = "<li><a data-id='" + option.SubCategoryId + "' href='#'><i class='fa fa-fw  " + option.IconId + "'></i> "
                     + option.Name + "</a></li>";
                 $('.dropdown-subcategory').append(element);
 
-                if (firstSubCategoryId == "")
-                    firstSubCategoryId = option.SubCategoryId;
-                if (subcategoryId == "")
-                    subcategoryId = firstSubCategoryId;
-                if (option.SubCategoryId == subcategoryId) {
+                if (firstsubCategoryBtn == "")
+                    firstsubCategoryBtn = option.SubCategoryId;
+                if (subCategoryId == "" || subCategoryId == "0")
+                    subCategoryId = firstsubCategoryBtn;
+                if (option.SubCategoryId == subCategoryId) {
                     var element = "<i class='fa fa-fw  " + option.IconId + "'></i> "
                     + option.Name + ' <span class="caret"></span>';
-                    $("#SubCategoryId").html(element);
-                    $("#SubCategoryId").val(subcategoryId);
+                    $("#subCategoryBtn").html(element);
+                    setSubCategoryId(subCategoryId);
                 }
             });
         }).fail(function (jqXHR, textStatus, errorThrown) {
@@ -190,9 +200,9 @@
             var element = $(this).html() + ' <span class="caret"></span>';
             var id = $(this).data('id');
 
-            $("#CategoryId").html(element);
-            $("#CategoryId").val(id);
-            $("#SubCategoryId").val("");
+            $("#categoryBtn").html(element);
+            setCategoryId(id);
+            setSubCategoryId("");
             fillSubCategoryOnCategoryChange();
         });
     };
@@ -201,16 +211,15 @@
         $(document.body).on('click', '.dropdown-subcategory li > a', function () {
             var element = $(this).html() + ' <span class="caret"></span>';
             var id = $(this).data('id');
-
-            $("#SubCategoryId").html(element);
-            $("#SubCategoryId").val(id);
+            $("#subCategoryBtn").html(element);
+            setSubCategoryId(id);
         });
     };
 
     function onTransactionTypeChange() {
         $("#TransactionType").change(function () {
-            $("#SubCategoryId").val("");
-            $("#CategoryId").val("");
+            setCategoryId("");
+            setSubCategoryId("");
             refreshDropDownLists();
         });
     };
@@ -238,5 +247,4 @@
         addIndexButtonEvents: addIndexButtonEvents,
         onLoadCreateInit: onLoadCreateInit,
     };
-
 }();

@@ -77,5 +77,14 @@ namespace PMT.Common.Resources {
                 return ResourceManager.GetString("MoneyAccountsDeleteWarningLine2", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete this transaction?.
+        /// </summary>
+        public static string TransactionDeleteWarningLine {
+            get {
+                return ResourceManager.GetString("TransactionDeleteWarningLine", resourceCulture);
+            }
+        }
     }
 }
