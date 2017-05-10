@@ -26,6 +26,7 @@ namespace PMT.Entities
         [Display(Name = nameof(ModelText.TransactionTransactionType), ResourceType = typeof(ModelText))]
         public TransactionType TransactionType { get; set; }
 
+        [DataType(DataType.Date)]
         [Display(Name = nameof(ModelText.TransactionDate), ResourceType = typeof(ModelText))]
         public DateTime TransactionDate {
             get {

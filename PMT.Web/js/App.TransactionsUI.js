@@ -228,6 +228,9 @@
                     onTransactionTypeChange();
                 });
             });
+        $('.datepicker').datepicker({
+            locale: pmt.currentLocal
+        });
     };
 
     return {

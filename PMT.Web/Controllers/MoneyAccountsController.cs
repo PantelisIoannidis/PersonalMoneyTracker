@@ -23,12 +23,12 @@ namespace PMT.Web.Controllers
     {
         ILogger logger;
         IMoneyAccountRepository moneyAccountRepository;
-        ISecurityHelper securityHelper;
+        ICommonHelper securityHelper;
         IMoneyAccountEngine moneyAccountEngine;
         ITransactionRepository transactionRepository;
         ICategoryRepository categoryRepository;
         ISubCategoryRepository subCategoryRepository;
-        public MoneyAccountsController(ISecurityHelper securityHelper, 
+        public MoneyAccountsController(ICommonHelper securityHelper, 
                                         IMoneyAccountRepository moneyAccountRepository,
                                         IMoneyAccountEngine moneyAccountEngine,
                                         ITransactionRepository transactionRepository,

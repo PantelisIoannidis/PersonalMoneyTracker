@@ -73,7 +73,7 @@ namespace PMT.Web.App_Start
             //Helpers
             container.RegisterType<IActionStatus, ActionStatus>();
             container.RegisterType<ISeedingLists, SeedingLists>();
-            container.RegisterType<ISecurityHelper, SecurityHelper>();
+            container.RegisterType<ICommonHelper, CommonHelper>();
             container.RegisterType<IUnityFactory, UnityFactory>();
             container.RegisterType<IMapping, Mapping>();
 

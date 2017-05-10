@@ -21,10 +21,13 @@ namespace PMT.Web
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
+                      "~/Scripts/moment-with-locales.js",
+                      "~/Scripts/bootstrap-datepicker.js",
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootswatch/united/bootstrap.css",
+                      "~/Content/bootstrap-datepicker.css",
                       "~/Content/font-awesome.css"));
 
             bundles.Add(new StyleBundle("~/css").Include(

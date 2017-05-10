@@ -19,21 +19,21 @@ namespace PMT.Web.Controllers
     public class TransactionsController : Controller
     {
         ILogger logger;
-        ISecurityHelper securityHelper;
+        ICommonHelper commonHelper;
         ITransactionRepository transactionRepository;
         ICategoryRepository categoryRepository;
         ISubCategoryRepository subCategoryRepository;
         IMoneyAccountRepository moneyAccountRepository;
 
         public TransactionsController(ILoggerFactory logger,
-                                        ISecurityHelper securityHelper,
+                                        ICommonHelper commonHelper,
                                         ITransactionRepository transactionRepository,
                                         ICategoryRepository categoryRepository,
                                         ISubCategoryRepository subCategoryRepository,
                                         IMoneyAccountRepository moneyAccountRepository
                                         )
         {
-            this.securityHelper = securityHelper;
+            this.commonHelper = commonHelper;
             this.transactionRepository = transactionRepository;
             this.categoryRepository = categoryRepository;
             this.subCategoryRepository = subCategoryRepository;
@@ -45,7 +45,7 @@ namespace PMT.Web.Controllers
         public ActionResult Index()
         {
             
-            var userId = securityHelper.GetUserId(HttpContext);
+            var userId = commonHelper.GetUserId(HttpContext);
             var transactionsVM = transactionRepository.GetTransactions(userId, new Common.Helpers.TimeDuration(DateTime.UtcNow));
             return View(transactionsVM.ToList());
         }
@@ -58,7 +58,7 @@ namespace PMT.Web.Controllers
 
         public ActionResult GetAccountsAvailableForTransfer(int accountId)
         {
-            var userId = securityHelper.GetUserId(HttpContext);
+            var userId = commonHelper.GetUserId(HttpContext);
             var accounts = moneyAccountRepository.GetMoneyAccountsExcludingCurrent(userId,accountId);
             
             return Json(accounts, JsonRequestBehavior.AllowGet);
@@ -79,7 +79,7 @@ namespace PMT.Web.Controllers
         // GET: Transactions/Create
         public ActionResult Create()
         {
-            var userId = securityHelper.GetUserId(HttpContext);
+            var userId = commonHelper.GetUserId(HttpContext);
             var moneyAccounts = moneyAccountRepository.GetMoneyAccounts(userId);
             ViewBag.MoneyAccountId = new SelectList(moneyAccounts, "MoneyAccountId", "Name",moneyAccounts.FirstOrDefault());
             var transaction = new Transaction()
@@ -97,7 +97,16 @@ namespace PMT.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "TransactionId,UserId,MoneyAccountId,CategoryId,SubCategoryId,TransactionType,TransactionDate,Description,Amount,MoveToAccount")] Transaction transaction)
         {
-            return null;
+            var userId = commonHelper.GetUserId(HttpContext);
+            transaction.UserId = userId;
+            if (ModelState.IsValid)
+            {
+                transactionRepository.Insert(transaction);
+                transactionRepository.Save();
+                return RedirectToAction("Index");
+            }
+
+            return View(transaction);
         }
 
         // GET: Transactions/Edit/5

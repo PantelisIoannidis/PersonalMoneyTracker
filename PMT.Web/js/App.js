@@ -3,6 +3,7 @@
 var pmt = function () {
     
     var rootPath;
+    var currentLocal;
 
     var onDocumentLoadMaster = function () {
         commonUI.calculateActiveElement();

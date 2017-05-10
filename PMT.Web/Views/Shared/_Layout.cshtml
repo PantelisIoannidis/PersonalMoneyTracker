@@ -55,18 +55,6 @@
                     </li>
                 </ul>
             </div>
-            @*<div class=" col-sm-3 col-md-2">
-                <div class="btn-group-vertical">
-                    <a class="btn btn-primary" href="@Url.Action("Index","Home",null)" id="HomeLink"><div class="iconInTile"><i class="fa fa-fw fa-home"></i></div> @ViewText.QuickView</a>
-                    <a class="btn btn-primary" href="@Url.Action("Index","Transactions",null)" id="TransactionsLink"><div class="iconInTile"><i class="fa fa-fw icon-wallet"></i></div> @ViewText.Transactions</a>
-                    <a class="btn btn-primary" href="@Url.Action("Index","MoneyAccounts",null)" id="MoneyAccountsLink"><div class="iconInTile"><i class="fa fa-fw fa-book"></i></div> @ViewText.Accounts</a>
-                    <a class="btn btn-primary" href="@Url.Action("Index","Categories",null)" id="CategoriesLink"><div class="iconInTile"><i class="fa fa-fw icon-list-alt"></i></div> @ViewText.Categories</a>
-                    <a class="btn btn-primary" href="@Url.Action("Index","Reports",null)" id="ReportsLink"><div class="iconInTile"><i class="fa fa-fw fa-pie-chart"></i></div> @ViewText.Reports</a>
-                    <a class="btn btn-primary" href="@Url.Action("Index","Recurring",null)" id="RecurringLink"><div class="iconInTile"><i class="fa fa-fw fa-calendar-times-o "></i></div> @ViewText.Recurring</a>
-                    <a class="btn btn-primary" href="@Url.Action("Index","Settings",null)" id="SettingsLink"><div class="iconInTile"><i class="fa fa-fw fa-dashboard"></i></div> @ViewText.Other ...</a>
-                </div>
-            </div>*@
-
             <div class="container mcontent col-sm-9 col-md-10">
                 @RenderBody()
                 <hr />
@@ -82,12 +70,22 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/js/app")
-    <script type="text/javascript">            
+    @{
+            var commonHelper = new CommonHelper();
+            var serverCulture = commonHelper.GetServerCulture();
+    }
+    <script type="text/javascript">
         pmt.rootPath = '@Request.Url.Authority';
+        pmt.currentLocal = navigator.language || navigator.userLanguage;
+        if (!pmt.currentLocal)
+            pmt.currentLocal = '@serverCulture';
         $(function () {
-            pmt.onDocumentLoadMaster(); 
+            pmt.onDocumentLoadMaster();
         });
     </script>
     @RenderSection("scripts", required: false)
 </body>
+
+
+
 </html>
