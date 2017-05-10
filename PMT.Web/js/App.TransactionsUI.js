@@ -23,12 +23,69 @@
             e.preventDefault();
         });
     };
+    function hideTransferToDropDown() {
+        var transferDropDown = $(".transferDropDown");
+        if (!transferDropDown.hasClass("hidden"))
+            transferDropDown.addClass("hidden");
+    }
 
-    function FillCategoryOnLoad() {
+    function showTranferToDropDown() {
+        var transferDropDown = $(".transferDropDown");
+        if (transferDropDown.hasClass("hidden"))
+            transferDropDown.removeClass("hidden");
+    }
+
+
+    function hideCategoryDropDown() {
+        var categoryId = $("#CategoryId");
+        var subCategoryId = $("#SubCategoryId");
+        var categoryListDropDown = $(".categoryListDropDown");
+        var subCategoryListDropDown = $(".subCategoryListDropDown");
+
+        categoryId.html("");
+        categoryId.val("");
+        subCategoryId.html("");
+        subCategoryId.val("");
+        $('.dropdown-category  li').remove();
+        $('.dropdown-subcategory  li').remove();
+
+        if (!categoryListDropDown.hasClass("hidden"))
+            categoryListDropDown.addClass("hidden");
+        if (!subCategoryListDropDown.hasClass("hidden"))
+            subCategoryListDropDown.addClass("hidden");
+    }
+
+    function showCategoryDropDown() {
+        var categoryListDropDown = $(".categoryListDropDown");
+        var subCategoryListDropDown = $(".subCategoryListDropDown");
+        if (categoryListDropDown.hasClass("hidden"))
+            categoryListDropDown.removeClass("hidden");
+        if (subCategoryListDropDown.hasClass("hidden"))
+            subCategoryListDropDown.removeClass("hidden");
+    }
+
+    function refreshDropDownLists() {
+        var tranType = $('#TransactionType').val();
+        if (tranType == 2 || tranType == 3) {
+            hideCategoryDropDown();
+            if (tranType == 2) {
+                showTranferToDropDown();
+            } else {
+                hideTransferToDropDown();
+            }
+            return $.when(null);
+        } else {
+            hideTransferToDropDown();
+            showCategoryDropDown();
+        }
+        fillCategory();
+    }
+
+    function fillCategory() {
         var tranGetCategoriesUrl = '/Transactions/GetCategories';
         var tranType = $('#TransactionType').val();
         var categoryId = $('#CategoryId').val();
-        var firstCategoryId="";
+        var firstCategoryId = "";
         return $.ajax({
             contentType: "application/json; charset=utf-8",
             dataType: "json",
@@ -56,7 +113,7 @@
                         $("#SubCategoryId").val("");
                     }
                 });
-                FillSubCategoryOnCategoryChange();
+                fillSubCategoryOnCategoryChange();
             },
             error: function (jqXHR, exception) {
                 var msg = '';
@@ -78,9 +135,10 @@
                 console.log(msg);
             }
         });
+
     };
 
-    function FillSubCategoryOnCategoryChange() {
+    function fillSubCategoryOnCategoryChange() {
         var tranGetSubCategoriesUrl = '/Transactions/GetSubCategories';
         var categoryId = $("#CategoryId").val();
         var subcategoryId = $("#SubCategoryId").val();
@@ -108,7 +166,7 @@
         });
     };
 
-    function FillTransferToOnAccountChange() {
+    function fillTransferToOnAccountChange() {
         var tranGetAccountsAvailableForTransfer = '/Transactions/GetAccountsAvailableForTransfer';
         var accountId = $("#MoneyAccountId").val();
         return $.getJSON(tranGetAccountsAvailableForTransfer, { accountId: accountId }, function (data) {
@@ -123,7 +181,7 @@
 
     function onAccountChange() {
         $("#MoneyAccountId").change(function () {
-            FillTransferToOnAccountChange();
+            fillTransferToOnAccountChange();
         });
     };
 
@@ -135,7 +193,7 @@
             $("#CategoryId").html(element);
             $("#CategoryId").val(id);
             $("#SubCategoryId").val("");
-            FillSubCategoryOnCategoryChange();
+            fillSubCategoryOnCategoryChange();
         });
     };
 
@@ -149,16 +207,25 @@
         });
     };
 
+    function onTransactionTypeChange() {
+        $("#TransactionType").change(function () {
+            $("#SubCategoryId").val("");
+            $("#CategoryId").val("");
+            refreshDropDownLists();
+        });
+    };
+
     function onLoadCreateInit() {
         $.when(
-            FillCategoryOnLoad(),
-            FillTransferToOnAccountChange()
+            refreshDropDownLists(),
+            fillTransferToOnAccountChange()
             ).done(function () {
                 $.when(
                     onCategoryChange()
                 ).done(function () {
                     onSubCategoryChange();
                     onAccountChange();
+                    onTransactionTypeChange();
                 });
             });
     };
