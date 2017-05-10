@@ -1,6 +1,6 @@
 ﻿var transactionsUI = function () {
 
-    var calculateIndexActiveElement = function () {
+    function calculateIndexActiveElement() {
         var $currentLink = $(".transTable > tbody > tr");
         $currentLink.click(function (e) {
             $this = $(this);
@@ -9,7 +9,7 @@
         });
     };
 
-    var addIndexButtonEvents = function () {
+    function addIndexButtonEvents() {
         $("#transTableEditButton").click(function (e) {
             var transId = $(".transTable .active .transTableId").val();
             var newUrl = pmt.rootPath + "/Transaction/Edit/" + transId;
@@ -24,9 +24,11 @@
         });
     };
 
-    var FillCategoryOnLoad = function () {
+    function FillCategoryOnLoad() {
         var tranGetCategoriesUrl = '/Transactions/GetCategories';
         var tranType = $('#TransactionType').val();
+        var categoryId = $('#CategoryId').val();
+        var firstCategoryId="";
         return $.ajax({
             contentType: "application/json; charset=utf-8",
             dataType: "json",
@@ -35,13 +37,26 @@
             data: { type: tranType },
             url: tranGetCategoriesUrl,
             success: function (data) {
-                $('#CategoryId option').remove();
+                $('.dropdown-category  li').remove();
                 $.each(data, function (id, option) {
                     var element = "<li><a data-id='" + option.CategoryId + "' href='#'><i class='fa fa-fw  " + option.IconId + "'></i> "
                         + option.Name + "</a></li>";
-                    //$('#CategoryId').append("<option value=" + option.CategoryId + "><i class='fa fa-fw  " + option.IconId + "'></i>" + option.Name + "</option>");
                     $('.dropdown-category').append(element);
-                })
+
+                    if (firstCategoryId == "")
+                        firstCategoryId = option.CategoryId;
+                    if (categoryId == "")
+                        categoryId = firstCategoryId;
+                    if (option.CategoryId == categoryId) {
+                        var element = "<i class='fa fa-fw  " + option.IconId + "'></i> "
+                        + option.Name + ' <span class="caret"></span>';
+
+                        $("#CategoryId").html(element);
+                        $("#CategoryId").val(categoryId);
+                        $("#SubCategoryId").val("");
+                    }
+                });
+                FillSubCategoryOnCategoryChange();
             },
             error: function (jqXHR, exception) {
                 var msg = '';
@@ -65,27 +80,35 @@
         });
     };
 
-    var FillSubCategoryOnCategoryChange = function () {
+    function FillSubCategoryOnCategoryChange() {
         var tranGetSubCategoriesUrl = '/Transactions/GetSubCategories';
-        //var categoryId = $("#CategoryId").val();
-        var categoryId = $("#CategoryId").attr('data-id');
+        var categoryId = $("#CategoryId").val();
+        var subcategoryId = $("#SubCategoryId").val();
+        var firstSubCategoryId = "";
         $.getJSON(tranGetSubCategoriesUrl, { categoryId: categoryId }, function (data) {
-            $('#SubCategoryId option').remove();
+            $('.dropdown-subcategory li').remove();
             $.each(data, function (id, option) {
-                $('#SubCategoryId').append("<option value=" + option.SubCategoryId + "><i class='fa fa-fw  " + option.IconId + "'></i>" + option.Name + "</option");
+                var element = "<li><a data-id='" + option.SubCategoryId + "' href='#'><i class='fa fa-fw  " + option.IconId + "'></i> "
+                    + option.Name + "</a></li>";
+                $('.dropdown-subcategory').append(element);
+
+                if (firstSubCategoryId == "")
+                    firstSubCategoryId = option.SubCategoryId;
+                if (subcategoryId == "")
+                    subcategoryId = firstSubCategoryId;
+                if (option.SubCategoryId == subcategoryId) {
+                    var element = "<i class='fa fa-fw  " + option.IconId + "'></i> "
+                    + option.Name + ' <span class="caret"></span>';
+                    $("#SubCategoryId").html(element);
+                    $("#SubCategoryId").val(subcategoryId);
+                }
             });
         }).fail(function (jqXHR, textStatus, errorThrown) {
             console.log('Error getting subcategories!');
         });
     };
 
-    var onCategoryChange = function () {
-        $("#CategoryId").change(function () {
-            FillSubCategoryOnCategoryChange();
-        });
-    };
-
-    var FillTransferToOnAccountChange = function () {
+    function FillTransferToOnAccountChange() {
         var tranGetAccountsAvailableForTransfer = '/Transactions/GetAccountsAvailableForTransfer';
         var accountId = $("#MoneyAccountId").val();
         return $.getJSON(tranGetAccountsAvailableForTransfer, { accountId: accountId }, function (data) {
@@ -98,30 +121,46 @@
         });
     };
 
-    var onAccountChange = function () {
+    function onAccountChange() {
         $("#MoneyAccountId").change(function () {
             FillTransferToOnAccountChange();
         });
     };
 
-    var onLoadCreateInit = function () {
+    function onCategoryChange() {
+        $(document.body).on('click', '.dropdown-category li > a', function () {
+            var element = $(this).html() + ' <span class="caret"></span>';
+            var id = $(this).data('id');
+
+            $("#CategoryId").html(element);
+            $("#CategoryId").val(id);
+            $("#SubCategoryId").val("");
+            FillSubCategoryOnCategoryChange();
+        });
+    };
+
+    function onSubCategoryChange() {
+        $(document.body).on('click', '.dropdown-subcategory li > a', function () {
+            var element = $(this).html() + ' <span class="caret"></span>';
+            var id = $(this).data('id');
+
+            $("#SubCategoryId").html(element);
+            $("#SubCategoryId").val(id);
+        });
+    };
+
+    function onLoadCreateInit() {
         $.when(
             FillCategoryOnLoad(),
             FillTransferToOnAccountChange()
             ).done(function () {
-                FillSubCategoryOnCategoryChange();
-                onCategoryChange();
-                onAccountChange();
+                $.when(
+                    onCategoryChange()
+                ).done(function () {
+                    onSubCategoryChange();
+                    onAccountChange();
+                });
             });
-
-        $(document.body).on('click', '.dropdown-category li > a', function () {
-                var element = $(this).html() + ' <span class="caret"></span>';
-                var id = $(this).data('id');
-                
-                $("#CategoryId").html(element);
-                $("#CategoryId").attr('data-id', id);
-                FillSubCategoryOnCategoryChange();
-        });
     };
 
     return {

@@ -20,11 +20,12 @@
                         @Html.ValidationMessageFor(model => model.MoneyAccountId, "", new { @class = "text-danger" })
                     </div>
                 </div>
+
                 <div class="form-group">
                     @Html.LabelFor(model => model.CategoryId, ModelText.CategoryName, htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-7">
                         <div class="dropdown">
-                            <button class="btn btn-default dropdown-toggle" type="button" id="CategoryId" data-id="0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="CategoryId" value="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                 Category
                                 <span class="caret"></span>
                             </button>
@@ -35,13 +36,21 @@
                         @Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
                     </div>
                 </div>
+
                 <div class="form-group">
                     @Html.LabelFor(model => model.SubCategoryId, ModelText.SubCategoryName, htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-7">
-                        <select class="form-control" id="SubCategoryId" name="SubCategoryId"></select>
+                        <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="SubCategoryId" value="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                SubCategory
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-subcategory" aria-labelledby="SubCategoryId"></ul>
+                        </div>
                         @Html.ValidationMessageFor(model => model.SubCategoryId, "", new { @class = "text-danger" })
                     </div>
                 </div>
+
                 <div class="form-group">
                     @Html.LabelFor(model => model.TransactionType, ModelText.TransactionTransactionType, htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-7">
@@ -49,6 +58,7 @@
                         @Html.ValidationMessageFor(model => model.TransactionType, "", new { @class = "text-danger" })
                     </div>
                 </div>
+
                 <div class="form-group">
                     @Html.LabelFor(model => model.TransferTo, ModelText.TransactionTransferTo, htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-7">
@@ -56,6 +66,7 @@
                         @Html.ValidationMessageFor(model => model.TransferTo, "", new { @class = "text-danger" })
                     </div>
                 </div>
+
                 <div class="form-group">
                     @Html.LabelFor(model => model.TransactionDate, ModelText.TransactionDate, htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-7">
@@ -63,6 +74,7 @@
                         @Html.ValidationMessageFor(model => model.TransactionDate, "", new { @class = "text-danger" })
                     </div>
                 </div>
+
                 <div class="form-group">
                     @Html.LabelFor(model => model.Description, ModelText.TransactionDescription, htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-7">
@@ -70,6 +82,7 @@
                         @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
                     </div>
                 </div>
+
                 <div class="form-group">
                     @Html.LabelFor(model => model.Amount, ModelText.TransactionAmount, htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-7">
@@ -77,11 +90,13 @@
                         @Html.ValidationMessageFor(model => model.Amount, "", new { @class = "text-danger" })
                     </div>
                 </div>
+
                 <div class="form-group">
                     <div class="col-md-offset-4 col-md-7">
                         <input type="submit" value="Create" class="btn btn-default" />
                     </div>
                 </div>
+
             </div>
         }
         <div>
