@@ -106,8 +106,8 @@
             success: function (data) {
                 $('.dropdown-category  li').remove();
                 $.each(data, function (id, option) {
-                    var element = "<li><a data-id='" + option.CategoryId + "' href='#'><i class='fa fa-fw  " + option.IconId + "'></i> "
-                        + option.Name + "</a></li>";
+                    var element = "<li><a data-id='" + option.CategoryId + "' href='#'><span><i class='fa fa-fw  " + option.IconId + "'></i> "
+                        + option.Name + "</span></a></li>";
                     $('.dropdown-category').append(element);
 
                     if (firstcategoryBtn == "")
@@ -115,8 +115,8 @@
                     if (categoryId == "" || categoryId=="0")
                         categoryId = firstcategoryBtn;
                     if (option.CategoryId == categoryId) {
-                        var element = "<i class='fa fa-fw  " + option.IconId + "'></i> "
-                        + option.Name + ' <span class="caret"></span>';
+                        var element = "<span><i class='fa fa-fw  " + option.IconId + "'></i> "
+                        + option.Name + '</span> <span class="caret"></span>';
 
                         $("#categoryBtn").html(element);
                         setCategoryId(categoryId);

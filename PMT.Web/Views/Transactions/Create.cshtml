@@ -34,11 +34,11 @@
                     @Html.Label("categoryBtn", ModelText.CategoryName, htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-7">
                         <div class="dropdown">
-                            <button  href="#" class="btn btn-primary dropdown-toggle" type="button" id="categoryBtn" value="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            <button  href="#" class="btn btn-default dropdown-toggle selectdd" type="button" id="categoryBtn" value="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                 <i>none selected</i>
                                 <span class="caret"></span>
                             </button>
-                            <ul class="dropdown-menu dropdown-category" aria-labelledby="categoryBtn">
+                            <ul class="dropdown-menu selectdd dropdown-category scrollable-menu" aria-labelledby="categoryBtn">
                                 
                             </ul>
                         </div>
@@ -51,11 +51,11 @@
                     @Html.Label("subCategoryBtn", ModelText.SubCategoryName, htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-7">
                         <div class="dropdown">
-                            <button class="btn btn-primary dropdown-toggle" type="button" id="subCategoryBtn" value="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                <i>none selected</i>
+                            <button class="btn btn-default dropdown-toggle selectdd" type="button" id="subCategoryBtn" value="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                <span>none selected</span>
                                 <span class="caret"></span>
                             </button>
-                            <ul class="dropdown-menu dropdown-subcategory" aria-labelledby="subCategoryBtn"></ul>
+                            <ul class="dropdown-menu selectdd dropdown-subcategory scrollable-menu" aria-labelledby="subCategoryBtn"></ul>
                         </div>
                         @Html.HiddenFor(model => model.SubCategoryId)
                         @Html.ValidationMessageFor(model => model.SubCategoryId, "", new { @class = "text-danger" })

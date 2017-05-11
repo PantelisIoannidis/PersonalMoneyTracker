@@ -2,10 +2,19 @@
 
 }
 
-.dropdown-toggle,
-.dropdown-menu{
+.selectdd{
+    text-align:left;
     max-width: 280px;
     width:100%;
+}
+.selectdd .caret {
+    float:right;
+    margin:-10px 0;
+}
+.scrollable-menu {
+    height: auto;
+    max-height: 200px;
+    overflow-x: hidden;
 }
 input,
 select,
@@ -24,7 +33,7 @@ textarea {
     list-style: none;
     text-decoration: none;
     overflow-y: auto;
-    background-color: #3C4147;
+    background-color: #2FA4E7;
     overflow-x: hidden;
     padding:15px 5px 15px 10px;
 }
@@ -41,7 +50,7 @@ textarea {
 .my-bar li a:focus {
 
     color: #fff;
-    background-color: #7A8288 !important;
+    background-color: #175589 !important;
 }
 
 .my-bar > li > ul {
@@ -49,20 +58,8 @@ textarea {
     
 }
 
-.my-bar > li > ul > li > a {
-    display: block;
-    padding: 5px 0px 5px 0px;
-    color: #fff;
-    text-decoration: none;
-}
-
-.my-bar > li > ul > li > a:hover {
-    background-color: #fff !important;
-    color: #fff;
-}
-
 .my-bar > li.active {
-    background-color: #272B30 !important;
+    background-color: #277fc8 !important;
 }
 
 .my-bar .iconInTile {
