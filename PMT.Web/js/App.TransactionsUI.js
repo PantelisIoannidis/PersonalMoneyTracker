@@ -10,17 +10,29 @@
     };
 
     function addIndexButtonEvents() {
-        $("#transTableEditButton").click(function (e) {
+        $("#transTableDeleteButton").click(function (e) {
+            e.preventDefault();
             var transId = $(".transTable .active .transTableId").val();
+            if (!transId) return;
+            $("#transactionDeleteModal").modal("show");
+            
+        });
+        $("#transTableDeleteConfirmButton").on('click', function (e) {
+            e.preventDefault();
+            var transId = $(".transTable .active .transTableId").val();
+            if (!transId) return;
+            var token = $('[name=__RequestVerificationToken]').val();
+            $("#transactionDeleteModal").modal("hide");
+            $.post("/Transactions/Delete/", { __RequestVerificationToken: token, id: transId },
+                function (retURL) { window.location.reload(true); });
+        });
+        $("#transTableEditButton").click(function (e) {
+            e.preventDefault();
+            var transId = $(".transTable .active .transTableId").val();
+            if (!transId) return;
             var newUrl = "/Transactions/Edit/" + transId;
             document.location.href = newUrl;
-            e.preventDefault();
-        });
-        $("#transTableDeleteButton").click(function (e) {
-            var transId = $(".transTable .active .transTableId").val();
-            var newUrl = "/Transactions/Delete/" + transId;
-            document.location.href = newUrl;
-            e.preventDefault();
+            
         });
     };
     function hideTransferToDropDown() {

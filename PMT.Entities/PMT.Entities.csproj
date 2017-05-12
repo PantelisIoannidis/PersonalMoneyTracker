@@ -50,6 +50,7 @@
     <Compile Include="Transaction.cs" />
     <Compile Include="MoneyAccount.cs" />
     <Compile Include="TransactionType.cs" />
+    <Compile Include="Literals.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PMT.Common\PMT.Common.csproj">

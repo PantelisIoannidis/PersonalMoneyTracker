@@ -214,6 +214,6 @@
     <value>Add new transaction</value>
   </data>
   <data name="TransactionViewDeleteTitle" xml:space="preserve">
-    <value>Delete Transactions</value>
+    <value>Delete Transaction</value>
   </data>
 </root>

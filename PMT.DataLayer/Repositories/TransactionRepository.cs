@@ -16,7 +16,7 @@ namespace PMT.DataLayer.Repositories
         {
         }
 
-        public IQueryable<TransactionVM> GetTransactions(string userId,TimeDuration timeDuration)
+        public IQueryable<TransactionVM> GetTransactionsVM(string userId,TimeDuration timeDuration)
         {
             var transactions = from tran in db.Transactions
                                join cat in db.Categories on tran.CategoryId equals cat.CategoryId
@@ -51,15 +51,52 @@ namespace PMT.DataLayer.Repositories
 
             return transactions;
         }
-        public IQueryable<TransactionVM> GetTransactions(string userId, TimeDuration timeDuration,int account)
+        public IQueryable<TransactionVM> GetTransactionsVM(string userId, TimeDuration timeDuration,int account)
         {
-            return GetTransactions(userId, timeDuration)
+            return GetTransactionsVM(userId, timeDuration)
                     .Where(c => c.MoneyAccountId == account);
         }
 
+        public TransactionVM GetTransactionVM(int transactionId)
+        {
+            var transactions = from tran in db.Transactions
+                               join cat in db.Categories on tran.CategoryId equals cat.CategoryId
+                               into temp
+                               from category in temp.DefaultIfEmpty()
+                               join subCat in db.SubCategories on tran.SubCategoryId equals subCat.SubCategoryId
+                               into temp2
+                               from subcategory in temp2.DefaultIfEmpty()
+                               join am in db.MoneyAccounts on tran.MoneyAccountId equals am.MoneyAccountId
+                               into temp3
+                               from moneyaccount in temp3.DefaultIfEmpty()
+                               where tran.TransactionId == transactionId
+                               select (new TransactionVM()
+                               {
+                                   UserId = tran.UserId,
+                                   MoneyAccountId = tran.MoneyAccountId,
+                                   CategoryId = tran.CategoryId,
+                                   SubCategoryId = tran.SubCategoryId,
+                                   TransactionDate = tran.TransactionDate,
+                                   Description = tran.Description,
+                                   TransactionId = tran.TransactionId,
+                                   TransactionType = tran.TransactionType,
+                                   Amount = tran.Amount,
+                                   TransferTo = tran.TransferTo,
+                                   CategoryName = category.Name,
+                                   CategoryIcon = category.IconId,
+                                   CategoryColor = category.Color,
+                                   SubCategoryName = subcategory.Name,
+                                   SubCategoryIcon = subcategory.IconId,
+                                   SubCategoryColor = subcategory.Color,
+                                   MoneyAccountName = moneyaccount.Name,
+                               });
 
-            #region balance
-            public decimal GetBalance(string userId)
+            return transactions.FirstOrDefault();
+        }
+
+
+        #region balance
+        public decimal GetBalance(string userId)
         {
             return db.Transactions
                     .Where(t=>t.UserId == userId)

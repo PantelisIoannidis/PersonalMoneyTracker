@@ -1,4 +1,5 @@
 ﻿@model PMT.Models.TransactionVM
+@using PMT.Entities
 
 @{
     ViewBag.Title = ViewText.TransactionViewDeleteTitle;
@@ -13,6 +14,12 @@
             <dl class="dl-horizontal">
                 <dd>
                     @Html.DisplayFor(model => model.SubCategoryName)
+                </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Description)
+                </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.TransactionType)
                 </dd>
                 <dd>
                     @Html.DisplayFor(model => model.Amount)

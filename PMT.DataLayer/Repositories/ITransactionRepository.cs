@@ -9,9 +9,11 @@ namespace PMT.DataLayer.Repositories
 {
     public interface ITransactionRepository : IRepositoryBase<Transaction>
     {
-        IQueryable<TransactionVM> GetTransactions(string userId, TimeDuration timeDuration);
+        IQueryable<TransactionVM> GetTransactionsVM(string userId, TimeDuration timeDuration);
 
-        IQueryable<TransactionVM> GetTransactions(string userId, TimeDuration timeDuration, int account);
+        IQueryable<TransactionVM> GetTransactionsVM(string userId, TimeDuration timeDuration, int account);
+
+        TransactionVM GetTransactionVM(int transactionId);
 
         decimal GetAdjustment(string userId);
         decimal GetAdjustmentPerAccount(string userId, int moneyAccountId);

@@ -111,7 +111,6 @@
       <DependentUpon>ViewText.resx</DependentUpon>
     </Compile>
     <Compile Include="Helpers\TimeDuration.cs" />
-    <Compile Include="TransactionType.cs" />
     <Compile Include="UnityFactory.cs" />
     <Compile Include="Utils.cs" />
   </ItemGroup>

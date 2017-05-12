@@ -50,7 +50,7 @@ namespace PMT.Web.Controllers
         {
             
             var userId = commonHelper.GetUserId(HttpContext);
-            var transactionsVM = transactionRepository.GetTransactions(userId, new Common.Helpers.TimeDuration(DateTime.UtcNow));
+            var transactionsVM = transactionRepository.GetTransactionsVM(userId, new Common.Helpers.TimeDuration(DateTime.UtcNow));
             return View(transactionsVM.ToList());
         }
 
@@ -136,13 +136,10 @@ namespace PMT.Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Transaction transaction = transactionRepository.GetById(id);
-            if (transaction == null)
+            Transaction transactionVM = transactionRepository.GetTransactionVM(id.Value);
+            if (transactionVM == null)
                 return HttpNotFound();
-            TransactionVM vm = mapping.TransactionToTransactionVM(transaction);
-            vm.SubCategoryName = categoryRepository.GetById(transaction.SubCategoryId).Name;
-            
-            return View(vm);
+            return View(transactionVM);
         }
 
         // POST: Transactions/Delete/5
@@ -150,7 +147,9 @@ namespace PMT.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            return null;
+            transactionRepository.Delete(id);
+            transactionRepository.Save();
+            return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)
