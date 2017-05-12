@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<PMT.Entities.MoneyAccount>
-
+@using PMT.Common
 @{
     ViewBag.Title = ViewText.MoneyAccountsViewIndexTitle;
 }
@@ -24,16 +24,18 @@
             <tbody>
                 @foreach (var item in Model)
                 {
+                    
                     <tr>
                         <td>
                             @Html.DisplayFor(modelItem => item.Name)
                         </td>
-                        <td class="text-right">
-                            @Html.DisplayFor(modelItem => item.Balance)
+                        <td class="text-right @((item.Balance < 0) ? "negativeNumber":"")">
+                            @item.Balance.FormatNegativeSign()
                         </td>
                         <td>
+                            <input type="hidden" class="deleteAccountId" value="@item.MoneyAccountId" />
                             <a href="@Url.Action("Edit","MoneyAccounts", new { id = item.MoneyAccountId })" class="btn btn-warning btn-xs"><i class="fa fa-fw fa-edit"></i> @ViewText.Edit</a>
-                            <a href="@Url.Action("Delete","MoneyAccounts", new { id = item.MoneyAccountId })" class="btn btn-danger btn-xs"><i class="fa fa-fw fa-trash"></i> @ViewText.Delete</a>
+                            <a href="@Url.Action("Delete","MoneyAccounts", new { id = item.MoneyAccountId })" class="btn btn-danger btn-xs accountTableDeleteButton"><i class="fa fa-fw fa-trash"></i> @ViewText.Delete</a>
                         </td>
                     </tr>
                 }
@@ -41,14 +43,14 @@
                     <td class="text-right">
                         <strong>@ViewText.Total :</strong>
                     </td>
-                    <td class="text-right">
-                        <strong>@(((decimal)ViewBag.TotalBalance).ToString("C2"))</strong>
+                    <td class="text-right @((ViewBag.TotalBalance < 0) ? "negativeNumber":"")">
+                        <strong>@(((decimal)ViewBag.TotalBalance).FormatNegativeSign())</strong>
                     </td>
-                    <td>
-
-                    </td>
+                    <td></td>
                 </tr>
             </tbody>
+
+
 
         </table>
         <p>
@@ -56,4 +58,32 @@
         </p>
     </div>
 </div>
+
+<div class="modal fade" id="accountDeleteModal" tabindex="-1" role="dialog" aria-labelledby="accountDeleteModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <input type="hidden" id="deleteTarget" value="" />
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="accountDeleteModalLabel">@ViewText.MoneyAccountsViewDeleteTitle</h4>
+            </div>
+            <div class="modal-body">
+                <h4>@MessagesText.MoneyAccountsDeleteWarningLine1</h4>
+                <h5>@MessagesText.MoneyAccountsDeleteWarningLine2</h5>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button id="accountTableDeleteConfirmButton" type="button" class="btn btn-danger">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+        $(function () {
+            pmt.onDocumentLoadIndexAccounts();
+        });
+    </script>
+}
 

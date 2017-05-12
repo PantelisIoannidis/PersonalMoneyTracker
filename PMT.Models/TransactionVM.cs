@@ -1,4 +1,5 @@
-﻿using PMT.Entities;
+﻿using PMT.Common;
+using PMT.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,14 +10,6 @@ namespace PMT.Models
 {
     public class TransactionVM : Transaction
     {
-        private static System.Globalization.NumberFormatInfo currencyFormat;
-        public TransactionVM()
-        {
-            //replace parenthesis with negative sign
-            string curCulture = System.Threading.Thread.CurrentThread.CurrentCulture.ToString();
-            currencyFormat = new System.Globalization.CultureInfo(curCulture).NumberFormat;
-            currencyFormat.CurrencyNegativePattern = 1;
-        }
         public string MoneyAccountName { get; set; }
         public string CategoryName { get; set; }
         public string CategoryIcon { get; set; }
@@ -36,7 +29,7 @@ namespace PMT.Models
         {
             get
             {
-                return Amount.ToString("C2", currencyFormat);
+                return Amount.FormatNegativeSign();
             }
         }
     }

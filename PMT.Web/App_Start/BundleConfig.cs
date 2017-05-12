@@ -36,6 +36,7 @@ namespace PMT.Web
 
             bundles.Add(new ScriptBundle("~/js/app").Include(
                         "~/js/App.CommonUI.js",
+                        "~/js/App.MoneyAccountUI.js",
                         "~/js/App.TransactionsUI.js",
                         "~/js/App.js"
                         ));

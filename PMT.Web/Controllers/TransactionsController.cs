@@ -116,7 +116,12 @@ namespace PMT.Web.Controllers
         // GET: Transactions/Edit/5
         public ActionResult Edit(int? id)
         {
-            return null;
+            var userId = commonHelper.GetUserId(HttpContext);
+            var moneyAccounts = moneyAccountRepository.GetMoneyAccounts(userId);
+            ViewBag.MoneyAccountId = new SelectList(moneyAccounts, "MoneyAccountId", "Name", moneyAccounts.FirstOrDefault());
+            var transaction = transactionRepository.GetById(id);
+            
+            return View(transaction);
         }
 
         // POST: Transactions/Edit/5
@@ -126,7 +131,15 @@ namespace PMT.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "TransactionId,UserId,MoneyAccountId,CategoryId,SubCategoryId,TransactionType,TransactionDate,Description,Amount,MoveToAccount")] Transaction transaction)
         {
-            return null;
+            var userId = commonHelper.GetUserId(HttpContext);
+            transaction.UserId = userId;
+            if (ModelState.IsValid)
+            {
+                transactionRepository.Update(transaction);
+                return RedirectToAction("Index");
+            }
+
+            return View(transaction);
         }
 
         // GET: Transactions/Delete/5

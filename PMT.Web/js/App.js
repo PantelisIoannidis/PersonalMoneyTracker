@@ -14,6 +14,10 @@ var pmt = function () {
         transactionsUI.addIndexButtonEvents();
     };
 
+    var onDocumentLoadIndexAccounts = function () {
+        moneyAccountUI.addIndexButtonEvents();
+    };
+
     var onDocumentTransactionCreate = function () {
         transactionsUI.onLoadCreateInit();
     }
@@ -23,6 +27,9 @@ var pmt = function () {
         onDocumentLoadMaster: onDocumentLoadMaster,
         onDocumentLoadIndexTransaction: onDocumentLoadIndexTransaction,
         onDocumentTransactionCreate: onDocumentTransactionCreate,
+        onDocumentLoadIndexAccounts: onDocumentLoadIndexAccounts,
+
+
     };
 
 }(); 

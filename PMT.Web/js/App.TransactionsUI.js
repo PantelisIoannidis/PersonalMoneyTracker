@@ -165,6 +165,7 @@
         var categoryBtn = $("#categoryBtn").val();
         var subCategoryId = $("#SubCategoryId").val();
         var firstsubCategoryBtn = "";
+        var initialSubCategoryId = $("#initialSubCategoryId").val();
         $.getJSON(tranGetSubCategoriesUrl, { CategoryId: categoryBtn }, function (data) {
             $('.dropdown-subcategory li').remove();
             $.each(data, function (id, option) {
@@ -176,10 +177,14 @@
                     firstsubCategoryBtn = option.SubCategoryId;
                 if (subCategoryId == "" || subCategoryId == "0")
                     subCategoryId = firstsubCategoryBtn;
+                if (initialSubCategoryId != "") {
+                    subCategoryId = initialSubCategoryId;  
+                }
                 if (option.SubCategoryId == subCategoryId) {
                     var element = "<i class='fa fa-fw  " + option.IconId + "'></i> "
                     + option.Name + ' <span class="caret"></span>';
                     $("#subCategoryBtn").html(element);
+                    $("#initialSubCategoryId").val("");
                     setSubCategoryId(subCategoryId);
                 }
             });

@@ -216,4 +216,7 @@
   <data name="TransactionViewDeleteTitle" xml:space="preserve">
     <value>Delete Transaction</value>
   </data>
+  <data name="TransactionViewEditTitle" xml:space="preserve">
+    <value>Edit transaction</value>
+  </data>
 </root>

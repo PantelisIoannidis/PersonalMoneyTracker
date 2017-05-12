@@ -353,6 +353,7 @@
     <Content Include="Content\bootstrap-datepicker.standalone.css.map" />
     <Content Include="Content\bootstrap-datepicker.min.css.map" />
     <Content Include="Content\bootstrap-datepicker.css.map" />
+    <Content Include="js\App.MoneyAccountUI.js" />
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>

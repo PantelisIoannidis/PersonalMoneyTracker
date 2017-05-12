@@ -94,6 +94,21 @@ namespace PMT.DataLayer.Repositories
             return transactions.FirstOrDefault();
         }
 
+        public void Update(Transaction transaction)
+        {
+            try
+            {
+                var old_transaction = db.Transactions.FirstOrDefault(x => x.TransactionId == transaction.TransactionId);
+                db.Entry(old_transaction).CurrentValues.SetValues(transaction);
+                db.SaveChanges();
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
 
         #region balance
         public decimal GetBalance(string userId)

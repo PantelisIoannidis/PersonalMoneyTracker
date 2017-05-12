@@ -349,6 +349,15 @@ namespace PMT.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Edit transaction.
+        /// </summary>
+        public static string TransactionViewEditTitle {
+            get {
+                return ResourceManager.GetString("TransactionViewEditTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Your Transactions.
         /// </summary>
         public static string TransactionViewIndexTitle {

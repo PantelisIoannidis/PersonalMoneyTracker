@@ -22,5 +22,14 @@ namespace PMT.Common
             var uniqueValues = new HashSet<TKey>();
             return source.Where(item => uniqueValues.Add(expression(item)));
         }
+
+        public static string FormatNegativeSign(this decimal val)
+        {
+            string curCulture = System.Threading.Thread.CurrentThread.CurrentCulture.ToString();
+            var currencyFormat = new System.Globalization.CultureInfo(curCulture).NumberFormat;
+            currencyFormat.CurrencyNegativePattern = 1;
+
+            return val.ToString("C2", currencyFormat);
+        }
     }
 }
