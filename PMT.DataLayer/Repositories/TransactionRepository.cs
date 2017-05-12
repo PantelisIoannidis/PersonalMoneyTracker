@@ -29,6 +29,7 @@ namespace PMT.DataLayer.Repositories
                                into temp3
                                from moneyaccount in temp3.DefaultIfEmpty()
                                where tran.UserId==userId
+                               orderby tran.TransactionDate
                                select (new TransactionVM() {
                                    UserId=tran.UserId,
                                    MoneyAccountId=tran.MoneyAccountId,
@@ -70,6 +71,7 @@ namespace PMT.DataLayer.Repositories
                                into temp3
                                from moneyaccount in temp3.DefaultIfEmpty()
                                where tran.TransactionId == transactionId
+                               orderby tran.TransactionDate
                                select (new TransactionVM()
                                {
                                    UserId = tran.UserId,

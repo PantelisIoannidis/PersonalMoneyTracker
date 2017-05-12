@@ -13,6 +13,7 @@ using PMT.Web.Helpers;
 using PMT.DataLayer.Repositories;
 using PMT.Contracts.Repositories;
 using PMT.Models;
+using PMT.Common;
 
 namespace PMT.Web.Controllers
 {
@@ -46,12 +47,19 @@ namespace PMT.Web.Controllers
         }
 
         // GET: Transactions
-        public ActionResult Index()
+        public ActionResult Index(int? page=1)
         {
             
             var userId = commonHelper.GetUserId(HttpContext);
+            var postsPerPage = 3;
             var transactionsVM = transactionRepository.GetTransactionsVM(userId, new Common.Helpers.TimeDuration(DateTime.UtcNow));
-            return View(transactionsVM.ToList());
+            var pager = new Pager(transactionsVM.Count(), page.Value,3);
+            var aPage = transactionsVM
+                .Skip(pager.Skip)
+                .Take(postsPerPage)
+                .ToList();
+            ViewBag.Pager = pager;
+            return View(aPage.ToList());
         }
 
         // GET: Transactions/Details/5

@@ -1,11 +1,12 @@
 ﻿@model IEnumerable<PMT.Models.TransactionVM>
-
+@using PMT.Common;
 @{
     ViewBag.Title = ViewText.TransactionViewIndexTitle;
+    var pager = (Pager)ViewBag.Pager;
 }
 
 <div class="panel panel-primary use-big-fonts">
-    <div class="panel-heading">@ViewBag.Title</div>
+    <div class="panel-heading">@ViewBag.Title<span style="float:right">page @pager.CurrentPage / @pager.TotalPages</span></div>
     <div class="panel-body">
         <table class="transTable table table-striped table-condensed table-hover">
             <tbody>
@@ -46,13 +47,14 @@
             </div>
             <div class="col-md-8">
                 <ul class="pagination">
-                    <li><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-                    <li><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
+                    <li class="@(pager.CurrentPage==pager.FirstPage?"disabled":"")"><a href="@Url.Action("Index","Transactions",new { page=pager.FirstPage})" aria-label="First"><span aria-hidden="true">First</span></a></li>
+                    <li class="@(pager.HasPreviousPage?"":"disabled")"><a href="@Url.Action("Index","Transactions",new { page=pager.PreviousPage})" " aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+                    @foreach (var item in pager.NearPages)
+                    {
+                        <li class="@(pager.CurrentPage==item?"active":"")"><a href="@Url.Action("Index","Transactions",new { page=item})">@item</a></li>
+                    }
+                    <li class="@(pager.HasNextPage?"":"disabled")"><a href="@Url.Action("Index","Transactions",new { page=pager.NextPage})" " aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
+                    <li class="@(pager.CurrentPage==pager.LastPage?"disabled":"")"><a href="@Url.Action("Index","Transactions",new { page=pager.LastPage})"" " aria-label="Last"><span aria-hidden="true">Last</span></a></li>
                 </ul>
             </div>
             <div class="col-md-2">

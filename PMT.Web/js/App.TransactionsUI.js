@@ -177,7 +177,7 @@
                     firstsubCategoryBtn = option.SubCategoryId;
                 if (subCategoryId == "" || subCategoryId == "0")
                     subCategoryId = firstsubCategoryBtn;
-                if (initialSubCategoryId != "") {
+                if (initialSubCategoryId != "" && initialSubCategoryId != "0") {
                     subCategoryId = initialSubCategoryId;  
                 }
                 if (option.SubCategoryId == subCategoryId) {
