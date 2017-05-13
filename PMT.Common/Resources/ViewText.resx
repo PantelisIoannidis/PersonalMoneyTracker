@@ -219,4 +219,7 @@
   <data name="TransactionViewEditTitle" xml:space="preserve">
     <value>Edit transaction</value>
   </data>
+  <data name="NoneSelected" xml:space="preserve">
+    <value>none selected</value>
+  </data>
 </root>

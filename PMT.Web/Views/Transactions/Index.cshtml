@@ -6,13 +6,14 @@
 }
 
 <div class="panel panel-primary use-big-fonts">
-    <div class="panel-heading">@ViewBag.Title<span style="float:right">page @pager.CurrentPage / @pager.TotalPages</span></div>
+    <div class="panel-heading">@ViewBag.Title
+        <span class="@(pager.TotalPages==1?"":"hidden")" style="float:right">@ViewText.Page @pager.CurrentPage / @pager.TotalPages</span>
+    </div>
     <div class="panel-body">
         <table class="transTable table table-striped table-condensed table-hover">
             <tbody>
                 @foreach (var item in Model)
                 {
-                    
                     <tr>
                         <input type="hidden" class="transTableId" value="@item.TransactionId" />
                         <td class="col-md-1">
@@ -23,7 +24,7 @@
                         <td class="col-md-5">
                             <div>
                                 <strong>@Html.DisplayFor(m => item.SubCategoryName)</strong>
-                                @Html.DisplayFor(m=>item.Description)
+                                @Html.DisplayFor(m => item.Description)
                             </div>
                         </td>
                         <td class="col-md-4">
@@ -32,13 +33,13 @@
                             </div>
 
                         </td>
-                        
+
                         <td class="col-md-2 text-right @((item.Amount < 0) ? "negativeNumber":"")">
-                            
-                            @Html.DisplayFor(m=>item.FormattedAmount)
+
+                            @Html.DisplayFor(m => item.FormattedAmount)
                         </td>
                     </tr>
-                } 
+                }
             </tbody>
         </table>
         <div class="row  text-center">
@@ -46,16 +47,7 @@
                 <a href="@Url.Action("Create","Transactions",null)" class="btn btn-default"><i class="fa fa-fw  fa-plus-circle"></i> @ViewText.CreateNew</a>
             </div>
             <div class="col-md-8">
-                <ul class="pagination">
-                    <li class="@(pager.CurrentPage==pager.FirstPage?"disabled":"")"><a href="@Url.Action("Index","Transactions",new { page=pager.FirstPage})" aria-label="First"><span aria-hidden="true">First</span></a></li>
-                    <li class="@(pager.HasPreviousPage?"":"disabled")"><a href="@Url.Action("Index","Transactions",new { page=pager.PreviousPage})" " aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-                    @foreach (var item in pager.NearPages)
-                    {
-                        <li class="@(pager.CurrentPage==item?"active":"")"><a href="@Url.Action("Index","Transactions",new { page=item})">@item</a></li>
-                    }
-                    <li class="@(pager.HasNextPage?"":"disabled")"><a href="@Url.Action("Index","Transactions",new { page=pager.NextPage})" " aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
-                    <li class="@(pager.CurrentPage==pager.LastPage?"disabled":"")"><a href="@Url.Action("Index","Transactions",new { page=pager.LastPage})"" " aria-label="Last"><span aria-hidden="true">Last</span></a></li>
-                </ul>
+                @Html.Partial("_PaginationPartial", new ViewDataDictionary { { "Pager", pager }, { "Controler", "Transactions" }, { "Action", "Index" } })
             </div>
             <div class="col-md-2">
                 <a href="@Url.Action("Edit","Transactions", null)" id="transTableEditButton" class="btn btn-warning btn-sm"><i class="fa fa-fw fa-edit"></i> @ViewText.Edit</a>
@@ -83,7 +75,7 @@
     </div>
 </div>
 
-@section Scripts { 
+@section Scripts {
     <script type="text/javascript">
         $(function () {
             pmt.onDocumentLoadIndexTransaction();
