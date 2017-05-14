@@ -14,6 +14,10 @@ using PMT.DataLayer.Repositories;
 using PMT.Contracts.Repositories;
 using PMT.Models;
 using PMT.Common;
+using PMT.BusinessLayer;
+using PMT.Common.Helpers;
+using System.Collections;
+using Newtonsoft.Json;
 
 namespace PMT.Web.Controllers
 {
@@ -26,14 +30,18 @@ namespace PMT.Web.Controllers
         ICategoryRepository categoryRepository;
         ISubCategoryRepository subCategoryRepository;
         IMoneyAccountRepository moneyAccountRepository;
+        IMoneyAccountEngine moneyAccountEngine;
+        IUserPreferences userPreferences;
         IMapping mapping;
 
         public TransactionsController(ILoggerFactory logger,
+                                        IUserPreferences userPreferences,
                                         ICommonHelper commonHelper,
                                         ITransactionRepository transactionRepository,
                                         ICategoryRepository categoryRepository,
                                         ISubCategoryRepository subCategoryRepository,
                                         IMoneyAccountRepository moneyAccountRepository,
+                                        IMoneyAccountEngine moneyAccountEngine,
                                         IMapping mapping
                                         )
         {
@@ -42,30 +50,49 @@ namespace PMT.Web.Controllers
             this.categoryRepository = categoryRepository;
             this.subCategoryRepository = subCategoryRepository;
             this.moneyAccountRepository = moneyAccountRepository;
+            this.moneyAccountEngine = moneyAccountEngine;
             this.mapping = mapping;
+            this.userPreferences = userPreferences;
             this.logger = logger.CreateLogger<TransactionsController>();
         }
 
-        // GET: Transactions
         public ActionResult Index(int? page=1)
         {
             
             var userId = commonHelper.GetUserId(HttpContext);
-            var postsPerPage = 3;
-            var transactionsVM = transactionRepository.GetTransactionsVM(userId, new Common.Helpers.TimeDuration(DateTime.UtcNow));
-            var pager = new Pager(transactionsVM.Count(), page.Value,3);
+            var postsPerPage = 10;
+            TransactionFilterVM transactionFilterVM = new TransactionFilterVM();
+            var objPreferences = userPreferences.GetTransactionPreferences(HttpContext);
+            if (!string.IsNullOrEmpty(objPreferences))
+            {
+                var pref = JsonConvert.DeserializeObject<TransactionsFilterPreferences>(objPreferences);
+                transactionFilterVM.PeriodFilterId = pref.PeriodFilterId;
+                transactionFilterVM.AccountFilterId = pref.AccountFilterId;
+                transactionFilterVM.PeriodCategory = pref.PeriodCategory;
+                var period = new Period(pref.SelectedDate,(PeriodType)pref.PeriodCategory);
+                transactionFilterVM.PeriodDescription = period.GetDescription();
+            } else
+            {
+                transactionFilterVM.PeriodFilterId = 0;
+                transactionFilterVM.AccountFilterId = -1;
+                transactionFilterVM.PeriodCategory = (int)PeriodType.Week;
+                var period = new Period(DateTime.Now, PeriodType.Week);
+                transactionFilterVM.PeriodDescription = period.GetDescription();
+            }
+                
+            transactionFilterVM.PeriodEnum = Enum.GetValues(typeof(PeriodType)).Cast<PeriodType>().ToDictionary(e => (int)e, e => e.ToString());
+            transactionFilterVM.MoneyAccountChoiceFilter = moneyAccountEngine.GetMoneyAccountsPlusAll(userId);
+
+            ViewBag.TransactionFilter = transactionFilterVM;
+
+            var transactionsVM = transactionRepository.GetTransactionsVM(userId, new Common.Helpers.Period(DateTime.UtcNow));
+            var pager = new Pager(transactionsVM.Count(), page.Value, postsPerPage);
             var aPage = transactionsVM
                 .Skip(pager.Skip)
                 .Take(postsPerPage)
                 .ToList();
             ViewBag.Pager = pager;
             return View(aPage.ToList());
-        }
-
-        // GET: Transactions/Details/5
-        public ActionResult Details(int? id)
-        {
-            return null;
         }
 
         public ActionResult GetAccountsAvailableForTransfer(int accountId)
@@ -102,9 +129,6 @@ namespace PMT.Web.Controllers
             return View(transaction);
         }
 
-        // POST: Transactions/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "TransactionId,UserId,MoneyAccountId,CategoryId,SubCategoryId,TransactionType,TransactionDate,Description,Amount,MoveToAccount")] Transaction transaction)

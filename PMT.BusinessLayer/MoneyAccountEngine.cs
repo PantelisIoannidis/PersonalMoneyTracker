@@ -84,5 +84,18 @@ namespace PMT.BusinessLayer
 
             return actionStatus;
         }
+        public List<MoneyAccount> GetMoneyAccountsPlusAll(string userId)
+        {
+            var account = new MoneyAccount() {
+                UserId=userId,
+                MoneyAccountId=-1,
+                Name=ViewText.AllAccounts
+            };
+            var dbmoneyAccounts = moneyAccountRepository.GetMoneyAccounts(userId);
+            var moneyAccounts = new List<MoneyAccount>();
+            moneyAccounts.Add(account);
+            moneyAccounts.AddRange(dbmoneyAccounts);
+            return moneyAccounts;
+        }
     }
 }

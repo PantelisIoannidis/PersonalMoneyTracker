@@ -4,8 +4,13 @@
         var $currentLink = $(".transTable > tbody > tr");
         $currentLink.click(function (e) {
             $this = $(this);
-            $currentLink.siblings().removeClass('active').removeClass("info");
-            $this.addClass('active').addClass("info");
+            if ($this.hasClass("active")){
+                $currentLink.siblings().removeClass('active').removeClass("info");
+            }
+            else {
+                $currentLink.siblings().removeClass('active').removeClass("info");
+                $this.addClass('active').addClass("info");
+            }
         });
     };
 
@@ -94,12 +99,10 @@
     }
 
     function setCategoryId(value) {
-        $('#categoryBtn').val(value);
         $('#CategoryId').val(value);
     }
 
     function setSubCategoryId(value) {
-        $('#subCategoryBtn').val(value);
         $('#SubCategoryId').val(value);
     }
 

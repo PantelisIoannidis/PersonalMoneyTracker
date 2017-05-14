@@ -31,5 +31,7 @@ namespace PMT.Common
 
             return val.ToString("C2", currencyFormat);
         }
+
+        
     }
 }

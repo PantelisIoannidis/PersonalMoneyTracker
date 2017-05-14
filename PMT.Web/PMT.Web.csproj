@@ -262,6 +262,7 @@
     </Compile>
     <Compile Include="Helpers\ICommonHelper.cs" />
     <Compile Include="Helpers\CommonHelper.cs" />
+    <Compile Include="Helpers\IUserPreferences.cs" />
     <Compile Include="Helpers\UserPreferences.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -321,6 +322,7 @@
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="js\App.js" />
+    <Content Include="js\App.TransactionsFiltersUI.js" />
     <Content Include="js\App.TransactionsUI.js" />
     <Content Include="moreFonts\webhostinghub-glyphs.svg" />
     <Content Include="Global.asax" />
@@ -528,6 +530,7 @@
     <Content Include="Views\Errors\Error.cshtml" />
     <Content Include="Views\Errors\NotFound.cshtml" />
     <Content Include="Views\Shared\_PaginationPartial.cshtml" />
+    <Content Include="Views\Shared\_TransactionsFilters.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

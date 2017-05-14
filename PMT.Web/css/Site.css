@@ -11,6 +11,15 @@
     float:right;
     margin:-10px 0;
 }
+
+.selectsmalldd{
+    text-align:left;
+    max-width: 280px;
+}
+.selectsmalldd .caret {
+    float:right;
+    margin:-10px 0;
+}
 .scrollable-menu {
     height: auto;
     max-height: 200px;

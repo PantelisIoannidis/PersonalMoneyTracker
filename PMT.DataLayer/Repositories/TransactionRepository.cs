@@ -16,7 +16,7 @@ namespace PMT.DataLayer.Repositories
         {
         }
 
-        public IQueryable<TransactionVM> GetTransactionsVM(string userId,TimeDuration timeDuration)
+        public IQueryable<TransactionVM> GetTransactionsVM(string userId,Period timeDuration)
         {
             var transactions = from tran in db.Transactions
                                join cat in db.Categories on tran.CategoryId equals cat.CategoryId
@@ -52,7 +52,7 @@ namespace PMT.DataLayer.Repositories
 
             return transactions;
         }
-        public IQueryable<TransactionVM> GetTransactionsVM(string userId, TimeDuration timeDuration,int account)
+        public IQueryable<TransactionVM> GetTransactionsVM(string userId, Period timeDuration,int account)
         {
             return GetTransactionsVM(userId, timeDuration)
                     .Where(c => c.MoneyAccountId == account);

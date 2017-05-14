@@ -111,7 +111,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ViewText.resx</DependentUpon>
     </Compile>
-    <Compile Include="TimeDuration.cs" />
+    <Compile Include="Period.cs" />
     <Compile Include="UnityFactory.cs" />
     <Compile Include="Utils.cs" />
   </ItemGroup>

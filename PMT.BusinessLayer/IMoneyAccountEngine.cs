@@ -9,5 +9,7 @@ namespace PMT.BusinessLayer
         IActionStatus AddNewAccountWithInitialBalance(MoneyAccount moneyAccount);
         IActionStatus EditAccountNameAdjustBalance(MoneyAccount moneyAccount);
         List<MoneyAccount> GetMoneyAccountBalance(string userId);
+
+        List<MoneyAccount> GetMoneyAccountsPlusAll(string userId);
     }
 }

@@ -38,6 +38,7 @@ namespace PMT.Web
                         "~/js/App.CommonUI.js",
                         "~/js/App.MoneyAccountUI.js",
                         "~/js/App.TransactionsUI.js",
+                        "~/js/App.TransactionsFiltersUI.js",
                         "~/js/App.js"
                         ));
         }

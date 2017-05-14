@@ -75,6 +75,7 @@ namespace PMT.Web.App_Start
             container.RegisterType<ISeedingLists, SeedingLists>();
             container.RegisterType<ICommonHelper, CommonHelper>();
             container.RegisterType<IUnityFactory, UnityFactory>();
+            container.RegisterType<IUserPreferences, UserPreferences>();
             container.RegisterType<IMapping, Mapping>();
 
             //Repositories

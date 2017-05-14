@@ -20,6 +20,7 @@ var pmt = function () {
 
     var onDocumentTransactionCreate = function () {
         transactionsUI.onLoadCreateInit();
+        transactionsFiltersUI.onTransactionsFiltersInit();
     }
 
     return {

@@ -7,9 +7,10 @@
 
 <div class="panel panel-primary use-big-fonts">
     <div class="panel-heading">@ViewBag.Title
-        <span class="@(pager.TotalPages==1?"":"hidden")" style="float:right">@ViewText.Page @pager.CurrentPage / @pager.TotalPages</span>
+        <span class="@(pager.TotalPages<=1?"hidden":"")" style="float:right">@ViewText.Page @pager.CurrentPage / @pager.TotalPages</span>
     </div>
     <div class="panel-body">
+        @Html.Partial("_TransactionsFilters")
         <table class="transTable table table-striped table-condensed table-hover">
             <tbody>
                 @foreach (var item in Model)
