@@ -531,6 +531,7 @@
     <Content Include="Views\Errors\NotFound.cshtml" />
     <Content Include="Views\Shared\_PaginationPartial.cshtml" />
     <Content Include="Views\Shared\_TransactionsFilters.cshtml" />
+    <Content Include="Views\Transactions\_TransactionsTablePartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

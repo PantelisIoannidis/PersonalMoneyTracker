@@ -25,7 +25,8 @@ namespace PMT.Web.Helpers
 
         public void SetTransactionPreferences(HttpContextBase httpContext, string transactionFilterPreferences)
         {
-            HttpCookie cookie = new HttpCookie(transactionPreferences);
+            HttpCookie cookie = HttpContext.Current.Request.Cookies[transactionPreferences] ?? new HttpCookie(transactionPreferences);
+            httpContext.Response.Cookies.Remove(transactionPreferences);
             cookie.Value = transactionFilterPreferences;
             cookie.Expires = DateTime.Now.AddDays(30);
             httpContext.Response.Cookies.Add(cookie);

@@ -64,9 +64,9 @@ namespace PMT.Web.Controllers
             Period period;
 
             var userId = commonHelper.GetUserId(HttpContext);
-            var postsPerPage = 10;
+            var postsPerPage = 3;
             TransactionFilterVM transactionFilterVM = new TransactionFilterVM();
-            var objPreferences = TempData[transactionPreferences] as string;
+            string objPreferences = TempData[transactionPreferences] as string;
             if(string.IsNullOrEmpty(objPreferences))
                 objPreferences = userPreferences.GetTransactionPreferences(HttpContext);
             if (!string.IsNullOrEmpty(objPreferences))
