@@ -19,12 +19,16 @@ namespace PMT.Common
         public int PreviousPage { get; set; }
         public int FirstPage { get; set; }
         public int LastPage { get; set; }
+        public bool IsFirstPage { get; set; }
+        public bool IsLastPage { get; set; }
         public List<int> NearPages { get; set; }
         public Pager(int totalItems,int page=1,int pageSize = 10)
         {
             CurrentPage = page;
             TotalItems = totalItems;
             TotalPages = (int)Math.Ceiling((decimal)totalItems / (decimal)pageSize);
+            if (TotalPages <= 0)
+                TotalPages = 1;
             if (CurrentPage > TotalPages)
                 CurrentPage = TotalPages;
             Skip = ((CurrentPage - 1) * pageSize);
@@ -34,6 +38,9 @@ namespace PMT.Common
             PreviousPage = HasPreviousPage ? CurrentPage - 1 : CurrentPage;
             FirstPage = 1;
             LastPage = TotalPages;
+
+            IsFirstPage = CurrentPage == 1;
+            IsLastPage = (CurrentPage == LastPage);
 
             NearPages = new List<int>();
             var len = 3;

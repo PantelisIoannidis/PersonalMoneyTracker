@@ -1,5 +1,5 @@
-﻿@model IEnumerable<PMT.Models.TransactionVM>
-@using PMT.Common;
+﻿@model Tuple<IEnumerable<PMT.Models.TransactionVM>, PMT.Models.TransactionFilterVM>
+
 @{
     ViewBag.Title = ViewText.TransactionViewIndexTitle;
     var pager = (Pager)ViewBag.Pager;
@@ -13,7 +13,7 @@
         @Html.Partial("_TransactionsFilters")
         <table class="transTable table table-striped table-condensed table-hover">
             <tbody>
-                @foreach (var item in Model)
+                @foreach (var item in Model.Item1)
                 {
                     <tr>
                         <input type="hidden" class="transTableId" value="@item.TransactionId" />

@@ -49,12 +49,16 @@ namespace PMT.DataLayer.Repositories
                                    SubCategoryColor=subcategory.Color,
                                    MoneyAccountName =moneyaccount.Name,
                                });
-
+            if (timeDuration.Type != PeriodType.All)
+                transactions = transactions.Where(t => t.TransactionDate >= timeDuration.FromDate && t.TransactionDate <= timeDuration.ToDate);
             return transactions;
         }
         public IQueryable<TransactionVM> GetTransactionsVM(string userId, Period timeDuration,int account)
         {
-            return GetTransactionsVM(userId, timeDuration)
+            if (account < 0)
+                return GetTransactionsVM(userId, timeDuration);
+            else
+                return GetTransactionsVM(userId, timeDuration)
                     .Where(c => c.MoneyAccountId == account);
         }
 

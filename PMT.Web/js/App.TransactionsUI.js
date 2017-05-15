@@ -1,5 +1,7 @@
 ﻿var transactionsUI = function () {
 
+    var caretHtml = '<span class="caret"></span>';
+
     function calculateIndexActiveElement() {
         var $currentLink = $(".transTable > tbody > tr");
         $currentLink.click(function (e) {
@@ -165,11 +167,11 @@
 
     function fillSubCategoryOnCategoryChange() {
         var tranGetSubCategoriesUrl = '/Transactions/GetSubCategories';
-        var categoryBtn = $("#categoryBtn").val();
+        var categoryId = $("#CategoryId").val();
         var subCategoryId = $("#SubCategoryId").val();
         var firstsubCategoryBtn = "";
         var initialSubCategoryId = $("#initialSubCategoryId").val();
-        $.getJSON(tranGetSubCategoriesUrl, { CategoryId: categoryBtn }, function (data) {
+        $.getJSON(tranGetSubCategoriesUrl, { CategoryId: categoryId }, function (data) {
             $('.dropdown-subcategory li').remove();
             $.each(data, function (id, option) {
                 var element = "<li><a data-id='" + option.SubCategoryId + "' href='#'><i class='fa fa-fw  " + option.IconId + "'></i> "
@@ -217,10 +219,10 @@
 
     function onCategoryChange() {
         $(document.body).on('click', '.dropdown-category li > a', function () {
-            var element = $(this).html() + ' <span class="caret"></span>';
+            var newElement = $(this).html() + caretHtml;
             var id = $(this).data('id');
 
-            $("#categoryBtn").html(element);
+            $("#categoryBtn").html(newElement);
             setCategoryId(id);
             setSubCategoryId("");
             fillSubCategoryOnCategoryChange();
@@ -229,9 +231,9 @@
 
     function onSubCategoryChange() {
         $(document.body).on('click', '.dropdown-subcategory li > a', function () {
-            var element = $(this).html() + ' <span class="caret"></span>';
+            var newElement = $(this).html() + caretHtml;
             var id = $(this).data('id');
-            $("#subCategoryBtn").html(element);
+            $("#subCategoryBtn").html(newElement);
             setSubCategoryId(id);
         });
     };

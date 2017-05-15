@@ -25,7 +25,7 @@ namespace PMT.Common.Helpers
 
         private CultureInfo currentCulture;
 
-        private PeriodType _type;
+        public PeriodType Type { get; private set; }
 
         public Period()
         {
@@ -44,7 +44,7 @@ namespace PMT.Common.Helpers
 
             this.SelectedDate = current;
             SelectedDate = FirstDayOfTheWeek(SelectedDate);
-            this._type = type;
+            this.Type = type;
 
 
             CalculateDates();
@@ -61,7 +61,7 @@ namespace PMT.Common.Helpers
         public string GetDescription()
         {
             string description = "";
-            switch (_type)
+            switch (Type)
             {
                 case PeriodType.Week:
                     description = $"{FromDate.ToString("dd")} - {ToDate.ToString("dd")} , {SelectedDate.ToString("MMM")}";
@@ -84,7 +84,7 @@ namespace PMT.Common.Helpers
 
         private void CalculateDates()
         {
-            switch (_type)
+            switch (Type)
             {
                 case PeriodType.Week:
                     FromDate = FirstDayOfTheWeek(SelectedDate);
@@ -108,38 +108,49 @@ namespace PMT.Common.Helpers
             }
         }
 
-        public void MoveToNextWeek()
+        public void MoveToNext()
         {
-            SelectedDate.AddDays(7);
-            CalculateDates();
-        }
-        public void MoveToPreviousWeek()
-        {
-            SelectedDate.AddDays(-7);
+            switch (Type)
+            {
+                case PeriodType.Week:
+                    SelectedDate=SelectedDate.AddDays(7);
+                    break;
+
+                case PeriodType.Month:
+                    SelectedDate = SelectedDate.AddMonths(1);
+                    break;
+
+                case PeriodType.Year:
+                    SelectedDate = SelectedDate.AddYears(1);
+                    break;
+
+                case PeriodType.All:
+                    SelectedDate = DateTime.MaxValue;
+                    break;
+            }
             CalculateDates();
         }
 
-        public void MoveToNextMonth()
+        public void MoveToPrevious()
         {
-            SelectedDate.AddMonths(1);
-            CalculateDates();
-        }
+            switch (Type)
+            {
+                case PeriodType.Week:
+                    SelectedDate = SelectedDate.AddDays(-7);
+                    break;
 
-        public void MoveToPreviousMonth()
-        {
-            SelectedDate.AddMonths(-1);
-            CalculateDates();
-        }
+                case PeriodType.Month:
+                    SelectedDate = SelectedDate.AddMonths(-1);
+                    break;
 
-        public void MoveToNextYear()
-        {
-            SelectedDate.AddYears(1);
-            CalculateDates();
-        }
+                case PeriodType.Year:
+                    SelectedDate = SelectedDate.AddYears(-1);
+                    break;
 
-        public void MoveToPreviousYear()
-        {
-            SelectedDate.AddYears(-1);
+                case PeriodType.All:
+                    SelectedDate = DateTime.MinValue;
+                    break;
+            }
             CalculateDates();
         }
 

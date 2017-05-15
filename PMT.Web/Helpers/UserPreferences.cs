@@ -9,7 +9,7 @@ namespace PMT.Web.Helpers
     public class UserPreferences : IUserPreferences
     {
         public const string lastUsedMoneyAccountCookie = "lastUserMoneyAccount";
-        public const string lastUsedPeriodCookie = "lastUsedPeriodCookie";
+        public const string transactionPreferences = "transactionPreferences";
 
         public void SetLastUsedMoneyAccount(HttpContextBase httpContext, string moneyAccountObj) {
             HttpCookie cookie =  new HttpCookie(lastUsedMoneyAccountCookie);
@@ -25,7 +25,7 @@ namespace PMT.Web.Helpers
 
         public void SetTransactionPreferences(HttpContextBase httpContext, string transactionFilterPreferences)
         {
-            HttpCookie cookie = new HttpCookie(lastUsedPeriodCookie);
+            HttpCookie cookie = new HttpCookie(transactionPreferences);
             cookie.Value = transactionFilterPreferences;
             cookie.Expires = DateTime.Now.AddDays(30);
             httpContext.Response.Cookies.Add(cookie);
@@ -33,7 +33,7 @@ namespace PMT.Web.Helpers
 
         public string GetTransactionPreferences(HttpContextBase httpContext)
         {
-            HttpCookie cookie = new HttpCookie(lastUsedPeriodCookie);
+            HttpCookie cookie = HttpContext.Current.Request.Cookies[transactionPreferences] ?? new HttpCookie(transactionPreferences);
             return cookie.Value;
         }
     }

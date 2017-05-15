@@ -1,37 +1,38 @@
-﻿<div class=" transactionFilters row">
-    <div class="col-md-2">
-
-    </div>
-    <div class="col-md-2">
-        <button id="AccountFilterId" value="@ViewBag.TransactionFilter.AccountFilterId" class="btn btn-default dropdown-toggle selectsmalldd" data-toggle="dropdown" aria-expanded="false">
-            @(ViewBag.TransactionFilter.AccountFilterName)
-            <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu selectsmalldd dropdown-accountFilter">
-            @foreach (var item in ViewBag.TransactionFilter.MoneyAccountChoiceFilter)
-            {
-                <li><a data-id="@item.MoneyAccountId" href="#">@item.Name</a></li>
-            }
-        </ul>
-    </div>
-    <div class="col-md-8">
-        <div class="btn-toolbar">
-
-            <div class="btn-group">
-                <button id="PeriodFilterId" value="@ViewBag.TransactionFilter.PeriodFilterId" class="btn btn-default dropdown-toggle selectsmalldd" data-toggle="dropdown" aria-expanded="false">
-                    @ViewBag.TransactionFilter.PeriodFilterName
-                    <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu selectsmalldd drop-downPeriodFilter">
-                    @foreach (var item in ViewBag.TransactionFilter.PeriodEnum)
-            {
-                        <li><a data-id="@item.Key" href="#">@item.Value</a></li>
-                    }
-                </ul>
-                <a href="#" class="btn btn-default">&laquo;</a>
-                <a href="#" class="btn btn-default">@ViewBag.TransactionFilter.PeriodDescription</a>
-                <a href="#" class="btn btn-default">&raquo;</a>
+﻿
+    <div class=" transactionFilters row">
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-2">
+            <button id="AccountFilterId" value="@Model.Item2.AccountFilterId" class="btn btn-default dropdown-toggle " data-toggle="dropdown" aria-expanded="false">
+                @(Model.Item2.AccountFilterName)
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu  dropdown-accountFilter">
+                @foreach (var item in Model.Item2.MoneyAccountChoiceFilter)
+                {
+                    <li><a data-id="@item.MoneyAccountId" href="#">@item.Name</a></li>
+                }
+            </ul>
+        </div>
+        <div class="col-md-8">
+            <input type="hidden" value="@Model.Item2.SelectedDateFull" id="SelectedDateFull" />
+            <div class="btn-toolbar">
+                <div class="btn-group">
+                    <a href="#" id="MoveToPreviousDateBtn" class="btn btn-default ">&laquo;</a>
+                    <button id="PeriodFilterId" value="@Model.Item2.PeriodFilterId" class="btn btn-default dropdown-toggle " data-toggle="dropdown" aria-expanded="false">
+                        @Model.Item2.PeriodFilterName
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-PeriodFilter">
+                        @foreach (var item in Model.Item2.PeriodEnum)
+                        {
+                            <li><a data-id="@item.Key" href="#">@item.Value</a></li>
+                        }
+                    </ul>
+                    <a href="#" class="btn btn-default">@Model.Item2.PeriodDescription</a>
+                    <a href="#" id="MoveToNextDateBtn"class="btn btn-default">&raquo;</a>
+                </div>
             </div>
         </div>
     </div>
-</div>
+

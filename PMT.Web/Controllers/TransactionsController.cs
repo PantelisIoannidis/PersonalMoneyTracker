@@ -56,43 +56,63 @@ namespace PMT.Web.Controllers
             this.logger = logger.CreateLogger<TransactionsController>();
         }
 
+        public const string transactionPreferences = "transactionPreferences";
+
         public ActionResult Index(int? page=1)
         {
-            
+            DateTime selectedDate = DateTime.Now;
+            Period period;
+
             var userId = commonHelper.GetUserId(HttpContext);
             var postsPerPage = 10;
             TransactionFilterVM transactionFilterVM = new TransactionFilterVM();
-            var objPreferences = userPreferences.GetTransactionPreferences(HttpContext);
+            var objPreferences = TempData[transactionPreferences] as string;
+            if(string.IsNullOrEmpty(objPreferences))
+                objPreferences = userPreferences.GetTransactionPreferences(HttpContext);
             if (!string.IsNullOrEmpty(objPreferences))
             {
                 var pref = JsonConvert.DeserializeObject<TransactionsFilterPreferences>(objPreferences);
+                period = new Period(DateTime.Parse(pref.SelectedDateFull),(PeriodType)pref.PeriodFilterId);
+                if (pref.MoveToNextFlag >0)
+                    period.MoveToNext();
+                if (pref.MoveToNextFlag <0)
+                    period.MoveToPrevious();
                 transactionFilterVM.PeriodFilterId = pref.PeriodFilterId;
                 transactionFilterVM.AccountFilterId = pref.AccountFilterId;
-                transactionFilterVM.PeriodCategory = pref.PeriodCategory;
-                var period = new Period(pref.SelectedDate,(PeriodType)pref.PeriodCategory);
+                transactionFilterVM.SelectedDateFull = period.SelectedDate.ToString("s");
                 transactionFilterVM.PeriodDescription = period.GetDescription();
+                selectedDate = period.SelectedDate;
             } else
             {
-                transactionFilterVM.PeriodFilterId = 0;
                 transactionFilterVM.AccountFilterId = -1;
-                transactionFilterVM.PeriodCategory = (int)PeriodType.Week;
-                var period = new Period(DateTime.Now, PeriodType.Week);
+                transactionFilterVM.PeriodFilterId = (int)PeriodType.Week;
+                transactionFilterVM.SelectedDateFull = selectedDate.ToString("s");
+                period = new Period(DateTime.Parse(transactionFilterVM.SelectedDateFull), PeriodType.Week);
                 transactionFilterVM.PeriodDescription = period.GetDescription();
             }
                 
             transactionFilterVM.PeriodEnum = Enum.GetValues(typeof(PeriodType)).Cast<PeriodType>().ToDictionary(e => (int)e, e => e.ToString());
             transactionFilterVM.MoneyAccountChoiceFilter = moneyAccountEngine.GetMoneyAccountsPlusAll(userId);
 
-            ViewBag.TransactionFilter = transactionFilterVM;
+            
 
-            var transactionsVM = transactionRepository.GetTransactionsVM(userId, new Common.Helpers.Period(DateTime.UtcNow));
-            var pager = new Pager(transactionsVM.Count(), page.Value, postsPerPage);
+            var transactionsVM = transactionRepository.GetTransactionsVM(userId, period, transactionFilterVM.AccountFilterId);
+            var cnt = transactionsVM.Count();
+            var pager = new Pager(cnt, page.Value, postsPerPage);
             var aPage = transactionsVM
                 .Skip(pager.Skip)
-                .Take(postsPerPage)
-                .ToList();
+                .Take(postsPerPage);
+                
             ViewBag.Pager = pager;
-            return View(aPage.ToList());
+            var list = aPage.ToList();
+            var tuple = new Tuple<IEnumerable<TransactionVM>, TransactionFilterVM>(list, transactionFilterVM);
+            return View(tuple);
+        }
+
+        public void SetUserPreferences(string preferences)
+        {
+            TempData[transactionPreferences] = preferences;
+            userPreferences.SetTransactionPreferences(HttpContext, preferences);
         }
 
         public ActionResult GetAccountsAvailableForTransfer(int accountId)

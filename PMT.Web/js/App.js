@@ -12,6 +12,7 @@ var pmt = function () {
     var onDocumentLoadIndexTransaction = function () {
         transactionsUI.calculateIndexActiveElement();
         transactionsUI.addIndexButtonEvents();
+        transactionsFiltersUI.onTransactionsFiltersInit();
     };
 
     var onDocumentLoadIndexAccounts = function () {
@@ -20,7 +21,7 @@ var pmt = function () {
 
     var onDocumentTransactionCreate = function () {
         transactionsUI.onLoadCreateInit();
-        transactionsFiltersUI.onTransactionsFiltersInit();
+        
     }
 
     return {
