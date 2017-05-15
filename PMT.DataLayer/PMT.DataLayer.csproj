@@ -104,8 +104,8 @@
     <Compile Include="Repositories\CategoryRepository.cs" />
     <Compile Include="Repositories\IdentityRepository.cs" />
     <Compile Include="Repositories\IIdentityRepository.cs" />
-    <Compile Include="Repositories\ITransactionRepository.cs" />
     <Compile Include="Repositories\IMoneyAccountRepository.cs" />
+    <Compile Include="Repositories\ITransactionRepository.cs" />
     <Compile Include="Repositories\RepositoryBase.cs" />
     <Compile Include="Repositories\SubCategoryRepository.cs" />
     <Compile Include="Repositories\TransactionRepository.cs" />

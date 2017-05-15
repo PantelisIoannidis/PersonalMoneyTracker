@@ -57,7 +57,7 @@ namespace PMT.BusinessLayer
         {
             var moneyAccounts = moneyAccountRepository.GetMoneyAccounts(userId);
             foreach(var moneyAccount in moneyAccounts)
-                moneyAccount.Balance = transactionRepository.GetBalancePerAccount(userId, moneyAccount.MoneyAccountId);
+                moneyAccount.Balance = transactionRepository.GetBalance(userId, moneyAccount.MoneyAccountId);
             return moneyAccounts;
         }
 

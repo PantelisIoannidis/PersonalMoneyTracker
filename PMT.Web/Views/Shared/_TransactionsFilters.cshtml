@@ -4,8 +4,11 @@
         </div>
         <div class="col-md-2">
             <button id="AccountFilterId" value="@Model.Item2.AccountFilterId" class="btn btn-default dropdown-toggle " data-toggle="dropdown" aria-expanded="false">
-                @(Model.Item2.AccountFilterName)
-                <span class="caret"></span>
+                
+                    @(Model.Item2.AccountFilterName)
+                <span class="pull-right">
+                    <span class="caret"></span>
+                </span>
             </button>
             <ul class="dropdown-menu  dropdown-accountFilter">
                 @foreach (var item in Model.Item2.MoneyAccountChoiceFilter)
@@ -21,7 +24,9 @@
                     <a href="#" id="MoveToPreviousDateBtn" class="btn btn-default ">&laquo;</a>
                     <button id="PeriodFilterId" value="@Model.Item2.PeriodFilterId" class="btn btn-default dropdown-toggle " data-toggle="dropdown" aria-expanded="false">
                         @Model.Item2.PeriodFilterName
-                        <span class="caret"></span>
+                        <span class="pull-right">
+                            <span class="caret"></span>
+                        </span>
                     </button>
                     <ul class="dropdown-menu dropdown-PeriodFilter">
                         @foreach (var item in Model.Item2.PeriodEnum)

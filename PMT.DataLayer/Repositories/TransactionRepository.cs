@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static PMT.Entities.Literals;
 
 namespace PMT.DataLayer.Repositories
 {
@@ -16,7 +17,7 @@ namespace PMT.DataLayer.Repositories
         {
         }
 
-        public IQueryable<TransactionVM> GetTransactionsVM(string userId,Period timeDuration)
+        public IQueryable<TransactionVM> GetTransactionsVM(string userId,Period period)
         {
             var transactions = from tran in db.Transactions
                                join cat in db.Categories on tran.CategoryId equals cat.CategoryId
@@ -49,16 +50,16 @@ namespace PMT.DataLayer.Repositories
                                    SubCategoryColor=subcategory.Color,
                                    MoneyAccountName =moneyaccount.Name,
                                });
-            if (timeDuration.Type != PeriodType.All)
-                transactions = transactions.Where(t => t.TransactionDate >= timeDuration.FromDate && t.TransactionDate <= timeDuration.ToDate);
+            if (period.Type != PeriodType.All)
+                transactions = transactions.Where(t => t.TransactionDate >= period.FromDate && t.TransactionDate <= period.ToDate);
             return transactions;
         }
-        public IQueryable<TransactionVM> GetTransactionsVM(string userId, Period timeDuration,int account)
+        public IQueryable<TransactionVM> GetTransactionsVM(string userId, Period period,int account)
         {
-            if (account < 0)
-                return GetTransactionsVM(userId, timeDuration);
+            if (account == AccountType.All)
+                return GetTransactionsVM(userId, period);
             else
-                return GetTransactionsVM(userId, timeDuration)
+                return GetTransactionsVM(userId, period)
                     .Where(c => c.MoneyAccountId == account);
         }
 
@@ -117,61 +118,40 @@ namespace PMT.DataLayer.Repositories
 
 
         #region balance
-        public decimal GetBalance(string userId)
+
+        private IQueryable<Transaction> GetBalanceBase(string userId, int moneyAccountId=AccountType.All, Period period=null)
         {
-            return db.Transactions
-                    .Where(t=>t.UserId == userId)
-                    .Sum(s => (decimal?)s.Amount) ?? 0;
-        }
-        public decimal GetBalancePerAccount(string userId, int moneyAccountId)
-        {
-            return db.Transactions
-                    .Where(t => t.UserId == userId && t.MoneyAccountId==moneyAccountId)
-                    .Sum(s => (decimal?)s.Amount) ?? 0;
+            var balance= db.Transactions
+                    .Where(t => t.UserId == userId);
+
+            if (moneyAccountId != AccountType.All)
+                balance = balance.Where(x => x.MoneyAccountId == moneyAccountId);
+
+            if (period!=null)
+                if (period.Type != PeriodType.All)
+                    balance = balance.Where(t => t.TransactionDate >= period.FromDate 
+                                                && t.TransactionDate <= period.ToDate);
+
+            return balance;
         }
 
-        public decimal GetIncome(string userId)
+        public decimal GetBalance(string userId, int moneyAccountId = AccountType.All, Period period = null)
         {
-            return db.Transactions
-                    .Where(t => t.TransactionType == TransactionType.Income && t.UserId==userId)
-                    .Sum(s => (decimal?)s.Amount)??0;
+            var balance = GetBalanceBase(userId, moneyAccountId, period)
+                .Sum(s => (decimal?)s.Amount) ?? 0;
+            return balance;
         }
 
-        public decimal GetAdjustment(string userId)
+        public decimal GetBalance(string userId, int moneyAccountId, Period period,TransactionType transactionType)
         {
-            return db.Transactions
-                    .Where(t => t.TransactionType == TransactionType.Adjustment && t.UserId == userId)
-                    .Sum(s => (decimal?)s.Amount) ?? 0;
+            var balance = GetBalanceBase(userId, moneyAccountId, period)
+                            .Where(x => x.TransactionType == transactionType)
+                            .Sum(s => (decimal?)s.Amount) ?? 0;
+            return balance;
         }
 
-        public decimal GetExpense(string userId)
-        {
-            return db.Transactions
-                    .Where(t => t.TransactionType == TransactionType.Adjustment && t.UserId == userId)
-                    .Sum(s => (decimal?)s.Amount) ?? 0;
-        }
 
-        public decimal GetIncomePerAccount(string userId,int moneyAccountId)
-        {
-            return db.Transactions
-                    .Where(t => t.TransactionType == TransactionType.Income && t.UserId == userId)
-                    .Sum(s => (decimal?)s.Amount) ?? 0;
-        }
-
-        public decimal GetAdjustmentPerAccount(string userId, int moneyAccountId)
-        {
-            return db.Transactions
-                    .Where(t => t.TransactionType == TransactionType.Adjustment && t.UserId == userId)
-                    .Sum(s => (decimal?)s.Amount) ?? 0;
-        }
-
-        public decimal GetExpensePerAccount(string userId, int moneyAccountId)
-        {
-            return db.Transactions
-                    .Where(t => t.TransactionType == TransactionType.Adjustment && t.UserId == userId)
-                    .Sum(s => (decimal?)s.Amount) ?? 0;
-        }
-#endregion
+        #endregion
 
 
     }

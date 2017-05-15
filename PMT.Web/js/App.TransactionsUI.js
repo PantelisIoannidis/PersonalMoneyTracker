@@ -1,6 +1,6 @@
 ﻿var transactionsUI = function () {
 
-    var caretHtml = '<span class="caret"></span>';
+    var caretHtml = '<span class="pull-right"><span class="caret"></span></span>';
 
     function calculateIndexActiveElement() {
         var $currentLink = $(".transTable > tbody > tr");
@@ -133,7 +133,7 @@
                         categoryId = firstcategoryBtn;
                     if (option.CategoryId == categoryId) {
                         var element = "<span><i class='fa fa-fw  " + option.IconId + "'></i> "
-                        + option.Name + '</span> <span class="caret"></span>';
+                        + option.Name + '</span>'+caretHtml;
 
                         $("#categoryBtn").html(element);
                         setCategoryId(categoryId);
@@ -187,7 +187,7 @@
                 }
                 if (option.SubCategoryId == subCategoryId) {
                     var element = "<i class='fa fa-fw  " + option.IconId + "'></i> "
-                    + option.Name + ' <span class="caret"></span>';
+                    + option.Name + ' ' + caretHtml;
                     $("#subCategoryBtn").html(element);
                     $("#initialSubCategoryId").val("");
                     setSubCategoryId(subCategoryId);

@@ -39,6 +39,11 @@ namespace PMT.Entities
                 default: return "";
             }
         }
+
+        public static class AccountType
+        {
+            public const int All = -1;
+        }
     }
    
 

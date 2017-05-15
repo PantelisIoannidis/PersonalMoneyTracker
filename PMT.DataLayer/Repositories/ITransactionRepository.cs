@@ -1,27 +1,18 @@
-﻿using PMT.Entities;
-using PMT.Contracts.Repositories;
+﻿using System.Linq;
 using PMT.Common.Helpers;
-using System.Collections.Generic;
-using System.Linq;
+using PMT.Entities;
 using PMT.Models;
+using PMT.Contracts.Repositories;
 
 namespace PMT.DataLayer.Repositories
 {
     public interface ITransactionRepository : IRepositoryBase<Transaction>
     {
-        IQueryable<TransactionVM> GetTransactionsVM(string userId, Period timeDuration);
-
-        IQueryable<TransactionVM> GetTransactionsVM(string userId, Period timeDuration, int account);
-
+        decimal GetBalance(string userId, int moneyAccountId = -1, Period period = null);
+        decimal GetBalance(string userId, int moneyAccountId, Period period, TransactionType transactionType);
+        IQueryable<TransactionVM> GetTransactionsVM(string userId, Period period);
+        IQueryable<TransactionVM> GetTransactionsVM(string userId, Period period, int account);
         TransactionVM GetTransactionVM(int transactionId);
-
-        decimal GetAdjustment(string userId);
-        decimal GetAdjustmentPerAccount(string userId, int moneyAccountId);
-        decimal GetBalance(string userId);
-        decimal GetBalancePerAccount(string userId, int moneyAccountId);
-        decimal GetExpense(string userId);
-        decimal GetExpensePerAccount(string userId, int moneyAccountId);
-        decimal GetIncome(string userId);
-        decimal GetIncomePerAccount(string userId, int moneyAccountId);
+        void Update(Transaction transaction);
     }
 }
