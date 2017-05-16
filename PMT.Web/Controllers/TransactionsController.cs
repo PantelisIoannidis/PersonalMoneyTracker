@@ -22,15 +22,15 @@ using Newtonsoft.Json;
 namespace PMT.Web.Controllers
 {
     [Authorize]
-    public class TransactionsController : Controller
+    public class TransactionsController : CommonController
     {
         ILogger logger;
-        ICommonHelper commonHelper;
         ITransactionRepository transactionRepository;
         ICategoryRepository categoryRepository;
         ISubCategoryRepository subCategoryRepository;
         IMoneyAccountRepository moneyAccountRepository;
         IMoneyAccountEngine moneyAccountEngine;
+        ITransactionsEngine transactionsEngine;
         IUserPreferences userPreferences;
         IMapping mapping;
 
@@ -42,11 +42,14 @@ namespace PMT.Web.Controllers
                                         ISubCategoryRepository subCategoryRepository,
                                         IMoneyAccountRepository moneyAccountRepository,
                                         IMoneyAccountEngine moneyAccountEngine,
+                                        ITransactionsEngine transactionsEngine,
                                         IMapping mapping
                                         )
+            : base(commonHelper)
         {
-            this.commonHelper = commonHelper;
+            
             this.transactionRepository = transactionRepository;
+            this.transactionsEngine = transactionsEngine;
             this.categoryRepository = categoryRepository;
             this.subCategoryRepository = subCategoryRepository;
             this.moneyAccountRepository = moneyAccountRepository;
@@ -60,54 +63,44 @@ namespace PMT.Web.Controllers
 
         public ActionResult Index(int? page=1)
         {
+            var tuple = PrepareTransactionVM(page);
+            return View(tuple);
+        }
+
+        public Tuple<IEnumerable<TransactionVM>, TransactionFilterVM, PaginationVM> PrepareTransactionVM(int? page = 1)
+        {
             DateTime selectedDate = DateTime.Now;
             Period period;
 
-            var userId = commonHelper.GetUserId(HttpContext);
             var postsPerPage = 3;
-            TransactionFilterVM transactionFilterVM = new TransactionFilterVM();
-            string objPreferences = TempData[transactionPreferences] as string;
-            if(string.IsNullOrEmpty(objPreferences))
-                objPreferences = userPreferences.GetTransactionPreferences(HttpContext);
-            if (!string.IsNullOrEmpty(objPreferences))
-            {
-                var pref = JsonConvert.DeserializeObject<TransactionsFilterPreferences>(objPreferences);
-                period = new Period(DateTime.Parse(pref.SelectedDateFull),(PeriodType)pref.PeriodFilterId);
-                if (pref.MoveToNextFlag >0)
-                    period.MoveToNext();
-                if (pref.MoveToNextFlag <0)
-                    period.MoveToPrevious();
-                transactionFilterVM.PeriodFilterId = pref.PeriodFilterId;
-                transactionFilterVM.AccountFilterId = pref.AccountFilterId;
-                transactionFilterVM.SelectedDateFull = period.SelectedDate.ToString("s");
-                transactionFilterVM.PeriodDescription = period.GetDescription();
-                selectedDate = period.SelectedDate;
-            } else
-            {
-                transactionFilterVM.AccountFilterId = -1;
-                transactionFilterVM.PeriodFilterId = (int)PeriodType.Week;
-                transactionFilterVM.SelectedDateFull = selectedDate.ToString("s");
-                period = new Period(DateTime.Parse(transactionFilterVM.SelectedDateFull), PeriodType.Week);
-                transactionFilterVM.PeriodDescription = period.GetDescription();
-            }
-                
-            transactionFilterVM.PeriodEnum = Enum.GetValues(typeof(PeriodType)).Cast<PeriodType>().ToDictionary(e => (int)e, e => e.ToString());
-            transactionFilterVM.MoneyAccountChoiceFilter = moneyAccountEngine.GetMoneyAccountsPlusAll(userId);
 
-            
+            string objPreferences = TempData[transactionPreferences] as string;
+            if (string.IsNullOrEmpty(objPreferences))
+                objPreferences = userPreferences.GetTransactionPreferences(HttpContext);
+
+            TransactionFilterVM transactionFilterVM = transactionsEngine.GetFilter(userId, objPreferences);
+            period = new Period(DateTime.Parse(transactionFilterVM.SelectedDateFull), (PeriodType)transactionFilterVM.PeriodFilterId);
 
             var transactionsVM = transactionRepository.GetTransactionsVM(userId, period, transactionFilterVM.AccountFilterId);
             var cnt = transactionsVM.Count();
             var pager = new Pager(cnt, page.Value, postsPerPage);
+
+            PaginationVM pagination = new PaginationVM()
+            {
+                pager = pager,
+                ControllerName = "Transactions",
+                ActionName = "Index"
+            };
+
             var aPage = transactionsVM
                 .Skip(pager.Skip)
                 .Take(postsPerPage);
-                
-            ViewBag.Pager = pager;
+
             var list = aPage.ToList();
-            var tuple = new Tuple<IEnumerable<TransactionVM>, TransactionFilterVM>(list, transactionFilterVM);
-            return View(tuple);
+            var tuple = new Tuple<IEnumerable<TransactionVM>, TransactionFilterVM, PaginationVM>(list, transactionFilterVM, pagination);
+            return tuple;
         }
+
 
         public void SetUserPreferences(string preferences)
         {
@@ -117,7 +110,7 @@ namespace PMT.Web.Controllers
 
         public ActionResult GetAccountsAvailableForTransfer(int accountId)
         {
-            var userId = commonHelper.GetUserId(HttpContext);
+
             var accounts = moneyAccountRepository.GetMoneyAccountsExcludingCurrent(userId,accountId);
             
             return Json(accounts, JsonRequestBehavior.AllowGet);
@@ -138,7 +131,7 @@ namespace PMT.Web.Controllers
         // GET: Transactions/Create
         public ActionResult Create()
         {
-            var userId = commonHelper.GetUserId(HttpContext);
+
             var moneyAccounts = moneyAccountRepository.GetMoneyAccounts(userId);
             ViewBag.MoneyAccountId = new SelectList(moneyAccounts, "MoneyAccountId", "Name",moneyAccounts.FirstOrDefault());
             var transaction = new Transaction()
@@ -153,7 +146,7 @@ namespace PMT.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "TransactionId,UserId,MoneyAccountId,CategoryId,SubCategoryId,TransactionType,TransactionDate,Description,Amount,MoveToAccount")] Transaction transaction)
         {
-            var userId = commonHelper.GetUserId(HttpContext);
+
             transaction.UserId = userId;
             if (ModelState.IsValid)
             {
@@ -168,7 +161,7 @@ namespace PMT.Web.Controllers
         // GET: Transactions/Edit/5
         public ActionResult Edit(int? id)
         {
-            var userId = commonHelper.GetUserId(HttpContext);
+
             var moneyAccounts = moneyAccountRepository.GetMoneyAccounts(userId);
             ViewBag.MoneyAccountId = new SelectList(moneyAccounts, "MoneyAccountId", "Name", moneyAccounts.FirstOrDefault());
             var transaction = transactionRepository.GetById(id);
@@ -183,7 +176,7 @@ namespace PMT.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "TransactionId,UserId,MoneyAccountId,CategoryId,SubCategoryId,TransactionType,TransactionDate,Description,Amount,MoveToAccount")] Transaction transaction)
         {
-            var userId = commonHelper.GetUserId(HttpContext);
+
             transaction.UserId = userId;
             if (ModelState.IsValid)
             {

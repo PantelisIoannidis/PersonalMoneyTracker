@@ -1,4 +1,4 @@
-﻿@model Tuple<IEnumerable<PMT.Models.TransactionVM>, PMT.Models.TransactionFilterVM>
+﻿@model Tuple<IEnumerable<PMT.Models.TransactionVM>, PMT.Models.TransactionFilterVM, PMT.Models.PaginationVM>
 
 @{
     ViewBag.Title = ViewText.TransactionViewIndexTitle;
@@ -7,17 +7,17 @@
 
 <div class="panel panel-primary use-big-fonts">
     <div class="panel-heading">@ViewBag.Title
-        <span class="@(pager.TotalPages<=1?"hidden":"")" style="float:right">@ViewText.Page @pager.CurrentPage / @pager.TotalPages</span>
+        <span class="@(Model.Item3.pager.TotalPages<=1?"hidden":"")" style="float:right">@ViewText.Page @Model.Item3.pager.CurrentPage / @Model.Item3.pager.TotalPages</span>
     </div>
     <div class="panel-body">
-        @Html.Partial("_TransactionsFilters", Model.Item2)
+        @Html.Partial("_TransactionsFiltersPartial", Model.Item2)
         @Html.Partial("_TransactionsTablePartial", Model.Item1)
         <div class="row  text-center">
             <div class="col-md-2">
                 <a href="@Url.Action("Create","Transactions",null)" class="btn btn-default"><i class="fa fa-fw  fa-plus-circle"></i> @ViewText.CreateNew</a>
             </div>
             <div class="col-md-8">
-                @Html.Partial("_PaginationPartial", new ViewDataDictionary { { "Pager", pager }, { "Controler", "Transactions" }, { "Action", "Index" } })
+                @Html.Partial("_PaginationPartial", Model.Item3)
             </div>
             <div class="col-md-2">
                 <a href="@Url.Action("Edit","Transactions", null)" id="transTableEditButton" class="btn btn-warning btn-sm"><i class="fa fa-fw fa-edit"></i> @ViewText.Edit</a>

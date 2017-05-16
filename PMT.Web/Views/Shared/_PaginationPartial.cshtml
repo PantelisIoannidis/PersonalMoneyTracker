@@ -1,18 +1,12 @@
-﻿@{ 
-    var pager = ViewBag.Pager;
-    var controller = ViewBag.Controller;
-    var action = ViewBag.Action;
-
-}
-
+﻿@model PMT.Models.PaginationVM
 <ul class="pagination">
-    <li class="@(pager.IsFirstPage?"disabled":"")"><a href="@Url.Action(action,controller,new { page=pager.FirstPage})" aria-label="First"><span aria-hidden="true">@ViewText.First</span></a></li>
-    <li class="@(pager.HasPreviousPage?"":"disabled")"><a href="@Url.Action(action,controller,new { page=pager.PreviousPage})" " aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-    @foreach (var item in pager.NearPages)
+    <li class="@(Model.pager.IsFirstPage?"disabled":"")"><a href="@Url.Action(Model.ActionName,Model.ControllerName,new { page= Model.pager.FirstPage})" aria-label="First"><span aria-hidden="true">@ViewText.First</span></a></li>
+    <li class="@(Model.pager.HasPreviousPage?"":"disabled")"><a href="@Url.Action(Model.ActionName,Model.ControllerName,new { page= Model.pager.PreviousPage})" " aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+    @foreach (var item in Model.pager.NearPages)
     {
-        <li class="@(pager.CurrentPage==item?"active":"")"><a href="@Url.Action(action,controller,new { page=item})">@item</a></li>
+        <li class="@(Model.pager.CurrentPage==item?"active":"")"><a href="@Url.Action(Model.ActionName, Model.ControllerName, new { page=item})">@item</a></li>
     }
-    <li class="@(pager.HasNextPage?"":"disabled")"><a href="@Url.Action(action,controller,new { page=pager.NextPage})" " aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
-    <li class="@(pager.IsLastPage?"disabled":"")"><a href="@Url.Action(action,controller,new { page=pager.LastPage})" " " aria-label="Last"><span aria-hidden="true">@ViewText.Last</span></a></li>
+    <li class="@(Model.pager.HasNextPage?"":"disabled")"><a href="@Url.Action(Model.ActionName,Model.ControllerName,new { page= Model.pager.NextPage})" " aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
+    <li class="@(Model.pager.IsLastPage?"disabled":"")"><a href="@Url.Action(Model.ActionName,Model.ControllerName,new { page= Model.pager.LastPage})" " " aria-label="Last"><span aria-hidden="true">@ViewText.Last</span></a></li>
 </ul>
 
