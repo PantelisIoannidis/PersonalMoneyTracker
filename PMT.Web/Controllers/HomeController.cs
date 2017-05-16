@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace PMT.Web.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         ILogger logger;

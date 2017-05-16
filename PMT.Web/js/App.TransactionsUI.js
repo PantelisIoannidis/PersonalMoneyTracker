@@ -262,6 +262,7 @@
         $('.datepicker').datepicker({
             locale: pmt.currentLocal
         });
+        
     };
 
     return {

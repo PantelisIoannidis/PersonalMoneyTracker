@@ -67,6 +67,7 @@ namespace PMT.Web.Controllers
             return View(tuple);
         }
 
+
         public Tuple<IEnumerable<TransactionVM>, TransactionFilterVM, PaginationVM> PrepareTransactionVM(int? page = 1)
         {
             DateTime selectedDate = DateTime.Now;
@@ -97,9 +98,14 @@ namespace PMT.Web.Controllers
                 .Take(postsPerPage);
 
             var list = aPage.ToList();
+
+            ViewBag.Summary = transactionsEngine.PrepareSummary(userId, transactionFilterVM, period);
+
             var tuple = new Tuple<IEnumerable<TransactionVM>, TransactionFilterVM, PaginationVM>(list, transactionFilterVM, pagination);
             return tuple;
         }
+
+
 
 
         public void SetUserPreferences(string preferences)
@@ -128,7 +134,6 @@ namespace PMT.Web.Controllers
             return Json(subCategories, JsonRequestBehavior.AllowGet);
         }
 
-        // GET: Transactions/Create
         public ActionResult Create()
         {
 
@@ -158,7 +163,6 @@ namespace PMT.Web.Controllers
             return View(transaction);
         }
 
-        // GET: Transactions/Edit/5
         public ActionResult Edit(int? id)
         {
 
@@ -169,9 +173,6 @@ namespace PMT.Web.Controllers
             return View(transaction);
         }
 
-        // POST: Transactions/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "TransactionId,UserId,MoneyAccountId,CategoryId,SubCategoryId,TransactionType,TransactionDate,Description,Amount,MoveToAccount")] Transaction transaction)
@@ -187,7 +188,6 @@ namespace PMT.Web.Controllers
             return View(transaction);
         }
 
-        // GET: Transactions/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -200,7 +200,6 @@ namespace PMT.Web.Controllers
             return View(transactionVM);
         }
 
-        // POST: Transactions/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

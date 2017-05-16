@@ -11,6 +11,7 @@
     </div>
     <div class="panel-body">
         @Html.Partial("_TransactionsFiltersPartial", Model.Item2)
+        @Html.Partial("_TransactionsSummaryPartial", (PMT.Models.TransactionsSummaryVM)ViewBag.Summary)
         @Html.Partial("_TransactionsTablePartial", Model.Item1)
         <div class="row  text-center">
             <div class="col-md-2">

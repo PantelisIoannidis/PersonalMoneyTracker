@@ -44,6 +44,13 @@ namespace PMT.Entities
         {
             public const int All = -1;
         }
+
+        public static class TransactionFilterOperation
+        {
+            public const string MoveToNext = "MoveToNext";
+            public const string MoveToPrevious = "MoveToPrevious";
+            public const string Reset = "Reset";
+        }
     }
    
 

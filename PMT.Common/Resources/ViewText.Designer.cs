@@ -205,6 +205,15 @@ namespace PMT.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Expenses.
+        /// </summary>
+        public static string Expenses {
+            get {
+                return ResourceManager.GetString("Expenses", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to First.
         /// </summary>
         public static string First {
@@ -219,6 +228,15 @@ namespace PMT.Common.Resources {
         public static string Home {
             get {
                 return ResourceManager.GetString("Home", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Income.
+        /// </summary>
+        public static string Income {
+            get {
+                return ResourceManager.GetString("Income", resourceCulture);
             }
         }
         
@@ -345,6 +363,15 @@ namespace PMT.Common.Resources {
         public static string Reports {
             get {
                 return ResourceManager.GetString("Reports", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset.
+        /// </summary>
+        public static string Reset {
+            get {
+                return ResourceManager.GetString("Reset", resourceCulture);
             }
         }
         

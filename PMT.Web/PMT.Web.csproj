@@ -534,6 +534,7 @@
     <Content Include="Views\Shared\_PaginationPartial.cshtml" />
     <Content Include="Views\Shared\_TransactionsFiltersPartial.cshtml" />
     <Content Include="Views\Transactions\_TransactionsTablePartial.cshtml" />
+    <Content Include="Views\Transactions\_TransactionsSummaryPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

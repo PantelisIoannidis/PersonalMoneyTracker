@@ -2,6 +2,8 @@
 using Newtonsoft.Json;
 using PMT.Common;
 using PMT.Common.Helpers;
+using PMT.DataLayer.Repositories;
+using PMT.Entities;
 using PMT.Models;
 using System;
 using System.Collections.Generic;
@@ -17,13 +19,16 @@ namespace PMT.BusinessLayer
         ILogger logger;
         IActionStatus actionStatus;
         IMoneyAccountEngine moneyAccountEngine;
+        ITransactionRepository transactionRepository;
         public TransactionsEngine(ILoggerFactory logger,
             IActionStatus operationStatus,
-            IMoneyAccountEngine moneyAccountEngine)
+            IMoneyAccountEngine moneyAccountEngine,
+            ITransactionRepository transactionRepository)
         {
             this.actionStatus = operationStatus;
             this.logger = logger.CreateLogger<TransactionsEngine>();
             this.moneyAccountEngine = moneyAccountEngine;
+            this.transactionRepository = transactionRepository;
         }
 
         public TransactionFilterVM GetFilter(string userId, string objPreferences)
@@ -37,10 +42,12 @@ namespace PMT.BusinessLayer
                 
                 var pref = JsonConvert.DeserializeObject<TransactionsFilterPreferences>(objPreferences);
                 period = new Period(DateTime.Parse(pref.SelectedDateFull), (PeriodType)pref.PeriodFilterId);
-                if (pref.MoveToNextFlag > 0)
+                if (pref.Operation==TransactionFilterOperation.MoveToNext)
                     period.MoveToNext();
-                if (pref.MoveToNextFlag < 0)
+                if (pref.Operation == TransactionFilterOperation.MoveToPrevious)
                     period.MoveToPrevious();
+                if (pref.Operation == TransactionFilterOperation.Reset)
+                    period.ResetSelectedDate(DateTime.Now);
                 transactionFilterVM.PeriodFilterId = pref.PeriodFilterId;
                 transactionFilterVM.AccountFilterId = pref.AccountFilterId;
                 transactionFilterVM.SelectedDateFull = period.SelectedDate.ToString("s");
@@ -60,6 +67,22 @@ namespace PMT.BusinessLayer
             transactionFilterVM.MoneyAccountChoiceFilter = moneyAccountEngine.GetMoneyAccountsPlusAll(userId);
 
             return transactionFilterVM;
+        }
+
+        public TransactionsSummaryVM PrepareSummary(string userId, TransactionFilterVM transactionFilterVM, Period period)
+        {
+
+            var income = transactionRepository.GetBalance(userId, transactionFilterVM.AccountFilterId, period, TransactionType.Income);
+            var expenses = transactionRepository.GetBalance(userId, transactionFilterVM.AccountFilterId, period, TransactionType.Expense);
+            var Balance = income + expenses;
+            var summary = new TransactionsSummaryVM()
+            {
+                Income = income,
+                Expenses = expenses,
+                Balance = Balance
+            };
+
+            return summary;
         }
     }
 }

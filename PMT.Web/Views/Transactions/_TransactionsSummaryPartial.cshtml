@@ -1,0 +1,15 @@
+﻿@model PMT.Models.TransactionsSummaryVM
+<div class="row transactionSummary text-center">
+    <div class="col-md-4 col-sm-4 income">
+        <span>@ViewText.Income</span>:
+        <span>@Model.Income.FormatNegativeSign()</span>
+    </div>
+    <div class="col-md-4 col-sm-4 expenses">
+        <span>@ViewText.Expenses</span>:
+        <span>@Model.Expenses.FormatNegativeSign()</span>
+    </div>
+    <div class="col-md-4 col-sm-4 balance">
+        <span>@ViewText.Balance</span>:
+        <span>@Model.Balance.FormatNegativeSign()</span>
+    </div>
+</div>

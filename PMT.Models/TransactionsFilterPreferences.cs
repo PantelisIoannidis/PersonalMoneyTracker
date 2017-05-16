@@ -12,6 +12,6 @@ namespace PMT.Models
         public int AccountFilterId { get; set; }
         public int PeriodFilterId { get; set; }
         public string SelectedDateFull { get; set; }
-        public int MoveToNextFlag { get; set; }
+        public string Operation { get; set; }
     }
 }

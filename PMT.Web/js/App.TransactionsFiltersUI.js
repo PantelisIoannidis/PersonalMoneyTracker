@@ -23,7 +23,7 @@
             var accountFilterId = $("#AccountFilterId");
             accountFilterId.html(newElement);
             accountFilterId.val(id);
-            SetPreferences(0);
+            SetPreferences("");
         });
     };
 
@@ -34,19 +34,25 @@
             var periodFilterId = $("#PeriodFilterId");
             periodFilterId.html(newElement);
             periodFilterId.val(id);
-            SetPreferences(0);
+            SetPreferences("");
         });
     };
 
     function onMoveToPreviousDateClick() {
         $('#MoveToPreviousDateBtn').on("click", function (e) {
-            SetPreferences(-1);
+            SetPreferences("MoveToPrevious");
+        });
+    };
+
+    function onResetDateClick() {
+        $('#ResetPeriodBtn').on("click", function (e) {
+            SetPreferences("Reset");
         });
     };
 
     function onMoveToNextDateClick() {
         $('#MoveToNextDateBtn').on("click", function (e) {
-            SetPreferences(1);
+            SetPreferences("MoveToNext");
         });
     };
 
@@ -59,19 +65,19 @@
             "AccountFilterId": $("#AccountFilterId").val(),
             "PeriodFilterId": $("#PeriodFilterId").val(),
             "SelectedDateFull": $("#SelectedDateFull").val(),
-            "MoveToNextFlag": moveToNext
+            "Operation": moveToNext
         };
         var myJSON = JSON.stringify(obj);
         document.cookie = transactionPreferences + "=" + myJSON + ";" + expires;
         window.location.reload(true);
     }
 
-    function SetPreferences(moveToNext) {
+    function SetPreferences(operation) {
         var obj = {
             "AccountFilterId": $("#AccountFilterId").val(),
             "PeriodFilterId": $("#PeriodFilterId").val(),
             "SelectedDateFull": $("#SelectedDateFull").val(),
-            "MoveToNextFlag" : moveToNext
+            "Operation": operation
         };
         var myJSON = JSON.stringify(obj);
         $.post("/Transactions/SetUserPreferences/", { preferences: myJSON },
@@ -87,6 +93,8 @@
         onPeriodFilterClick();
         onMoveToPreviousDateClick();
         onMoveToNextDateClick();
+        onResetDateClick();
+        $("body").tooltip({ selector: '[data-toggle=tooltip]' });
     };
 
     return {
