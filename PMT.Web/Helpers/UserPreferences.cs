@@ -23,13 +23,15 @@ namespace PMT.Web.Helpers
             return cookie.Value;
         }
 
+        
+
         public void SetTransactionPreferences(HttpContextBase httpContext, string transactionFilterPreferences)
         {
             HttpCookie cookie = HttpContext.Current.Request.Cookies[transactionPreferences] ?? new HttpCookie(transactionPreferences);
-            httpContext.Response.Cookies.Remove(transactionPreferences);
+            httpContext.Request.Cookies.Remove(transactionPreferences);
             cookie.Value = transactionFilterPreferences;
             cookie.Expires = DateTime.Now.AddDays(30);
-            httpContext.Response.Cookies.Add(cookie);
+            httpContext.Response.SetCookie(cookie);
         }
 
         public string GetTransactionPreferences(HttpContextBase httpContext)
