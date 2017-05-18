@@ -252,4 +252,7 @@
   <data name="Income" xml:space="preserve">
     <value>Income</value>
   </data>
+  <data name="CategoriesViewIndexTitle" xml:space="preserve">
+    <value>Categories</value>
+  </data>
 </root>

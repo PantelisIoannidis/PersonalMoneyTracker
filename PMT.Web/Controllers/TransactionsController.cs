@@ -22,9 +22,12 @@ using Newtonsoft.Json;
 namespace PMT.Web.Controllers
 {
     [Authorize]
-    public class TransactionsController : CommonController
+    public class TransactionsController : Controller
     {
+        public string userId;
+
         ILogger logger;
+        ICommonHelper commonHelper;
         ITransactionRepository transactionRepository;
         ICategoryRepository categoryRepository;
         ISubCategoryRepository subCategoryRepository;
@@ -35,9 +38,9 @@ namespace PMT.Web.Controllers
         IMapping mapping;
 
         public TransactionsController(ILoggerFactory logger,
-                                        IUserPreferences userPreferences,
                                         ICommonHelper commonHelper,
-                                        ITransactionRepository transactionRepository,
+                                        IUserPreferences userPreferences,
+                                         ITransactionRepository transactionRepository,
                                         ICategoryRepository categoryRepository,
                                         ISubCategoryRepository subCategoryRepository,
                                         IMoneyAccountRepository moneyAccountRepository,
@@ -45,7 +48,6 @@ namespace PMT.Web.Controllers
                                         ITransactionsEngine transactionsEngine,
                                         IMapping mapping
                                         )
-            : base(commonHelper)
         {
             
             this.transactionRepository = transactionRepository;
@@ -55,9 +57,14 @@ namespace PMT.Web.Controllers
             this.moneyAccountRepository = moneyAccountRepository;
             this.moneyAccountEngine = moneyAccountEngine;
             this.mapping = mapping;
+            this.commonHelper = commonHelper;
             this.userPreferences = userPreferences;
             this.logger = logger.CreateLogger<TransactionsController>();
+
+            userId = commonHelper.GetUserId(HttpContext);
         }
+
+        
 
         public const string transactionPreferences = "transactionPreferences";
 

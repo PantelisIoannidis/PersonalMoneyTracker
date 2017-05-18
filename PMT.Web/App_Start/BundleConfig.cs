@@ -26,7 +26,7 @@ namespace PMT.Web
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootswatch/cerulean/bootstrap.css",
+                      "~/Content/bootstrap.css",
                       "~/Content/bootstrap-datepicker.css",
                       "~/Content/font-awesome.css"));
 
@@ -39,6 +39,7 @@ namespace PMT.Web
                         "~/js/App.MoneyAccountUI.js",
                         "~/js/App.TransactionsUI.js",
                         "~/js/App.TransactionsFiltersUI.js",
+                        "~/js/App.CategoriesUI.js",
                         "~/js/App.js"
                         ));
         }

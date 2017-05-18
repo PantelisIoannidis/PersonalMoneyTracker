@@ -1,0 +1,101 @@
+﻿@model List<PMT.Entities.Category>
+@{
+    ViewBag.Title = ViewText.CategoriesViewIndexTitle;
+}
+
+<div class="panel panel-primary use-big-fonts">
+    <div class="panel-heading">@ViewBag.Title</div>
+    <div class="panel-body">
+        <div class="col-md-5 col-md-offset-1">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    Income
+                        <div class="btn-toolbar pull-right">
+                            <div class="btn-group">
+                                <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-fw  fa-plus"></i> @ViewText.Add</a>
+                                <a href="#" class="btn btn-warning btn-sm"><i class="fa fa-fw  fa-edit"></i> @ViewText.Edit</a>
+                                <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-fw  fa-trash"></i> @ViewText.Delete</a>
+                            </div>
+                        </div>
+                </div>
+                <div class="panel-body">
+
+                    <div class="nav nav-stacked">
+                        @foreach (var item in Model)
+                        {
+                            if (item.Type == PMT.Entities.TransactionType.Income)
+                            {
+                                var cnt = @item.SubCategories.Count;
+                                var hidden = cnt > 1 ? "" : "hidden";
+                                <ul class="nav nav-stacked  categoryList">
+                                    <li class="navbar-header">
+                                        <a href="#" data-toggle="collapse" data-target="categoryMenu_@item.CategoryId">
+                                            <i class="fa fa-fw @item.IconId"></i> @item.Name <i class="glyphicon glyphicon-chevron-right"></i>
+                                            <span class="badge badge-info @hidden">@cnt</span>
+                                        </a>
+                                        <ul class="nav nav-stacked collapse" id="categoryMenu_@item.CategoryId">
+                                            @foreach (var subItem in item.SubCategories)
+                                            {
+                                                <li><a href="#" id="#subCategoryMenu-@subItem.SubCategoryId" class="categoryListSubItem"><i class="fa fa-fw @subItem.IconId"></i> @subItem.Name</a></li>
+                                            }
+                                        </ul>
+                                    </li>
+                                </ul>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-5">
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    Expenses
+                        <div class="btn-toolbar pull-right">
+                            <div class="btn-group">
+                                <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-fw  fa-plus"></i> @ViewText.Add</a>
+                                <a href="#" class="btn btn-warning btn-sm"><i class="fa fa-fw  fa-edit"></i> @ViewText.Edit</a>
+                                <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-fw  fa-trash"></i> @ViewText.Delete</a>
+                            </div>
+                        </div>
+                </div>
+                <div class="panel-body scrollable-panel">
+                    <div class="nav nav-stacked">
+                        @foreach (var item in Model)
+                        {
+                            if (item.Type == PMT.Entities.TransactionType.Expense)
+                            {
+                                var cnt = @item.SubCategories.Count;
+                                var hidden = cnt > 1 ? "" : "hidden";
+                                <ul class="nav nav-stacked  categoryList">
+                                    <li class="navbar-header">
+                                        <a href="#" data-toggle="collapse" data-target="categoryMenu_@item.CategoryId">
+                                            <i class="fa fa-fw @item.IconId"></i> @item.Name <i class="glyphicon glyphicon-chevron-right"></i>
+                                            <span class="badge badge-info @hidden">@cnt</span>
+                                        </a>
+                                        <ul class="nav nav-stacked collapse" id="categoryMenu_@item.CategoryId">
+                                            @foreach (var subItem in item.SubCategories)
+                                            {
+                                                <li><a href="#" id="#subCategoryMenu-@subItem.SubCategoryId" class="categoryListSubItem"><i class="fa fa-fw @subItem.IconId"></i> @subItem.Name</a></li>
+                                            }
+                                        </ul>
+                                    </li>
+                                </ul>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        $(function () {
+            pmt.onDocumentLoadIndexCategories();
+        });
+    </script>
+}

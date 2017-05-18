@@ -8,9 +8,23 @@
     width:100%;
 }
 
+.nav > li > a {
+  color:#787878;
+}
+
+.categoryActionToolbar{
+  text-align: center;
+}​
+
 .scrollable-menu {
     height: auto;
     max-height: 200px;
+    overflow-x: hidden;
+}
+
+.scrollable-panel {
+    height: auto;
+    max-height: 400px;
     overflow-x: hidden;
 }
 .transactionFilters{
@@ -55,7 +69,6 @@ textarea {
 
 .my-bar > li > ul {
     list-style: none;
-    
 }
 
 .my-bar > li.active {
@@ -64,6 +77,14 @@ textarea {
 
 .my-bar .iconInTile {
     font-size: 2em;
+}
+
+.categoryList {
+
+}
+
+.categoryListSubItem {
+    margin-left:25px;
 }
 
 .fixedLengthElement {
@@ -87,11 +108,11 @@ textarea {
     margin-bottom:15px;
 }
 .transactionSummary > .income{
-    color:green;
+    color:#034a03;
 }
 
 .transactionSummary > .expenses{
-    color:red;
+    color:#710f0f;
 }
 
 .transactionSummary > .balance{

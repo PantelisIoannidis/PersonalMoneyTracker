@@ -1,33 +1,32 @@
 ﻿@model PMT.Models.TransactionFilterVM
- 
-   <div class=" transactionFilters row">
-        <div class="col-md-2">
-        </div>
-        <div class="col-md-2">
-            <button id="AccountFilterId" value="@Model.AccountFilterId" class="btn btn-default dropdown-toggle " data-toggle="dropdown" aria-expanded="false">
-                    @(Model.AccountFilterName)
 
-                <span class="pull-right">
-                    <span class="caret"></span>
-                </span>
+<div class=" transactionFilters row">
+    <div  class="col-md-3">
+        test
+    </div>
+    <div class="col-md-2">
+        <div class="btn-group">
+            <button id="AccountFilterId" value="@Model.AccountFilterId" class="btn btn-default dropdown-toggle " data-toggle="dropdown" aria-expanded="false">
+                @(Model.AccountFilterName)
+                <span class="caret"></span>
             </button>
             <ul class="dropdown-menu  dropdown-accountFilter">
                 @foreach (var item in Model.MoneyAccountChoiceFilter)
-                {
+            {
                     <li><a data-id="@item.MoneyAccountId" href="#">@item.Name</a></li>
                 }
             </ul>
         </div>
-        <div class="col-md-8">
-            <input type="hidden" value="@Model.SelectedDateFull" id="SelectedDateFull" />
-            <div class="btn-toolbar">
-                <div class="btn-group">
-                    <a href="#" id="MoveToPreviousDateBtn" class="btn btn-default ">&laquo;</a>
-                    <button id="PeriodFilterId" value="@Model.PeriodFilterId" class="btn btn-default dropdown-toggle selectdd-small" data-toggle="dropdown" aria-expanded="false">
+    </div>
+    <div class="col-md-7">
+
+        <input type="hidden" value="@Model.SelectedDateFull" id="SelectedDateFull" />
+        <div class="btn-toolbar">
+            <div class="btn-group">
+                <button href="#" id="MoveToPreviousDateBtn" class="btn btn-default ">&laquo;</button>
+                    <button id="PeriodFilterId" value="@Model.PeriodFilterId" class="btn btn-default dropdown-toggle selectdd-small" data-toggle="dropdown">
                         @Model.PeriodFilterName
-                        <span class="pull-right">
-                            <span class="caret"></span>
-                        </span>
+                        <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu dropdown-PeriodFilter selectdd-small">
                         @foreach (var item in Model.PeriodEnum)
@@ -35,12 +34,12 @@
                             <li><a data-id="@item.Key" href="#">@item.Value</a></li>
                         }
                     </ul>
-                    <a href="#" id="ResetPeriodBtn" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-original-title="@ViewText.Reset">@Model.PeriodDescription</a>
-                    <a href="#" id="MoveToNextDateBtn"class="btn btn-default">&raquo;</a>
-                </div>
-                <div>
-                </div>
+                <a href="#" id="ResetPeriodBtn" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-original-title="@ViewText.Reset">@Model.PeriodDescription</a>
+                <a href="#" id="MoveToNextDateBtn" class="btn btn-default">&raquo;</a>
+            </div>
+            <div>
             </div>
         </div>
     </div>
+</div>
 

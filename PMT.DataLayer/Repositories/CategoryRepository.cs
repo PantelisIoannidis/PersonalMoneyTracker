@@ -25,5 +25,10 @@ namespace PMT.DataLayer.Repositories
         {
             return db.Categories.OrderBy(o => o.Name).Where(w => w.Type == transactionType).ToList();
         }
+
+        public List<Category> GetAllGategoriesSubCategories()
+        {
+            return db.Categories.Include("SubCategories").OrderBy(x=>x.Name).ToList();
+        }
     }
 }

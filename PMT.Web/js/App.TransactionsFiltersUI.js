@@ -1,6 +1,6 @@
 ﻿var transactionsFiltersUI = function () {
 
-    var caretHtml = '<span class="pull-right"><span class="caret"></span></span>';
+    var caretHtml = '<span class="caret"></span>';
     
 
     function SetCaretInAccountFilter() {

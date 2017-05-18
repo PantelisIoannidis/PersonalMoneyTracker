@@ -1,6 +1,6 @@
 ﻿var transactionsUI = function () {
 
-    var caretHtml = '<span class="pull-right"><span class="caret"></span></span>';
+    var caretHtml = '<span class="caret"></span>';
 
     function calculateIndexActiveElement() {
         var $currentLink = $(".transTable > tbody > tr");

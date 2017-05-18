@@ -24,13 +24,17 @@ var pmt = function () {
         
     }
 
+    var onDocumentLoadIndexCategories = function () {
+        categoriesUI.onLoadIndexInit();
+    }
+
     return {
         rootPath: rootPath,
         onDocumentLoadMaster: onDocumentLoadMaster,
         onDocumentLoadIndexTransaction: onDocumentLoadIndexTransaction,
         onDocumentTransactionCreate: onDocumentTransactionCreate,
         onDocumentLoadIndexAccounts: onDocumentLoadIndexAccounts,
-
+        onDocumentLoadIndexCategories: onDocumentLoadIndexCategories
 
     };
 
