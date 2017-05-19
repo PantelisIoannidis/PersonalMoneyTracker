@@ -178,6 +178,15 @@ namespace PMT.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Delete Category.
+        /// </summary>
+        public static string CategoryViewDeleteTitle {
+            get {
+                return ResourceManager.GetString("CategoryViewDeleteTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create.
         /// </summary>
         public static string Create {

@@ -61,6 +61,15 @@ namespace PMT.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete this category?.
+        /// </summary>
+        public static string CategoryDeleteWarningLine {
+            get {
+                return ResourceManager.GetString("CategoryDeleteWarningLine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to delete this account?.
         /// </summary>
         public static string MoneyAccountsDeleteWarningLine1 {

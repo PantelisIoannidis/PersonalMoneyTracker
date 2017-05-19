@@ -12,9 +12,17 @@
   color:#787878;
 }
 
-.categoryActionToolbar{
-  text-align: center;
-}​
+.nav-tabs > li, .nav-pills > li {
+    float:none;
+    display:inline-block;
+    *display:inline;
+     zoom:1;
+}
+
+.nav-tabs, .nav-pills {
+    text-align:center;
+}
+
 
 .scrollable-menu {
     height: auto;
@@ -30,6 +38,21 @@
 .transactionFilters{
     margin-bottom:15px;
 }
+
+.categoryListItem.active >a {
+    background-color: #337AB7 !important;
+    color:white;
+}
+
+.subCategoryListItem.active >a {
+    background-color: #337AB7 !important;
+    color:white;
+}
+
+.subCategoryListItem {
+    margin-left:25px;
+}
+
 input,
 select,
 textarea {
@@ -77,14 +100,6 @@ textarea {
 
 .my-bar .iconInTile {
     font-size: 2em;
-}
-
-.categoryList {
-
-}
-
-.categoryListSubItem {
-    margin-left:25px;
 }
 
 .fixedLengthElement {
