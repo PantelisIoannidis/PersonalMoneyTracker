@@ -97,6 +97,15 @@ namespace PMT.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Category.
+        /// </summary>
+        public static string Category {
+            get {
+                return ResourceManager.GetString("Category", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Category Name.
         /// </summary>
         public static string CategoryName {
@@ -147,6 +156,15 @@ namespace PMT.Common.Resources {
         public static string RepeatDescription {
             get {
                 return ResourceManager.GetString("RepeatDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Subcategory.
+        /// </summary>
+        public static string SubCategory {
+            get {
+                return ResourceManager.GetString("SubCategory", resourceCulture);
             }
         }
         

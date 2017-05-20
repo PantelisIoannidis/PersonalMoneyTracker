@@ -76,7 +76,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CalculationsEngine.cs" />
+    <Compile Include="CategoriesEngine.cs" />
     <Compile Include="ICalculationsEngine.cs" />
+    <Compile Include="ICategoriesEngine.cs" />
     <Compile Include="IdentityEngine.cs" />
     <Compile Include="IIdentityEngine.cs" />
     <Compile Include="IMoneyAccountEngine.cs" />

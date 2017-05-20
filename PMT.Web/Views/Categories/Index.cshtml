@@ -19,103 +19,27 @@
             <br />
 
             <div class="text-center">
-                <div class="btn-group">
-                    <a href="#" id="addCategoryBtn" class="btn btn-primary btn-sm"><i class="fa fa-fw  fa-plus"></i> @ViewText.Add</a>
-                    <a href="#" id="editCategoryBtn" class="btn btn-warning btn-sm"><i class="fa fa-fw  fa-edit"></i> @ViewText.Edit</a>
-                    <a href="#" id="deleteCategoryBtn" class="btn btn-danger btn-sm"><i class="fa fa-fw  fa-trash"></i> @ViewText.Delete</a>
-                </div>
+                <a href="#" id="editCategoryBtn" class="btn btn-warning btn-sm"><i class="fa fa-fw  fa-edit"></i> @ViewText.Edit</a>
+                <a href="#" id="deleteCategoryBtn" class="btn btn-danger btn-sm"><i class="fa fa-fw  fa-trash"></i> @ViewText.Delete</a>
+                <br />
+                <a href="#" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">
+                    <i class="fa fa-fw  fa-plus"></i> @ViewText.CreateNew
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a id="newCategoryBtn" href="#">@ModelText.Category</a></li>
+                    <li><a id="newSubCategoryBtn" href="#">@ModelText.SubCategory</a></li>
+                </ul>
             </div>
         </div>
 
         <div class="col-md-9">
-            <div class="tab-content">
-                <div role="tabpanel" class="tab-pane active" id="incomeTab">
-
-                    <div class="panel panel-default">
-                        <div class="panel-body scrollable-panel">
-                            <div class="nav nav-stacked">
-                                @foreach (var item in Model)
-                                    {
-                                        if (item.Type == PMT.Entities.TransactionType.Income)
-                                        {
-                                            var cnt = @item.SubCategories.Count;
-                                            var hidden = cnt > 1 ? "" : "hidden";
-                                    <ul class="nav nav-stacked  categoryList">
-                                        <li class="navbar-header categoryListItem">
-                                            <a href="#" data-toggle="collapse"  data-target="categoryMenu_@item.CategoryId">
-                                                <i class="fa fa-fw @item.IconId"></i> @item.Name <i class="glyphicon glyphicon-chevron-right"></i>
-                                                <span class="badge badge-info @hidden">@cnt</span>
-                                            </a>
-                                            <ul class="nav nav-stacked collapse" id="categoryMenu_@item.CategoryId">
-                                                @foreach (var subItem in item.SubCategories)
-                                                        {
-                                                        <li class="subCategoryListItem"><a  data-target="subCategoryMenu-@subItem.SubCategoryId" href="#" id="subCategoryMenu-@subItem.SubCategoryId"><i class="fa fa-fw @subItem.IconId"></i> @subItem.Name</a></li>
-                                                        }
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                        }
-                                    }
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <div role="tabpanel" class="tab-pane" id="expensesTab">
-                    <div class="panel panel-default">
-                        <div class="panel-body scrollable-panel">
-                            <div class="nav nav-stacked">
-                                @foreach (var item in Model)
-                                {
-                                    if (item.Type == PMT.Entities.TransactionType.Expense)
-                                    {
-                                        var cnt = @item.SubCategories.Count;
-                                        var hidden = cnt > 1 ? "" : "hidden";
-                                        <ul class="nav nav-stacked  categoryList">
-                                            <li class="navbar-header categoryListItem">
-                                                <a href="#" data-toggle="collapse" data-target="categoryMenu_@item.CategoryId">
-                                                    <i class="fa fa-fw @item.IconId"></i> @item.Name <i class="glyphicon glyphicon-chevron-right"></i>
-                                                    <span class="badge badge-info @hidden">@cnt</span>
-                                                </a>
-                                                <ul class="nav nav-stacked collapse subCategoryListItem" id="categoryMenu_@item.CategoryId">
-                                                    @foreach (var subItem in item.SubCategories)
-                                                    {
-                                                        <li class="subCategoryListItem"><a  href="#" data-target="subCategoryMenu-@subItem.SubCategoryId" id="subCategoryMenu-@subItem.SubCategoryId"><i class="fa fa-fw @subItem.IconId"></i> @subItem.Name</a></li>
-                                                    }
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    }
-                                }
-                            </div>
-                        </div>
-                    </div>
-                    </div>
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-<div class="modal fade" id="categoryDeleteModal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
-                <h4 class="modal-title" id="transactionDeleteModalLabel">@ViewText.CategoryViewDeleteTitle</h4>
-            </div>
-            <div class="modal-body">
-                <h4>@MessagesText.CategoryDeleteWarningLine</h4>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button id="categoryDeleteConfirmButton" type="button" class="btn btn-danger">Delete</button>
-            </div>
+            @Html.Partial("_IndexPanelPartial", Model)
         </div>
     </div>
 </div>
+
+@Html.Partial("_DeletePartial")
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

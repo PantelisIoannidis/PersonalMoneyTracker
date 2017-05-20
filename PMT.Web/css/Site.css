@@ -39,12 +39,12 @@
     margin-bottom:15px;
 }
 
-.categoryListItem.active >a {
+.categoryListItem.active {
     background-color: #337AB7 !important;
     color:white;
 }
 
-.subCategoryListItem.active >a {
+.subCategoryListItem.active {
     background-color: #337AB7 !important;
     color:white;
 }

@@ -7,5 +7,6 @@ namespace PMT.Contracts.Repositories
     {
         List<Category> GetGategory(TransactionType transactionType);
         List<Category> GetAllGategoriesSubCategories();
+        Category GetGategoryById(int id);
     }
 }

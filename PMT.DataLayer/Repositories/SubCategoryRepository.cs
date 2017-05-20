@@ -21,9 +21,14 @@ namespace PMT.DataLayer.Repositories
             this.logger = logger.CreateLogger<CategoryRepository>();
         }
 
-        public List<SubCategory> GetSubCategory(int CategoryId)
+        public List<SubCategory> GetSubCategories(int CategoryId)
         {
             return db.SubCategories.OrderBy(o => o.Name).Where(w => w.CategoryId == CategoryId).ToList();
+        }
+
+        public SubCategory GetSubCategoryById(int CategoryId)
+        {
+            return db.SubCategories.FirstOrDefault(w => w.CategoryId == CategoryId);
         }
     }
 }

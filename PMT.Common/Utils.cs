@@ -32,6 +32,13 @@ namespace PMT.Common
             return val.ToString("C2", currencyFormat);
         }
 
-        
+        public static int ParseInt(this string text)
+        {
+            int tmp;
+            int.TryParse(text, out tmp);
+            return tmp;
+        }
+
+
     }
 }

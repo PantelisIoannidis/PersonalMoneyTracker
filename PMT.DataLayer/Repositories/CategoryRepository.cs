@@ -30,5 +30,10 @@ namespace PMT.DataLayer.Repositories
         {
             return db.Categories.Include("SubCategories").OrderBy(x=>x.Name).ToList();
         }
+
+        public Category GetGategoryById(int id)
+        {
+            return db.Categories.FirstOrDefault(w => w.CategoryId == id);
+        }
     }
 }

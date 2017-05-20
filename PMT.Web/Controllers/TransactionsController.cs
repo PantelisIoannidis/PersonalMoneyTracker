@@ -137,7 +137,7 @@ namespace PMT.Web.Controllers
 
         public ActionResult GetSubCategories(int categoryId)
         {
-            var subCategories = subCategoryRepository.GetSubCategory(categoryId);
+            var subCategories = subCategoryRepository.GetSubCategories(categoryId);
             return Json(subCategories, JsonRequestBehavior.AllowGet);
         }
 

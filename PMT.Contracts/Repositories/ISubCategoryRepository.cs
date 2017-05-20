@@ -9,6 +9,7 @@ namespace PMT.Contracts.Repositories
 {
     public interface ISubCategoryRepository : IRepositoryBase<SubCategory>
     {
-        List<SubCategory> GetSubCategory(int CategoryId);
+        List<SubCategory> GetSubCategories(int CategoryId);
+        SubCategory GetSubCategoryById(int CategoryId);
     }
 }

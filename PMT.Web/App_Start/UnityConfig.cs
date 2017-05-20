@@ -60,6 +60,7 @@ namespace PMT.Web.App_Start
             //Business Login
             container.RegisterType<IIdentityEngine, IdentityEngine>();
             container.RegisterType<IMoneyAccountEngine, MoneyAccountEngine>();
+            container.RegisterType<ICategoriesEngine, CategoriesEngine>();
             container.RegisterType<ITransactionsEngine, TransactionsEngine>();
             container.RegisterType<ICalculationsEngine, CalculationsEngine>();
 

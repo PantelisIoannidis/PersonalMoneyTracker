@@ -412,6 +412,15 @@ namespace PMT.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Delete Subcategory.
+        /// </summary>
+        public static string SubCategoryViewDeleteTitle {
+            get {
+                return ResourceManager.GetString("SubCategoryViewDeleteTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Summary.
         /// </summary>
         public static string Summary {

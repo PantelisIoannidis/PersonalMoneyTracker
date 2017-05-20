@@ -505,6 +505,9 @@
     <Content Include="Views\Transactions\_TransactionsTablePartial.cshtml" />
     <Content Include="Views\Transactions\_TransactionsSummaryPartial.cshtml" />
     <Content Include="Views\Categories\Index.cshtml" />
+    <Content Include="Views\Categories\_NewCategoryPartial.cshtml" />
+    <Content Include="Views\Categories\_IndexPanelPartial.cshtml" />
+    <Content Include="Views\Categories\_DeletePartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -258,4 +258,7 @@
   <data name="CategoryViewDeleteTitle" xml:space="preserve">
     <value>Delete Category</value>
   </data>
+  <data name="SubCategoryViewDeleteTitle" xml:space="preserve">
+    <value>Delete Subcategory</value>
+  </data>
 </root>

@@ -1,0 +1,67 @@
+﻿@model List<PMT.Entities.Category>
+
+<div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="incomeTab">
+
+        <div class="panel panel-default">
+            <div class="panel-body scrollable-panel">
+                <div class="nav nav-stacked">
+                    @foreach (var item in Model)
+                    {
+                        if (item.Type == PMT.Entities.TransactionType.Income)
+                        {
+                            var cnt = @item.SubCategories.Count;
+                            var hidden = cnt > 1 ? "" : "hidden";
+                            <ul class="nav nav-stacked  categoryList">
+                                <li class="navbar-header">
+                                    <a href="#" class="categoryListItem" data-toggle="collapse" data-target="categoryId_@item.CategoryId">
+                                        <i class="fa fa-fw @item.IconId"></i> @item.Name <i class="glyphicon glyphicon-chevron-right"></i>
+                                        <span class="badge badge-info @hidden">@cnt</span>
+                                    </a>
+                                    <ul class="nav nav-stacked collapse subCategoryListItem" id="categoryId_@item.CategoryId" data-name="@item.Name">
+                                        @foreach (var subItem in item.SubCategories)
+                                        {
+                                            <li><a class="subCategoryListItem" href="#" data-name="@subItem.Name" data-target="subCategoryId_@subItem.SubCategoryId" id="subCategoryId_@subItem.SubCategoryId"><i class="fa fa-fw @subItem.IconId"></i> @subItem.Name</a></li>
+                                        }
+                                    </ul>
+                                </li>
+                            </ul>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div role="tabpanel" class="tab-pane" id="expensesTab">
+        <div class="panel panel-default">
+            <div class="panel-body scrollable-panel">
+                <div class="nav nav-stacked">
+                    @foreach (var item in Model)
+                    {
+                        if (item.Type == PMT.Entities.TransactionType.Expense)
+                        {
+                            var cnt = @item.SubCategories.Count;
+                            var hidden = cnt > 1 ? "" : "hidden";
+                            <ul class="nav nav-stacked  categoryList">
+                                <li class="navbar-header">
+                                    <a href="#" class="categoryListItem" data-toggle="collapse" data-target="categoryId_@item.CategoryId">
+                                        <i class="fa fa-fw @item.IconId"></i> @item.Name <i class="glyphicon glyphicon-chevron-right"></i>
+                                        <span class="badge badge-info @hidden">@cnt</span>
+                                    </a>
+                                    <ul class="nav nav-stacked collapse subCategoryListItem" id="categoryId_@item.CategoryId" data-name="@item.Name">
+                                        @foreach (var subItem in item.SubCategories)
+                                        {
+                                            <li><a class="subCategoryListItem" href="#" data-name="@subItem.Name" data-target="subCategoryId_@subItem.SubCategoryId" id="subCategoryId_@subItem.SubCategoryId"><i class="fa fa-fw @subItem.IconId"></i> @subItem.Name</a></li>
+                                        }
+                                    </ul>
+                                </li>
+                            </ul>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

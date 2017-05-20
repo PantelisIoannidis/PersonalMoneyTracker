@@ -129,6 +129,9 @@
   <data name="BudgetName" xml:space="preserve">
     <value>Budget Name</value>
   </data>
+  <data name="Category" xml:space="preserve">
+    <value>Category</value>
+  </data>
   <data name="CategoryName" xml:space="preserve">
     <value>Category Name</value>
   </data>
@@ -146,6 +149,9 @@
   </data>
   <data name="RepeatDescription" xml:space="preserve">
     <value>Description</value>
+  </data>
+  <data name="SubCategory" xml:space="preserve">
+    <value>Subcategory</value>
   </data>
   <data name="SubCategoryName" xml:space="preserve">
     <value>Subcategory Name</value>

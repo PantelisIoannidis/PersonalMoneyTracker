@@ -118,13 +118,16 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="CategoryDeleteWarningLine" xml:space="preserve">
-    <value>Are you sure you want to delete this category?</value>
+    <value>Are you sure you want to delete this category and all its subcategories?</value>
   </data>
   <data name="MoneyAccountsDeleteWarningLine1" xml:space="preserve">
     <value>Are you sure you want to delete this account?</value>
   </data>
   <data name="MoneyAccountsDeleteWarningLine2" xml:space="preserve">
     <value>Warning, all transactions of the account will be removed.</value>
+  </data>
+  <data name="SubCategoryDeleteWarningLine" xml:space="preserve">
+    <value>Are you sure you want to delete this subcategory?</value>
   </data>
   <data name="TransactionDeleteWarningLine" xml:space="preserve">
     <value>Are you sure you want to delete this transaction?</value>
