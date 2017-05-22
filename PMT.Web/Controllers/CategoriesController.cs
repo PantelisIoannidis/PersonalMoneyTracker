@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using PMT.BusinessLayer;
-using PMT.Contracts.Repositories;
+using PMT.DataLayer.Repositories;
 using PMT.Models;
 using PMT.Web.Helpers;
 using System;
@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using static PMT.Entities.Literals;
 
 namespace PMT.Web.Controllers
 {
@@ -18,11 +19,13 @@ namespace PMT.Web.Controllers
         ICategoryRepository categoryRepository;
         ISubCategoryRepository subCategoryRepository;
         ICategoriesEngine categoriesEngine;
+        IIconRepository iconRepository;
         public CategoriesController(ILoggerFactory logger,
                                         ICommonHelper commonHelper,
                                         ICategoryRepository categoryRepository,
                                         ISubCategoryRepository subCategoryRepository,
-                                        ICategoriesEngine categoriesEngine
+                                        ICategoriesEngine categoriesEngine,
+                                        IIconRepository iconRepository
                                         )
         {
             this.commonHelper = commonHelper;
@@ -31,6 +34,7 @@ namespace PMT.Web.Controllers
             this.categoryRepository = categoryRepository;
             this.subCategoryRepository = subCategoryRepository;
             this.categoriesEngine = categoriesEngine;
+            this.iconRepository = iconRepository;
         }
 
         public ActionResult Index()
@@ -39,10 +43,29 @@ namespace PMT.Web.Controllers
             return View(cateogories);
         }
 
-        public ActionResult Create()
+        public JsonResult GetAllIcons()
         {
-            var cateogories = categoryRepository.GetAllGategoriesSubCategories();
-            return View(cateogories);
+            var icons = iconRepository.GetAll().ToList();
+            return Json(icons, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult NewCategory()
+        {
+            var categoryVM = new CategoryVM();
+            List<SelectListItem> types = new List<SelectListItem>() {
+                new SelectListItem()
+                {
+                    Text = TransactionTypes.Income.TransactionTypeDescription(),
+                    Value = TransactionTypes.Income.ToString()
+                },
+                new SelectListItem()
+                {
+                    Text = TransactionTypes.Expense.TransactionTypeDescription(),
+                    Value = TransactionTypes.Expense.ToString()
+                }
+            };
+            ViewBag.CategoryType = types;
+            return View(categoryVM);
         }
 
         public ActionResult Modify(string id)

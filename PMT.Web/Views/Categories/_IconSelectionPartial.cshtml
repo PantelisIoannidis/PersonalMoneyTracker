@@ -1,0 +1,27 @@
+﻿<div class="modal fade" id="iconSelectionModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                <h4 class="modal-title">Select a icon</h4>
+            </div>
+            <div class="modal-body text-center">
+                <div id="iconCollection" class="scrollable-panel">
+                    Please wait...   
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script id="iconCollectionTemplate" type="text/x-handlebars-template">
+    {{#each this}}
+    <span class="iconTile text-center">
+        <a href="#" data-id="{{IconId}}" class="selectedIconBtn btn btn-default"><i class="use-big-fonts fa fa-fw {{IconId}}"></i>{{Name}}</a>
+        
+    </span>
+    {{/each}}
+</script>

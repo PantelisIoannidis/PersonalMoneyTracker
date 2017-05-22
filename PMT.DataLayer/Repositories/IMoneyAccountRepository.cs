@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using PMT.Entities;
-using PMT.Contracts.Repositories;
 using PMT.Common;
 
 namespace PMT.DataLayer.Repositories

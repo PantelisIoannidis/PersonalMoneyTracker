@@ -11,7 +11,6 @@ using PMT.Entities;
 using Microsoft.Extensions.Logging;
 using PMT.Web.Helpers;
 using PMT.DataLayer.Repositories;
-using PMT.Contracts.Repositories;
 using PMT.Models;
 using PMT.Common;
 using PMT.BusinessLayer;

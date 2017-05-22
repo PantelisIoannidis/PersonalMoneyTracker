@@ -28,13 +28,18 @@ var pmt = function () {
         categoriesUI.onLoadIndexInit();
     }
 
+    var onDocumentLoadCategoriesCreate = function () {
+        categoriesCreateUI.onLoadCreateInit();
+    }
+
     return {
         rootPath: rootPath,
         onDocumentLoadMaster: onDocumentLoadMaster,
         onDocumentLoadIndexTransaction: onDocumentLoadIndexTransaction,
         onDocumentTransactionCreate: onDocumentTransactionCreate,
         onDocumentLoadIndexAccounts: onDocumentLoadIndexAccounts,
-        onDocumentLoadIndexCategories: onDocumentLoadIndexCategories
+        onDocumentLoadIndexCategories: onDocumentLoadIndexCategories,
+        onDocumentLoadCategoriesCreate: onDocumentLoadCategoriesCreate
 
     };
 

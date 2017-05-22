@@ -41,15 +41,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\ICategoryRepository.cs" />
-    <Compile Include="Repositories\IRepositoryBase.cs" />
-    <Compile Include="Repositories\ISubCategoryRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PMT.Entities\PMT.Entities.csproj">
       <Project>{9463f7d5-f927-4886-b9d3-5e67324752b4}</Project>
       <Name>PMT.Entities</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Repositories\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

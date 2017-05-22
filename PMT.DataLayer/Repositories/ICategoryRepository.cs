@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using PMT.Entities;
 
-namespace PMT.Contracts.Repositories
+namespace PMT.DataLayer.Repositories
 {
     public interface ICategoryRepository : IRepositoryBase<Category>
     {

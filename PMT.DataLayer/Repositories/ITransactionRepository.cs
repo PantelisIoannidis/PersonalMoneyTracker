@@ -2,7 +2,6 @@
 using PMT.Common.Helpers;
 using PMT.Entities;
 using PMT.Models;
-using PMT.Contracts.Repositories;
 
 namespace PMT.DataLayer.Repositories
 {

@@ -2,7 +2,6 @@ using System;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.Configuration;
 using PMT.DataLayer.Repositories;
-using PMT.Contracts.Repositories;
 using PMT.DataLayer;
 using PMT.DataLayer.Context;
 using System.Data.Entity;
@@ -87,7 +86,10 @@ namespace PMT.Web.App_Start
             container.RegisterType<ITransactionRepository, TransactionRepository>();
             container.RegisterType<IMoneyAccountRepository, MoneyAccountRepository>();
             container.RegisterType<IIdentityRepository, IdentityRepository>();
+            container.RegisterType<IIconRepository, IconRepository>();
             
+
+
 
         }
     }

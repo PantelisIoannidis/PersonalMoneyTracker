@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using PMT.Common;
-using PMT.Contracts.Repositories;
+using PMT.DataLayer.Repositories;
 using PMT.Models;
 using System;
 using System.Collections.Generic;

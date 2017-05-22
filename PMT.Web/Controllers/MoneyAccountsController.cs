@@ -14,7 +14,6 @@ using PMT.Common;
 using PMT.Models;
 using PMT.BusinessLayer;
 using Microsoft.Extensions.Logging;
-using PMT.Contracts.Repositories;
 
 namespace PMT.Web.Controllers
 {

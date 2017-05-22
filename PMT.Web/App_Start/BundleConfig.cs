@@ -34,12 +34,17 @@ namespace PMT.Web
                       "~/css/whhg.css",
                       "~/css/site.css"));
 
+            bundles.Add(new ScriptBundle("~/bundles/handlebars").Include(
+                      "~/Scripts/handlebars.js"));
+
+            
             bundles.Add(new ScriptBundle("~/js/app").Include(
                         "~/js/App.CommonUI.js",
                         "~/js/App.MoneyAccountUI.js",
                         "~/js/App.TransactionsUI.js",
                         "~/js/App.TransactionsFiltersUI.js",
                         "~/js/App.CategoriesUI.js",
+                        "~/js/App.CategoriesCreateUI.js",
                         "~/js/App.js"
                         ));
         }

@@ -1,0 +1,81 @@
+﻿@model PMT.Models.CategoryVM
+@{
+    ViewBag.Title = "Create New Category";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="panel panel-primary use-big-fonts">
+        <div class="panel-heading">@ViewBag.Title</div>
+        <div class="panel-body">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <div class="col-md-3 col-md-offset-2">
+                        @Html.LabelFor(model => model.Type, ModelText.TransactionTransactionType, htmlAttributes: new { @class = "control-label" })
+                    </div>
+                    <div class="col-md-7">
+                        @Html.DropDownList("CategoryType", null, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Type, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3 col-md-offset-2">
+                        @Html.LabelFor(model => model.Name, ModelText.CategoryName, htmlAttributes: new { @class = "control-label" })
+                    </div>
+                    <div class="col-md-7">
+                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3 col-md-offset-2">
+                        <label class="control-label" for="chooseIconBtn">Icon</label>
+                    </div>
+                    <div class="col-md-7">
+                        <a href="#" data-iconid="" id="chooseIconBtn"class="btn btn-default"><i class="fa fa-fw fa-question"></i></a>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3 col-md-offset-2">
+                        <label class="control-label" for="chooseColorBtn">Color</label>
+                    </div>
+                    <div class="col-md-7">
+                        <a href="#" id="chooseColorBtn" class="btn btn-default"><i class="fa fa-fw"></i></a>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3 col-md-offset-2">
+                        @Html.LabelFor(model => model.Name, ModelText.TransactionDescription, htmlAttributes: new { @class = "control-label" })
+                    </div>
+                    <div class="col-md-7">
+                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-5 col-md-7">
+                        <button type="submit" class="btn btn-success"><i class="fa fa-fw fa-save"></i> @ViewText.Save</button>
+                        <a href="@Url.Action("Index","Categories",null)" class="btn btn-default"><i class="fa fa-fw fa-remove"></i> @ViewText.Cancel</a>
+                    </div>
+                </div>
+                <div>
+                    <a href="@Url.Action("Index","Categories",null)" class="btn btn-info"><i class="fa fa-fw fa-arrow-left"></i> @ViewText.Back</a>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@Html.Partial("_IconSelectionPartial")
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        $(function () {
+            pmt.onDocumentLoadCategoriesCreate();
+        });
+    </script>
+}

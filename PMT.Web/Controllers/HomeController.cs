@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.Logging;
-using PMT.Contracts.Repositories;
 using PMT.DataLayer;
 using System;
 using System.Collections.Generic;

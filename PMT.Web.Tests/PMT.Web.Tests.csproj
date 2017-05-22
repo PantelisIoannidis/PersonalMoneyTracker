@@ -101,10 +101,6 @@
       <Project>{551cfa99-af45-45b1-bb2e-37d4475f2107}</Project>
       <Name>PMT.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\PMT.Contracts\PMT.Contracts.csproj">
-      <Project>{f9fdbc50-f549-428b-ab7c-837601733c7f}</Project>
-      <Name>PMT.Contracts</Name>
-    </ProjectReference>
     <ProjectReference Include="..\PMT.DataLayer\PMT.DataLayer.csproj">
       <Project>{44835c93-12c3-4a54-9bd8-b5834b574247}</Project>
       <Name>PMT.DataLayer</Name>

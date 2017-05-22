@@ -328,6 +328,9 @@
     <Content Include="Content\bootstrap-datepicker.css.map" />
     <Content Include="js\App.MoneyAccountUI.js" />
     <Content Include="js\App.CategoriesUI.js" />
+    <Content Include="js\App.CategoriesCreateUI.js" />
+    <Content Include="App_Readme\Handlebarsjs_README.md" />
+    <Content Include="App_Readme\Handlebarsjs_LICENSE" />
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -370,6 +373,14 @@
     <Content Include="Scripts\flot\jquery.flot.time.js" />
     <Content Include="Scripts\flot\jquery.flot.time.min.js" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
+    <Content Include="Scripts\handlebars.amd.js" />
+    <Content Include="Scripts\handlebars.amd.min.js" />
+    <Content Include="Scripts\handlebars.js" />
+    <Content Include="Scripts\handlebars.min.js" />
+    <Content Include="Scripts\handlebars.runtime.amd.js" />
+    <Content Include="Scripts\handlebars.runtime.amd.min.js" />
+    <Content Include="Scripts\handlebars.runtime.js" />
+    <Content Include="Scripts\handlebars.runtime.min.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.js" />
@@ -505,9 +516,10 @@
     <Content Include="Views\Transactions\_TransactionsTablePartial.cshtml" />
     <Content Include="Views\Transactions\_TransactionsSummaryPartial.cshtml" />
     <Content Include="Views\Categories\Index.cshtml" />
-    <Content Include="Views\Categories\_NewCategoryPartial.cshtml" />
+    <Content Include="Views\Categories\NewCategory.cshtml" />
     <Content Include="Views\Categories\_IndexPanelPartial.cshtml" />
     <Content Include="Views\Categories\_DeletePartial.cshtml" />
+    <Content Include="Views\Categories\_IconSelectionPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -523,10 +535,6 @@
     <ProjectReference Include="..\PMT.Common\PMT.Common.csproj">
       <Project>{551cfa99-af45-45b1-bb2e-37d4475f2107}</Project>
       <Name>PMT.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\PMT.Contracts\PMT.Contracts.csproj">
-      <Project>{f9fdbc50-f549-428b-ab7c-837601733c7f}</Project>
-      <Name>PMT.Contracts</Name>
     </ProjectReference>
     <ProjectReference Include="..\PMT.DataLayer\PMT.DataLayer.csproj">
       <Project>{44835c93-12c3-4a54-9bd8-b5834b574247}</Project>

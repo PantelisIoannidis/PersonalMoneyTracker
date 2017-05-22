@@ -1,5 +1,7 @@
 ﻿var categoriesUI = function () {
-	function addIndexButtonEvents() {
+
+    function indexEvents() {
+
 	    $("#deleteCategoryBtn").click(function (e) {
 	        e.preventDefault();
 	        var deleteId = $("#selectedCategory").val();
@@ -75,7 +77,7 @@
 	}
 
 	function onLoadIndexInit() {
-	    addIndexButtonEvents();
+	    indexEvents();
 	    dropdownMenuToggle();
 	    calculateIndexActiveElement();
 	}

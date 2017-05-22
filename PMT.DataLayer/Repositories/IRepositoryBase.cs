@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PMT.Contracts.Repositories
+namespace PMT.DataLayer.Repositories
 {
     public interface IRepositoryBase<TEntity> where TEntity : class
     {

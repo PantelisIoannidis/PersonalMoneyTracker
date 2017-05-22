@@ -17,7 +17,6 @@ namespace PMT.Web.Helpers
 
         public List<CultureInfo> GetClientCultureInfo(HttpContextBase httpContext)
         {
-            int i = 0;
             List<CultureInfo> cultures = new List<CultureInfo>();
             foreach(string locale in httpContext.Request.UserLanguages)
             {
