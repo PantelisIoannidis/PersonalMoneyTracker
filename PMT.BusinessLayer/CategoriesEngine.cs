@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using PMT.Common;
 using PMT.DataLayer.Repositories;
+using PMT.Entities;
 using PMT.Models;
 using System;
 using System.Collections.Generic;
@@ -62,6 +63,30 @@ namespace PMT.BusinessLayer
                 categoryVM.Type = category.Type;
             }
                 return categoryVM;
+        }
+
+        public IActionStatus StoreCategory(CategoryVM categoryVM)
+        {
+            try
+            {
+                var category = new Category() {
+                    CategoryId=categoryVM.CategoryId,
+                    Color=categoryVM.Color,
+                    IconId=categoryVM.IconId,
+                    Name=categoryVM.Name,
+                    Type=categoryVM.Type
+                };
+                actionStatus = categoryRepository.StoreCategory(category);
+
+            }
+            catch (Exception ex)
+            {
+                actionStatus = ActionStatus.CreateFromException("", ex);
+                logger.LogError(LoggingEvents.CALL_METHOD, ex, "Preparing to store new category didn't work");
+            }
+
+            return actionStatus;
+
         }
 
     }

@@ -1,6 +1,12 @@
 ﻿var categoriesCreateUI = function () {
 	function createEvents() {
 
+
+	    $("#html5picker").change(function () {
+	        var color = $("#html5picker").get(0).value;
+	        $("#Color").val(color);
+	    });
+
 		$("#chooseIconBtn").click(function (e) {
 			e.preventDefault();
 			$("#iconSelectionModal").modal("show");
@@ -13,7 +19,7 @@
 		    e.preventDefault();
 		    var iconId = $this.data('id');
 
-		    $chooseIconBtn.data("iconid", iconId);
+		    $("#IconId").val(iconId);
 		    $chooseIconBtn.children("i").removeClass();
 		    $chooseIconBtn.children("i").addClass("fa fa-fw " + iconId);
 			$("#iconSelectionModal").modal("hide");
@@ -33,7 +39,8 @@
 	}
 
 	function onLoadCreateInit() {
-		createEvents();
+	    createEvents();
+	
 	};
 
 return {

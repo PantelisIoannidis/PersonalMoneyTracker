@@ -34,5 +34,21 @@ namespace PMT.DataLayer.Repositories
         {
             return db.Categories.FirstOrDefault(w => w.CategoryId == id);
         }
+
+        public IActionStatus StoreCategory(Category category)
+        {
+            try
+            {
+                db.Categories.Add(category);
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                actionStatus = ActionStatus.CreateFromException("", ex);
+                logger.LogError(LoggingEvents.CALL_METHOD, ex, "Store new category to database didn't work");
+            }
+
+            return actionStatus;
+        }
     }
 }

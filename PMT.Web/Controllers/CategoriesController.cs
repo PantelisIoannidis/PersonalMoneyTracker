@@ -49,10 +49,9 @@ namespace PMT.Web.Controllers
             return Json(icons, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult NewCategory()
+        private List<SelectListItem> GetShortTransactionTypeList()
         {
-            var categoryVM = new CategoryVM();
-            List<SelectListItem> types = new List<SelectListItem>() {
+            return new List<SelectListItem>() {
                 new SelectListItem()
                 {
                     Text = TransactionTypes.Income.TransactionTypeDescription(),
@@ -64,7 +63,28 @@ namespace PMT.Web.Controllers
                     Value = TransactionTypes.Expense.ToString()
                 }
             };
-            ViewBag.CategoryType = types;
+        }
+
+        public ActionResult NewCategory()
+        {
+            var categoryVM = new CategoryVM() {
+                IconId = "icon-stickynote"
+            };
+
+            ViewBag.CategoryType = GetShortTransactionTypeList();
+            return View(categoryVM);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult NewCategory(CategoryVM categoryVM)
+        {
+            if (ModelState.IsValid)
+            {
+                categoriesEngine.StoreCategory(categoryVM);
+                return RedirectToAction("Index");
+            }
+            ViewBag.CategoryType = GetShortTransactionTypeList();
             return View(categoryVM);
         }
 
