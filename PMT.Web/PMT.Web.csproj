@@ -524,6 +524,7 @@
     <Content Include="Views\Categories\_IndexPanelPartial.cshtml" />
     <Content Include="Views\Categories\_DeletePartial.cshtml" />
     <Content Include="Views\Categories\_IconSelectionPartial.cshtml" />
+    <Content Include="Views\Categories\NewSubCategory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

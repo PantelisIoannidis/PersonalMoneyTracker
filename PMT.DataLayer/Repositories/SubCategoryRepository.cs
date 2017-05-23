@@ -29,5 +29,11 @@ namespace PMT.DataLayer.Repositories
         {
             return db.SubCategories.FirstOrDefault(w => w.SubCategoryId == SubCategoryId);
         }
+
+        public void StoreSubCategory(SubCategory subCategory)
+        {
+            db.SubCategories.Add(subCategory);
+            db.SaveChanges();
+        }
     }
 }

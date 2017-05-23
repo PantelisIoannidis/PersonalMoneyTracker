@@ -91,6 +91,30 @@ namespace PMT.Web.Controllers
             return View(categoryVM);
         }
 
+        public ActionResult NewSubCategory()
+        {
+            var categoryVM = new CategoryVM()
+            {
+                IconId = "icon-stickynote"
+            };
+
+            ViewBag.CategoryType = GetShortTransactionTypeList();
+            return View(categoryVM);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult NewSubCategory(CategoryVM categoryVM, string CategoryType)
+        {
+            if (ModelState.IsValid)
+            {
+                categoriesEngine.StoreNewSubCategory(categoryVM);
+                return RedirectToAction("Index");
+            }
+            ViewBag.CategoryType = GetShortTransactionTypeList();
+            return View(categoryVM);
+        }
+
         [HttpPost]
         public ActionResult Delete(string categoryId)
         {

@@ -11,5 +11,6 @@ namespace PMT.DataLayer.Repositories
     {
         List<SubCategory> GetSubCategories(int CategoryId);
         SubCategory GetSubCategoryById(int SubCategoryId);
+        void StoreSubCategory(SubCategory subCategory);
     }
 }

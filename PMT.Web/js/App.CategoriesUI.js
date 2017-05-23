@@ -1,5 +1,6 @@
 ﻿var categoriesUI = function () {
 
+
     function indexEvents() {
 
 	    $("#deleteCategoryBtn").click(function (e) {

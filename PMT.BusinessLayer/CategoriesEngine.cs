@@ -100,6 +100,26 @@ namespace PMT.BusinessLayer
 
         }
 
+        public void StoreNewSubCategory(CategoryVM categoryVM)
+        {
+            try
+            {
+                var subCategory = new SubCategory()
+                {
+                    CategoryId = categoryVM.CategoryId,
+                    Name = categoryVM.Name,
+                    IconId = categoryVM.IconId,
+                    Color = categoryVM.Color
+                };
+                subCategoryRepository.StoreSubCategory(subCategory);
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(LoggingEvents.CALL_METHOD, ex, "Preparing to store new subcategory didn't work");
+            }
+
+        }
+
         public void DeleteCategorySubCategories(string id)
         {
             try
