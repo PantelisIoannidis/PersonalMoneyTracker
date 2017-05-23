@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using PMT.Common;
 using PMT.Entities;
+using PMT.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,6 +35,23 @@ namespace PMT.DataLayer.Repositories
         {
             db.SubCategories.Add(subCategory);
             db.SaveChanges();
+        }
+
+        public void UpdateSubCategory(CategoryVM categoryVM)
+        {
+            try
+            {
+                var subcategory = db.SubCategories.FirstOrDefault(w => w.SubCategoryId == categoryVM.SubCategoryId);
+                subcategory.Color = categoryVM.Color;
+                subcategory.IconId = categoryVM.IconId;
+                subcategory.Name = categoryVM.Name;
+                subcategory.CategoryId = categoryVM.CategoryId;
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(LoggingEvents.CALL_METHOD, ex, "Update subcategory in database");
+            }
         }
     }
 }

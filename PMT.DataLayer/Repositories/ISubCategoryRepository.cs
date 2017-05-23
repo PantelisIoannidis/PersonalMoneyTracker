@@ -1,4 +1,5 @@
 ﻿using PMT.Entities;
+using PMT.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,5 +13,6 @@ namespace PMT.DataLayer.Repositories
         List<SubCategory> GetSubCategories(int CategoryId);
         SubCategory GetSubCategoryById(int SubCategoryId);
         void StoreSubCategory(SubCategory subCategory);
+        void UpdateSubCategory(CategoryVM categoryVM);
     }
 }

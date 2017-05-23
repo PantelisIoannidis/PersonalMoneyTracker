@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using PMT.BusinessLayer;
 using PMT.Common;
+using PMT.Common.Resources;
 using PMT.DataLayer.Repositories;
 using PMT.Entities;
 using PMT.Models;
@@ -72,7 +73,7 @@ namespace PMT.Web.Controllers
             var categoryVM = new CategoryVM() {
                 IconId = "icon-stickynote"
             };
-
+            ViewBag.Title = ViewText.CreateNewCategory;
             ViewBag.CategoryType = GetShortTransactionTypeList();
             return View(categoryVM);
         }
@@ -87,6 +88,7 @@ namespace PMT.Web.Controllers
                 categoriesEngine.StoreNewCategoryAndSubCategory(categoryVM);
                 return RedirectToAction("Index");
             }
+            ViewBag.Title = ViewText.CreateNewCategory;
             ViewBag.CategoryType = GetShortTransactionTypeList();
             return View(categoryVM);
         }
@@ -97,7 +99,7 @@ namespace PMT.Web.Controllers
             {
                 IconId = "icon-stickynote"
             };
-
+            ViewBag.Title = ViewText.CreateNewSubcategory;
             ViewBag.CategoryType = GetShortTransactionTypeList();
             return View(categoryVM);
         }
@@ -111,6 +113,7 @@ namespace PMT.Web.Controllers
                 categoriesEngine.StoreNewSubCategory(categoryVM);
                 return RedirectToAction("Index");
             }
+            ViewBag.Title = ViewText.CreateNewSubcategory;
             ViewBag.CategoryType = GetShortTransactionTypeList();
             return View(categoryVM);
         }
@@ -122,5 +125,39 @@ namespace PMT.Web.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult Edit(string id)
+        {
+            
+            var categoryVM = categoriesEngine.GetCategory(id);
+            ViewBag.CategoryType = GetShortTransactionTypeList();
+
+            string _view = "";
+            if (categoryVM.IsCategory)
+            {
+                 _view = "NewCategory";
+                ViewBag.Title = ViewText.EditCategory;
+            }
+            else
+            {
+                _view = "NewSubCategory";
+                ViewBag.Title = ViewText.EditSubcategory;
+                
+            }
+                
+            return View(_view, categoryVM);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(CategoryVM categoryVM, string CategoryType)
+        {
+            if (ModelState.IsValid)
+            {
+                categoryVM.Type = (TransactionType)CategoryType.ParseInt();
+                categoriesEngine.EditCategoryAndSubCategory(categoryVM);
+                return RedirectToAction("Index");
+            }
+            ViewBag.CategoryType = GetShortTransactionTypeList();
+            return View(categoryVM);
+        }
     }
 }

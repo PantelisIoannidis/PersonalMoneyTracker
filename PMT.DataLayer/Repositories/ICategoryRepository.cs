@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using PMT.Entities;
 using PMT.Common;
+using PMT.Models;
 
 namespace PMT.DataLayer.Repositories
 {
@@ -11,5 +12,7 @@ namespace PMT.DataLayer.Repositories
         Category GetGategoryById(int id);
 
         void StoreNewCategoryAndSubCategory(Category category, SubCategory subCategory);
+
+        void UpdateCategory(CategoryVM categoryVM);
     }
 }

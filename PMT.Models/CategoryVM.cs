@@ -20,5 +20,7 @@ namespace PMT.Models
         [Required]
         public string Name { get; set; }
 
+        public bool IsCategory { get; set;}
+
     }
 }

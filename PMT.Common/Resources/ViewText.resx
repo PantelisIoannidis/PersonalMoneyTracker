@@ -261,4 +261,16 @@
   <data name="SubCategoryViewDeleteTitle" xml:space="preserve">
     <value>Delete Subcategory</value>
   </data>
+  <data name="CreateNewCategory" xml:space="preserve">
+    <value>Create New Category</value>
+  </data>
+  <data name="CreateNewSubcategory" xml:space="preserve">
+    <value>Create New Subcategory</value>
+  </data>
+  <data name="EditCategory" xml:space="preserve">
+    <value>Edit Category</value>
+  </data>
+  <data name="EditSubcategory" xml:space="preserve">
+    <value>Edit Subcategory</value>
+  </data>
 </root>

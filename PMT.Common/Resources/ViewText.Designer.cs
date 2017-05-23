@@ -205,6 +205,24 @@ namespace PMT.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create New Category.
+        /// </summary>
+        public static string CreateNewCategory {
+            get {
+                return ResourceManager.GetString("CreateNewCategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create New Subcategory.
+        /// </summary>
+        public static string CreateNewSubcategory {
+            get {
+                return ResourceManager.GetString("CreateNewSubcategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Delete.
         /// </summary>
         public static string Delete {
@@ -219,6 +237,24 @@ namespace PMT.Common.Resources {
         public static string Edit {
             get {
                 return ResourceManager.GetString("Edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Category.
+        /// </summary>
+        public static string EditCategory {
+            get {
+                return ResourceManager.GetString("EditCategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Subcategory.
+        /// </summary>
+        public static string EditSubcategory {
+            get {
+                return ResourceManager.GetString("EditSubcategory", resourceCulture);
             }
         }
         

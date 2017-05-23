@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using PMT.Common;
 using PMT.Entities;
+using PMT.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -51,10 +52,26 @@ namespace PMT.DataLayer.Repositories
                 catch (Exception ex)
                 {
                     dbTransaction.Rollback();
-                    logger.LogError(LoggingEvents.CALL_METHOD, ex, "Store new category to database didn't work");
+                    logger.LogError(LoggingEvents.CALL_METHOD, ex, "Store new category to database");
                 }
             }
+        }
 
+        public void UpdateCategory(CategoryVM categoryVM)
+        {
+            try
+            {
+                var category=db.Categories.FirstOrDefault(w => w.CategoryId == categoryVM.CategoryId);
+                category.Color = categoryVM.Color;
+                category.IconId = categoryVM.IconId;
+                category.Name = categoryVM.Name;
+                category.Type = categoryVM.Type;
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(LoggingEvents.CALL_METHOD, ex, "Update category in database");
+            }
         }
     }
 }

@@ -56,6 +56,7 @@ namespace PMT.BusinessLayer
                 categoryVM.Color = subCategory.Color;
                 var category = categoryRepository.GetById(subCategory.CategoryId);
                 categoryVM.Type = category.Type;
+                categoryVM.IsCategory = false;
 
             }
             else if (!string.IsNullOrEmpty(categoryId))
@@ -66,6 +67,7 @@ namespace PMT.BusinessLayer
                 categoryVM.Name = category.Name;
                 categoryVM.Color = category.Color;
                 categoryVM.Type = category.Type;
+                categoryVM.IsCategory = true;
             }
             return categoryVM;
         }
@@ -150,6 +152,28 @@ namespace PMT.BusinessLayer
             catch (Exception ex)
             {
                 logger.LogError(LoggingEvents.CALL_METHOD, ex, "Preparing to delete a category or subcategory didn't work");
+            }
+
+        }
+
+        public void EditCategoryAndSubCategory(CategoryVM categoryVM)
+        {
+            try
+            {
+
+                if (categoryVM.IsCategory)
+                {
+                    categoryRepository.UpdateCategory(categoryVM);
+
+                }else
+                {
+                    subCategoryRepository.UpdateSubCategory(categoryVM);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(LoggingEvents.CALL_METHOD, ex, "Preparing to edit category,subcategory didn't work");
             }
 
         }

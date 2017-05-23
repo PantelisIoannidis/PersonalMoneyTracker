@@ -1,6 +1,6 @@
 ﻿@model PMT.Models.CategoryVM
 @{
-    ViewBag.Title = "Create New Category";
+
 }
 @using (Html.BeginForm())
 {
@@ -12,15 +12,9 @@
             <div class="form-horizontal">
 
                 @Html.HiddenFor(model=>model.Type)
-                <div class="form-group">
-                    <div class="col-md-3 col-md-offset-2">
-                        @Html.LabelFor(model => model.Type, ModelText.TransactionTransactionType, htmlAttributes: new { @class = "control-label" })
-                    </div>
-                    <div class="col-md-7">
-                        @Html.DropDownList("CategoryType", null, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Type, "", new { @class = "text-danger" })
-                    </div>
-                </div>
+                @Html.HiddenFor(model => model.SubCategoryId)
+                @Html.HiddenFor(model=>model.IsCategory)
+                
                 <div class="form-group categoryListDropDown">
                     <div class="col-md-3 col-md-offset-2">
                         @Html.Label("categoryBtn", ModelText.CategoryName, htmlAttributes: new { @class = "control-label" })
@@ -53,7 +47,7 @@
                         </div>
                         <div class="col-md-7">
                             @Html.HiddenFor(model => model.IconId)
-                            <a href="#" id="chooseIconBtn" class="use-big-fonts btn btn-default"><i class="fa fa-fw icon-stickynote"></i><span id="iconName"></span></a>
+                            <a href="#" id="chooseIconBtn" class="use-big-fonts btn btn-default"><i class="fa fa-fw @Model.IconId"></i><span id="iconName"></span></a>
                         </div>
                     </div>
                     <div class="form-group">

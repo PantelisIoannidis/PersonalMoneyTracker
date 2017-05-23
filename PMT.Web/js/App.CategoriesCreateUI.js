@@ -31,7 +31,6 @@
 
                         $("#categoryBtn").html(element);
                         $('#CategoryId').val(categoryId);
-                        $('#SubCategoryId').val("");
                     }
                 });
             },
@@ -72,7 +71,7 @@
         $(document.body).on('click', '#CategoryType > option', function () {
             var id = $(this).val();
             $("#Type").val(id);
-            $('#CategoryId').val("");
+            $('#CategoryBtn').val("");
             fillCategory();
         });
     };
@@ -117,13 +116,17 @@
 	    });;
 	    
 	}
+	function initValues() {
+	    var color = $("#Color").val();
+	    document.querySelector("#html5picker").value = color;
+	};
 
 	function onLoadCreateInit() {
 	    fillCategory();
 	    onCategoryChange();
 	    onCategoryTypeChange();
 	    createEvents();
-	    
+	    initValues();
 	
 	};
 

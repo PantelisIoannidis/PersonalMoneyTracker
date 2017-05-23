@@ -10,5 +10,7 @@ namespace PMT.BusinessLayer
         void StoreNewSubCategory(CategoryVM categoryVM);
 
         void DeleteCategorySubCategories(string id);
+        bool IsCategoryNotSubCategory(string id);
+        void EditCategoryAndSubCategory(CategoryVM categoryVM);
     }
 }
