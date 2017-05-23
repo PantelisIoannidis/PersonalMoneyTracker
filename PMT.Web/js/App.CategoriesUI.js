@@ -29,7 +29,7 @@
 	        if (!deleteId) return;
 	        var token = $('[name=__RequestVerificationToken]').val();
 	        $("#categoryDeleteModal").modal("hide");
-	        $.post("/Categories/Delete/", { __RequestVerificationToken: token, subCategoryId: deleteId },
+	        $.post("/Categories/Delete/", { __RequestVerificationToken: token, categoryId: deleteId },
                 function (retURL) { window.location.reload(true); });
 	    });
 	    $("#editCategoryBtn").click(function (e) {

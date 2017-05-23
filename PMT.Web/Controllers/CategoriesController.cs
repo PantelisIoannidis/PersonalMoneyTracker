@@ -1,6 +1,8 @@
 ﻿using Microsoft.Extensions.Logging;
 using PMT.BusinessLayer;
+using PMT.Common;
 using PMT.DataLayer.Repositories;
+using PMT.Entities;
 using PMT.Models;
 using PMT.Web.Helpers;
 using System;
@@ -77,21 +79,24 @@ namespace PMT.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult NewCategory(CategoryVM categoryVM)
+        public ActionResult NewCategory(CategoryVM categoryVM,string CategoryType)
         {
             if (ModelState.IsValid)
             {
-                categoriesEngine.StoreCategory(categoryVM);
+                categoryVM.Type = (TransactionType)CategoryType.ParseInt();
+                categoriesEngine.StoreNewCategoryAndSubCategory(categoryVM);
                 return RedirectToAction("Index");
             }
             ViewBag.CategoryType = GetShortTransactionTypeList();
             return View(categoryVM);
         }
 
-        public ActionResult Modify(string id)
+        [HttpPost]
+        public ActionResult Delete(string categoryId)
         {
-            var categoryVM = categoriesEngine.GetCategory(id);
-            return View(categoryVM);
+            categoriesEngine.DeleteCategorySubCategories(categoryId);
+            return RedirectToAction("Index");
         }
+
     }
 }

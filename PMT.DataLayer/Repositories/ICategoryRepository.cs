@@ -10,6 +10,6 @@ namespace PMT.DataLayer.Repositories
         List<Category> GetAllGategoriesSubCategories();
         Category GetGategoryById(int id);
 
-        IActionStatus StoreCategory(Category category);
+        void StoreNewCategoryAndSubCategory(Category category, SubCategory subCategory);
     }
 }

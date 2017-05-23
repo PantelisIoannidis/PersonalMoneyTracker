@@ -101,7 +101,7 @@ namespace PMT.DataLayer.Repositories
             return transactions.FirstOrDefault();
         }
 
-        public void Update(Transaction transaction)
+        public override void Update(Transaction transaction)
         {
             try
             {

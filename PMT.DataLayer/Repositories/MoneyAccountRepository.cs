@@ -35,7 +35,7 @@ namespace PMT.DataLayer.Repositories
             return db.MoneyAccounts.Where(u => u.UserId == userId && u.MoneyAccountId != moneyAccountId).ToList();
         }
 
-        public IActionStatus AddNewAccountWithInitialBalance(MoneyAccount moneyAccount, Transaction transaction)
+        public void AddNewAccountWithInitialBalance(MoneyAccount moneyAccount, Transaction transaction)
         {
             using(var dbTransaction = db.Database.BeginTransaction()) { 
                 try
@@ -50,15 +50,13 @@ namespace PMT.DataLayer.Repositories
                 catch (Exception ex)
                 {
                     dbTransaction.Rollback();
-                    actionStatus = ActionStatus.CreateFromException("", ex);
                     logger.LogError(LoggingEvents.INSERT_ITEM, ex, "Couldn't store new Account with initial balance");
                 }
             }
 
-            return actionStatus;
         }
 
-        public IActionStatus EditAccountNameAdjustBalance(MoneyAccount moneyAccount, Transaction transaction)
+        public void EditAccountNameAdjustBalance(MoneyAccount moneyAccount, Transaction transaction)
         {
             using (var dbTransaction = db.Database.BeginTransaction())
             {
@@ -74,12 +72,9 @@ namespace PMT.DataLayer.Repositories
                 catch (Exception ex)
                 {
                     dbTransaction.Rollback();
-                    actionStatus = ActionStatus.CreateFromException("", ex);
                     logger.LogError(LoggingEvents.COMPLEX_ACTION, ex, "Couldn't update the Account and adjust balance");
                 }
             }
-
-            return actionStatus;
         }
     }
 }

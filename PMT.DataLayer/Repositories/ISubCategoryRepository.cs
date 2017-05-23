@@ -10,6 +10,6 @@ namespace PMT.DataLayer.Repositories
     public interface ISubCategoryRepository : IRepositoryBase<SubCategory>
     {
         List<SubCategory> GetSubCategories(int CategoryId);
-        SubCategory GetSubCategoryById(int CategoryId);
+        SubCategory GetSubCategoryById(int SubCategoryId);
     }
 }

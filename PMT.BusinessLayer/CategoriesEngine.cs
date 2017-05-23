@@ -20,14 +20,19 @@ namespace PMT.BusinessLayer
         ISubCategoryRepository subCategoryRepository;
 
         public CategoriesEngine(ILoggerFactory logger,
-            IActionStatus operationStatus,
+            IActionStatus actionStatux,
             ICategoryRepository categoryRepository,
             ISubCategoryRepository subCategoryRepository)
         {
-            this.actionStatus = operationStatus;
+            this.actionStatus = actionStatux;
             this.logger = logger.CreateLogger<CategoriesEngine>();
             this.categoryRepository = categoryRepository;
             this.subCategoryRepository = subCategoryRepository;
+        }
+
+        public bool IsCategoryNotSubCategory(string id)
+        {
+            return id.Contains("categoryId_") ? true : false;
         }
 
         public CategoryVM GetCategory(string id)
@@ -62,32 +67,71 @@ namespace PMT.BusinessLayer
                 categoryVM.Color = category.Color;
                 categoryVM.Type = category.Type;
             }
-                return categoryVM;
+            return categoryVM;
         }
 
-        public IActionStatus StoreCategory(CategoryVM categoryVM)
+        public void StoreNewCategoryAndSubCategory(CategoryVM categoryVM)
         {
             try
             {
-                var category = new Category() {
-                    CategoryId=categoryVM.CategoryId,
-                    Color=categoryVM.Color,
-                    IconId=categoryVM.IconId,
-                    Name=categoryVM.Name,
-                    Type=categoryVM.Type
+                var category = new Category()
+                {
+                    CategoryId = categoryVM.CategoryId,
+                    Color = categoryVM.Color,
+                    IconId = categoryVM.IconId,
+                    Name = categoryVM.Name,
+                    Type = categoryVM.Type
                 };
-                actionStatus = categoryRepository.StoreCategory(category);
+                var subCategory = new SubCategory()
+                {
+                    Name = categoryVM.Name,
+                    IconId = categoryVM.IconId,
+                    Color = categoryVM.Color
+                };
+                categoryRepository.StoreNewCategoryAndSubCategory(category, subCategory);
+
+
 
             }
             catch (Exception ex)
             {
-                actionStatus = ActionStatus.CreateFromException("", ex);
                 logger.LogError(LoggingEvents.CALL_METHOD, ex, "Preparing to store new category didn't work");
             }
 
-            return actionStatus;
-
         }
 
+        public void DeleteCategorySubCategories(string id)
+        {
+            try
+            {
+                string categoryId = "";
+                string subCategoryId = "";
+                if (id.Contains("categoryId_"))
+                    categoryId = id.Replace("categoryId_", "");
+                if (id.Contains("subCategoryId_"))
+                    subCategoryId = id.Replace("subCategoryId_", "");
+
+                CategoryVM categoryVM = new CategoryVM();
+
+                if (!string.IsNullOrEmpty(subCategoryId))
+                {
+                    var subCategory = subCategoryRepository.GetSubCategoryById(subCategoryId.ParseInt());
+                    subCategoryRepository.Delete(subCategory);
+                    subCategoryRepository.Save();
+
+                }
+                else if (!string.IsNullOrEmpty(categoryId))
+                {
+                    var category = categoryRepository.GetGategoryById(categoryId.ParseInt());
+                    categoryRepository.Delete(category);
+                    categoryRepository.Save();
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(LoggingEvents.CALL_METHOD, ex, "Preparing to delete a category or subcategory didn't work");
+            }
+
+        }
     }
 }

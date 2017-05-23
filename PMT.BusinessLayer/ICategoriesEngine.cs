@@ -6,6 +6,8 @@ namespace PMT.BusinessLayer
     public interface ICategoriesEngine
     {
         CategoryVM GetCategory(string id);
-        IActionStatus StoreCategory(CategoryVM categoryVM);
+        void StoreNewCategoryAndSubCategory(CategoryVM categoryVM);
+
+        void DeleteCategorySubCategories(string id);
     }
 }

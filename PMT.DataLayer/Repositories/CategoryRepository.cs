@@ -13,8 +13,8 @@ namespace PMT.DataLayer.Repositories
     {
         ILogger logger;
         IActionStatus actionStatus;
-        public CategoryRepository(ILoggerFactory logger, IActionStatus actionStatus) 
-            :base(new MainDb())
+        public CategoryRepository(ILoggerFactory logger, IActionStatus actionStatus)
+            : base(new MainDb())
         {
             this.actionStatus = actionStatus;
             this.logger = logger.CreateLogger<CategoryRepository>();
@@ -27,7 +27,7 @@ namespace PMT.DataLayer.Repositories
 
         public List<Category> GetAllGategoriesSubCategories()
         {
-            return db.Categories.Include("SubCategories").OrderBy(x=>x.Name).ToList();
+            return db.Categories.Include("SubCategories").OrderBy(x => x.Name).ToList();
         }
 
         public Category GetGategoryById(int id)
@@ -35,20 +35,26 @@ namespace PMT.DataLayer.Repositories
             return db.Categories.FirstOrDefault(w => w.CategoryId == id);
         }
 
-        public IActionStatus StoreCategory(Category category)
+        public void StoreNewCategoryAndSubCategory(Category category, SubCategory subCategory)
         {
-            try
+            using (var dbTransaction = db.Database.BeginTransaction())
             {
-                db.Categories.Add(category);
-                db.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                actionStatus = ActionStatus.CreateFromException("", ex);
-                logger.LogError(LoggingEvents.CALL_METHOD, ex, "Store new category to database didn't work");
+                try
+                {
+                    db.Categories.Add(category);
+                    db.SaveChanges();
+                    subCategory.CategoryId = category.CategoryId;
+                    db.SubCategories.Add(subCategory);
+                    db.SaveChanges();
+                    dbTransaction.Commit();
+                }
+                catch (Exception ex)
+                {
+                    dbTransaction.Rollback();
+                    logger.LogError(LoggingEvents.CALL_METHOD, ex, "Store new category to database didn't work");
+                }
             }
 
-            return actionStatus;
         }
     }
 }

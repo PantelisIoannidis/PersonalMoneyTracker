@@ -25,9 +25,9 @@ namespace PMT.DataLayer.Repositories
             return db.SubCategories.OrderBy(o => o.Name).Where(w => w.CategoryId == CategoryId).ToList();
         }
 
-        public SubCategory GetSubCategoryById(int CategoryId)
+        public SubCategory GetSubCategoryById(int SubCategoryId)
         {
-            return db.SubCategories.FirstOrDefault(w => w.CategoryId == CategoryId);
+            return db.SubCategories.FirstOrDefault(w => w.SubCategoryId == SubCategoryId);
         }
     }
 }

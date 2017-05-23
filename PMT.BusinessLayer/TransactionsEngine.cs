@@ -21,11 +21,11 @@ namespace PMT.BusinessLayer
         IMoneyAccountEngine moneyAccountEngine;
         ITransactionRepository transactionRepository;
         public TransactionsEngine(ILoggerFactory logger,
-            IActionStatus operationStatus,
+            IActionStatus actionStatus,
             IMoneyAccountEngine moneyAccountEngine,
             ITransactionRepository transactionRepository)
         {
-            this.actionStatus = operationStatus;
+            this.actionStatus = actionStatus;
             this.logger = logger.CreateLogger<TransactionsEngine>();
             this.moneyAccountEngine = moneyAccountEngine;
             this.transactionRepository = transactionRepository;

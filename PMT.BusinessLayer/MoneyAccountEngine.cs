@@ -21,15 +21,15 @@ namespace PMT.BusinessLayer
         public MoneyAccountEngine(ILoggerFactory logger,
                                 IMoneyAccountRepository MoneyAccountRepository,
                                 ITransactionRepository transactionRepository,
-                                IActionStatus operationStatus)
+                                IActionStatus actionStatux)
         {
             this.moneyAccountRepository = MoneyAccountRepository;
-            this.actionStatus = operationStatus;
+            this.actionStatus = actionStatux;
             this.transactionRepository = transactionRepository;
             this.logger = logger.CreateLogger<MoneyAccountEngine>();
         }
 
-        public IActionStatus AddNewAccountWithInitialBalance(MoneyAccount moneyAccount)
+        public void AddNewAccountWithInitialBalance(MoneyAccount moneyAccount)
         {
            try
             {
@@ -42,15 +42,12 @@ namespace PMT.BusinessLayer
                     TransactionDate = DateTime.Now,
                     Description = ModelText.MoneyAccountName +" "+ ViewText.InitialBalance
                 };
-                actionStatus = moneyAccountRepository.AddNewAccountWithInitialBalance(moneyAccount, transaction);
+                
             }
             catch(Exception ex)
             {
-                actionStatus = ActionStatus.CreateFromException("", ex);
                 logger.LogError(LoggingEvents.CALL_METHOD, ex, "AddNewAccountWithInitialBalance didn't run");
             }
-
-            return actionStatus;
         }
 
         public List<MoneyAccount> GetMoneyAccountBalance(string userId)
@@ -61,7 +58,7 @@ namespace PMT.BusinessLayer
             return moneyAccounts;
         }
 
-        public IActionStatus EditAccountNameAdjustBalance(MoneyAccount moneyAccount)
+        public void EditAccountNameAdjustBalance(MoneyAccount moneyAccount)
         {
             try
             {
@@ -78,11 +75,8 @@ namespace PMT.BusinessLayer
             }
             catch (Exception ex)
             {
-                actionStatus = ActionStatus.CreateFromException("", ex);
                 logger.LogError(LoggingEvents.CALL_METHOD, ex, "EditAccountNameAdjustBalance didn't run");
             }
-
-            return actionStatus;
         }
         public List<MoneyAccount> GetMoneyAccountsPlusAll(string userId)
         {

@@ -17,7 +17,7 @@ namespace PMT.Common
 
         public static ActionStatus CreateFromException(string message, Exception ex)
         {
-            ActionStatus operationStatus = new ActionStatus
+            ActionStatus actionStatux = new ActionStatus
             {
                 Status = false,
                 Message = message,
@@ -25,12 +25,12 @@ namespace PMT.Common
 
             if (ex != null)
             {
-                operationStatus.ExceptionMessage = ex.Message;
-                operationStatus.ExceptionStackTrace = ex.StackTrace;
-                operationStatus.ExceptionInnerMessage = (ex.InnerException == null) ? null : ex.InnerException.Message;
-                operationStatus.ExceptionInnerStackTrace = (ex.InnerException == null) ? null : ex.InnerException.StackTrace;
+                actionStatux.ExceptionMessage = ex.Message;
+                actionStatux.ExceptionStackTrace = ex.StackTrace;
+                actionStatux.ExceptionInnerMessage = (ex.InnerException == null) ? null : ex.InnerException.Message;
+                actionStatux.ExceptionInnerStackTrace = (ex.InnerException == null) ? null : ex.InnerException.StackTrace;
             }
-            return operationStatus;
+            return actionStatux;
         }
     }
 }
