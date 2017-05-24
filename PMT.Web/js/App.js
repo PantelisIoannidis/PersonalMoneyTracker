@@ -5,6 +5,10 @@ var pmt = function () {
     var rootPath;
     var currentLocal;
 
+    var onDocumentLoadHome = function () {
+        transactionsFiltersUI.onTransactionsFiltersInit();
+    };
+
     var onDocumentLoadMaster = function () {
         commonUI.calculateActiveElement();
     };
@@ -34,6 +38,7 @@ var pmt = function () {
 
     return {
         rootPath: rootPath,
+        onDocumentLoadHome:onDocumentLoadHome,
         onDocumentLoadMaster: onDocumentLoadMaster,
         onDocumentLoadIndexTransaction: onDocumentLoadIndexTransaction,
         onDocumentTransactionCreate: onDocumentTransactionCreate,

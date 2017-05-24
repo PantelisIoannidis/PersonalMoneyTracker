@@ -1,5 +1,8 @@
 ﻿using Microsoft.Extensions.Logging;
+using PMT.BusinessLayer;
 using PMT.DataLayer;
+using PMT.Models;
+using PMT.Web.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,15 +15,34 @@ namespace PMT.Web.Controllers
     public class HomeController : Controller
     {
         ILogger logger;
-        public HomeController(ILoggerFactory logger)
+        IUserPreferences userPreferences;
+        ICommonHelper commonHelper;
+        ITransactionsEngine transactionsEngine;
+        public string userId;
+
+        public const string transactionPreferences = "transactionPreferences";
+
+        public HomeController(ILoggerFactory logger,
+                                IUserPreferences userPreferences,
+                                ICommonHelper commonHelper,
+                                ITransactionsEngine transactionsEngine)
         {
             this.logger = logger.CreateLogger<HomeController>();
+            this.userPreferences = userPreferences;
+            this.commonHelper = commonHelper;
+            this.transactionsEngine = transactionsEngine;
 
+            userId = commonHelper.GetUserId(HttpContext);
         }
         public ActionResult Index()
         {
-            logger.LogInformation("HomeController Index");
-            return View();
+            string objPreferences = TempData[transactionPreferences] as string;
+            if (string.IsNullOrEmpty(objPreferences))
+                objPreferences = userPreferences.GetTransactionPreferences(HttpContext);
+
+            TransactionFilterVM transactionFilterVM = transactionsEngine.GetFilter(userId, objPreferences);
+
+            return View(transactionFilterVM);
         }
 
         public ActionResult About()
