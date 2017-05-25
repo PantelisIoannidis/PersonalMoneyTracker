@@ -10,6 +10,7 @@
         <div class="panel panel-primary use-big-fonts">
             <div class="panel-heading">Summary</div>
             <div class="panel-body">
+               @Html.Partial("_TransactionsSummaryPartial", (PMT.Models.TransactionsSummaryVM)ViewBag.TransactionsSummary)
             </div>
         </div>
     </div>

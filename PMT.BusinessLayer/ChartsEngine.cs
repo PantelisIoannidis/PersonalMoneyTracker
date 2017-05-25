@@ -28,7 +28,7 @@ namespace PMT.BusinessLayer
             ChartDataVM chartData = new ChartDataVM();
             ChartDatasetsVM chartDataset = new ChartDatasetsVM();
             Period period = new Period(DateTime.Parse(transactionFilterVM.SelectedDateFull), (PeriodType)transactionFilterVM.PeriodFilterId);
-            TransactionsSummaryVM summary = transactionsEngine.PrepareSummary(userId, transactionFilterVM,period);
+            TransactionsSummaryVM summary = transactionsEngine.PrepareSummary(userId, transactionFilterVM);
 
             chartDataset.backgroundColor.Add("#008000");
             chartDataset.backgroundColor.Add("#b30000");

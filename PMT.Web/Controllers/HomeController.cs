@@ -45,6 +45,7 @@ namespace PMT.Web.Controllers
 
             TransactionFilterVM transactionFilterVM = transactionsEngine.GetFilter(userId, objPreferences);
             ViewBag.ChartIncomeVsExpense = chartsEngine.ChartIncomeVsExpense(userId, transactionFilterVM);
+            ViewBag.TransactionsSummary = transactionsEngine.PrepareSummary(userId, transactionFilterVM);
             return View(transactionFilterVM);
         }
 

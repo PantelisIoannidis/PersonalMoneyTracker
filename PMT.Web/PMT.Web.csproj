@@ -487,7 +487,7 @@
     <Content Include="Views\Shared\_PaginationPartial.cshtml" />
     <Content Include="Views\Shared\_TransactionsFiltersPartial.cshtml" />
     <Content Include="Views\Transactions\_TransactionsTablePartial.cshtml" />
-    <Content Include="Views\Transactions\_TransactionsSummaryPartial.cshtml" />
+    <Content Include="Views\Shared\_TransactionsSummaryPartial.cshtml" />
     <Content Include="Views\Categories\Index.cshtml" />
     <Content Include="Views\Categories\NewCategory.cshtml" />
     <Content Include="Views\Categories\_IndexPanelPartial.cshtml" />

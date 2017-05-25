@@ -1,14 +1,14 @@
 ﻿@model PMT.Models.TransactionsSummaryVM
 <div class="row transactionSummary text-center">
-    <div class="col-md-4 col-sm-4 income">
+    <div class="col-md-4 col-sm-12 income">
         <span>@ViewText.Income</span>:
         <span>@Model.Income.FormatNumbers()</span>
     </div>
-    <div class="col-md-4 col-sm-4 expenses">
+    <div class="col-md-4 col-sm-12 expenses">
         <span>@ViewText.Expenses</span>:
         <span>@Model.Expenses.FormatNumbers()</span>
     </div>
-    <div class="col-md-4 col-sm-4 balance">
+    <div class="col-md-4 col-sm-12 balance">
         <span>@ViewText.Balance</span>:
         <span>@Model.Balance.FormatNumbers()</span>
     </div>

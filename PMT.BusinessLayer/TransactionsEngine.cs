@@ -69,9 +69,9 @@ namespace PMT.BusinessLayer
             return transactionFilterVM;
         }
 
-        public TransactionsSummaryVM PrepareSummary(string userId, TransactionFilterVM transactionFilterVM, Period period)
+        public TransactionsSummaryVM PrepareSummary(string userId, TransactionFilterVM transactionFilterVM)
         {
-
+            Period period = new Period(DateTime.Parse(transactionFilterVM.SelectedDateFull), (PeriodType)transactionFilterVM.PeriodFilterId);
             var income = transactionRepository.GetBalance(userId, transactionFilterVM.AccountFilterId, period, TransactionType.Income);
             var expenses = transactionRepository.GetBalance(userId, transactionFilterVM.AccountFilterId, period, TransactionType.Expense);
             var Balance = income + expenses;

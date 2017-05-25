@@ -105,7 +105,7 @@ namespace PMT.Web.Controllers
 
             var list = aPage.ToList();
 
-            ViewBag.Summary = transactionsEngine.PrepareSummary(userId, transactionFilterVM, period);
+            ViewBag.Summary = transactionsEngine.PrepareSummary(userId, transactionFilterVM);
 
             var tuple = new Tuple<IEnumerable<TransactionVM>, TransactionFilterVM, PaginationVM>(list, transactionFilterVM, pagination);
             return tuple;
