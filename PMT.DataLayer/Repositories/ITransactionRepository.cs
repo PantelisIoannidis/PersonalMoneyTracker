@@ -13,5 +13,7 @@ namespace PMT.DataLayer.Repositories
         IQueryable<TransactionVM> GetTransactionsVM(string userId, Period period, int account);
         TransactionVM GetTransactionVM(int transactionId);
         void Update(Transaction transaction);
+
+        IQueryable<TransactionGroupByVM> GetTransactionsGroupByCategory(string userId, Period period, int account, TransactionType transactionType);
     }
 }

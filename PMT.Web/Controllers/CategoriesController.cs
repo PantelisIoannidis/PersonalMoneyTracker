@@ -71,7 +71,7 @@ namespace PMT.Web.Controllers
         public ActionResult NewCategory()
         {
             var categoryVM = new CategoryVM() {
-                IconId = "icon-stickynote"
+                IconId = DefaultOtherTransactions.IconId
             };
             ViewBag.Title = ViewText.CreateNewCategory;
             ViewBag.CategoryType = GetShortTransactionTypeList();
@@ -97,7 +97,7 @@ namespace PMT.Web.Controllers
         {
             var categoryVM = new CategoryVM()
             {
-                IconId = "icon-stickynote"
+                IconId = DefaultOtherTransactions.IconId
             };
             ViewBag.Title = ViewText.CreateNewSubcategory;
             ViewBag.CategoryType = GetShortTransactionTypeList();

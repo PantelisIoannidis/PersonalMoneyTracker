@@ -63,6 +63,34 @@ namespace PMT.DataLayer.Repositories
                     .Where(c => c.MoneyAccountId == account);
         }
 
+        public IQueryable<TransactionGroupByVM> GetTransactionsGroupByCategory(string userId, Period period, int account,TransactionType transactionType)
+        {
+
+            IQueryable<TransactionVM> transaction;
+
+
+            if (account == AccountType.All)
+                transaction = GetTransactionsVM(userId, period)
+                    .Where(c => c.TransactionType == transactionType);
+            else
+                transaction = GetTransactionsVM(userId, period)
+                    .Where(c => c.MoneyAccountId == account
+                            && c.TransactionType == transactionType);
+
+            var trans = transaction
+                        .GroupBy(p => p.CategoryName)
+                        .Select(cl => new TransactionGroupByVM
+                        {
+                            Name = cl.FirstOrDefault().CategoryName,
+                            Color = cl.FirstOrDefault().CategoryColor,
+                            IconId = cl.FirstOrDefault().CategoryIcon,
+                            Sum = cl.Sum(a => a.Amount)
+                        })
+                        .OrderBy(o => o.Sum);
+
+            return trans;
+        }
+
         public TransactionVM GetTransactionVM(int transactionId)
         {
             var transactions = from tran in db.Transactions

@@ -5,6 +5,19 @@
     width:100%;
 }
 
+.table-condensed>thead>tr>th, 
+.table-condensed>tbody>tr>th, 
+.table-condensed>tfoot>tr>th, 
+.table-condensed>thead>tr>td, 
+.table-condensed>tbody>tr>td, 
+.table-condensed>tfoot>tr>td{
+    padding: 1px;
+}
+
+.nav>li>a {
+    padding: 2px;
+}
+
 .nav > li > a {
   color:#787878;
 }
@@ -78,8 +91,6 @@ textarea {
     color: #fff;
 }
 
-
-
 .my-bar li a:hover,
 .my-bar li a:focus {
 
@@ -120,23 +131,28 @@ textarea {
     margin-bottom:15px;
 }
 .transactionSummary > .income{
-    color:#034a03;
+    color:#1a8a1a;
 }
 
 .transactionSummary > .expenses{
-    color:#710f0f;
+    color:#b61414;
 }
 
 .transactionSummary > .balance{
     color:blue;
 }
 
+.underLineItem{
+    border-bottom: 2px solid;
+}
+
+
 @media(min-width:768px) {
     .navbar-brand-short {
         display: none;
     }
     .use-big-fonts {
-        font-size: 1.4em !important;
+        font-size: 1.3em !important;
     }
 }
 

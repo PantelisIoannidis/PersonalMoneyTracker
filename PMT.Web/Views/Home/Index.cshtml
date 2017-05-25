@@ -1,40 +1,42 @@
 ﻿@model PMT.Models.TransactionFilterVM
 @{
-    ViewBag.Title = "Quick view";
+    ViewBag.Title = ViewText.QuickView;
 }
 
-@Html.Partial("_TransactionsFiltersPartial", Model)
 
+@Html.Partial("_TransactionsFiltersPartial", Model)
 <div class="row">
     <div class="col-md-6">
         <div class="panel panel-primary use-big-fonts">
             <div class="panel-heading">Summary</div>
             <div class="panel-body">
-               @Html.Partial("_TransactionsSummaryPartial", (PMT.Models.TransactionsSummaryVM)ViewBag.TransactionsSummary)
+                @Html.Partial("_TransactionsSummaryPartial", (PMT.Models.TransactionsSummaryVM)ViewBag.TransactionsSummary)
             </div>
         </div>
     </div>
     <div class="col-md-6">
         <div class="panel panel-primary use-big-fonts">
-            <div class="panel-heading">Income vs Expense</div>
             <div class="panel-body">
-                
+
                 <canvas id="incomeVsExpenseChart" width="600" height="200"></canvas>
 
             </div>
         </div>
     </div>
+</div>
+<div class="row">
     <div class="col-md-6">
         <div class="panel panel-primary use-big-fonts">
-            <div class="panel-heading">Income by Category</div>
             <div class="panel-body">
+                <canvas id="incomeByCategoryChart" width="300" height="200"></canvas>
             </div>
         </div>
     </div>
     <div class="col-md-6">
         <div class="panel panel-primary use-big-fonts">
-            <div class="panel-heading">Expense by Category</div>
+            @*<div class="panel-heading">Expense by Category</div>*@
             <div class="panel-body">
+                <canvas id="expenseByCategoryChart" width="300" height="200"></canvas>
             </div>
         </div>
     </div>
@@ -43,8 +45,9 @@
     <script type="text/javascript">
         $(function () {
             homeCharts.setIncomeVsExpenseChartData(@Html.Raw(Json.Encode(ViewBag.ChartIncomeVsExpense)));
+            homeCharts.setIncomeByCategoryChartData(@Html.Raw(Json.Encode(ViewBag.IncomeByCategory)));
+            homeCharts.setExpenseByCategoryChartData(@Html.Raw(Json.Encode(ViewBag.ExpenseByCategory)));
             pmt.onDocumentLoadHome();
-            
         });
     </script>
 }

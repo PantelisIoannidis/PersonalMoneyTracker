@@ -96,7 +96,7 @@ namespace PMT.DataLayer.Seed
 
             MainCategoryList.Add(new Category { CategoryId = ++i, Color = "#cc5200", IconId = "icon-hanger", Type = TransactionType.Expense, Name = SeedingDataText.Clothing });
             SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#cc5200", IconId = "icon-hanger", CategoryId = i, Name = SeedingDataText.Clothing });
-            SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#b30059", IconId = "icon-stiletto", CategoryId = i, Name = SeedingDataText.Shoes });
+            SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#ff4da6", IconId = "icon-stiletto", CategoryId = i, Name = SeedingDataText.Shoes });
 
             MainCategoryList.Add(new Category { CategoryId = ++i, Color = "#888844", IconId = "icon-student-school", Type = TransactionType.Expense, Name = SeedingDataText.Education });
             SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#888844", IconId = "icon-student-school", CategoryId = i, Name = SeedingDataText.Education });
@@ -104,8 +104,8 @@ namespace PMT.DataLayer.Seed
             SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#ff5500", IconId = "icon-podium", CategoryId = i, Name = SeedingDataText.Courses });
             SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#cc0088", IconId = "icon-bookthree", CategoryId = i, Name = SeedingDataText.Tuition });
 
-            MainCategoryList.Add(new Category { CategoryId = ++i, Color = "#ac3973", IconId = "icon-fork", Type = TransactionType.Expense, Name = SeedingDataText.Food });
-            SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#ac3973", IconId = "icon-fork", CategoryId = i, Name = SeedingDataText.Food });
+            MainCategoryList.Add(new Category { CategoryId = ++i, Color = "#ffcc00", IconId = "icon-fork", Type = TransactionType.Expense, Name = SeedingDataText.Food });
+            SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#ffcc00", IconId = "icon-fork", CategoryId = i, Name = SeedingDataText.Food });
             SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#8c1aff", IconId = "icon-store", CategoryId = i, Name = SeedingDataText.Restaurant });
             SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#00cc88", IconId = "fa-shopping-cart", CategoryId = i, Name = SeedingDataText.Groceries });
 
@@ -114,30 +114,30 @@ namespace PMT.DataLayer.Seed
 
             MainCategoryList.Add(new Category { CategoryId = ++i, Color = "#666600", IconId = "icon-firstaid", Type = TransactionType.Expense, Name = SeedingDataText.Health });
             SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#666600", IconId = "icon-firstaid", CategoryId = i, Name = SeedingDataText.Health });
-            SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#802000", IconId = "fa-stethoscope", CategoryId = i, Name = SeedingDataText.Doctor });
-            SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#4d6600", IconId = "icon-toothbrush", CategoryId = i, Name = SeedingDataText.Dentist });
+            SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#cccc00", IconId = "fa-stethoscope", CategoryId = i, Name = SeedingDataText.Doctor });
+            SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#40ff00", IconId = "icon-toothbrush", CategoryId = i, Name = SeedingDataText.Dentist });
             SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#00b38f", IconId = "fa-hospital-o", CategoryId = i, Name = SeedingDataText.Clinic });
             SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#730099", IconId = "fa-shield", CategoryId = i, Name = SeedingDataText.MedicalInsurance });
             SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#008040", IconId = "icon-bottle", CategoryId = i, Name = SeedingDataText.Medicines });
             SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#003399", IconId = "fa-medkit", CategoryId = i, Name = SeedingDataText.Therapy });
-            SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#4d0099", IconId = "icon-glasses", CategoryId = i, Name = SeedingDataText.Glasses });
+            SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#ff944d", IconId = "icon-glasses", CategoryId = i, Name = SeedingDataText.Glasses });
 
             MainCategoryList.Add(new Category { CategoryId = ++i, Color = "#cc0000", IconId = "icon-home", Type = TransactionType.Expense, Name = SeedingDataText.Home });
             SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#cc0000", IconId = "icon-home", CategoryId = i, Name = SeedingDataText.Home });
-            SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#b32d00", IconId = "icon-broom", CategoryId = i, Name = SeedingDataText.HomeServices });
+            SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#ffb31a", IconId = "icon-broom", CategoryId = i, Name = SeedingDataText.HomeServices });
             SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#86b300", IconId = "icon-bank", CategoryId = i, Name = SeedingDataText.Mortage });
             SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#004d3d", IconId = "fa-bed", CategoryId = i, Name = SeedingDataText.Rent });
             SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#ac00e6", IconId = "icon-fence", CategoryId = i, Name = SeedingDataText.HomeMaintance });
             SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#00b359", IconId = "fa-plug", CategoryId = i, Name = SeedingDataText.Appliances });
             SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#004de6", IconId = "icon-bed", CategoryId = i, Name = SeedingDataText.Furniture });
-            SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#4d0099", IconId = "icon-umbrella", CategoryId = i, Name = SeedingDataText.HomeInsurance });
+            SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#1affff", IconId = "icon-umbrella", CategoryId = i, Name = SeedingDataText.HomeInsurance });
 
             MainCategoryList.Add(new Category { CategoryId = ++i, Color = "#b30059", IconId = "icon-baby", Type = TransactionType.Expense, Name = SeedingDataText.Kids });
             SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#b30059", IconId = "icon-baby", CategoryId = i, Name = SeedingDataText.Kids });
             SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#b37700", IconId = "icon-coinsalt", CategoryId = i, Name = SeedingDataText.Allowance });
             SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#7a7a52", IconId = "icon-milk", CategoryId = i, Name = SeedingDataText.BabySupplies });
             SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#00ff55", IconId = "icon-stroller", CategoryId = i, Name = SeedingDataText.Babysitter });
-            SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#b300b3", IconId = "icon-pacifier", CategoryId = i, Name = SeedingDataText.Daycare });
+            SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#ffff00", IconId = "icon-pacifier", CategoryId = i, Name = SeedingDataText.Daycare });
             SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#4d0099", IconId = "icon-paperplane", CategoryId = i, Name = SeedingDataText.Toys });
 
             MainCategoryList.Add(new Category { CategoryId = ++i, Color = "#9900ff", IconId = "icon-abacus", Type = TransactionType.Expense, Name = SeedingDataText.Taxes });
@@ -164,33 +164,33 @@ namespace PMT.DataLayer.Seed
 
             MainCategoryList.Add(new Category { CategoryId = ++i, Color = "#e65c00", IconId = "icon-boat", Type = TransactionType.Expense, Name = SeedingDataText.Recreation });
             SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#e65c00", IconId = "icon-boat", CategoryId = i, Name = SeedingDataText.Recreation });
-            SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#b34700", IconId = "fa-coffee", CategoryId = i, Name = SeedingDataText.CoffeBar });
+            SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#e6e600", IconId = "fa-coffee", CategoryId = i, Name = SeedingDataText.CoffeBar });
             SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#999900", IconId = "icon-butterflyalt", CategoryId = i, Name = SeedingDataText.Parks });
             SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#4d4d00", IconId = "icon-facetime-video", CategoryId = i, Name = SeedingDataText.Movies });
             SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#00997a", IconId = "icon-headphonesthree", CategoryId = i, Name = SeedingDataText.Music });
             SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#0040ff", IconId = "fa-suitcase", CategoryId = i, Name = SeedingDataText.Vacation });
             SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#006680", IconId = "icon-die-dice", CategoryId = i, Name = SeedingDataText.Gambling });
 
-            MainCategoryList.Add(new Category { CategoryId = ++i, Color = "#408000", IconId = "icon-tennis", Type = TransactionType.Expense, Name = SeedingDataText.Sport });
-            SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#408000", IconId = "icon-tennis", CategoryId = i, Name = SeedingDataText.Sport });
+            MainCategoryList.Add(new Category { CategoryId = ++i, Color = "#264d00", IconId = "icon-tennis", Type = TransactionType.Expense, Name = SeedingDataText.Sport });
+            SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#264d00", IconId = "icon-tennis", CategoryId = i, Name = SeedingDataText.Sport });
 
             MainCategoryList.Add(new Category { CategoryId = ++i, Color = "#009900", IconId = "icon-automobile-car", Type = TransactionType.Expense, Name = SeedingDataText.Transport });
             SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#009900", IconId = "icon-automobile-car", CategoryId = i, Name = SeedingDataText.Transport });
-            SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#008000", IconId = "icon-gasstation", CategoryId = i, Name = SeedingDataText.Fuel });
+            SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#e6e600", IconId = "icon-gasstation", CategoryId = i, Name = SeedingDataText.Fuel });
             SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#00b3b3", IconId = "fa-life-ring", CategoryId = i, Name = SeedingDataText.CarInsurance });
             SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#0040ff", IconId = "icon-screwdriver", CategoryId = i, Name = SeedingDataText.CarMaintenance });
             SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#a300cc", IconId = "icon-freeway", CategoryId = i, Name = SeedingDataText.Tolls });
             SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#cc0099", IconId = "icon-parkeddomain", CategoryId = i, Name = SeedingDataText.Parking });
             SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#006666", IconId = "icon-bus", CategoryId = i, Name = SeedingDataText.PublicTransport });
-            SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#2d8659", IconId = "icon-taxi", CategoryId = i, Name = SeedingDataText.Taxi });
-            SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#007399", IconId = "icon-plane", CategoryId = i, Name = SeedingDataText.Travel });
+            SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#c3c388", IconId = "icon-taxi", CategoryId = i, Name = SeedingDataText.Taxi });
+            SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#ff3333", IconId = "icon-plane", CategoryId = i, Name = SeedingDataText.Travel });
 
-            MainCategoryList.Add(new Category { CategoryId = ++i, Color = "#b33c00", IconId = "fa-wrench", Type = TransactionType.Expense, Name = SeedingDataText.Utilities });
-            SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#b33c00", IconId = "fa-wrench", CategoryId = i, Name = SeedingDataText.Utilities });
+            MainCategoryList.Add(new Category { CategoryId = ++i, Color = "#6666cc", IconId = "fa-wrench", Type = TransactionType.Expense, Name = SeedingDataText.Utilities });
+            SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#6666cc", IconId = "fa-wrench", CategoryId = i, Name = SeedingDataText.Utilities });
             SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#cc0000", IconId = "icon-voltage", CategoryId = i, Name = SeedingDataText.Electricity });
-            SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#999900", IconId = "icon-construction", CategoryId = i, Name = SeedingDataText.City });
+            SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#cccc00", IconId = "icon-construction", CategoryId = i, Name = SeedingDataText.City });
             SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#2db300", IconId = "fa-fire", CategoryId = i, Name = SeedingDataText.Gas });
-            SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#00cc00", IconId = "icon-phonealt", CategoryId = i, Name = SeedingDataText.HomePhone });
+            SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#ff9900", IconId = "icon-phonealt", CategoryId = i, Name = SeedingDataText.HomePhone });
             SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#009999", IconId = "icon-iphone", CategoryId = i, Name = SeedingDataText.MobilePhone });
             SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#b300b3", IconId = "icon-circlefacebook", CategoryId = i, Name = SeedingDataText.Internet });
             SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#992600", IconId = "icon-tv", CategoryId = i, Name = SeedingDataText.Television });

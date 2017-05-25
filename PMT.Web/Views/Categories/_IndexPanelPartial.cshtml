@@ -15,13 +15,22 @@
                             <ul class="nav nav-stacked  categoryList">
                                 <li class="navbar-header">
                                     <a href="#" class="categoryListItem" data-toggle="collapse" data-target="categoryId_@item.CategoryId">
-                                        <i class="fa fa-fw @item.IconId"></i> @item.Name <i class="glyphicon glyphicon-chevron-right"></i>
+                                        <i class="fa fa-fw @item.IconId"></i>
+                                        <i style="color:@item.Color" class="fa fa-fw fa-square"></i>
+                                        @item.Name
+                                        <i class="glyphicon glyphicon-chevron-right"></i>
                                         <span class="badge badge-info @hidden">@cnt</span>
                                     </a>
                                     <ul class="nav nav-stacked collapse subCategoryListItem" id="categoryId_@item.CategoryId" data-name="@item.Name">
                                         @foreach (var subItem in item.SubCategories)
                                         {
-                                            <li><a class="subCategoryListItem" href="#" data-name="@subItem.Name" data-target="subCategoryId_@subItem.SubCategoryId" id="subCategoryId_@subItem.SubCategoryId"><i class="fa fa-fw @subItem.IconId"></i> @subItem.Name</a></li>
+                                            <li>
+                                                <a class="subCategoryListItem" href="#" data-name="@subItem.Name" data-target="subCategoryId_@subItem.SubCategoryId" id="subCategoryId_@subItem.SubCategoryId">
+                                                    <i class="fa fa-fw @subItem.IconId"></i>
+                                                    <i style="color:@subItem.Color" class="fa fa-fw fa-square"></i>
+                                                    @subItem.Name
+                                                </a>
+                                            </li>
                                         }
                                     </ul>
                                 </li>
@@ -46,13 +55,22 @@
                             <ul class="nav nav-stacked  categoryList">
                                 <li class="navbar-header">
                                     <a href="#" class="categoryListItem" data-toggle="collapse" data-target="categoryId_@item.CategoryId">
-                                        <i class="fa fa-fw @item.IconId"></i> @item.Name <i class="glyphicon glyphicon-chevron-right"></i>
+                                        <i class="fa fa-fw @item.IconId"></i>
+                                        <i style="color:@item.Color" class="fa fa-fw fa-square"></i>
+                                        @item.Name
+                                        <i class="glyphicon glyphicon-chevron-right"></i>
                                         <span class="badge badge-info @hidden">@cnt</span>
                                     </a>
                                     <ul class="nav nav-stacked collapse subCategoryListItem" id="categoryId_@item.CategoryId" data-name="@item.Name">
                                         @foreach (var subItem in item.SubCategories)
                                         {
-                                            <li><a class="subCategoryListItem" href="#" data-name="@subItem.Name" data-target="subCategoryId_@subItem.SubCategoryId" id="subCategoryId_@subItem.SubCategoryId"><i class="fa fa-fw @subItem.IconId"></i> @subItem.Name</a></li>
+                                            <li>
+                                                <a class="subCategoryListItem" href="#" data-name="@subItem.Name" data-target="subCategoryId_@subItem.SubCategoryId" id="subCategoryId_@subItem.SubCategoryId">
+                                                    <i class="fa fa-fw @subItem.IconId"></i>
+                                                    <i style="color:@subItem.Color" class="fa fa-fw fa-square"></i>
+                                                    @subItem.Name
+                                                </a>
+                                            </li>
                                         }
                                     </ul>
                                 </li>

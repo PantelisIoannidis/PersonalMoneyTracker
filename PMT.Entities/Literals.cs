@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PMT.Common.Resources;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -50,6 +51,12 @@ namespace PMT.Entities
             public const string MoveToNext = "MoveToNext";
             public const string MoveToPrevious = "MoveToPrevious";
             public const string Reset = "Reset";
+        }
+
+        public static class DefaultOtherTransactions
+        {
+            public const string IconId = "icon-stickynotealt";
+            public const string Color = "#99994d";
         }
     }
    

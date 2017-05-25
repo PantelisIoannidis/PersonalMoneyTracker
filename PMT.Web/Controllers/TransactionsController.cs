@@ -79,7 +79,7 @@ namespace PMT.Web.Controllers
             DateTime selectedDate = DateTime.Now;
             Period period;
 
-            var postsPerPage = 3;
+            var postsPerPage = 8;
 
             string objPreferences = TempData[transactionPreferences] as string;
             if (string.IsNullOrEmpty(objPreferences))
