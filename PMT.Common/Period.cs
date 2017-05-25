@@ -64,11 +64,11 @@ namespace PMT.Common.Helpers
             switch (Type)
             {
                 case PeriodType.Week:
-                    description = $"{FromDate.ToString("dd")} - {ToDate.ToString("dd")} , {SelectedDate.ToString("MMM")}";
+                    description = $"{FromDate.ToString("dd")} - {ToDate.ToString("dd")}  {SelectedDate.ToString("MMM")}";
                     break;
 
                 case PeriodType.Month:
-                    description = $"{SelectedDate.ToString("MMMM")}, {SelectedDate.Year}";
+                    description = $"{SelectedDate.ToString("MMMM")} {SelectedDate.Year}";
                     break;
 
                 case PeriodType.Year:

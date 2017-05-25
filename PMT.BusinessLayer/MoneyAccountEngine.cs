@@ -42,7 +42,7 @@ namespace PMT.BusinessLayer
                     TransactionDate = DateTime.Now,
                     Description = ModelText.MoneyAccountName +" "+ ViewText.InitialBalance
                 };
-                
+                moneyAccountRepository.AddNewAccountWithInitialBalance(moneyAccount, transaction);
             }
             catch(Exception ex)
             {

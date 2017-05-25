@@ -15,7 +15,7 @@
         @Html.Partial("_TransactionsTablePartial", Model.Item1)
         <div class="row  text-center">
             <div class="col-md-2">
-                <a href="@Url.Action("Create","Transactions",null)" class="btn btn-default"><i class="fa fa-fw  fa-plus-circle"></i> @ViewText.CreateNew</a>
+                <a href="@Url.Action("Create","Transactions",null)" class="btn btn-default"><i class="fa fa-fw  fa-plus-circle"></i> @ViewText.New</a>
             </div>
             <div class="col-md-8">
                 @Html.Partial("_PaginationPartial", Model.Item3)

@@ -21,10 +21,10 @@ namespace PMT.Entities
         {
             switch (t)
             {
-                case TransactionTypes.Income: return "Income";
-                case TransactionTypes.Expense: return "Expense";
-                case TransactionTypes.Transfer: return "Transfer";
-                case TransactionTypes.Adjustment: return "Adjustment";
+                case TransactionTypes.Income: return ViewText.Income;
+                case TransactionTypes.Expense: return ViewText.Expense;
+                case TransactionTypes.Transfer: return ViewText.Transfer;
+                case TransactionTypes.Adjustment: return ViewText.Adjustment;
                 default: return "";
             }
         }
@@ -33,10 +33,10 @@ namespace PMT.Entities
         {
             switch (t)
             {
-                case TransactionType.Income: return "Income";
-                case TransactionType.Expense: return "Expense";
-                case TransactionType.Transfer: return "Transfer";
-                case TransactionType.Adjustment: return "Adjustment";
+                case TransactionType.Income: return ViewText.Income;
+                case TransactionType.Expense: return ViewText.Expense;
+                case TransactionType.Transfer: return ViewText.Transfer;
+                case TransactionType.Adjustment: return ViewText.Adjustment;
                 default: return "";
             }
         }

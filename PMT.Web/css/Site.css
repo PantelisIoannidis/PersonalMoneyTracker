@@ -63,6 +63,8 @@
     margin-left:25px;
 }
 
+
+
 input,
 select,
 textarea {
@@ -168,3 +170,6 @@ textarea {
     }
 }
 
+.btn {
+    min-width:80px;
+}

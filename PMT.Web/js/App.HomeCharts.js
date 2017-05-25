@@ -17,7 +17,7 @@
     function DrawIncomeVsExpenseChart() {
         var ctx = document.getElementById("incomeVsExpenseChart");
         var myChart = new Chart(ctx, {
-            type: 'bar',
+            type: 'horizontalBar',
             data: incomeVsExpenseChartData[0],
             options: {
                 title: {
