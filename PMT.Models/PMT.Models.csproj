@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CategoryVM.cs" />
+    <Compile Include="ChartDataVM.cs" />
     <Compile Include="IMapping.cs" />
     <Compile Include="Mapping.cs" />
     <Compile Include="PaginationVM.cs" />

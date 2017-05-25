@@ -30,7 +30,7 @@
                             @Html.DisplayFor(modelItem => item.Name)
                         </td>
                         <td class="text-right @((item.Balance < 0) ? "negativeNumber":"")">
-                            @item.Balance.FormatNegativeSign()
+                            @item.Balance.FormatNumbers()
                         </td>
                         <td>
                             <input type="hidden" class="deleteAccountId" value="@item.MoneyAccountId" />
@@ -44,7 +44,7 @@
                         <strong>@ViewText.Total :</strong>
                     </td>
                     <td class="text-right @((ViewBag.TotalBalance < 0) ? "negativeNumber":"")">
-                        <strong>@(((decimal)ViewBag.TotalBalance).FormatNegativeSign())</strong>
+                        <strong>@(((decimal)ViewBag.TotalBalance).FormatNumbers())</strong>
                     </td>
                     <td></td>
                 </tr>

@@ -23,7 +23,7 @@ namespace PMT.Common
             return source.Where(item => uniqueValues.Add(expression(item)));
         }
 
-        public static string FormatNegativeSign(this decimal val)
+        public static string FormatNumbers(this decimal val)
         {
             string curCulture = System.Threading.Thread.CurrentThread.CurrentCulture.ToString();
             var currencyFormat = new System.Globalization.CultureInfo(curCulture).NumberFormat;

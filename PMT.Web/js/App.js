@@ -7,6 +7,7 @@ var pmt = function () {
 
     var onDocumentLoadHome = function () {
         transactionsFiltersUI.onTransactionsFiltersInit();
+        homeCharts.onHomeChartsInit();
     };
 
     var onDocumentLoadMaster = function () {

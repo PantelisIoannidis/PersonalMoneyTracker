@@ -29,7 +29,7 @@ namespace PMT.Models
         {
             get
             {
-                return Amount.FormatNegativeSign();
+                return Amount.FormatNumbers();
             }
         }
     }

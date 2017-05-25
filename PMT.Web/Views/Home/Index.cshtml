@@ -3,7 +3,7 @@
     ViewBag.Title = "Quick view";
 }
 
-@Html.Partial("_TransactionsFiltersPartial",Model)
+@Html.Partial("_TransactionsFiltersPartial", Model)
 
 <div class="row">
     <div class="col-md-6">
@@ -17,6 +17,9 @@
         <div class="panel panel-primary use-big-fonts">
             <div class="panel-heading">Income vs Expense</div>
             <div class="panel-body">
+                
+                <canvas id="incomeVsExpenseChart" width="600" height="200"></canvas>
+
             </div>
         </div>
     </div>
@@ -38,7 +41,9 @@
 @section Scripts {
     <script type="text/javascript">
         $(function () {
+            homeCharts.setIncomeVsExpenseChartData(@Html.Raw(Json.Encode(ViewBag.ChartIncomeVsExpense)));
             pmt.onDocumentLoadHome();
+            
         });
     </script>
 }

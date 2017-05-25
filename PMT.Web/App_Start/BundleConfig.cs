@@ -36,8 +36,10 @@ namespace PMT.Web
 
             bundles.Add(new ScriptBundle("~/bundles/handlebars").Include(
                       "~/Scripts/handlebars.js"));
+            bundles.Add(new ScriptBundle("~/bundles/chart").Include(
+                      "~/Scripts/Chart.js"));
 
-            
+
             bundles.Add(new ScriptBundle("~/js/app").Include(
                         "~/js/App.CommonUI.js",
                         "~/js/App.MoneyAccountUI.js",
@@ -45,6 +47,7 @@ namespace PMT.Web
                         "~/js/App.TransactionsFiltersUI.js",
                         "~/js/App.CategoriesUI.js",
                         "~/js/App.CategoriesCreateUI.js",
+                        "~/js/App.HomeCharts.js",
                         "~/js/App.js"
                         ));
         }

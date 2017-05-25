@@ -18,6 +18,7 @@ namespace PMT.Web.Controllers
         IUserPreferences userPreferences;
         ICommonHelper commonHelper;
         ITransactionsEngine transactionsEngine;
+        IChartsEngine chartsEngine;
         public string userId;
 
         public const string transactionPreferences = "transactionPreferences";
@@ -25,12 +26,14 @@ namespace PMT.Web.Controllers
         public HomeController(ILoggerFactory logger,
                                 IUserPreferences userPreferences,
                                 ICommonHelper commonHelper,
-                                ITransactionsEngine transactionsEngine)
+                                ITransactionsEngine transactionsEngine,
+                                IChartsEngine chartsEngine)
         {
             this.logger = logger.CreateLogger<HomeController>();
             this.userPreferences = userPreferences;
             this.commonHelper = commonHelper;
             this.transactionsEngine = transactionsEngine;
+            this.chartsEngine = chartsEngine;
 
             userId = commonHelper.GetUserId(HttpContext);
         }
@@ -41,7 +44,7 @@ namespace PMT.Web.Controllers
                 objPreferences = userPreferences.GetTransactionPreferences(HttpContext);
 
             TransactionFilterVM transactionFilterVM = transactionsEngine.GetFilter(userId, objPreferences);
-
+            ViewBag.ChartIncomeVsExpense = chartsEngine.ChartIncomeVsExpense(userId, transactionFilterVM);
             return View(transactionFilterVM);
         }
 
