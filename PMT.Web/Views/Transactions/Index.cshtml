@@ -15,14 +15,14 @@
         @Html.Partial("_TransactionsTablePartial", Model.Item1)
         <div class="row  text-center">
             <div class="col-md-2">
-                <a href="@Url.Action("Create","Transactions",null)" class="btn btn-default"><i class="fa fa-fw  fa-plus-circle"></i> @ViewText.New</a>
+                <a href="@Url.Action("Create","Transactions",null)" class="btn btn-default longProcess"><i class="fa fa-fw  fa-plus-circle"></i> @ViewText.New</a>
             </div>
             <div class="col-md-8">
                 @Html.Partial("_PaginationPartial", Model.Item3)
             </div>
             <div class="col-md-2">
-                <a href="@Url.Action("Edit","Transactions", null)" id="transTableEditButton" class="btn btn-warning btn-sm"><i class="fa fa-fw fa-edit"></i> @ViewText.Edit</a>
-                <a href="@Url.Action("Delete","Transactions",null)" id="transTableDeleteButton" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> @ViewText.Delete</a>
+                <a href="@Url.Action("Edit","Transactions", null)" id="transTableEditButton" class="btn btn-warning btn-sm longProcess"><i class="fa fa-fw fa-edit"></i> @ViewText.Edit</a>
+                <a href="@Url.Action("Delete","Transactions",null)" id="transTableDeleteButton" class="btn btn-danger btn-sm longProcess"><i class="fa fa-fw fa-trash"></i> @ViewText.Delete</a>
             </div>
         </div>
     </div>
@@ -39,8 +39,8 @@
                 <h4>@MessagesText.TransactionDeleteWarningLine</h4>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button id="transTableDeleteConfirmButton" type="button" class="btn btn-danger">Delete</button>
+                <button type="button" class="btn btn-default longProcess" data-dismiss="modal">Close</button>
+                <button id="transTableDeleteConfirmButton longProcess" type="button" class="btn btn-danger">Delete</button>
             </div>
         </div>
     </div>

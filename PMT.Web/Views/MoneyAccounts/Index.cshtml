@@ -34,8 +34,8 @@
                         </td>
                         <td>
                             <input type="hidden" class="deleteAccountId" value="@item.MoneyAccountId" />
-                            <a href="@Url.Action("Edit","MoneyAccounts", new { id = item.MoneyAccountId })" class="btn btn-warning btn-xs"><i class="fa fa-fw fa-edit"></i> @ViewText.Edit</a>
-                            <a href="@Url.Action("Delete","MoneyAccounts", new { id = item.MoneyAccountId })" class="btn btn-danger btn-xs accountTableDeleteButton"><i class="fa fa-fw fa-trash"></i> @ViewText.Delete</a>
+                            <a href="@Url.Action("Edit","MoneyAccounts", new { id = item.MoneyAccountId })" class="btn btn-warning btn-xs longProcess"><i class="fa fa-fw fa-edit"></i> @ViewText.Edit</a>
+                            <a href="@Url.Action("Delete","MoneyAccounts", new { id = item.MoneyAccountId })" class="btn btn-danger btn-xs accountTableDeleteButton longProcess"><i class="fa fa-fw fa-trash"></i> @ViewText.Delete</a>
                         </td>
                     </tr>
                 }
@@ -54,7 +54,7 @@
 
         </table>
         <p>
-            <a href="@Url.Action("Create","MoneyAccounts",null)" class="btn btn-default"><i class="fa fa-fw  fa-plus"></i> @ViewText.New</a>
+            <a href="@Url.Action("Create","MoneyAccounts",null)" class="btn btn-default"><i class="fa fa-fw  fa-plus longProcess"></i> @ViewText.New</a>
         </p>
     </div>
 </div>
@@ -72,8 +72,8 @@
                 <h5>@MessagesText.MoneyAccountsDeleteWarningLine2</h5>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button id="accountTableDeleteConfirmButton" type="button" class="btn btn-danger">Delete</button>
+                <button type="button" class="btn btn-default longProcess" data-dismiss="modal">Close</button>
+                <button id="accountTableDeleteConfirmButton longProcess" type="button" class="btn btn-danger">Delete</button>
             </div>
         </div>
     </div>
