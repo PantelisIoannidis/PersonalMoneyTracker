@@ -7,16 +7,12 @@ using System.Threading.Tasks;
 
 namespace PMT.BusinessLayer
 {
-    public class CalculationsEngine : ICalculationsEngine
+    public class CalculationsEngine : BaseEngine, ICalculationsEngine
     {
         ITransactionRepository transactionRepository;
         public CalculationsEngine(ITransactionRepository transactionRepository)
         {
             this.transactionRepository = transactionRepository;
         }
-
-        
-
-
     }
 }

@@ -17,9 +17,9 @@ namespace PMT.DataLayer
         public MainDb()
             :base("name=DefaultConnection")
         {
-#if DEBUG
-            Database.Log = msg => Debug.WriteLine(msg);
-#endif
+            #if DEBUG
+                Database.Log = msg => Debug.WriteLine(msg);
+            #endif
             Database.SetInitializer(new MainDbInitializer());
         }
 

@@ -72,7 +72,7 @@ namespace PMT.DataLayer.Repositories
                 catch (Exception ex)
                 {
                     dbTransaction.Rollback();
-                    logger.LogError(LoggingEvents.COMPLEX_ACTION, ex, "Couldn't update the Account and adjust balance");
+                    logger.LogError(LoggingEvents.UPDATE_ITEM, ex, "Couldn't update the Account and adjust balance");
                 }
             }
         }

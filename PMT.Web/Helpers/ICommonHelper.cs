@@ -7,6 +7,7 @@ namespace PMT.Web.Helpers
     public interface ICommonHelper
     {
         string GetUserId(HttpContextBase httpContext);
+        string GetUserName(HttpContextBase httpContext);
         List<CultureInfo> GetClientCultureInfo(HttpContextBase httpContext);
         List<string> GetUserLanguages(HttpContextBase httpContextBase);
         string GetServerCulture();

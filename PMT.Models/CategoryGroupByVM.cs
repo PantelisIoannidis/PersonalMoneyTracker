@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PMT.Models
 {
-    public class TransactionGroupByVM
+    public class CategoryGroupByVM
     {
         public string Name { get; set; }
         public string Color { get; set; }

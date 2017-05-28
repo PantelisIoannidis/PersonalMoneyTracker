@@ -16,7 +16,7 @@ namespace PMT.Common.Helpers
         All=3
     }
 
-    public class Period
+    public class Period : IPeriod
     {
         public DateTime FromDate { get; set; }
         public DateTime ToDate { get; set; }
@@ -27,15 +27,7 @@ namespace PMT.Common.Helpers
 
         public PeriodType Type { get; private set; }
 
-        public Period()
-        {
-            SelectedDate = DateTime.Now;
-            SelectedDate = FirstDayOfTheWeek(SelectedDate);
-            currentCulture = CultureInfo.CurrentCulture;
-            CalculateDates();
-        }
-
-        public Period(DateTime current,PeriodType type=PeriodType.Month, CultureInfo currentCulture = null)
+        public void Init(DateTime current,PeriodType type=PeriodType.Month, CultureInfo currentCulture = null)
         {
             if (currentCulture == null)
                 this.currentCulture = CultureInfo.CurrentUICulture;
@@ -46,9 +38,7 @@ namespace PMT.Common.Helpers
             SelectedDate = FirstDayOfTheWeek(SelectedDate);
             this.Type = type;
 
-
             CalculateDates();
-
         }
 
         public void ResetSelectedDate(DateTime date)
@@ -66,15 +56,12 @@ namespace PMT.Common.Helpers
                 case PeriodType.Week:
                     description = $"{FromDate.ToString("dd")} - {ToDate.ToString("dd")}  {SelectedDate.ToString("MMM")}";
                     break;
-
                 case PeriodType.Month:
                     description = $"{SelectedDate.ToString("MMMM")} {SelectedDate.Year}";
                     break;
-
                 case PeriodType.Year:
                     description = $"{SelectedDate.Year}";
                     break;
-
                 case PeriodType.All:
                     description = ViewText.All;
                     break;
@@ -90,17 +77,14 @@ namespace PMT.Common.Helpers
                     FromDate = FirstDayOfTheWeek(SelectedDate);
                     ToDate = LastDayOfTheWeek(SelectedDate);
                     break;
-
                 case PeriodType.Month:
                     FromDate = FirstDayOfTheMonth(SelectedDate);
                     ToDate = LastDayOfTheMonth(SelectedDate);
                     break;
-
                 case PeriodType.Year:
                     FromDate = FirstDayOfTheYear(SelectedDate);
                     ToDate = LastDayOfTheYear(SelectedDate);
                     break;
-
                 case PeriodType.All:
                     FromDate = DateTime.MinValue;
                     ToDate = DateTime.MaxValue;
@@ -115,15 +99,12 @@ namespace PMT.Common.Helpers
                 case PeriodType.Week:
                     SelectedDate=SelectedDate.AddDays(7);
                     break;
-
                 case PeriodType.Month:
                     SelectedDate = SelectedDate.AddMonths(1);
                     break;
-
                 case PeriodType.Year:
                     SelectedDate = SelectedDate.AddYears(1);
                     break;
-
                 case PeriodType.All:
                     SelectedDate = DateTime.MaxValue;
                     break;
@@ -138,15 +119,12 @@ namespace PMT.Common.Helpers
                 case PeriodType.Week:
                     SelectedDate = SelectedDate.AddDays(-7);
                     break;
-
                 case PeriodType.Month:
                     SelectedDate = SelectedDate.AddMonths(-1);
                     break;
-
                 case PeriodType.Year:
                     SelectedDate = SelectedDate.AddYears(-1);
                     break;
-
                 case PeriodType.All:
                     SelectedDate = DateTime.MinValue;
                     break;

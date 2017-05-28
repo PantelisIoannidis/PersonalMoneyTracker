@@ -14,6 +14,7 @@ using PMT.BusinessLayer;
 using PMT.DataLayer.Seed;
 using Microsoft.Extensions.Logging;
 using PMT.Models;
+using PMT.Common.Helpers;
 
 namespace PMT.Web.App_Start
 {
@@ -80,6 +81,7 @@ namespace PMT.Web.App_Start
             container.RegisterType<IUnityFactory, UnityFactory>();
             container.RegisterType<IUserPreferences, UserPreferences>();
             container.RegisterType<IMapping, Mapping>();
+            container.RegisterType<IPeriod, Period>();
 
             //Repositories
             container.RegisterType<MainDb>();

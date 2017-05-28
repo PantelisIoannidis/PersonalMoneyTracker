@@ -1,4 +1,6 @@
-﻿using PMT.Common.Helpers;
+﻿using Microsoft.Extensions.Logging;
+using PMT.Common;
+using PMT.Common.Helpers;
 using PMT.Entities;
 using PMT.Models;
 using System;
@@ -12,9 +14,13 @@ namespace PMT.DataLayer.Repositories
 {
     public class TransactionRepository : RepositoryBase<Transaction>, ITransactionRepository
     {
-        public TransactionRepository()
+        ILogger logger;
+        IActionStatus actionStatus;
+        public TransactionRepository(ILoggerFactory logger, IActionStatus actionStatus)
             : base(new MainDb())
         {
+            this.actionStatus = actionStatus;
+            this.logger = logger.CreateLogger<TransactionRepository>();
         }
 
         public IQueryable<TransactionVM> GetTransactionsVM(string userId,Period period)
@@ -63,7 +69,7 @@ namespace PMT.DataLayer.Repositories
                     .Where(c => c.MoneyAccountId == account);
         }
 
-        public IQueryable<TransactionGroupByVM> GetTransactionsGroupByCategory(string userId, Period period, int account,TransactionType transactionType)
+        public IQueryable<CategoryGroupByVM> GetTransactionsGroupByCategory(string userId, Period period, int account,TransactionType transactionType)
         {
 
             IQueryable<TransactionVM> transaction;
@@ -79,7 +85,7 @@ namespace PMT.DataLayer.Repositories
 
             var trans = transaction
                         .GroupBy(p => p.CategoryName)
-                        .Select(cl => new TransactionGroupByVM
+                        .Select(cl => new CategoryGroupByVM
                         {
                             Name = cl.FirstOrDefault().CategoryName,
                             Color = cl.FirstOrDefault().CategoryColor,
@@ -140,7 +146,7 @@ namespace PMT.DataLayer.Repositories
             }
             catch (Exception ex)
             {
-
+                logger.LogError(LoggingEvents.UPDATE_ITEM, ex, "Update transaction");
             }
         }
 

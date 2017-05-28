@@ -33,8 +33,14 @@ namespace PMT.DataLayer.Repositories
 
         public void StoreSubCategory(SubCategory subCategory)
         {
-            db.SubCategories.Add(subCategory);
-            db.SaveChanges();
+            try { 
+                db.SubCategories.Add(subCategory);
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(LoggingEvents.INSERT_ITEM, ex, "Store subcategory in database");
+            }
         }
 
         public void UpdateSubCategory(CategoryVM categoryVM)
@@ -50,7 +56,7 @@ namespace PMT.DataLayer.Repositories
             }
             catch (Exception ex)
             {
-                logger.LogError(LoggingEvents.CALL_METHOD, ex, "Update subcategory in database");
+                logger.LogError(LoggingEvents.UPDATE_ITEM, ex, "Update subcategory in database");
             }
         }
     }

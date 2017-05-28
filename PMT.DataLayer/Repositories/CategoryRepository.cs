@@ -21,7 +21,7 @@ namespace PMT.DataLayer.Repositories
             this.logger = logger.CreateLogger<CategoryRepository>();
         }
 
-        public List<Category> GetGategory(TransactionType transactionType)
+        public List<Category> GetGategories(TransactionType transactionType)
         {
             return db.Categories.OrderBy(o => o.Name).Where(w => w.Type == transactionType).ToList();
         }
@@ -52,7 +52,7 @@ namespace PMT.DataLayer.Repositories
                 catch (Exception ex)
                 {
                     dbTransaction.Rollback();
-                    logger.LogError(LoggingEvents.CALL_METHOD, ex, "Store new category to database");
+                    logger.LogError(LoggingEvents.INSERT_ITEM, ex, "Store new category to database");
                 }
             }
         }
@@ -70,7 +70,7 @@ namespace PMT.DataLayer.Repositories
             }
             catch (Exception ex)
             {
-                logger.LogError(LoggingEvents.CALL_METHOD, ex, "Update category in database");
+                logger.LogError(LoggingEvents.UPDATE_ITEM, ex, "Update category in database");
             }
         }
     }

@@ -14,6 +14,10 @@ namespace PMT.Web.Helpers
         {
            return HttpContext.Current.User.Identity.GetUserId(); 
         }
+        public string GetUserName(HttpContextBase httpContext)
+        {
+            return HttpContext.Current.User.Identity.GetUserName();
+        }
 
         public List<CultureInfo> GetClientCultureInfo(HttpContextBase httpContext)
         {

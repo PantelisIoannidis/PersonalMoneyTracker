@@ -12,7 +12,7 @@ using Microsoft.Extensions.Logging;
 
 namespace PMT.BusinessLayer
 {
-    public class MoneyAccountEngine : IMoneyAccountEngine
+    public class MoneyAccountEngine : BaseEngine, IMoneyAccountEngine
     {
         ILogger logger;
         IMoneyAccountRepository moneyAccountRepository;
@@ -31,7 +31,7 @@ namespace PMT.BusinessLayer
 
         public void AddNewAccountWithInitialBalance(MoneyAccount moneyAccount)
         {
-           try
+            try
             {
                 var transaction = new Transaction()
                 {
@@ -40,22 +40,30 @@ namespace PMT.BusinessLayer
                     TransactionType = TransactionType.Adjustment,
                     Amount = moneyAccount.Balance,
                     TransactionDate = DateTime.Now,
-                    Description = ModelText.MoneyAccountName +" "+ ViewText.InitialBalance
+                    Description = ModelText.MoneyAccountName + " " + ViewText.InitialBalance
                 };
                 moneyAccountRepository.AddNewAccountWithInitialBalance(moneyAccount, transaction);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                logger.LogError(LoggingEvents.CALL_METHOD, ex, "AddNewAccountWithInitialBalance didn't run");
+                logger.LogError(LoggingEvents.CALL_METHOD, ex, "Call repository, add new account with balance");
             }
         }
 
-        public List<MoneyAccount> GetMoneyAccountBalance(string userId)
+        public List<MoneyAccount> GetMoneyAccounts(string userId)
         {
-            var moneyAccounts = moneyAccountRepository.GetMoneyAccounts(userId);
-            foreach(var moneyAccount in moneyAccounts)
-                moneyAccount.Balance = transactionRepository.GetBalance(userId, moneyAccount.MoneyAccountId);
-            return moneyAccounts;
+            try
+            {
+                List<MoneyAccount> moneyAccounts = new List<MoneyAccount>();
+                moneyAccounts = moneyAccountRepository.GetMoneyAccounts(userId);
+                return moneyAccounts;
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(LoggingEvents.CALL_METHOD, ex, "Call repository, Get MoneyAccounts List");
+                return new List<MoneyAccount>();
+            }
+            
         }
 
         public void EditAccountNameAdjustBalance(MoneyAccount moneyAccount)
@@ -75,20 +83,29 @@ namespace PMT.BusinessLayer
             }
             catch (Exception ex)
             {
-                logger.LogError(LoggingEvents.CALL_METHOD, ex, "EditAccountNameAdjustBalance didn't run");
+                logger.LogError(LoggingEvents.CALL_METHOD, ex, "Call repository, edit money account");
             }
         }
         public List<MoneyAccount> GetMoneyAccountsPlusAll(string userId)
         {
-            var account = new MoneyAccount() {
-                UserId=userId,
-                MoneyAccountId=-1,
-                Name=ViewText.AllAccounts
-            };
-            var dbmoneyAccounts = moneyAccountRepository.GetMoneyAccounts(userId);
             var moneyAccounts = new List<MoneyAccount>();
-            moneyAccounts.Add(account);
-            moneyAccounts.AddRange(dbmoneyAccounts);
+
+            try
+            {
+                var account = new MoneyAccount()
+                {
+                    UserId = userId,
+                    MoneyAccountId = -1,
+                    Name = ViewText.AllAccounts
+                };
+                var dbmoneyAccounts = moneyAccountRepository.GetMoneyAccounts(userId);
+                moneyAccounts.Add(account);
+                moneyAccounts.AddRange(dbmoneyAccounts);
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(LoggingEvents.CALL_METHOD, ex, "Call repository, Get MoneyAccounts and All option");
+            }
             return moneyAccounts;
         }
     }

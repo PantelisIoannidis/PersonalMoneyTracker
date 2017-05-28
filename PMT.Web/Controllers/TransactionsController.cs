@@ -26,6 +26,7 @@ namespace PMT.Web.Controllers
         public string userId;
 
         ILogger logger;
+        IPeriod period;
         ICommonHelper commonHelper;
         ITransactionRepository transactionRepository;
         ICategoryRepository categoryRepository;
@@ -37,6 +38,7 @@ namespace PMT.Web.Controllers
         IMapping mapping;
 
         public TransactionsController(ILoggerFactory logger,
+                                        IPeriod period,
                                         ICommonHelper commonHelper,
                                         IUserPreferences userPreferences,
                                          ITransactionRepository transactionRepository,
@@ -58,6 +60,7 @@ namespace PMT.Web.Controllers
             this.mapping = mapping;
             this.commonHelper = commonHelper;
             this.userPreferences = userPreferences;
+            this.period = period;
             this.logger = logger.CreateLogger<TransactionsController>();
 
             userId = commonHelper.GetUserId(HttpContext);
@@ -77,7 +80,6 @@ namespace PMT.Web.Controllers
         public Tuple<IEnumerable<TransactionVM>, TransactionFilterVM, PaginationVM> PrepareTransactionVM(int? page = 1)
         {
             DateTime selectedDate = DateTime.Now;
-            Period period;
 
             var postsPerPage = 8;
 
@@ -86,9 +88,9 @@ namespace PMT.Web.Controllers
                 objPreferences = userPreferences.GetTransactionPreferences(HttpContext);
 
             TransactionFilterVM transactionFilterVM = transactionsEngine.GetFilter(userId, objPreferences);
-            period = new Period(DateTime.Parse(transactionFilterVM.SelectedDateFull), (PeriodType)transactionFilterVM.PeriodFilterId);
+            period.Init(DateTime.Parse(transactionFilterVM.SelectedDateFull), (PeriodType)transactionFilterVM.PeriodFilterId);
 
-            var transactionsVM = transactionRepository.GetTransactionsVM(userId, period, transactionFilterVM.AccountFilterId);
+            var transactionsVM = transactionRepository.GetTransactionsVM(userId, (Period)period, transactionFilterVM.AccountFilterId);
             var cnt = transactionsVM.Count();
             var pager = new Pager(cnt, page.Value, postsPerPage);
 
@@ -130,7 +132,7 @@ namespace PMT.Web.Controllers
 
         public ActionResult GetCategories(TransactionType type)
         {
-            var categories = categoryRepository.GetGategory(type);
+            var categories = categoryRepository.GetGategories(type);
             return Json(categories, JsonRequestBehavior.AllowGet);
         }
 

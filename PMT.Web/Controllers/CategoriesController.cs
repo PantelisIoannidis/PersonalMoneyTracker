@@ -32,7 +32,6 @@ namespace PMT.Web.Controllers
                                         )
         {
             this.commonHelper = commonHelper;
-            this.categoryRepository = categoryRepository;
             this.logger = logger.CreateLogger<CategoriesController>();
             this.categoryRepository = categoryRepository;
             this.subCategoryRepository = subCategoryRepository;
@@ -71,7 +70,7 @@ namespace PMT.Web.Controllers
         public ActionResult NewCategory()
         {
             var categoryVM = new CategoryVM() {
-                IconId = DefaultOtherTransactions.IconId
+                IconId = DefaultCategoryValues.IconId
             };
             ViewBag.Title = ViewText.CreateNewCategory;
             ViewBag.CategoryType = GetShortTransactionTypeList();
@@ -97,7 +96,7 @@ namespace PMT.Web.Controllers
         {
             var categoryVM = new CategoryVM()
             {
-                IconId = DefaultOtherTransactions.IconId
+                IconId = DefaultCategoryValues.IconId
             };
             ViewBag.Title = ViewText.CreateNewSubcategory;
             ViewBag.CategoryType = GetShortTransactionTypeList();

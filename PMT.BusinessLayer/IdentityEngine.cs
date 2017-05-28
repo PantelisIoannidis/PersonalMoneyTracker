@@ -1,4 +1,6 @@
-﻿using PMT.DataLayer.Repositories;
+﻿using Microsoft.Extensions.Logging;
+using PMT.Common;
+using PMT.DataLayer.Repositories;
 using PMT.DataLayer.Seed;
 using System;
 using System.Collections.Generic;
@@ -8,28 +10,46 @@ using System.Threading.Tasks;
 
 namespace PMT.BusinessLayer
 {
-    public class IdentityEngine : IIdentityEngine
+    public class IdentityEngine : BaseEngine, IIdentityEngine
     {
         IIdentityRepository identityRepository;
         IMoneyAccountRepository MoneyAccountRepository;
         ISeedingLists seedingLists;
-        public IdentityEngine(IIdentityRepository identityRepository,
-            IMoneyAccountRepository MoneyAccountRepository,  ISeedingLists seedingLists)
+        ILogger logger;
+        public IdentityEngine(ILoggerFactory logger, IIdentityRepository identityRepository,
+            IMoneyAccountRepository MoneyAccountRepository, ISeedingLists seedingLists)
         {
             this.identityRepository = identityRepository;
             this.MoneyAccountRepository = MoneyAccountRepository;
             this.seedingLists = seedingLists;
+            this.logger = logger.CreateLogger<IdentityEngine>();
         }
-        public string GetMoneyAccountId(string userName)
+
+        public string GetUserId(string userName)
         {
-            return identityRepository.GetUserId(userName);
+            try
+            {
+                return identityRepository.GetUserId(userName);
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(LoggingEvents.GET_ITEM, ex, userName + ": Get UserId");
+                return "";
+            }
         }
 
         public void InitializeNewUser(string userName)
         {
-            var MoneyAccount = seedingLists.GetDefaultAccountForNewUser(GetMoneyAccountId(userName));
-            MoneyAccountRepository.Insert(MoneyAccount);
-            MoneyAccountRepository.Save();
+            try
+            {
+                var moneyAccount = seedingLists.GetDefaultAccountForNewUser(GetUserId(userName));
+                MoneyAccountRepository.Insert(moneyAccount);
+                MoneyAccountRepository.Save();
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(LoggingEvents.GET_ITEM, ex, userName+": Add default account for new user");
+            }
         }
     }
 }

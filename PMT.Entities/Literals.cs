@@ -53,7 +53,7 @@ namespace PMT.Entities
             public const string Reset = "Reset";
         }
 
-        public static class DefaultOtherTransactions
+        public static class DefaultCategoryValues
         {
             public const string IconId = "icon-stickynotealt";
             public const string Color = "#99994d";

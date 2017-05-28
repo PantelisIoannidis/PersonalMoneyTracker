@@ -15,89 +15,102 @@ using static PMT.Entities.Literals;
 
 namespace PMT.BusinessLayer
 {
-
-    public class ChartsEngine : IChartsEngine
+    public class ChartsEngine : BaseEngine, IChartsEngine
     {
         ILogger logger;
         ITransactionsEngine transactionsEngine;
         ITransactionRepository transactionRepository;
+        IPeriod period;
         public ChartsEngine(ILoggerFactory logger,
+                            IPeriod period,
                             ITransactionsEngine transactionsEngine,
                             ITransactionRepository transactionRepository)
         {
             this.logger = logger.CreateLogger<ChartsEngine>();
             this.transactionsEngine = transactionsEngine;
             this.transactionRepository = transactionRepository;
+            this.period = period;
         }
 
         public string ChartIncomeVsExpense(string userId, TransactionFilterVM transactionFilterVM)
         {
-            ChartDataVM chartData = new ChartDataVM();
-            ChartDatasetsVM chartDataset = new ChartDatasetsVM();
-            Period period = new Period(DateTime.Parse(transactionFilterVM.SelectedDateFull), (PeriodType)transactionFilterVM.PeriodFilterId);
-            TransactionsSummaryVM summary = transactionsEngine.PrepareSummary(userId, transactionFilterVM);
-
-            chartDataset.backgroundColor.Add("#008000");
-            chartDataset.backgroundColor.Add("#b30000");
-
-            chartDataset.borderColor.Add("#008010");
-            chartDataset.borderColor.Add("#b30010");
-
-            chartDataset.borderWidth = "1";
-
-            chartDataset.labels = "Income vs Expenses";
-
-            chartDataset.data.Add(summary.Income.ToString("0.##"));
-            chartDataset.data.Add(Math.Abs(summary.Expenses).ToString("0.##"));
-
-            chartData.labels.Add(ViewText.Income);
-            chartData.labels.Add(ViewText.Expense);
-
-            chartData.datasets.Add(chartDataset);
-
-            return JsonConvert.SerializeObject(chartData);
-
-        }
-        public string ChartIncomeExpensesByCategory(string userId, TransactionFilterVM transactionFilterVM,TransactionType transactionType)
-        {
-            const int capacity = 5;
-
-            ChartDataVM chartData = new ChartDataVM();
-            ChartDatasetsVM chartDataset = new ChartDatasetsVM();
-            Period period = new Period(DateTime.Parse(transactionFilterVM.SelectedDateFull), (PeriodType)transactionFilterVM.PeriodFilterId);
-
-            var transactions = transactionRepository.GetTransactionsGroupByCategory(userId, period, transactionFilterVM.AccountFilterId, transactionType).ToList();
-
-            List<TransactionGroupByVM> namedTrans = transactions.Take(capacity).ToList();
-            decimal otherSum=0;
-            if (transactions.Count()> capacity)
-                otherSum = transactions.Skip(capacity).Sum(x => x.Sum);
-            TransactionGroupByVM otherTransactions = new TransactionGroupByVM()
+            string data="";
+            try
             {
-                Sum = otherSum,
-                IconId = DefaultOtherTransactions.IconId,
-                Color = DefaultOtherTransactions.Color,
-                Name = ViewText.Others
-            };
-            List<TransactionGroupByVM> trans = new List<TransactionGroupByVM>();
-            trans.AddRange(namedTrans);
-            if(otherSum!=0)
-                trans.Add(otherTransactions);
+                ChartDataVM chartData = new ChartDataVM();
+                ChartDatasetsVM chartDataset = new ChartDatasetsVM();
+                period.Init(DateTime.Parse(transactionFilterVM.SelectedDateFull), (PeriodType)transactionFilterVM.PeriodFilterId);
+                TransactionsSummaryVM summary = transactionsEngine.PrepareSummary(userId, transactionFilterVM);
 
-            foreach (var tran in trans)
-            {
-                chartDataset.backgroundColor.Add(tran.Color);
-                chartDataset.borderColor.Add(tran.Color);
-                chartDataset.data.Add(Math.Abs(tran.Sum).ToString("0.##"));
-                chartData.labels.Add(tran.Name);
+                chartDataset.backgroundColor.Add("#008000");
+                chartDataset.backgroundColor.Add("#b30000");
+                chartDataset.borderColor.Add("#008010");
+                chartDataset.borderColor.Add("#b30010");
+                chartDataset.borderWidth = "1";
+                chartDataset.labels = "Income vs Expenses";
+                chartDataset.data.Add(summary.Income.ToString("0.##"));
+                chartDataset.data.Add(Math.Abs(summary.Expenses).ToString("0.##"));
+
+                chartData.labels.Add(ViewText.Income);
+                chartData.labels.Add(ViewText.Expense);
+                chartData.datasets.Add(chartDataset);
+
+                data = JsonConvert.SerializeObject(chartData);
             }
+            catch (Exception ex)
+            {
+                logger.LogError(LoggingEvents.POPULATE_OBJECT, ex, "Prepare data for income vs expense chart");
+            }
+            return data;
+        }
+        public string ChartIncomeExpensesByCategory(string userId, TransactionFilterVM transactionFilterVM, TransactionType transactionType)
+        {
+            string data = "";
+            try
+            {
+                const int capacity = 5;
 
-            chartDataset.labels = "";
-            chartDataset.borderWidth = "1";
+                ChartDataVM chartData = new ChartDataVM();
+                ChartDatasetsVM chartDataset = new ChartDatasetsVM();
+                period.Init(DateTime.Parse(transactionFilterVM.SelectedDateFull), (PeriodType)transactionFilterVM.PeriodFilterId);
 
-            chartData.datasets.Add(chartDataset);
+                var categories = transactionRepository.GetTransactionsGroupByCategory(userId, (Period)period, transactionFilterVM.AccountFilterId, transactionType).ToList();
+                List<CategoryGroupByVM> topCategories = categories.Take(capacity).ToList();
+                decimal otherSum = 0;
+                if (categories.Count() > capacity)
+                    otherSum = categories.Skip(capacity).Sum(x => x.Sum);
+                CategoryGroupByVM otherCategories = new CategoryGroupByVM()
+                {
+                    Sum = otherSum,
+                    IconId = DefaultCategoryValues.IconId,
+                    Color = DefaultCategoryValues.Color,
+                    Name = ViewText.Others
+                };
+                List<CategoryGroupByVM> finalListCategories = new List<CategoryGroupByVM>();
+                finalListCategories.AddRange(topCategories);
+                if (otherSum != 0)
+                    finalListCategories.Add(otherCategories);
 
-            return JsonConvert.SerializeObject(chartData);
+                foreach (var category in finalListCategories)
+                {
+                    chartDataset.backgroundColor.Add(category.Color);
+                    chartDataset.borderColor.Add(category.Color);
+                    chartDataset.data.Add(Math.Abs(category.Sum).ToString("0.##"));
+                    chartData.labels.Add(category.Name);
+                }
+
+                chartDataset.labels = "";
+                chartDataset.borderWidth = "1";
+
+                chartData.datasets.Add(chartDataset);
+
+                data = JsonConvert.SerializeObject(chartData);
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(LoggingEvents.POPULATE_OBJECT, ex, "Prepare data for income and expense charts");
+            }
+            return data;
 
         }
 

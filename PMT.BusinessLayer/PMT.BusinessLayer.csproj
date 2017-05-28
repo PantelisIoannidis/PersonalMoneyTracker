@@ -75,16 +75,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseEngine.cs" />
     <Compile Include="CalculationsEngine.cs" />
     <Compile Include="CategoriesEngine.cs" />
     <Compile Include="ChartsEngine.cs" />
-    <Compile Include="ICalculationsEngine.cs" />
-    <Compile Include="ICategoriesEngine.cs" />
-    <Compile Include="IChartsEngine.cs" />
+    <Compile Include="Interfaces\ICalculationsEngine.cs" />
+    <Compile Include="Interfaces\ICategoriesEngine.cs" />
+    <Compile Include="Interfaces\IChartsEngine.cs" />
     <Compile Include="IdentityEngine.cs" />
-    <Compile Include="IIdentityEngine.cs" />
-    <Compile Include="IMoneyAccountEngine.cs" />
-    <Compile Include="ITransactionsEngine.cs" />
+    <Compile Include="Interfaces\IIdentityEngine.cs" />
+    <Compile Include="Interfaces\IMoneyAccountEngine.cs" />
+    <Compile Include="Interfaces\ITransactionsEngine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MoneyAccountEngine.cs" />
     <Compile Include="TransactionsEngine.cs" />

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PMT.Common
+namespace PMT.Models
 {
     public class Pager
     {

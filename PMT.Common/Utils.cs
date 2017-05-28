@@ -23,6 +23,11 @@ namespace PMT.Common
             return source.Where(item => uniqueValues.Add(expression(item)));
         }
 
+        /// <summary>
+        /// Format decimal accordint to Current Culture with minus sign for negative numbers
+        /// </summary>
+        /// <param name="val"></param>
+        /// <returns></returns>
         public static string FormatNumbers(this decimal val)
         {
             string curCulture = System.Threading.Thread.CurrentThread.CurrentCulture.ToString();
@@ -32,6 +37,11 @@ namespace PMT.Common
             return val.ToString("C2", currencyFormat);
         }
 
+        /// <summary>
+        /// Tryparse shortcut
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
         public static int ParseInt(this string text)
         {
             int tmp;

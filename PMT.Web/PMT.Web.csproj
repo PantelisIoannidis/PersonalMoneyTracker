@@ -318,6 +318,7 @@
     <Content Include="js\App.js" />
     <Content Include="js\App.TransactionsFiltersUI.js" />
     <Content Include="js\App.TransactionsUI.js" />
+    <None Include="js\_references.js" />
     <Content Include="moreFonts\webhostinghub-glyphs.svg" />
     <Content Include="Global.asax" />
     <Content Include="ApplicationInsights.config">

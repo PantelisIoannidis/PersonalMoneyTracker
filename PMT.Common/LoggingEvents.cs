@@ -10,6 +10,8 @@ namespace PMT.Common
     {
         public const int UNKNOWN = 2000;
         public const int CALL_METHOD = 2001;
+        public const int POPULATE_OBJECT = 2002;
+
         public const int GENERATE_ITEMS = 1000;
         public const int LIST_ITEMS = 1001;
         public const int GET_ITEM = 1002;

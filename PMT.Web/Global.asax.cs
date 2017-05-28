@@ -25,13 +25,7 @@ namespace PMT.Web
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
-        protected void Application_BeginRequest()
-        {
-            
-            //string curCulture = System.Threading.Thread.CurrentThread.CurrentCulture.ToString();
-            //System.Globalization.NumberFormatInfo currencyFormat = new System.Globalization.CultureInfo(curCulture).NumberFormat;
-            //currencyFormat.CurrencyNegativePattern = 1;
-        }
+
         /// <summary>
         /// Disables the application insights locally.
         /// </summary>
@@ -39,6 +33,13 @@ namespace PMT.Web
         private static void DisableApplicationInsightsOnDebug()
         {
             TelemetryConfiguration.Active.DisableTelemetry = true;
+        }
+
+        protected void _Application_Error(object sender, EventArgs e)
+        {
+            Exception exception = Server.GetLastError();
+            Server.ClearError();
+            Response.Redirect("/Errors/Error");
         }
     }
 }
