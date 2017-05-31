@@ -1,13 +1,5 @@
 ﻿var categoriesUI = function () {
 
-    function showNotificationArea(message) {
-        var notificationArea = $('#categoriesNotifications');
-        notificationArea.empty();
-        notificationArea.append(message);
-        notificationArea.slideDown();
-        window.setTimeout(function () { notificationArea.slideUp(); }, 1500);
-    };
-
     function ajaxCall(_id,_url) {
         var token = $('[name=__RequestVerificationToken]').val();
         $.ajax({
@@ -21,10 +13,10 @@
                         dropdownMenuToggle();
                     }
                 );
-                showNotificationArea(data.message);
+                commonUI.showSuccessNotifications(data.message);
             },
             fail: function (jqXHR, textStatus, errorThrown) {
-                showNotificationArea("action was not completed");
+                commonUI.showWarningNotifications("action was not completed");
             }
         });
     }

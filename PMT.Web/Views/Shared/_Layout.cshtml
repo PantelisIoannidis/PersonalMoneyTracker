@@ -62,7 +62,7 @@
                 </ul>
             </div>
             <div class="container mcontent col-sm-9 col-md-10">
-                @Html.Partial("_NotificationAreaPartial")
+                @Html.Partial("_NotificationAreaPartial", new Tuple<string,string,string>(ViewBag.NotificationSuccess, ViewBag.NotificationDanger, ViewBag.NotificationWarning))
                 @RenderBody()
                 <hr />
                 <footer>

@@ -1,18 +1,18 @@
-﻿@if (!string.IsNullOrEmpty(ViewBag.NotificationSuccess))
-{
-    <div id="mainSuccessNotifications" class="alert alert-success collapse use-big-fonts" role="alert">
-        @ViewBag.NotificationSuccess
-    </div>
-}
-@if (!string.IsNullOrEmpty(ViewBag.NotificationDanger))
-{
-    <div id="mainDangerNotifications" class="alert alert-danger collapse use-big-fonts" role="alert">
-        @ViewBag.NotificationDanger
-    </div>
-}
-@if (!string.IsNullOrEmpty(ViewBag.NotificationWarning))
-{
-    <div id="mainWarningNotifications" class="alert alert-warning collapse use-big-fonts" role="alert">
-        @ViewBag.NotificationWarning
-    </div>
-}
+﻿@model Tuple <string,string,string>
+
+@*ViewBag.NotificationSuccess*@
+<div id="mainSuccessNotifications" class="alert alert-success collapse use-big-fonts" role="alert" data-message="@Model.Item1">
+    @Model.Item1
+</div>
+
+@*ViewBag.NotificationDanger*@
+<div id="mainDangerNotifications" class="alert alert-danger collapse use-big-fonts" role="alert" data-message="@Model.Item2">
+    @Model.Item2
+</div>
+
+
+@*ViewBag.NotificationWarning*@
+<div id="mainWarningNotifications" class="alert alert-warning collapse use-big-fonts" role="alert" data-message="@Model.Item3">
+    @Model.Item3
+</div>
+
