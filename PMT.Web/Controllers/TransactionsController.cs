@@ -70,6 +70,7 @@ namespace PMT.Web.Controllers
 
         public const string transactionPreferences = "transactionPreferences";
 
+        [MoveNotificationsDataFilter]
         public ActionResult Index(int? page=1)
         {
             var tuple = PrepareTransactionVM(page);
@@ -165,9 +166,10 @@ namespace PMT.Web.Controllers
             {
                 transactionRepository.Insert(transaction);
                 transactionRepository.Save();
+                TempData["NotificationSuccess"] = "New transaction has been created";
                 return RedirectToAction("Index");
             }
-
+            ViewBag.NotificationWarning = "New transaction couldn't be created";
             return View(transaction);
         }
 
@@ -190,9 +192,10 @@ namespace PMT.Web.Controllers
             if (ModelState.IsValid)
             {
                 transactionRepository.Update(transaction);
+                TempData["NotificationSuccess"] = "Transaction has been modified";
                 return RedirectToAction("Index");
             }
-
+            ViewBag.NotificationWarning = "Transaction couldn't be modified";
             return View(transaction);
         }
 
@@ -214,6 +217,7 @@ namespace PMT.Web.Controllers
         {
             transactionRepository.Delete(id);
             transactionRepository.Save();
+            TempData["NotificationSuccess"] = "Transaction successfully deleted";
             return RedirectToAction("Index");
         }
 

@@ -17,7 +17,7 @@ using static PMT.Entities.Literals;
 namespace PMT.Web.Controllers
 {
     [Authorize]
-    public class CategoriesController : BaseController
+    public class CategoriesController : Controller
     {
         ILogger logger;
         ICommonHelper commonHelper;
@@ -94,7 +94,7 @@ namespace PMT.Web.Controllers
             {
                 categoryVM.Type = (TransactionType)CategoryType.ParseInt();
                 categoriesEngine.StoreNewCategoryAndSubCategory(categoryVM);
-                TempData["NotificationSuccess"] = "New category created";
+                TempData["NotificationSuccess"] = "New category has been created";
                 return RedirectToAction("Index");
             }
             ViewBag.Title = ViewText.CreateNewCategory;
@@ -121,7 +121,7 @@ namespace PMT.Web.Controllers
             if (ModelState.IsValid)
             {
                 categoriesEngine.StoreNewSubCategory(categoryVM);
-                TempData["NotificationSuccess"] = "New subcategory created";
+                TempData["NotificationSuccess"] = "New subcategory has been created";
                 return RedirectToAction("Index");
             }
             ViewBag.Title = ViewText.CreateNewSubcategory;

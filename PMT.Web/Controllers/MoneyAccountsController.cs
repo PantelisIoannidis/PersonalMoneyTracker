@@ -52,7 +52,7 @@ namespace PMT.Web.Controllers
             return Json(categories, JsonRequestBehavior.AllowGet);
         }
 
-        // GET: MoneyAccounts
+        [MoveNotificationsDataFilter]
         public ActionResult Index()
         {
             logger.LogInformation("MoneyAccountsController Index");
@@ -81,9 +81,10 @@ namespace PMT.Web.Controllers
             {
                 moneyAccount.UserId = securityHelper.GetUserId(HttpContext);
                 moneyAccountEngine.AddNewAccountWithInitialBalance(moneyAccount);
+                TempData["NotificationSuccess"] = "New account has been created";
                 return RedirectToAction("Index");
             }
-
+            ViewBag.NotificationWarning = "New account couldn't be created";
             return View(moneyAccount);
         }
 
@@ -112,8 +113,10 @@ namespace PMT.Web.Controllers
             if (ModelState.IsValid)
             {
                 moneyAccountEngine.EditAccountNameAdjustBalance(moneyAccount);
+                TempData["NotificationSuccess"] = "Account has been modified";
                 return RedirectToAction("Index");
             }
+            ViewBag.NotificationWarning = "Account couldn't be modified";
             return View(moneyAccount);
         }
 
@@ -140,6 +143,7 @@ namespace PMT.Web.Controllers
             MoneyAccount moneyAccount = moneyAccountRepository.GetById(id);
             moneyAccountRepository.Delete(id);
             moneyAccountRepository.Save();
+            TempData["NotificationSuccess"] = "Account successfully deleted";
             return RedirectToAction("Index");
         }
 

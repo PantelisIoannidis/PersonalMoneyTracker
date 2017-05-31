@@ -20,14 +20,22 @@
         $("#transTableDeleteButton").click(function (e) {
             e.preventDefault();
             var transId = $(".transTable .active .transTableId").val();
-            if (!transId) return;
+            if (!transId) {
+                commonUI.loadingFinished();
+                commonUI.showWarningNotifications("Please select a transaction");
+                return;
+            }
             $("#transactionDeleteModal").modal("show");
             
         });
         $("#transTableDeleteConfirmButton").on('click', function (e) {
             e.preventDefault();
             var transId = $(".transTable .active .transTableId").val();
-            if (!transId) return;
+            if (!transId) {
+                commonUI.loadingFinished();
+                commonUI.showWarningNotifications("Please select a transaction");
+                return;
+            }
             var token = $('[name=__RequestVerificationToken]').val();
             $("#transactionDeleteModal").modal("hide");
             $.post(pmt.rootPath+"Transactions/Delete/", { __RequestVerificationToken: token, id: transId },
@@ -36,7 +44,11 @@
         $("#transTableEditButton").click(function (e) {
             e.preventDefault();
             var transId = $(".transTable .active .transTableId").val();
-            if (!transId) return;
+            if (!transId) {
+                commonUI.loadingFinished();
+                commonUI.showWarningNotifications("Please select a transaction");
+                return;
+            }
             var newUrl = pmt.rootPath+"Transactions/Edit/" + transId;
             document.location.href = newUrl;
             

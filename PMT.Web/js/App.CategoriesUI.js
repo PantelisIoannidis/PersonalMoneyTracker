@@ -26,7 +26,10 @@
 	    $("#deleteCategoryBtn").click(function (e) {
 	        e.preventDefault();
 	        var deleteId = $("#selectedCategory").val();
-	        if (!deleteId) return;
+            if (!deleteId) {
+                commonUI.showWarningNotifications("Please select a category or subcategory");
+                return;
+            }
 	        var name = $("#" + deleteId).data("name");
 	        $(".categoryNameToDelete").text(name);
             if(deleteId.indexOf("sub")===-1)
@@ -38,7 +41,10 @@
         $("#categoryDeleteConfirmButton").on('click', function (e) {
             e.preventDefault();
             var deleteId = $("#selectedCategory").val();
-            if (!deleteId) return;
+            if (!deleteId) {
+                commonUI.showWarningNotifications("Please select a category");
+                return;
+            }
             $("#categoryDeleteModal").modal("hide");
             ajaxCall(deleteId, pmt.rootPath + "Categories/Delete/",)
         });
@@ -46,7 +52,10 @@
 	    $("#subCategoryDeleteConfirmButton").on('click', function (e) {
 	        e.preventDefault();
 	        var deleteId = $("#selectedCategory").val();
-	        if (!deleteId) return;
+            if (!deleteId) {
+                commonUI.showWarningNotifications("Please select a subcategory");
+                return;
+            }
             $("#subCategoryDeleteModal").modal("hide");
             ajaxCall(deleteId, pmt.rootPath + "Categories/Delete/", )
         });
@@ -54,7 +63,10 @@
 	    $("#editCategoryBtn").click(function (e) {
 	        e.preventDefault();
 	        var editId = $("#selectedCategory").val();
-	        if (!editId) return;
+            if (!editId) {
+                commonUI.showWarningNotifications("Please select a category or subcategory");
+                return;
+            };
 	        var newUrl = pmt.rootPath+"Categories/Edit/" + editId;
 	        document.location.href = newUrl;
 

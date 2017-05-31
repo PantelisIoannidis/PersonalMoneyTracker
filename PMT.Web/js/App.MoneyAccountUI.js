@@ -8,12 +8,15 @@
 		});
 		$("#accountTableDeleteConfirmButton").on('click', function (e) {
 		    e.preventDefault();
-		    var id = $("#deleteTarget").val();
-		    if (!id) return;
+		    var deleteid = $("#deleteTarget").val();
+            if (!deleteid) return;
 		    var token = $('[name=__RequestVerificationToken]').val();
-		    $("#accountDeleteModal").modal("hide");
-		    $.post(pmt.rootPath + "moneyAccounts/Delete/", { __RequestVerificationToken: token, id: id },
-                function (retURL) { window.location.reload(true); });
+            $("#accountDeleteModal").modal("hide");
+            var url = pmt.rootPath + "moneyAccounts/Delete/";
+            var form = $('<form/>', {action: url, method: 'POST'});
+            form.append($('<input/>', {type: 'hidden',name: 'id',value: deleteid}));
+            form.append($('<input/>', {type: 'hidden',name: '__RequestVerificationToken',value: token}));
+            form.appendTo('body').submit();
 		});
 	};
 

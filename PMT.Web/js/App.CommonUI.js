@@ -41,7 +41,7 @@
 
     function showNotifications() {
         var mainSuccessNotifications = $("#mainSuccessNotifications");
-        if (mainSuccessNotifications.data('message')!=="") {
+        if (mainSuccessNotifications.attr('data-message')!=="") {
             mainSuccessNotifications.slideDown();
             window.setTimeout(function () {
                 mainSuccessNotifications.slideUp();
@@ -49,7 +49,7 @@
             }, 2000);
         }
         var mainDangerNotifications = $("#mainDangerNotifications");
-        if (mainDangerNotifications.data('message') !== "") {
+        if (mainDangerNotifications.attr('data-message') !== "") {
             mainDangerNotifications.slideDown();
             window.setTimeout(function () {
                 mainDangerNotifications.slideUp();
@@ -57,7 +57,7 @@
             }, 2000);
         }
         var mainWarningNotifications = $("#mainWarningNotifications");
-        if (mainWarningNotifications.data('message') !== "") {
+        if (mainWarningNotifications.attr('data-message') !== "") {
             mainWarningNotifications.slideDown();
             window.setTimeout(function () {
                 mainWarningNotifications.slideUp();
