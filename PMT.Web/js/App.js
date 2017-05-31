@@ -14,6 +14,7 @@ var pmt = function () {
         commonUI.calculateActiveElement();
         commonUI.loadingEvents();
         commonUI.loadingFinished();
+        commonUI.showNotifications();
     };
 
     var onDocumentLoadIndexTransaction = function () {

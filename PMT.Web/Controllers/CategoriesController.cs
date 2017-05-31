@@ -41,6 +41,7 @@ namespace PMT.Web.Controllers
             this.iconRepository = iconRepository;
         }
 
+        [MoveNotificationsDataFilter]
         public ActionResult Index()
         {
             var cateogories = categoryRepository.GetAllGategoriesSubCategories();
@@ -93,10 +94,12 @@ namespace PMT.Web.Controllers
             {
                 categoryVM.Type = (TransactionType)CategoryType.ParseInt();
                 categoriesEngine.StoreNewCategoryAndSubCategory(categoryVM);
+                TempData["NotificationSuccess"] = "New category created";
                 return RedirectToAction("Index");
             }
             ViewBag.Title = ViewText.CreateNewCategory;
             ViewBag.CategoryType = GetShortTransactionTypeList();
+            ViewBag.NotificationWarning = "New category couldn't be created";
             return View(categoryVM);
         }
 
@@ -118,10 +121,12 @@ namespace PMT.Web.Controllers
             if (ModelState.IsValid)
             {
                 categoriesEngine.StoreNewSubCategory(categoryVM);
+                TempData["NotificationSuccess"] = "New subcategory created";
                 return RedirectToAction("Index");
             }
             ViewBag.Title = ViewText.CreateNewSubcategory;
             ViewBag.CategoryType = GetShortTransactionTypeList();
+            ViewBag.NotificationWarning = "New subcategory couldn't be created";
             return View(categoryVM);
         }
 
@@ -174,9 +179,17 @@ namespace PMT.Web.Controllers
             {
                 categoryVM.Type = (TransactionType)CategoryType.ParseInt();
                 categoriesEngine.EditCategoryAndSubCategory(categoryVM);
+                if (categoryVM.IsCategory)
+                    TempData["NotificationSuccess"] = "Category has been modified";
+                else
+                    TempData["NotificationSuccess"] = "Subcategory has been modified";
                 return RedirectToAction("Index");
             }
             ViewBag.CategoryType = GetShortTransactionTypeList();
+            if (categoryVM.IsCategory)
+                ViewBag.NotificationWarning = "Category couldn't be modified";
+            else
+                ViewBag.NotificationWarning = "Subcategory couldn't be modified";
             return View(categoryVM);
         }
     }
