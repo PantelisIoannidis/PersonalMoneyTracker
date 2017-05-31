@@ -3,7 +3,7 @@
     var caretHtml = '<span class="caret"></span>';
 
     function fillCategory() {
-        var tranGetCategoriesUrl = '/Transactions/GetCategories';
+        var tranGetCategoriesUrl = pmt.rootPath + 'Transactions/GetCategories';
         var tranType = $('#Type').val();
         var categoryId = $('#CategoryId').val();
         var firstcategoryBtn = "";
@@ -106,7 +106,7 @@
 	}
 
 	function loadIcons() {
-	    var url = "/Categories/GetAllIcons";
+	    var url = pmt.rootPath + "Categories/GetAllIcons";
 	    $.getJSON(url, null, function (data) {
 	        var template = Handlebars.compile($('#iconCollectionTemplate').html());
 	        var temp = template(data);

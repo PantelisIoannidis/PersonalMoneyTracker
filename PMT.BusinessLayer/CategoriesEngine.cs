@@ -119,7 +119,7 @@ namespace PMT.BusinessLayer
             }
         }
 
-        public void DeleteCategorySubCategories(string id)
+        public ActionStatus DeleteCategorySubCategories(string id)
         {
             try
             {
@@ -135,21 +135,37 @@ namespace PMT.BusinessLayer
                 if (!string.IsNullOrEmpty(subCategoryId))
                 {
                     var subCategory = subCategoryRepository.GetSubCategoryById(subCategoryId.ParseInt());
-                    subCategoryRepository.Delete(subCategory);
-                    subCategoryRepository.Save();
+                    if (subCategory != null)
+                    {
+                        subCategoryRepository.Delete(subCategory);
+                        subCategoryRepository.Save();
+                    }else
+                    {
+                        actionStatus = ActionStatus.CreateFromConditions("Item not found");
+                    }
 
                 }
                 else if (!string.IsNullOrEmpty(categoryId))
                 {
                     var category = categoryRepository.GetGategoryById(categoryId.ParseInt());
-                    categoryRepository.Delete(category);
-                    categoryRepository.Save();
+                    if (category != null)
+                    {
+                        categoryRepository.Delete(category);
+                        categoryRepository.Save();
+                    }
+                    else
+                    {
+                        actionStatus = ActionStatus.CreateFromConditions("Item not found");
+                    }
                 }
             }
             catch (Exception ex)
             {
-                logger.LogError(LoggingEvents.DELETE_ITEM, ex, "Delete a category or subcategory");
+                var message = "Delete a category or subcategory";
+                actionStatus = ActionStatus.CreateFromException(message, ex);
+                logger.LogError(LoggingEvents.DELETE_ITEM, ex, message);
             }
+            return (ActionStatus)actionStatus;
         }
 
         public void EditCategoryAndSubCategory(CategoryVM categoryVM)

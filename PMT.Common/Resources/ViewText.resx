@@ -288,4 +288,10 @@
   <data name="About" xml:space="preserve">
     <value>About</value>
   </data>
+  <data name="Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>Warning</value>
+  </data>
 </root>

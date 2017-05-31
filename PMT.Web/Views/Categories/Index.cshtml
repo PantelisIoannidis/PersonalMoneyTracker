@@ -3,9 +3,13 @@
     ViewBag.Title = ViewText.CategoriesViewIndexTitle;
 }
 <input type="hidden" id="selectedCategory" value="" />
+
 <div class="panel panel-primary use-big-fonts">
     <div class="panel-heading">@ViewBag.Title</div>
     <div class="panel-body row">
+        <div class="alert alert-success hidden" role="alert">
+            <span id="deletedItem"></span> successfully deleted
+        </div>
         <div class="col-md-3">
             <ul class="nav nav-pills" role="tablist">
                 <li role="presentation" class="active">
@@ -37,7 +41,7 @@
         </div>
     </div>
 </div>
-@Html.Partial("_DeletePartial")
+@Html.Partial("_ModalsPartial")
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

@@ -34,6 +34,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <FilesToIncludeForPublish>AllFilesInTheProject</FilesToIncludeForPublish>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -458,6 +459,8 @@
     <Content Include="Scripts\moment.min.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Views\Shared\404.html" />
+    <Content Include="Views\Shared\500.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -511,7 +514,7 @@
     <Content Include="Views\Categories\Index.cshtml" />
     <Content Include="Views\Categories\NewCategory.cshtml" />
     <Content Include="Views\Categories\_IndexPanelPartial.cshtml" />
-    <Content Include="Views\Categories\_DeletePartial.cshtml" />
+    <Content Include="Views\Categories\_ModalsPartial.cshtml" />
     <Content Include="Views\Categories\_IconSelectionPartial.cshtml" />
     <Content Include="Views\Categories\NewSubCategory.cshtml" />
   </ItemGroup>

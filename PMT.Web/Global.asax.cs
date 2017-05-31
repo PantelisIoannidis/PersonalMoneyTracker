@@ -17,22 +17,12 @@ namespace PMT.Web
     {
         protected void Application_Start()
         {
-            DisableApplicationInsightsOnDebug();
 
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-        }
-
-        /// <summary>
-        /// Disables the application insights locally.
-        /// </summary>
-        [Conditional("DEBUG")]
-        private static void DisableApplicationInsightsOnDebug()
-        {
-            TelemetryConfiguration.Active.DisableTelemetry = true;
         }
 
         protected void _Application_Error(object sender, EventArgs e)

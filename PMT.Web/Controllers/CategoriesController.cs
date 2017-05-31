@@ -9,6 +9,7 @@ using PMT.Web.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using static PMT.Entities.Literals;
@@ -120,14 +121,23 @@ namespace PMT.Web.Controllers
         [HttpPost]
         public ActionResult Delete(string categoryId)
         {
-            categoriesEngine.DeleteCategorySubCategories(categoryId);
+            if (categoryId == null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                //return JavaScript("categoriesUI.CallBackFromController('DeleteNull')");
+            var status = categoriesEngine.DeleteCategorySubCategories(categoryId);
+            if(status.NotExceptionFalse)
+            {
+                logger.LogError(LoggingEvents.GET_ITEM_NOTFOUND, "Delete not completed. Id not found");
+                return HttpNotFound();
+            }
             return RedirectToAction("Index");
         }
 
         public ActionResult Edit(string id)
         {
-            
-            var categoryVM = categoriesEngine.GetCategory(id);
+            if (id == null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            var categoryVM = categoriesEngine                 .GetCategory(id);
             ViewBag.CategoryType = GetShortTransactionTypeList();
 
             string _view = "";

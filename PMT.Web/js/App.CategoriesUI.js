@@ -1,5 +1,13 @@
 ﻿var categoriesUI = function () {
 
+    function ShowWarningModal(message) {
+        if (message === "null") {
+
+        } else
+            if (message === "notFound") {
+
+            }
+    }
 
     function indexEvents() {
 
@@ -21,7 +29,7 @@
 	        if (!deleteId) return;
 	        var token = $('[name=__RequestVerificationToken]').val();
 	        $("#categoryDeleteModal").modal("hide");
-	        $.post("/Categories/Delete/", { __RequestVerificationToken: token, categoryId: deleteId },
+	        $.post(pmt.rootPath + "Categories/Delete/", { __RequestVerificationToken: token, categoryId: deleteId },
                 function (retURL) { window.location.reload(true); });
 	    });
 	    $("#subCategoryDeleteConfirmButton").on('click', function (e) {
@@ -30,27 +38,27 @@
 	        if (!deleteId) return;
 	        var token = $('[name=__RequestVerificationToken]').val();
 	        $("#categoryDeleteModal").modal("hide");
-	        $.post("/Categories/Delete/", { __RequestVerificationToken: token, categoryId: deleteId },
+	        $.post(pmt.rootPath + "Categories/Delete/", { __RequestVerificationToken: token, categoryId: deleteId },
                 function (retURL) { window.location.reload(true); });
 	    });
 	    $("#editCategoryBtn").click(function (e) {
 	        e.preventDefault();
 	        var editId = $("#selectedCategory").val();
 	        if (!editId) return;
-	        var newUrl = "/Categories/Edit/" + editId;
+	        var newUrl = pmt.rootPath+"Categories/Edit/" + editId;
 	        document.location.href = newUrl;
 
 	    });
 	    $("#newCategoryBtn").click(function (e) {
 	        e.preventDefault();
-	        var newUrl = "/Categories/NewCategory/";
+	        var newUrl = pmt.rootPath + "Categories/NewCategory/";
 	        document.location.href = newUrl;
 
 	    });
 
 	    $("#newSubCategoryBtn").click(function (e) {
 	        e.preventDefault();
-	        var newUrl = "/Categories/NewSubCategory/";
+	        var newUrl = pmt.rootPath + "Categories/NewSubCategory/";
 	        document.location.href = newUrl;
 
 	    });
@@ -85,7 +93,8 @@
 
 
 	return {
-	    onLoadIndexInit: onLoadIndexInit
+        onLoadIndexInit: onLoadIndexInit,
+        CallBackFromController: CallBackFromController
 
 	};
 }();

@@ -80,7 +80,7 @@
             "Operation": operation
         };
         var myJSON = JSON.stringify(obj);
-        $.post("/Transactions/SetUserPreferences/", { preferences: myJSON },
+        $.post(pmt.rootPath + "Transactions/SetUserPreferences/", { preferences: myJSON },
                 function (retURL) {
                     window.location.reload(true);
                 });

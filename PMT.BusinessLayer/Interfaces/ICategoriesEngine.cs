@@ -9,7 +9,7 @@ namespace PMT.BusinessLayer
         void StoreNewCategoryAndSubCategory(CategoryVM categoryVM);
         void StoreNewSubCategory(CategoryVM categoryVM);
 
-        void DeleteCategorySubCategories(string id);
+        ActionStatus DeleteCategorySubCategories(string id);
         void EditCategoryAndSubCategory(CategoryVM categoryVM);
     }
 }

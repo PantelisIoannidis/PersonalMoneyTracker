@@ -30,14 +30,14 @@
             if (!transId) return;
             var token = $('[name=__RequestVerificationToken]').val();
             $("#transactionDeleteModal").modal("hide");
-            $.post("/Transactions/Delete/", { __RequestVerificationToken: token, id: transId },
+            $.post(pmt.rootPath+"Transactions/Delete/", { __RequestVerificationToken: token, id: transId },
                 function (retURL) { window.location.reload(true); });
         });
         $("#transTableEditButton").click(function (e) {
             e.preventDefault();
             var transId = $(".transTable .active .transTableId").val();
             if (!transId) return;
-            var newUrl = "/Transactions/Edit/" + transId;
+            var newUrl = pmt.rootPath+"Transactions/Edit/" + transId;
             document.location.href = newUrl;
             
         });
@@ -109,7 +109,7 @@
     }
 
     function fillCategory() {
-        var tranGetCategoriesUrl = '/Transactions/GetCategories';
+        var tranGetCategoriesUrl = pmt.rootPath+'Transactions/GetCategories';
         var tranType = $('#TransactionType').val();
         var categoryId = $('#CategoryId').val();
         var firstcategoryBtn = "";
@@ -166,7 +166,7 @@
     };
 
     function fillSubCategoryOnCategoryChange() {
-        var tranGetSubCategoriesUrl = '/Transactions/GetSubCategories';
+        var tranGetSubCategoriesUrl = pmt.rootPath+'Transactions/GetSubCategories';
         var categoryId = $("#CategoryId").val();
         var subCategoryId = $("#SubCategoryId").val();
         var firstsubCategoryBtn = "";
@@ -199,7 +199,7 @@
     };
 
     function fillTransferToOnAccountChange() {
-        var tranGetAccountsAvailableForTransfer = '/Transactions/GetAccountsAvailableForTransfer';
+        var tranGetAccountsAvailableForTransfer = pmt.rootPath + 'Transactions/GetAccountsAvailableForTransfer';
         var accountId = $("#MoneyAccountId").val();
         return $.getJSON(tranGetAccountsAvailableForTransfer, { accountId: accountId }, function (data) {
             $('#TransferTo option').remove();

@@ -12,7 +12,7 @@
 		    if (!id) return;
 		    var token = $('[name=__RequestVerificationToken]').val();
 		    $("#accountDeleteModal").modal("hide");
-		    $.post("/moneyAccounts/Delete/", { __RequestVerificationToken: token, id: id },
+		    $.post(pmt.rootPath + "moneyAccounts/Delete/", { __RequestVerificationToken: token, id: id },
                 function (retURL) { window.location.reload(true); });
 		});
 	};
