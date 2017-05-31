@@ -1,12 +1,32 @@
 ﻿var categoriesUI = function () {
 
-    function ShowWarningModal(message) {
-        if (message === "null") {
+    function showNotificationArea(message) {
+        var notificationArea = $('#categoriesNotifications');
+        notificationArea.empty();
+        notificationArea.append(message);
+        notificationArea.slideDown();
+        window.setTimeout(function () { notificationArea.slideUp(); }, 1500);
+    };
 
-        } else
-            if (message === "notFound") {
-
+    function ajaxCall(_id,_url) {
+        var token = $('[name=__RequestVerificationToken]').val();
+        $.ajax({
+            type: 'POST',
+            data: { __RequestVerificationToken: token, id: _id },
+            url: _url,
+            success: function (data) {
+                $('#categoriesPanel').load(pmt.rootPath + "Categories/LoadIndexPanelPartial/",
+                    function (responseTxt, statusTxt, xhr) {
+                        calculateIndexActiveElement();
+                        dropdownMenuToggle();
+                    }
+                );
+                showNotificationArea(data.message);
+            },
+            fail: function (jqXHR, textStatus, errorThrown) {
+                showNotificationArea("action was not completed");
             }
+        });
     }
 
     function indexEvents() {
@@ -23,24 +43,22 @@
                 $("#subCategoryDeleteModal").modal("show");
 
 	    });
-	    $("#categoryDeleteConfirmButton").on('click', function (e) {
-	        e.preventDefault();
-	        var deleteId = $("#selectedCategory").val();
-	        if (!deleteId) return;
-	        var token = $('[name=__RequestVerificationToken]').val();
-	        $("#categoryDeleteModal").modal("hide");
-	        $.post(pmt.rootPath + "Categories/Delete/", { __RequestVerificationToken: token, categoryId: deleteId },
-                function (retURL) { window.location.reload(true); });
-	    });
+        $("#categoryDeleteConfirmButton").on('click', function (e) {
+            e.preventDefault();
+            var deleteId = $("#selectedCategory").val();
+            if (!deleteId) return;
+            $("#categoryDeleteModal").modal("hide");
+            ajaxCall(deleteId, pmt.rootPath + "Categories/Delete/",)
+        });
+
 	    $("#subCategoryDeleteConfirmButton").on('click', function (e) {
 	        e.preventDefault();
 	        var deleteId = $("#selectedCategory").val();
 	        if (!deleteId) return;
-	        var token = $('[name=__RequestVerificationToken]').val();
-	        $("#categoryDeleteModal").modal("hide");
-	        $.post(pmt.rootPath + "Categories/Delete/", { __RequestVerificationToken: token, categoryId: deleteId },
-                function (retURL) { window.location.reload(true); });
-	    });
+            $("#subCategoryDeleteModal").modal("hide");
+            ajaxCall(deleteId, pmt.rootPath + "Categories/Delete/", )
+        });
+
 	    $("#editCategoryBtn").click(function (e) {
 	        e.preventDefault();
 	        var editId = $("#selectedCategory").val();
@@ -77,7 +95,7 @@
 	};
 
 	function dropdownMenuToggle() {
-	    $('ul.categoryList > li > a').click(function () {
+	    $('ul.categoryList > li > a').on("click",function () {
 	        $this = $(this);
             $this.find("i").toggleClass("glyphicon-chevron-right glyphicon-chevron-down");
             var $target = $this.data("target");
@@ -93,8 +111,7 @@
 
 
 	return {
-        onLoadIndexInit: onLoadIndexInit,
-        CallBackFromController: CallBackFromController
+        onLoadIndexInit: onLoadIndexInit
 
 	};
 }();

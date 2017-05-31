@@ -3,12 +3,12 @@
     ViewBag.Title = ViewText.CategoriesViewIndexTitle;
 }
 <input type="hidden" id="selectedCategory" value="" />
-
+@Html.AntiForgeryToken()
 <div class="panel panel-primary use-big-fonts">
     <div class="panel-heading">@ViewBag.Title</div>
     <div class="panel-body row">
-        <div class="alert alert-success hidden" role="alert">
-            <span id="deletedItem"></span> successfully deleted
+        <div id="categoriesNotifications" class="alert alert-success collapse" role="alert">
+            
         </div>
         <div class="col-md-3">
             <ul class="nav nav-pills" role="tablist">
@@ -36,7 +36,7 @@
                 </ul>
             </div>
         </div>
-        <div class="col-md-9">
+        <div id="categoriesPanel" class="col-md-9">
             @Html.Partial("_IndexPanelPartial", Model)
         </div>
     </div>

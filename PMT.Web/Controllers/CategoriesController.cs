@@ -16,6 +16,7 @@ using static PMT.Entities.Literals;
 
 namespace PMT.Web.Controllers
 {
+    [Authorize]
     public class CategoriesController : Controller
     {
         ILogger logger;
@@ -44,6 +45,12 @@ namespace PMT.Web.Controllers
         {
             var cateogories = categoryRepository.GetAllGategoriesSubCategories();
             return View(cateogories);
+        }
+
+        public ActionResult LoadIndexPanelPartial()
+        {
+            var cateogories = categoryRepository.GetAllGategoriesSubCategories();
+            return PartialView("_IndexPanelPartial", cateogories);
         }
 
         public JsonResult GetAllIcons()
@@ -119,18 +126,22 @@ namespace PMT.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult Delete(string categoryId)
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(string id)
         {
-            if (categoryId == null)
+            if (id == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-                //return JavaScript("categoriesUI.CallBackFromController('DeleteNull')");
-            var status = categoriesEngine.DeleteCategorySubCategories(categoryId);
+
+            var status = categoriesEngine.DeleteCategorySubCategories(id);
             if(status.NotExceptionFalse)
             {
                 logger.LogError(LoggingEvents.GET_ITEM_NOTFOUND, "Delete not completed. Id not found");
                 return HttpNotFound();
             }
-            return RedirectToAction("Index");
+            if (Request.IsAjaxRequest())
+                return Json(new { message= "Successfully deleted" });
+            else
+                return RedirectToAction("Index");
         }
 
         public ActionResult Edit(string id)
