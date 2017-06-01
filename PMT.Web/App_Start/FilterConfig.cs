@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using PMT.Web.Helpers;
+using System.Web;
 using System.Web.Mvc;
 
 namespace PMT.Web
@@ -7,7 +8,7 @@ namespace PMT.Web
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
-            filters.Add(new HandleErrorAttribute());
+            filters.Add(new HandleErrorExtendedAttribute());
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using Microsoft.ApplicationInsights.Extensibility;
+﻿using Microsoft.Extensions.Logging;
+using PMT.Common;
+using PMT.Web.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -25,9 +27,12 @@ namespace PMT.Web
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
 
-        protected void _Application_Error(object sender, EventArgs e)
+        protected void Application_Error(object sender, EventArgs e)
         {
+            var loggerFactory = new LoggingHelper().GetLogger();
+
             Exception exception = Server.GetLastError();
+            loggerFactory.CreateLogger<MvcApplication>().LogError(LoggingEvents.UNKNOWN, exception, "logged at global level");
             Server.ClearError();
             Response.Redirect("/Errors/Error");
         }

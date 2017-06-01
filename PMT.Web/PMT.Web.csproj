@@ -281,9 +281,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\HandleErrorExtendedAttribute.cs" />
     <Compile Include="Helpers\ICommonHelper.cs" />
     <Compile Include="Helpers\CommonHelper.cs" />
     <Compile Include="Helpers\IUserPreferences.cs" />
+    <Compile Include="Helpers\LoggingHelper.cs" />
     <Compile Include="Helpers\MoveNotificationsDataFilterAttribute.cs" />
     <Compile Include="Helpers\UserPreferences.cs" />
     <Compile Include="Models\AccountViewModels.cs" />

@@ -1,8 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
-using Microsoft.Owin;
-using Microsoft.Practices.Unity;
+﻿using Microsoft.Owin;
 using Owin;
-using PMT.Web.App_Start;
+using PMT.Web.Helpers;
 
 [assembly: OwinStartupAttribute(typeof(PMT.Web.Startup))]
 namespace PMT.Web
@@ -11,9 +9,7 @@ namespace PMT.Web
     {
         public Startup()
         {
-            IUnityContainer container = UnityConfig.GetConfiguredContainer().Resolve<IUnityContainer>();
-            var loggerFactory = container.Resolve<ILoggerFactory>();
-            loggerFactory.AddConsole().AddDebug();
+            new LoggingHelper();
         }
         public void Configuration(IAppBuilder app)
         {

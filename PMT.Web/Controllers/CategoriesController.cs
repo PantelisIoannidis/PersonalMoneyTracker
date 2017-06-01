@@ -168,7 +168,6 @@ namespace PMT.Web.Controllers
                 ViewBag.Title = ViewText.EditSubcategory;
                 
             }
-                
             return View(_view, categoryVM);
         }
         [HttpPost]

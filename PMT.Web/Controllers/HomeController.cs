@@ -54,7 +54,9 @@ namespace PMT.Web.Controllers
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
-
+            throw new Exception();
+            //Response.StatusCode = 404;
+            //throw new HttpException(404, "HTTP/1.1 404 Not Found");
             return View();
         }
 
