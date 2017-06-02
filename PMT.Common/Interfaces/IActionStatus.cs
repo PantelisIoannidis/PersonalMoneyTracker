@@ -7,7 +7,7 @@
         string ExceptionMessage { get; set; }
         string ExceptionStackTrace { get; set; }
         string Message { get; set; }
-        bool NotExceptionFalse { get; set; }
+        bool ExceptionFromConditions { get; set; }
         bool Status { get; set; }
     }
 }

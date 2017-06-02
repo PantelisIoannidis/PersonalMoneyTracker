@@ -133,13 +133,13 @@ namespace PMT.Web.Controllers
 
         public ActionResult GetCategories(TransactionType type)
         {
-            var categories = categoryRepository.GetGategories(type);
+            var categories = categoryRepository.GetGategories(type).Where(x=>x.CategoryId>=2);
             return Json(categories, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult GetSubCategories(int categoryId)
         {
-            var subCategories = subCategoryRepository.GetSubCategories(categoryId);
+            var subCategories = subCategoryRepository.GetSubCategories(categoryId).Where(x => x.CategoryId >= 2);
             return Json(subCategories, JsonRequestBehavior.AllowGet);
         }
 
@@ -158,18 +158,21 @@ namespace PMT.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "TransactionId,UserId,MoneyAccountId,CategoryId,SubCategoryId,TransactionType,TransactionDate,Description,Amount,MoveToAccount")] Transaction transaction)
+        public ActionResult Create([Bind(Include = "TransactionId,UserId,MoneyAccountId,CategoryId,SubCategoryId,TransactionType,TransactionDate,Description,Amount,MoveToAccount,TransferTo")] Transaction transaction)
         {
 
             transaction.UserId = userId;
             if (ModelState.IsValid)
             {
-                transactionRepository.Insert(transaction);
-                transactionRepository.Save();
-                TempData["NotificationSuccess"] = "New transaction has been created";
-                return RedirectToAction("Index");
+                var result=transactionsEngine.InsertNewTransaction(transaction);
+                if (!result.ExceptionFromConditions) { 
+                    TempData["NotificationSuccess"] = "New transaction has been created";
+                    return RedirectToAction("Index");
+                }
             }
             ViewBag.NotificationWarning = "New transaction couldn't be created";
+            var moneyAccounts = moneyAccountRepository.GetMoneyAccounts(userId);
+            ViewBag.MoneyAccountId = new SelectList(moneyAccounts, "MoneyAccountId", "Name", moneyAccounts.FirstOrDefault());
             return View(transaction);
         }
 

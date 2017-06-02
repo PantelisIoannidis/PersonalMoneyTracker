@@ -10,7 +10,7 @@ namespace PMT.Common
     {
         public bool Status { get; set; } = true;
 
-        public bool NotExceptionFalse { get; set; } = false;
+        public bool ExceptionFromConditions { get; set; } = false;
         public string Message { get; set; }
         public string ExceptionMessage { get; set; }
         public string ExceptionStackTrace { get; set; }
@@ -23,7 +23,7 @@ namespace PMT.Common
             {
                 Status = false,
                 Message = message,
-                NotExceptionFalse=true
+                ExceptionFromConditions=true
             };
 
             return actionStatus;

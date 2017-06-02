@@ -58,7 +58,7 @@ namespace PMT.Web.Controllers
             logger.LogInformation("MoneyAccountsController Index");
             var userId = securityHelper.GetUserId(this.HttpContext);
             ViewBag.TotalBalance = transactionRepository.GetBalance(userId);
-            return View(moneyAccountEngine.GetMoneyAccounts(userId));
+            return View(moneyAccountEngine.GetMoneyAccountsWithBalance(userId));
         }
 
         // GET: MoneyAccounts/Create

@@ -19,8 +19,6 @@ namespace PMT.DataLayer.Seed
 
         public SeedingLists()
         {
-            
-            
         }
 
 
@@ -62,10 +60,18 @@ namespace PMT.DataLayer.Seed
 
         private void PrepareCategories()
         {
-            int i = 0;
-            int y = 0;
+            int i = 2;
+            int y = 2;
 
             if (MainCategoryList.Count > 0) return;
+
+            
+
+            MainCategoryList.Add(new Category { CategoryId = 1, Color = "#000000", IconId = "fa-exchange", Type = TransactionType.Income, Name = SeedingDataText.TransferFrom });
+            SubCategoryList.Add(new SubCategory { SubCategoryId = 1, Color = "#000000", IconId = "fa-exchange", CategoryId = 1, Name = SeedingDataText.TransferFrom });
+            MainCategoryList.Add(new Category { CategoryId = 2, Color = "#000000", IconId = "fa-exchange", Type = TransactionType.Expense, Name = SeedingDataText.TransferTo });
+            SubCategoryList.Add(new SubCategory { SubCategoryId = 2, Color = "#000000", IconId = "fa-exchange", CategoryId = 2, Name = SeedingDataText.TransferTo });
+
 
             MainCategoryList.Add(new Category { CategoryId = ++i, Color = "#e6b800", IconId = "fa-money", Type = TransactionType.Income, Name = SeedingDataText.Salary });
             SubCategoryList.Add(new SubCategory { SubCategoryId = ++y, Color = "#e6b800", IconId = "fa-money", CategoryId = i, Name = SeedingDataText.Salary });

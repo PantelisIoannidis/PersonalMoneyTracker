@@ -2,6 +2,7 @@
 using PMT.Common;
 using PMT.Common.Resources;
 using PMT.Entities;
+using PMT.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,13 +22,36 @@ namespace PMT.DataLayer.Repositories
             this.logger = logger.CreateLogger<MoneyAccountRepository>();
         }
 
-        public List<MoneyAccount> GetMoneyAccounts(string userId)
+        public IEnumerable<MoneyAccount> GetMoneyAccounts(string userId)
         {
-            return db.MoneyAccounts.Where(u => u.UserId == userId).ToList();
+            return db.MoneyAccounts.Where(u => u.UserId == userId);
         }
         public MoneyAccount GetMoneyAccount(string userId,int moneyAccountId)
         {
-            return db.MoneyAccounts.Where(u => u.UserId == userId && u.MoneyAccountId==moneyAccountId).FirstOrDefault();
+            return GetMoneyAccounts(userId).FirstOrDefault(x=>x.MoneyAccountId==moneyAccountId);
+        }
+
+        public List<MoneyAccountVM> GetMoneyAccountsWithBalance(string userId)
+        {
+            var moneyAccounts = (from m in db.MoneyAccounts
+                    where(m.UserId==userId)
+                   let bal = (from t in db.Transactions
+                              where t.MoneyAccountId == m.MoneyAccountId &&
+                              t.UserId==userId
+                              select t).Sum(s => s.Amount)
+                   select new MoneyAccountVM
+                   {
+                       MoneyAccountId= m.MoneyAccountId,
+                       UserId=m.UserId,
+                       Name=m.Name,
+                       Balance=bal
+                   }).ToList();
+            
+            return moneyAccounts;
+        }
+        public MoneyAccount GetMoneyAccountwithBalance(string userId, int moneyAccountId)
+        {
+            return GetMoneyAccountsWithBalance(userId).FirstOrDefault(x => x.MoneyAccountId == moneyAccountId);
         }
 
         public List<MoneyAccount> GetMoneyAccountsExcludingCurrent(string userId, int moneyAccountId)

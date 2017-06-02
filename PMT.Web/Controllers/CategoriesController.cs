@@ -138,7 +138,7 @@ namespace PMT.Web.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
             var status = categoriesEngine.DeleteCategorySubCategories(id);
-            if(status.NotExceptionFalse)
+            if(status.ExceptionFromConditions)
             {
                 logger.LogError(LoggingEvents.GET_ITEM_NOTFOUND, "Delete not completed. Id not found");
                 return HttpNotFound();

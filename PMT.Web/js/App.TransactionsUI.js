@@ -64,6 +64,8 @@
         var transferDropDown = $(".transferDropDown");
         if (transferDropDown.hasClass("hidden"))
             transferDropDown.removeClass("hidden");
+        setCategoryId(-1);
+        setSubCategoryId(-1);
     }
 
 

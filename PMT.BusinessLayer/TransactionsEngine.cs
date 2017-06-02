@@ -21,17 +21,81 @@ namespace PMT.BusinessLayer
         IActionStatus actionStatus;
         IMoneyAccountEngine moneyAccountEngine;
         ITransactionRepository transactionRepository;
+        IMoneyAccountRepository moneyAccountRepository;
         public TransactionsEngine(ILoggerFactory logger,
                                     IPeriod period,
                                     IActionStatus actionStatus,
                                     IMoneyAccountEngine moneyAccountEngine,
+                                    IMoneyAccountRepository moneyAccountRepository,
                                     ITransactionRepository transactionRepository)
         {
             this.actionStatus = actionStatus;
             this.period = period;
             this.logger = logger.CreateLogger<TransactionsEngine>();
             this.moneyAccountEngine = moneyAccountEngine;
+            this.moneyAccountRepository = moneyAccountRepository;
             this.transactionRepository = transactionRepository;
+        }
+
+        public ActionStatus InsertNewTransaction(Transaction transaction)
+        {
+            try
+            {
+                if (transaction.TransactionType == TransactionType.Adjustment)
+                {
+                    if (transaction.Amount >= 0)
+                        transaction.TransactionType = TransactionType.Income;
+                    else
+                        transaction.TransactionType = TransactionType.Expense;
+                }
+
+                if (transaction.TransactionType==TransactionType.Income
+                    || transaction.TransactionType == TransactionType.Expense)
+                {
+                    transactionRepository.Insert(transaction);
+                    transactionRepository.Save();
+                }
+
+                if (transaction.TransactionType == TransactionType.Transfer)
+                {
+                    var transactionFrom = new Transaction() {
+                        TransactionType=TransactionType.Expense,
+                        Amount=transaction.Amount,
+                        Description=""
+                            + moneyAccountRepository.GetMoneyAccount(transaction.UserId,transaction.MoneyAccountId).Name,
+                        MoneyAccountId=transaction.TransferTo.Value,
+                        TransactionDate=transaction.TransactionDate,
+                        UserId=transaction.UserId,
+                        CategoryId=1,
+                        SubCategoryId=1
+                    };
+                    var transactionTo = new Transaction()
+                    {
+                        TransactionType = TransactionType.Income,
+                        Amount = transaction.Amount,
+                        Description = "" 
+                            + moneyAccountRepository.GetMoneyAccount(transaction.UserId, transaction.TransferTo.Value).Name,
+                        MoneyAccountId = transaction.MoneyAccountId,
+                        TransactionDate = transaction.TransactionDate,
+                        UserId = transaction.UserId,
+                        CategoryId = 2,
+                        SubCategoryId = 2
+                    };
+
+                    transactionRepository.Insert(transactionFrom);
+                    transactionRepository.Insert(transactionTo);
+                    transactionRepository.Save();
+                }
+                
+            }
+            catch(Exception ex)
+            {
+                var message = "Call repository. Insert new transaction";
+                actionStatus = ActionStatus.CreateFromException(message, ex);
+                logger.LogError(LoggingEvents.CALL_METHOD, ex, message);
+            }
+
+            return (ActionStatus)actionStatus;
         }
 
         public TransactionFilterVM GetFilter(string userId, string objPreferences)

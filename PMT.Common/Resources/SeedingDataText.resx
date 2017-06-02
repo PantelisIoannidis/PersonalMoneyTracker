@@ -345,4 +345,10 @@
   <data name="Water" xml:space="preserve">
     <value>Water</value>
   </data>
+  <data name="TransferFrom" xml:space="preserve">
+    <value>Transfer from</value>
+  </data>
+  <data name="TransferTo" xml:space="preserve">
+    <value>Transfer to</value>
+  </data>
 </root>

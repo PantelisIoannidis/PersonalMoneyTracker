@@ -40,7 +40,7 @@ namespace PMT.BusinessLayer
                     TransactionType = TransactionType.Adjustment,
                     Amount = moneyAccount.Balance,
                     TransactionDate = DateTime.Now,
-                    Description = ModelText.MoneyAccountName + " " + ViewText.InitialBalance
+                    Description = moneyAccount.Name + " " + ViewText.InitialBalance
                 };
                 moneyAccountRepository.AddNewAccountWithInitialBalance(moneyAccount, transaction);
             }
@@ -55,7 +55,7 @@ namespace PMT.BusinessLayer
             try
             {
                 List<MoneyAccount> moneyAccounts = new List<MoneyAccount>();
-                moneyAccounts = moneyAccountRepository.GetMoneyAccounts(userId);
+                moneyAccounts = moneyAccountRepository.GetMoneyAccounts(userId).ToList();
                 return moneyAccounts;
             }
             catch (Exception ex)
@@ -64,6 +64,22 @@ namespace PMT.BusinessLayer
                 return new List<MoneyAccount>();
             }
             
+        }
+
+        public List<MoneyAccountVM> GetMoneyAccountsWithBalance(string userId)
+        {
+            try
+            {
+                List<MoneyAccountVM> moneyAccounts = new List<MoneyAccountVM>();
+                moneyAccounts = moneyAccountRepository.GetMoneyAccountsWithBalance(userId);
+                return moneyAccounts;
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(LoggingEvents.CALL_METHOD, ex, "Call repository, Get MoneyAccounts List");
+                return new List<MoneyAccountVM>();
+            }
+
         }
 
         public void EditAccountNameAdjustBalance(MoneyAccount moneyAccount)

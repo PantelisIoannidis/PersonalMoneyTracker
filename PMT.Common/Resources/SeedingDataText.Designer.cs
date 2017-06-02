@@ -691,6 +691,24 @@ namespace PMT.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Transfer from.
+        /// </summary>
+        public static string TransferFrom {
+            get {
+                return ResourceManager.GetString("TransferFrom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Transfer to.
+        /// </summary>
+        public static string TransferTo {
+            get {
+                return ResourceManager.GetString("TransferTo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Transport.
         /// </summary>
         public static string Transport {

@@ -45,6 +45,7 @@
     <Compile Include="ChartDataVM.cs" />
     <Compile Include="interfaces\IMapping.cs" />
     <Compile Include="Mapping.cs" />
+    <Compile Include="MoneyAccountVM.cs" />
     <Compile Include="Pager.cs" />
     <Compile Include="PaginationVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
