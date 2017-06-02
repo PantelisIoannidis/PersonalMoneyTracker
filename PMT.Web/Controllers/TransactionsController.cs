@@ -17,6 +17,7 @@ using PMT.BusinessLayer;
 using PMT.Common.Helpers;
 using System.Collections;
 using Newtonsoft.Json;
+using static PMT.Entities.Literals;
 
 namespace PMT.Web.Controllers
 {
@@ -133,13 +134,13 @@ namespace PMT.Web.Controllers
 
         public ActionResult GetCategories(TransactionType type)
         {
-            var categories = categoryRepository.GetGategories(type).Where(x=>x.CategoryId>=2);
+            var categories = categoryRepository.GetGategories(type).Where(x=>x.CategoryId> StandarCategories.Count);
             return Json(categories, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult GetSubCategories(int categoryId)
         {
-            var subCategories = subCategoryRepository.GetSubCategories(categoryId).Where(x => x.CategoryId >= 2);
+            var subCategories = subCategoryRepository.GetSubCategories(categoryId).Where(x => x.CategoryId > StandarCategories.Count);
             return Json(subCategories, JsonRequestBehavior.AllowGet);
         }
 

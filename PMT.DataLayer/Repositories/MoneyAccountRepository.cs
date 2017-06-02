@@ -38,7 +38,7 @@ namespace PMT.DataLayer.Repositories
                    let bal = (from t in db.Transactions
                               where t.MoneyAccountId == m.MoneyAccountId &&
                               t.UserId==userId
-                              select t).Sum(s => s.Amount)
+                              select t).Sum(s => (decimal?)s.Amount)??0
                    select new MoneyAccountVM
                    {
                        MoneyAccountId= m.MoneyAccountId,

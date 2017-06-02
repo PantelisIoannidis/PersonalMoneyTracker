@@ -351,4 +351,7 @@
   <data name="TransferTo" xml:space="preserve">
     <value>Transfer to</value>
   </data>
+  <data name="Adjustment" xml:space="preserve">
+    <value>Adjustment</value>
+  </data>
 </root>

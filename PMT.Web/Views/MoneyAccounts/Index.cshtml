@@ -9,30 +9,30 @@
     <div class="panel-body">
 
         <table class="table table-striped table-hover table-condensed">
-            <thead>
+            <thead class="row">
                 <tr>
-                    <th>
+                    <th class="col-md-4">
                         @Html.DisplayNameFor(model => model.Name)
                     </th>
-                    <th class="text-right">@Html.DisplayNameFor(model => model.Balance)</th>
-                    <th>
-
-                    </th>
+                    <th class="text-right col-md-4">@Html.DisplayNameFor(model => model.Balance)</th>
+                    <th class="col-md-1"></th>
+                    <th class="col-md-3"></th>
                 </tr>
             </thead>
 
-            <tbody>
+            <tbody class="row">
                 @foreach (var item in Model)
                 {
                     
-                    <tr>
-                        <td>
+                    <tr >
+                        <td class="col-md-4">
                             @Html.DisplayFor(modelItem => item.Name)
                         </td>
-                        <td class="text-right @((item.Balance < 0) ? "negativeNumber":"")">
+                        <td class="text-right col-md-4 @((item.Balance < 0) ? "negativeNumber":"")">
                             @item.Balance.FormatNumbers()
                         </td>
-                        <td>
+                        <td class="col-md-1"></td>
+                        <td class="col-md-3">
                             <input type="hidden" class="deleteAccountId" value="@item.MoneyAccountId" />
                             <a href="@Url.Action("Edit","MoneyAccounts", new { id = item.MoneyAccountId })" class="btn btn-warning btn-xs longProcess"><i class="fa fa-fw fa-edit"></i> @ViewText.Edit</a>
                             <a href="@Url.Action("Delete","MoneyAccounts", new { id = item.MoneyAccountId })" class="btn btn-danger btn-xs accountTableDeleteButton"><i class="fa fa-fw fa-trash"></i> @ViewText.Delete</a>
@@ -41,9 +41,10 @@
                 }
                 <tr>
                     <td class="text-right">
-                        <strong>@ViewText.Total :</strong>
+                        
                     </td>
                     <td class="text-right @((ViewBag.TotalBalance < 0) ? "negativeNumber":"")">
+                        <strong>@ViewText.Total :</strong>
                         <strong>@(((decimal)ViewBag.TotalBalance).FormatNumbers())</strong>
                     </td>
                     <td></td>

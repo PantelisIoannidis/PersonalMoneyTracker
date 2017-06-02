@@ -43,10 +43,18 @@ namespace PMT.BusinessLayer
             {
                 if (transaction.TransactionType == TransactionType.Adjustment)
                 {
-                    if (transaction.Amount >= 0)
+                    if (transaction.Amount >= 0) { 
                         transaction.TransactionType = TransactionType.Income;
-                    else
+                        transaction.CategoryId = StandarCategories.AdjustmentIncome;
+                        transaction.SubCategoryId = StandarCategories.AdjustmentIncome;
+                    }
+                    else { 
                         transaction.TransactionType = TransactionType.Expense;
+                        transaction.CategoryId = StandarCategories.AdjustmentExpense;
+                        transaction.SubCategoryId = StandarCategories.AdjustmentExpense;
+                    }
+
+
                 }
 
                 if (transaction.TransactionType==TransactionType.Income
@@ -66,8 +74,8 @@ namespace PMT.BusinessLayer
                         MoneyAccountId=transaction.TransferTo.Value,
                         TransactionDate=transaction.TransactionDate,
                         UserId=transaction.UserId,
-                        CategoryId=1,
-                        SubCategoryId=1
+                        CategoryId= StandarCategories.TransferFrom,
+                        SubCategoryId= StandarCategories.TransferFrom
                     };
                     var transactionTo = new Transaction()
                     {
@@ -78,8 +86,8 @@ namespace PMT.BusinessLayer
                         MoneyAccountId = transaction.MoneyAccountId,
                         TransactionDate = transaction.TransactionDate,
                         UserId = transaction.UserId,
-                        CategoryId = 2,
-                        SubCategoryId = 2
+                        CategoryId = StandarCategories.TransferTo,
+                        SubCategoryId = StandarCategories.TransferTo
                     };
 
                     transactionRepository.Insert(transactionFrom);

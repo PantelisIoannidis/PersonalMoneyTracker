@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static PMT.Entities.Literals;
 
 namespace PMT.DataLayer.Seed
 {
@@ -60,17 +61,19 @@ namespace PMT.DataLayer.Seed
 
         private void PrepareCategories()
         {
-            int i = 2;
-            int y = 2;
-
             if (MainCategoryList.Count > 0) return;
 
-            
+            MainCategoryList.Add(new Category { CategoryId = StandarCategories.TransferFrom, Color = "#666666", IconId = "fa-exchange", Type = TransactionType.Income, Name = SeedingDataText.TransferFrom });
+            SubCategoryList.Add(new SubCategory { SubCategoryId = StandarCategories.TransferFrom, Color = "#666666", IconId = "fa-exchange", CategoryId = StandarCategories.TransferFrom, Name = SeedingDataText.TransferFrom });
+            MainCategoryList.Add(new Category { CategoryId = StandarCategories.TransferTo, Color = "#666666", IconId = "fa-exchange", Type = TransactionType.Expense, Name = SeedingDataText.TransferTo });
+            SubCategoryList.Add(new SubCategory { SubCategoryId = StandarCategories.TransferTo, Color = "#666666", IconId = "fa-exchange", CategoryId = StandarCategories.TransferTo, Name = SeedingDataText.TransferTo });
+            MainCategoryList.Add(new Category { CategoryId = StandarCategories.AdjustmentIncome, Color = "#999966", IconId = "fa-balance-scale", Type = TransactionType.Expense, Name = SeedingDataText.Adjustment });
+            SubCategoryList.Add(new SubCategory { SubCategoryId = StandarCategories.AdjustmentIncome, Color = "#999966", IconId = "fa-balance-scale", CategoryId = StandarCategories.AdjustmentIncome, Name = SeedingDataText.Adjustment });
+            MainCategoryList.Add(new Category { CategoryId = StandarCategories.AdjustmentExpense, Color = "#999966", IconId = "fa-balance-scale", Type = TransactionType.Expense, Name = SeedingDataText.Adjustment });
+            SubCategoryList.Add(new SubCategory { SubCategoryId = StandarCategories.AdjustmentExpense, Color = "#999966", IconId = "fa-balance-scale", CategoryId = StandarCategories.AdjustmentExpense, Name = SeedingDataText.Adjustment });
 
-            MainCategoryList.Add(new Category { CategoryId = 1, Color = "#000000", IconId = "fa-exchange", Type = TransactionType.Income, Name = SeedingDataText.TransferFrom });
-            SubCategoryList.Add(new SubCategory { SubCategoryId = 1, Color = "#000000", IconId = "fa-exchange", CategoryId = 1, Name = SeedingDataText.TransferFrom });
-            MainCategoryList.Add(new Category { CategoryId = 2, Color = "#000000", IconId = "fa-exchange", Type = TransactionType.Expense, Name = SeedingDataText.TransferTo });
-            SubCategoryList.Add(new SubCategory { SubCategoryId = 2, Color = "#000000", IconId = "fa-exchange", CategoryId = 2, Name = SeedingDataText.TransferTo });
+            int i = StandarCategories.Count;
+            int y = StandarCategories.Count;
 
 
             MainCategoryList.Add(new Category { CategoryId = ++i, Color = "#e6b800", IconId = "fa-money", Type = TransactionType.Income, Name = SeedingDataText.Salary });
