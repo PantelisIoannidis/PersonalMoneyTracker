@@ -16,7 +16,7 @@ namespace PMT.DataLayer.Context.IdentityMigrations
 
         protected override void Seed(PMT.DataLayer.IdentityDb context)
         {
-            new Seeding().Seed(context);
+            new CommonSeeding().Seed(context);
         }
     }
 }

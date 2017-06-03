@@ -18,7 +18,7 @@ namespace PMT.DataLayer.Context.MainMigrations
 
         protected override void Seed(PMT.DataLayer.MainDb context)
         {
-            new Seeding().Seed(context);
+            new CommonSeeding().Seed(context);
         }
     }
 }

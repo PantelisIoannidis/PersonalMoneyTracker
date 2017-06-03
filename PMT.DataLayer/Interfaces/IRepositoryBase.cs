@@ -14,6 +14,7 @@ namespace PMT.DataLayer.Repositories
         void Dispose();
         IQueryable<TEntity> GetAll();
         TEntity GetById(object id);
+        MainDb GetDB();
         void Insert(TEntity entity);
         void Update(TEntity entity);
     }

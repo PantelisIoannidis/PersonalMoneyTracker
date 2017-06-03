@@ -13,15 +13,17 @@ namespace PMT.BusinessLayer
     public class IdentityEngine : BaseEngine, IIdentityEngine
     {
         IIdentityRepository identityRepository;
-        IMoneyAccountRepository MoneyAccountRepository;
+        IMoneyAccountRepository moneyAccountRepository;
         ISeedingLists seedingLists;
         ILogger logger;
+        IPersonalizedSeeding personalizedSeeding;
         public IdentityEngine(ILoggerFactory logger, IIdentityRepository identityRepository,
-            IMoneyAccountRepository MoneyAccountRepository, ISeedingLists seedingLists)
+            IMoneyAccountRepository moneyAccountRepository, ISeedingLists seedingLists, IPersonalizedSeeding personalizedSeeding)
         {
             this.identityRepository = identityRepository;
-            this.MoneyAccountRepository = MoneyAccountRepository;
+            this.moneyAccountRepository = moneyAccountRepository;
             this.seedingLists = seedingLists;
+            this.personalizedSeeding = personalizedSeeding;
             this.logger = logger.CreateLogger<IdentityEngine>();
         }
 
@@ -42,9 +44,12 @@ namespace PMT.BusinessLayer
         {
             try
             {
-                var moneyAccount = seedingLists.GetDefaultAccountForNewUser(GetUserId(userName));
-                MoneyAccountRepository.Insert(moneyAccount);
-                MoneyAccountRepository.Save();
+                var userId = GetUserId(userName);
+                var db = moneyAccountRepository.GetDB();
+                var moneyaccount=personalizedSeeding.GetDefaultAccountForNewUser(db,userId);
+                moneyAccountRepository.Insert(moneyaccount);
+                moneyAccountRepository.Save();
+                personalizedSeeding.Categories(db,userId);
             }
             catch (Exception ex)
             {

@@ -22,12 +22,6 @@ namespace PMT.DataLayer.Seed
         {
         }
 
-
-        public MoneyAccount GetDefaultAccountForNewUser(string userId)
-        {
-            return new MoneyAccount { UserId=userId,MoneyAccountId=0,Name="Personal"};
-        }
-
         public List<Icon> GetIcons()
         {
             PrepareIcons();

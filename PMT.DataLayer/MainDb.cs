@@ -36,15 +36,14 @@ namespace PMT.DataLayer
 
 
             modelBuilder.Entity<Budget>().HasKey<int>(e => e.BudgetId);
-            modelBuilder.Entity<Category>().HasKey<int>(e => e.CategoryId);
+            //modelBuilder.Entity<Category>().HasKey(e => new {e.UserId, e.CategoryId });
             modelBuilder.Entity<Repeat>().HasKey<int>(e => e.RepeatId);
-            modelBuilder.Entity<SubCategory>().HasKey<int>(e => e.SubCategoryId);
+            //modelBuilder.Entity<SubCategory>().HasKey(e => new { e.UserId, e.SubCategoryId });
             modelBuilder.Entity<Transaction>().HasKey<int>(e => e.TransactionId);
             modelBuilder.Entity<MoneyAccount>().HasKey<int>(e => e.MoneyAccountId);
 
             modelBuilder.Entity<Budget>().Property(e => e.BudgetId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             modelBuilder.Entity<Category>().Property(e => e.CategoryId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
-            //modelBuilder.Entity<Icon>().Property(e => e.IconId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             modelBuilder.Entity<Repeat>().Property(e => e.RepeatId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             modelBuilder.Entity<SubCategory>().Property(e => e.SubCategoryId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             modelBuilder.Entity<Transaction>().Property(e => e.TransactionId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
@@ -71,7 +70,7 @@ namespace PMT.DataLayer
         {
             protected override void Seed(MainDb context)
             {
-                new Seeding().Seed(context);
+                new CommonSeeding().Seed(context);
                 base.Seed(context);
             }
         }

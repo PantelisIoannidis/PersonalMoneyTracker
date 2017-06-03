@@ -77,6 +77,7 @@ namespace PMT.Web.App_Start
             //Helpers
             container.RegisterType<IActionStatus, ActionStatus>();
             container.RegisterType<ISeedingLists, SeedingLists>();
+            container.RegisterType<IPersonalizedSeeding, PersonalizedSeeding>();
             container.RegisterType<ICommonHelper, CommonHelper>();
             container.RegisterType<IUnityFactory, UnityFactory>();
             container.RegisterType<IUserPreferences, UserPreferences>();

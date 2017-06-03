@@ -16,9 +16,11 @@ namespace PMT.Entities
         {
             SubCategories = new List<SubCategory>();
         }
-        
-        public int CategoryId { get; set; }
 
+        [Key,Column(Order = 0)]
+        public int CategoryId { get; set; }
+        [Key,Column(Order = 1)]
+        public string UserId { get; set; }
         public string IconId { get; set; }
         public string Color { get; set; }
         [Display(Name = nameof(ModelText.CategoryType), ResourceType = typeof(ModelText))]

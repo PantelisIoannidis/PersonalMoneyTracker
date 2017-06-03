@@ -22,7 +22,7 @@ namespace PMT.Models
         public string AccountFilterName
         { get {
                 return MoneyAccountChoiceFilter
-                    .FirstOrDefault(x => x.MoneyAccountId == AccountFilterId).Name;
+                    .FirstOrDefault(x => x.MoneyAccountId == AccountFilterId).Name??"";
             }
         }
         public string PeriodFilterName {

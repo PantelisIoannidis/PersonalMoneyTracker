@@ -18,6 +18,11 @@ namespace PMT.DataLayer.Repositories
             this.dbSet = context.Set<TEntity>();
         }
 
+        public virtual MainDb GetDB()
+        {
+            return db;
+        }
+
         public virtual TEntity GetById(object id)
         {
             return dbSet.Find(id);

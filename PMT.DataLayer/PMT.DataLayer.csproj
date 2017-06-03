@@ -115,9 +115,11 @@
     <Compile Include="Repositories\SubCategoryRepository.cs" />
     <Compile Include="Repositories\TransactionRepository.cs" />
     <Compile Include="Repositories\MoneyAccountRepository.cs" />
+    <Compile Include="Seed\IPersonalizedSeeding.cs" />
     <Compile Include="Seed\ISeedingLists.cs" />
+    <Compile Include="Seed\PersonalizedSeeding.cs" />
     <Compile Include="Seed\SeedIcons.cs" />
-    <Compile Include="Seed\Seeding.cs" />
+    <Compile Include="Seed\CommonSeeding.cs" />
     <Compile Include="Seed\SeedingLists.cs" />
   </ItemGroup>
   <ItemGroup>

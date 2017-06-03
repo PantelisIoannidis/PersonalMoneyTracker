@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace PMT.DataLayer.Seed
 {
-    public class Seeding
+    public class CommonSeeding
     {
-        public Seeding()
+        public CommonSeeding()
         {
 
         }
@@ -40,30 +40,7 @@ namespace PMT.DataLayer.Seed
                 context.SaveChanges();
             }
 
-            foreach (var item in MainCategoryList)
-                context.Categories.AddOrUpdate(
-                    p => p.CategoryId,
-                    new Category
-                    {
-                        Type = item.Type,
-                        CategoryId = item.CategoryId,
-                        Name = item.Name,
-                        IconId=item.IconId,
-                        Color = item.Color
-                        
-                    });
 
-            foreach (var item in SubCategoryList)
-                context.SubCategories.AddOrUpdate(
-                    p => p.SubCategoryId,
-                    new SubCategory
-                    {
-                        CategoryId = item.CategoryId,
-                        SubCategoryId = item.SubCategoryId,
-                        Name = item.Name,
-                        IconId = item.IconId,
-                        Color = item.Color
-                    });
 
             foreach (var item in RepeatList)
                 context.Repeats.AddOrUpdate(
