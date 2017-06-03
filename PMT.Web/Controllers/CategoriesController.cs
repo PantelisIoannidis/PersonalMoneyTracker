@@ -44,13 +44,12 @@ namespace PMT.Web.Controllers
         [MoveNotificationsDataFilter]
         public ActionResult Index()
         {
-            var cateogories = categoryRepository.GetAllGategoriesSubCategories();
-            return View(cateogories);
+            return View();
         }
 
         public ActionResult LoadIndexPanelPartial()
         {
-            var cateogories = categoryRepository.GetAllGategoriesSubCategories();
+            var cateogories = categoriesEngine.GetAllGategoriesSubCategories();
             return PartialView("_IndexPanelPartial", cateogories);
         }
 

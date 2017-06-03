@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static PMT.Entities.Literals;
 
 namespace PMT.BusinessLayer
 {
@@ -188,6 +189,12 @@ namespace PMT.BusinessLayer
             {
                 logger.LogError(LoggingEvents.CALL_METHOD, ex, "Call repository to edit category or subcategory");
             }
+        }
+
+        public IEnumerable<Category> GetAllGategoriesSubCategories()
+        {
+            return categoryRepository.GetAllGategoriesSubCategories()
+                .Where(x => x.CategoryId > StandarCategories.Count);
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿@model List<PMT.Entities.Category>
-@{
+﻿@{
     ViewBag.Title = ViewText.CategoriesViewIndexTitle;
 }
 <div id="categoriesNotifications" class="alert alert-success collapse" role="alert">
@@ -38,7 +37,7 @@
             </div>
         </div>
         <div id="categoriesPanel" class="col-md-9">
-            @Html.Partial("_IndexPanelPartial", Model)
+            @Html.Action("LoadIndexPanelPartial", "Categories")
         </div>
     </div>
 </div>

@@ -1,5 +1,7 @@
 ﻿using PMT.Common;
+using PMT.Entities;
 using PMT.Models;
+using System.Collections.Generic;
 
 namespace PMT.BusinessLayer
 {
@@ -8,7 +10,7 @@ namespace PMT.BusinessLayer
         CategoryVM GetCategory(string id);
         void StoreNewCategoryAndSubCategory(CategoryVM categoryVM);
         void StoreNewSubCategory(CategoryVM categoryVM);
-
+        IEnumerable<Category> GetAllGategoriesSubCategories();
         ActionStatus DeleteCategorySubCategories(string id);
         void EditCategoryAndSubCategory(CategoryVM categoryVM);
     }
