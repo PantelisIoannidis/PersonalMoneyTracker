@@ -7,9 +7,9 @@ namespace PMT.DataLayer.Repositories
 {
     public interface ICategoryRepository : IRepositoryBase<Category>
     {
-        List<Category> GetGategories(TransactionType transactionType);
-        List<Category> GetAllGategoriesSubCategories();
-        Category GetGategoryById(int id);
+        IEnumerable<Category> GetGategories(string userId, TransactionType transactionType);
+        IEnumerable<Category> GetAllGategoriesSubCategories(string userId);
+        Category GetGategoryById(string userId, int id);
 
         void StoreNewCategoryAndSubCategory(Category category, SubCategory subCategory);
 

@@ -8,7 +8,7 @@ namespace PMT.Models
 {
     public class TransactionsFilterPreferences
     {
-        
+        public string UserId { get; set; }
         public int AccountFilterId { get; set; }
         public int PeriodFilterId { get; set; }
         public string SelectedDateFull { get; set; }

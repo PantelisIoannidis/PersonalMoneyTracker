@@ -9,6 +9,7 @@ namespace PMT.Models
 {
     public class CategoryVM
     {
+        public string UserId { get; set; }
         public int CategoryId { get; set; }
 
         public int SubCategoryId { get; set; }

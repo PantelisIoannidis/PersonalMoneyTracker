@@ -24,7 +24,7 @@ namespace PMT.Entities
         [Display(Name = nameof(ModelText.SubCategoryName), ResourceType = typeof(ModelText))]
         public string Name { get; set; }
 
-
+        public string SpecialAttribute { get; set; }
         public Category Category { get; set; }
 
     }

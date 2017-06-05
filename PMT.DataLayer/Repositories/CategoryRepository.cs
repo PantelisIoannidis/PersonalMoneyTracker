@@ -21,19 +21,19 @@ namespace PMT.DataLayer.Repositories
             this.logger = logger.CreateLogger<CategoryRepository>();
         }
 
-        public List<Category> GetGategories(TransactionType transactionType)
+        public IEnumerable<Category> GetGategories(string userId,TransactionType transactionType)
         {
-            return db.Categories.OrderBy(o => o.Name).Where(w => w.Type == transactionType).ToList();
+            return db.Categories.OrderBy(o => o.Name).Where(w => w.Type == transactionType && w.UserId == userId);
         }
 
-        public List<Category> GetAllGategoriesSubCategories()
+        public IEnumerable<Category> GetAllGategoriesSubCategories(string userId)
         {
-            return db.Categories.Include("SubCategories").OrderBy(x => x.Name).ToList();
+            return db.Categories.Include("SubCategories").OrderBy(x => x.Name).Where(w=>w.UserId==userId);
         }
 
-        public Category GetGategoryById(int id)
+        public Category GetGategoryById(string userId, int id)
         {
-            return db.Categories.FirstOrDefault(w => w.CategoryId == id);
+            return db.Categories.FirstOrDefault(w => w.CategoryId == id && w.UserId == userId);
         }
 
         public void StoreNewCategoryAndSubCategory(Category category, SubCategory subCategory)
@@ -66,6 +66,7 @@ namespace PMT.DataLayer.Repositories
                 category.IconId = categoryVM.IconId;
                 category.Name = categoryVM.Name;
                 category.Type = categoryVM.Type;
+                category.UserId = categoryVM.UserId;
                 db.SaveChanges();
             }
             catch (Exception ex)

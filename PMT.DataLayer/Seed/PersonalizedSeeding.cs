@@ -30,7 +30,7 @@ namespace PMT.DataLayer.Seed
 
             foreach (var item in MainCategoryList)
                 context.Categories.AddOrUpdate(
-                    p => p.CategoryId,
+                    p => new { p.CategoryId , p.UserId},
                     new Category
                     {
                         Type = item.Type,
@@ -38,12 +38,13 @@ namespace PMT.DataLayer.Seed
                         Name = item.Name,
                         IconId = item.IconId,
                         Color = item.Color,
-                        UserId = userId
+                        UserId = userId,
+                        SpecialAttribute= item.SpecialAttribute
                     });
 
             foreach (var item in SubCategoryList)
                 context.SubCategories.AddOrUpdate(
-                    p => p.SubCategoryId,
+                    p => new { p.SubCategoryId,p.UserId },
                     new SubCategory
                     {
                         CategoryId = item.CategoryId,
@@ -51,7 +52,8 @@ namespace PMT.DataLayer.Seed
                         Name = item.Name,
                         IconId = item.IconId,
                         Color = item.Color,
-                        UserId = userId
+                        UserId = userId,
+                        SpecialAttribute = item.SpecialAttribute
                     });
 
             context.SaveChanges();

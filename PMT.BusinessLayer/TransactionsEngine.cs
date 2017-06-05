@@ -22,12 +22,14 @@ namespace PMT.BusinessLayer
         IMoneyAccountEngine moneyAccountEngine;
         ITransactionRepository transactionRepository;
         IMoneyAccountRepository moneyAccountRepository;
+        ICategoriesEngine categoriesEngine;
         public TransactionsEngine(ILoggerFactory logger,
                                     IPeriod period,
                                     IActionStatus actionStatus,
                                     IMoneyAccountEngine moneyAccountEngine,
                                     IMoneyAccountRepository moneyAccountRepository,
-                                    ITransactionRepository transactionRepository)
+                                    ITransactionRepository transactionRepository,
+                                    ICategoriesEngine categoriesEngine)
         {
             this.actionStatus = actionStatus;
             this.period = period;
@@ -35,23 +37,28 @@ namespace PMT.BusinessLayer
             this.moneyAccountEngine = moneyAccountEngine;
             this.moneyAccountRepository = moneyAccountRepository;
             this.transactionRepository = transactionRepository;
+            this.categoriesEngine = categoriesEngine;
         }
 
         public ActionStatus InsertNewTransaction(Transaction transaction)
         {
+
+            var specialCategories = categoriesEngine.GetAllSpecialGategoriesSubCategories(transaction.UserId);
             try
             {
                 if (transaction.TransactionType == TransactionType.Adjustment)
                 {
                     if (transaction.Amount >= 0) { 
                         transaction.TransactionType = TransactionType.Income;
-                        transaction.CategoryId = StandarCategories.AdjustmentIncome;
-                        transaction.SubCategoryId = StandarCategories.AdjustmentIncome;
+                        transaction.CategoryId = specialCategories.FirstOrDefault(x=>x.SpecialAttribute==SpecialAttributes.AdjustmentIncome).CategoryId;
+                        transaction.SubCategoryId = specialCategories.FirstOrDefault(x => x.SpecialAttribute == SpecialAttributes.AdjustmentIncome)
+                            .SubCategories.FirstOrDefault(x => x.SpecialAttribute == SpecialAttributes.AdjustmentIncome).SubCategoryId;
                     }
                     else { 
                         transaction.TransactionType = TransactionType.Expense;
-                        transaction.CategoryId = StandarCategories.AdjustmentExpense;
-                        transaction.SubCategoryId = StandarCategories.AdjustmentExpense;
+                        transaction.CategoryId = specialCategories.FirstOrDefault(x => x.SpecialAttribute == SpecialAttributes.AdjustmentExpense).CategoryId;
+                        transaction.SubCategoryId = specialCategories.FirstOrDefault(x => x.SpecialAttribute == SpecialAttributes.AdjustmentExpense)
+                            .SubCategories.FirstOrDefault(x => x.SpecialAttribute == SpecialAttributes.AdjustmentExpense).SubCategoryId;
                     }
 
 
@@ -74,8 +81,9 @@ namespace PMT.BusinessLayer
                         MoneyAccountId=transaction.TransferTo.Value,
                         TransactionDate=transaction.TransactionDate,
                         UserId=transaction.UserId,
-                        CategoryId= StandarCategories.TransferFrom,
-                        SubCategoryId= StandarCategories.TransferFrom
+                        CategoryId = specialCategories.FirstOrDefault(x => x.SpecialAttribute == SpecialAttributes.TransferExpense).CategoryId,
+                        SubCategoryId = specialCategories.FirstOrDefault(x => x.SpecialAttribute == SpecialAttributes.TransferExpense)
+                            .SubCategories.FirstOrDefault(x => x.SpecialAttribute == SpecialAttributes.TransferExpense).SubCategoryId
                     };
                     var transactionTo = new Transaction()
                     {
@@ -86,8 +94,9 @@ namespace PMT.BusinessLayer
                         MoneyAccountId = transaction.MoneyAccountId,
                         TransactionDate = transaction.TransactionDate,
                         UserId = transaction.UserId,
-                        CategoryId = StandarCategories.TransferTo,
-                        SubCategoryId = StandarCategories.TransferTo
+                        CategoryId = specialCategories.FirstOrDefault(x => x.SpecialAttribute == SpecialAttributes.TransferIncome).CategoryId,
+                        SubCategoryId = specialCategories.FirstOrDefault(x => x.SpecialAttribute == SpecialAttributes.TransferIncome)
+                            .SubCategories.FirstOrDefault(x => x.SpecialAttribute == SpecialAttributes.TransferIncome).SubCategoryId
                     };
 
                     transactionRepository.Insert(transactionFrom);

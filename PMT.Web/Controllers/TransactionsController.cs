@@ -83,7 +83,7 @@ namespace PMT.Web.Controllers
         {
             DateTime selectedDate = DateTime.Now;
 
-            var postsPerPage = 8;
+            var itemsPerPage = 8;
 
             string objPreferences = TempData[transactionPreferences] as string;
             if (string.IsNullOrEmpty(objPreferences))
@@ -94,7 +94,7 @@ namespace PMT.Web.Controllers
 
             var transactionsVM = transactionRepository.GetTransactionsVM(userId, (Period)period, transactionFilterVM.AccountFilterId);
             var cnt = transactionsVM.Count();
-            var pager = new Pager(cnt, page.Value, postsPerPage);
+            var pager = new Pager(cnt, page.Value, itemsPerPage);
 
             PaginationVM pagination = new PaginationVM()
             {
@@ -105,7 +105,7 @@ namespace PMT.Web.Controllers
 
             var aPage = transactionsVM
                 .Skip(pager.Skip)
-                .Take(postsPerPage);
+                .Take(itemsPerPage);
 
             var list = aPage.ToList();
 
@@ -134,13 +134,13 @@ namespace PMT.Web.Controllers
 
         public ActionResult GetCategories(TransactionType type)
         {
-            var categories = categoryRepository.GetGategories(type).Where(x=>x.CategoryId> StandarCategories.Count);
+            var categories = categoryRepository.GetGategories(userId,type).Where(x=> string.IsNullOrEmpty(x.SpecialAttribute));
             return Json(categories, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult GetSubCategories(int categoryId)
         {
-            var subCategories = subCategoryRepository.GetSubCategories(categoryId).Where(x => x.CategoryId > StandarCategories.Count);
+            var subCategories = subCategoryRepository.GetSubCategories(userId,categoryId).Where(x => string.IsNullOrEmpty(x.SpecialAttribute));
             return Json(subCategories, JsonRequestBehavior.AllowGet);
         }
 

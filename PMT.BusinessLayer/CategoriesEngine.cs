@@ -31,7 +31,7 @@ namespace PMT.BusinessLayer
             this.subCategoryRepository = subCategoryRepository;
         }
 
-        public CategoryVM GetCategory(string id)
+        public CategoryVM GetCategory(string userId, string id)
         {
             CategoryVM categoryVM = new CategoryVM();
 
@@ -46,25 +46,27 @@ namespace PMT.BusinessLayer
 
                 if (!string.IsNullOrEmpty(subCategoryId))
                 {
-                    var subCategory = subCategoryRepository.GetSubCategoryById(subCategoryId.ParseInt());
+                    var subCategory = subCategoryRepository.GetSubCategoryById(userId, subCategoryId.ParseInt());
                     categoryVM.CategoryId = subCategory.CategoryId;
                     categoryVM.SubCategoryId = subCategory.SubCategoryId;
                     categoryVM.IconId = subCategory.IconId;
                     categoryVM.Name = subCategory.Name;
                     categoryVM.Color = subCategory.Color;
-                    var category = categoryRepository.GetById(subCategory.CategoryId);
+                    categoryVM.UserId = subCategory.UserId;
+                    var category = categoryRepository.GetGategoryById(userId,subCategory.CategoryId);
                     categoryVM.Type = category.Type;
                     categoryVM.IsCategory = false;
 
                 }
                 else if (!string.IsNullOrEmpty(categoryId))
                 {
-                    var category = categoryRepository.GetGategoryById(categoryId.ParseInt());
+                    var category = categoryRepository.GetGategoryById(userId,categoryId.ParseInt());
                     categoryVM.CategoryId = category.CategoryId;
                     categoryVM.IconId = category.IconId;
                     categoryVM.Name = category.Name;
                     categoryVM.Color = category.Color;
                     categoryVM.Type = category.Type;
+                    categoryVM.UserId = category.UserId;
                     categoryVM.IsCategory = true;
                 }
             }
@@ -85,13 +87,15 @@ namespace PMT.BusinessLayer
                     Color = categoryVM.Color,
                     IconId = categoryVM.IconId,
                     Name = categoryVM.Name,
-                    Type = categoryVM.Type
+                    Type = categoryVM.Type,
+                    UserId=categoryVM.UserId
                 };
                 var subCategory = new SubCategory()
                 {
                     Name = categoryVM.Name,
                     IconId = categoryVM.IconId,
-                    Color = categoryVM.Color
+                    Color = categoryVM.Color,
+                    UserId = categoryVM.UserId
                 };
                 categoryRepository.StoreNewCategoryAndSubCategory(category, subCategory);
             }
@@ -110,7 +114,8 @@ namespace PMT.BusinessLayer
                     CategoryId = categoryVM.CategoryId,
                     Name = categoryVM.Name,
                     IconId = categoryVM.IconId,
-                    Color = categoryVM.Color
+                    Color = categoryVM.Color,
+                    UserId = categoryVM.UserId
                 };
                 subCategoryRepository.StoreSubCategory(subCategory);
             }
@@ -120,7 +125,7 @@ namespace PMT.BusinessLayer
             }
         }
 
-        public ActionStatus DeleteCategorySubCategories(string id)
+        public ActionStatus DeleteCategorySubCategories(string userId, string id)
         {
             try
             {
@@ -135,7 +140,7 @@ namespace PMT.BusinessLayer
 
                 if (!string.IsNullOrEmpty(subCategoryId))
                 {
-                    var subCategory = subCategoryRepository.GetSubCategoryById(subCategoryId.ParseInt());
+                    var subCategory = subCategoryRepository.GetSubCategoryById(userId,subCategoryId.ParseInt());
                     if (subCategory != null)
                     {
                         subCategoryRepository.Delete(subCategory);
@@ -148,7 +153,7 @@ namespace PMT.BusinessLayer
                 }
                 else if (!string.IsNullOrEmpty(categoryId))
                 {
-                    var category = categoryRepository.GetGategoryById(categoryId.ParseInt());
+                    var category = categoryRepository.GetGategoryById(userId, categoryId.ParseInt());
                     if (category != null)
                     {
                         categoryRepository.Delete(category);
@@ -191,10 +196,16 @@ namespace PMT.BusinessLayer
             }
         }
 
-        public IEnumerable<Category> GetAllGategoriesSubCategories()
+        public IEnumerable<Category> GetAllGategoriesSubCategories(string userId)
         {
-            return categoryRepository.GetAllGategoriesSubCategories()
-                .Where(x => x.CategoryId > StandarCategories.Count);
+            return categoryRepository.GetAllGategoriesSubCategories(userId)
+                .Where(x => string.IsNullOrEmpty(x.SpecialAttribute));
+        }
+
+        public IEnumerable<Category> GetAllSpecialGategoriesSubCategories(string userId)
+        {
+            return categoryRepository.GetAllGategoriesSubCategories(userId)
+                .Where(x => !string.IsNullOrEmpty(x.SpecialAttribute));
         }
     }
 }

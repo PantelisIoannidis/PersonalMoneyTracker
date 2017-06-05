@@ -59,14 +59,14 @@ namespace PMT.Entities
             public const string Color = "#99994d";
         }
 
-        public static class StandarCategories
+        public static class SpecialAttributes
         {
-            public const int TransferFrom = 1;
-            public const int TransferTo = 2;
-            public const int AdjustmentIncome = 3;
-            public const int AdjustmentExpense = 4;
-            public const int Count = 4;
+            public const string TransferIncome = "TransferIncome";
+            public const string TransferExpense = "TransferExpense";
+            public const string AdjustmentIncome = "AdjustmentIncome";
+            public const string AdjustmentExpense = "AdjustmentExpense";
         }
+
     }
    
 

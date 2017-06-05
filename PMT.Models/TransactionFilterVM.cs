@@ -20,9 +20,15 @@ namespace PMT.Models
 
 
         public string AccountFilterName
-        { get {
-                return MoneyAccountChoiceFilter
-                    .FirstOrDefault(x => x.MoneyAccountId == AccountFilterId).Name??"";
+        {
+            get
+            {
+                var moneyAccountChoiceFilter = MoneyAccountChoiceFilter
+                    .FirstOrDefault(x => x.MoneyAccountId == AccountFilterId);
+                if (moneyAccountChoiceFilter == null)
+                    return "";
+                else
+                    return moneyAccountChoiceFilter.Name;
             }
         }
         public string PeriodFilterName {

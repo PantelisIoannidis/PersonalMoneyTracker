@@ -28,6 +28,8 @@ namespace PMT.Entities
         [Display(Name = nameof(ModelText.CategoryName), ResourceType = typeof(ModelText))]
         public string Name { get; set; }
 
+        public string SpecialAttribute { get; set; }
+
         public ICollection<SubCategory> SubCategories { get; set; }
     }
 }

@@ -65,6 +65,7 @@
             "AccountFilterId": $("#AccountFilterId").val(),
             "PeriodFilterId": $("#PeriodFilterId").val(),
             "SelectedDateFull": $("#SelectedDateFull").val(),
+            "UserId": $("#UserId").val(),
             "Operation": moveToNext
         };
         var myJSON = JSON.stringify(obj);
@@ -77,6 +78,7 @@
             "AccountFilterId": $("#AccountFilterId").val(),
             "PeriodFilterId": $("#PeriodFilterId").val(),
             "SelectedDateFull": $("#SelectedDateFull").val(),
+            "UserId":$("#UserId").val(),
             "Operation": operation
         };
         var myJSON = JSON.stringify(obj);

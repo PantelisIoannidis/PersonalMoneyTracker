@@ -19,6 +19,9 @@ namespace PMT.Web.Controllers
     [Authorize]
     public class CategoriesController : Controller
     {
+
+        public string userId;
+
         ILogger logger;
         ICommonHelper commonHelper;
         ICategoryRepository categoryRepository;
@@ -39,6 +42,8 @@ namespace PMT.Web.Controllers
             this.subCategoryRepository = subCategoryRepository;
             this.categoriesEngine = categoriesEngine;
             this.iconRepository = iconRepository;
+
+            userId = commonHelper.GetUserId(HttpContext);
         }
 
         [MoveNotificationsDataFilter]
@@ -49,7 +54,7 @@ namespace PMT.Web.Controllers
 
         public ActionResult LoadIndexPanelPartial()
         {
-            var cateogories = categoriesEngine.GetAllGategoriesSubCategories();
+            var cateogories = categoriesEngine.GetAllGategoriesSubCategories(userId);
             return PartialView("_IndexPanelPartial", cateogories);
         }
 
@@ -78,7 +83,8 @@ namespace PMT.Web.Controllers
         public ActionResult NewCategory()
         {
             var categoryVM = new CategoryVM() {
-                IconId = DefaultCategoryValues.IconId
+                IconId = DefaultCategoryValues.IconId,
+                UserId=userId
             };
             ViewBag.Title = ViewText.CreateNewCategory;
             ViewBag.CategoryType = GetShortTransactionTypeList();
@@ -106,7 +112,8 @@ namespace PMT.Web.Controllers
         {
             var categoryVM = new CategoryVM()
             {
-                IconId = DefaultCategoryValues.IconId
+                IconId = DefaultCategoryValues.IconId,
+                UserId=userId
             };
             ViewBag.Title = ViewText.CreateNewSubcategory;
             ViewBag.CategoryType = GetShortTransactionTypeList();
@@ -136,7 +143,7 @@ namespace PMT.Web.Controllers
             if (id == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
-            var status = categoriesEngine.DeleteCategorySubCategories(id);
+            var status = categoriesEngine.DeleteCategorySubCategories(userId,id);
             if(status.ExceptionFromConditions)
             {
                 logger.LogError(LoggingEvents.GET_ITEM_NOTFOUND, "Delete not completed. Id not found");
@@ -152,7 +159,7 @@ namespace PMT.Web.Controllers
         {
             if (id == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            var categoryVM = categoriesEngine                 .GetCategory(id);
+            var categoryVM = categoriesEngine.GetCategory(userId,id);
             ViewBag.CategoryType = GetShortTransactionTypeList();
 
             string _view = "";

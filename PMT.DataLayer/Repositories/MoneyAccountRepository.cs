@@ -28,7 +28,7 @@ namespace PMT.DataLayer.Repositories
         }
         public MoneyAccount GetMoneyAccount(string userId,int moneyAccountId)
         {
-            return GetMoneyAccounts(userId).FirstOrDefault(x=>x.MoneyAccountId==moneyAccountId);
+            return GetMoneyAccounts(userId).FirstOrDefault(x=>x.MoneyAccountId==moneyAccountId && x.UserId==userId);
         }
 
         public List<MoneyAccountVM> GetMoneyAccountsWithBalance(string userId)
@@ -51,7 +51,7 @@ namespace PMT.DataLayer.Repositories
         }
         public MoneyAccount GetMoneyAccountwithBalance(string userId, int moneyAccountId)
         {
-            return GetMoneyAccountsWithBalance(userId).FirstOrDefault(x => x.MoneyAccountId == moneyAccountId);
+            return GetMoneyAccountsWithBalance(userId).FirstOrDefault(x => x.MoneyAccountId == moneyAccountId && x.UserId == userId);
         }
 
         public List<MoneyAccount> GetMoneyAccountsExcludingCurrent(string userId, int moneyAccountId)
