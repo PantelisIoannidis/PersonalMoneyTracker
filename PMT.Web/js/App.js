@@ -5,16 +5,22 @@ var pmt = function () {
     var rootPath;
     var currentLocal;
 
-    var onDocumentLoadHome = function () {
-        transactionsFiltersUI.onTransactionsFiltersInit();
-        homeCharts.onHomeChartsInit();
-    };
+
 
     var onDocumentLoadMaster = function () {
         commonUI.calculateActiveElement();
         commonUI.loadingEvents();
         commonUI.loadingFinished();
         commonUI.showNotifications();
+    };
+
+    var onDocumentLoadHome = function () {
+        transactionsFiltersUI.onTransactionsFiltersInit();
+        homeCharts.onHomeChartsInit();
+    };
+
+    var onDocumentLoadSettings = function () {
+        themeSelector.initThemeSelector();
     };
 
     var onDocumentLoadIndexTransaction = function () {
@@ -42,7 +48,8 @@ var pmt = function () {
 
     return {
         rootPath: rootPath,
-        onDocumentLoadHome:onDocumentLoadHome,
+        onDocumentLoadHome: onDocumentLoadHome,
+        onDocumentLoadSettings: onDocumentLoadSettings,
         onDocumentLoadMaster: onDocumentLoadMaster,
         onDocumentLoadIndexTransaction: onDocumentLoadIndexTransaction,
         onDocumentTransactionCreate: onDocumentTransactionCreate,

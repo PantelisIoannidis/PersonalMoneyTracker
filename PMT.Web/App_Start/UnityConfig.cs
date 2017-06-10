@@ -64,7 +64,8 @@ namespace PMT.Web.App_Start
             container.RegisterType<ITransactionsEngine, TransactionsEngine>();
             container.RegisterType<ICalculationsEngine, CalculationsEngine>();
             container.RegisterType<IChartsEngine, ChartsEngine>();
-            
+            container.RegisterType<IUserSettingsEngine, UserSettingsEngine>();
+
 
             //Account Login
             container.RegisterType<IUserStore<ApplicationUser>, UserStore<ApplicationUser>>();
@@ -80,7 +81,6 @@ namespace PMT.Web.App_Start
             container.RegisterType<IPersonalizedSeeding, PersonalizedSeeding>();
             container.RegisterType<ICommonHelper, CommonHelper>();
             container.RegisterType<IUnityFactory, UnityFactory>();
-            container.RegisterType<IUserPreferences, UserPreferences>();
             container.RegisterType<IMapping, Mapping>();
             container.RegisterType<IPeriod, Period>();
 
@@ -92,7 +92,7 @@ namespace PMT.Web.App_Start
             container.RegisterType<IMoneyAccountRepository, MoneyAccountRepository>();
             container.RegisterType<IIdentityRepository, IdentityRepository>();
             container.RegisterType<IIconRepository, IconRepository>();
-            
+            container.RegisterType<IUserSettingsRepository, UserSettingsRepository>();
 
 
 

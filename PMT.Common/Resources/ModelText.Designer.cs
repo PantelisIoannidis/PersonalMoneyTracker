@@ -266,5 +266,32 @@ namespace PMT.Common.Resources {
                 return ResourceManager.GetString("TransactionTypeTransfer", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Items per page.
+        /// </summary>
+        public static string UserSettingsItemsPerPage {
+            get {
+                return ResourceManager.GetString("UserSettingsItemsPerPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Localization.
+        /// </summary>
+        public static string UserSettingsLocalization {
+            get {
+                return ResourceManager.GetString("UserSettingsLocalization", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Theme.
+        /// </summary>
+        public static string UserSettingsTheme {
+            get {
+                return ResourceManager.GetString("UserSettingsTheme", resourceCulture);
+            }
+        }
     }
 }

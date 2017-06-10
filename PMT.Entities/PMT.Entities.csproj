@@ -51,6 +51,7 @@
     <Compile Include="MoneyAccount.cs" />
     <Compile Include="TransactionType.cs" />
     <Compile Include="Literals.cs" />
+    <Compile Include="UserSettings.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PMT.Common\PMT.Common.csproj">

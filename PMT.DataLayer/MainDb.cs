@@ -30,6 +30,7 @@ namespace PMT.DataLayer
         public DbSet<SubCategory> SubCategories { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
         public DbSet<MoneyAccount> MoneyAccounts { get; set; }
+        public DbSet<UserSettings> UserSettings { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -37,8 +38,8 @@ namespace PMT.DataLayer
 
             modelBuilder.Entity<Budget>().HasKey<int>(e => e.BudgetId);
             //modelBuilder.Entity<Category>().HasKey(e => new {e.UserId, e.CategoryId });
-            modelBuilder.Entity<Repeat>().HasKey<int>(e => e.RepeatId);
             //modelBuilder.Entity<SubCategory>().HasKey(e => new { e.UserId, e.SubCategoryId });
+            modelBuilder.Entity<Repeat>().HasKey<int>(e => e.RepeatId);
             modelBuilder.Entity<Transaction>().HasKey<int>(e => e.TransactionId);
             modelBuilder.Entity<MoneyAccount>().HasKey<int>(e => e.MoneyAccountId);
 
@@ -51,7 +52,7 @@ namespace PMT.DataLayer
 
 
             // We ignore these fields because we want to avoid using seperate modelviews for the simplest occutions
-            modelBuilder.Entity<MoneyAccount>().Ignore(e => e.Balance);
+            //modelBuilder.Entity<MoneyAccount>().Ignore(e => e.Balance);
 
             modelBuilder.Entity<Budget>()
                 .Property(e => e.Amount)
@@ -60,8 +61,6 @@ namespace PMT.DataLayer
             modelBuilder.Entity<Transaction>()
                 .Property(e => e.Amount)
                 .HasPrecision(19, 4);
-
-            
 
             base.OnModelCreating(modelBuilder);
         }

@@ -18,25 +18,25 @@ using Microsoft.Extensions.Logging;
 namespace PMT.Web.Controllers
 {
     [Authorize]
-    public class MoneyAccountsController : Controller
+    public class MoneyAccountsController : BaseController
     {
         ILogger logger;
         IMoneyAccountRepository moneyAccountRepository;
-        ICommonHelper securityHelper;
+        ICommonHelper commonHelper;
         IMoneyAccountEngine moneyAccountEngine;
         ITransactionRepository transactionRepository;
         ICategoryRepository categoryRepository;
         ISubCategoryRepository subCategoryRepository;
-        public MoneyAccountsController(ICommonHelper securityHelper, 
+        public MoneyAccountsController(ICommonHelper commonHelper, 
                                         IMoneyAccountRepository moneyAccountRepository,
                                         IMoneyAccountEngine moneyAccountEngine,
                                         ITransactionRepository transactionRepository,
                                         ICategoryRepository categoryRepository,
                                         ISubCategoryRepository subCategoryRepository,
-                                        ILoggerFactory logger)
+                                        ILoggerFactory logger) : base(logger, commonHelper)
         {
             this.moneyAccountRepository = moneyAccountRepository;
-            this.securityHelper = securityHelper;
+            this.commonHelper = commonHelper;
             this.categoryRepository = categoryRepository;
             this.subCategoryRepository = subCategoryRepository;
             this.moneyAccountEngine = moneyAccountEngine;
@@ -56,7 +56,6 @@ namespace PMT.Web.Controllers
         public ActionResult Index()
         {
             logger.LogInformation("MoneyAccountsController Index");
-            var userId = securityHelper.GetUserId(this.HttpContext);
             ViewBag.TotalBalance = transactionRepository.GetBalance(userId);
             return View(moneyAccountEngine.GetMoneyAccountsWithBalance(userId));
         }
@@ -65,8 +64,7 @@ namespace PMT.Web.Controllers
         public ActionResult Create()
         {
 
-            var userId = securityHelper.GetUserId(HttpContext);
-            MoneyAccount moneyAccount = new MoneyAccount() { UserId = userId };
+            MoneyAccountVM moneyAccount = new MoneyAccountVM() { UserId = userId };
             return View(moneyAccount);
         }
 
@@ -75,17 +73,17 @@ namespace PMT.Web.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Name,Balance")] MoneyAccount moneyAccount)
+        public ActionResult Create([Bind(Include = "Name,Balance")] MoneyAccountVM moneyAccountVM)
         {
             if (ModelState.IsValid)
             {
-                moneyAccount.UserId = securityHelper.GetUserId(HttpContext);
-                moneyAccountEngine.AddNewAccountWithInitialBalance(moneyAccount);
+                moneyAccountVM.UserId = userId;
+                moneyAccountEngine.AddNewAccountWithInitialBalance(moneyAccountVM);
                 TempData["NotificationSuccess"] = "New account has been created";
                 return RedirectToAction("Index");
             }
             ViewBag.NotificationWarning = "New account couldn't be created";
-            return View(moneyAccount);
+            return View(moneyAccountVM);
         }
 
         // GET: MoneyAccounts/Edit/5
@@ -108,16 +106,16 @@ namespace PMT.Web.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MoneyAccountId,UserId,Name,Balance")] MoneyAccount moneyAccount)
+        public ActionResult Edit([Bind(Include = "MoneyAccountId,UserId,Name,Balance")] MoneyAccountVM moneyAccountVM)
         {
             if (ModelState.IsValid)
             {
-                moneyAccountEngine.EditAccountNameAdjustBalance(moneyAccount);
+                moneyAccountEngine.EditAccountNameAdjustBalance(moneyAccountVM);
                 TempData["NotificationSuccess"] = "Account has been modified";
                 return RedirectToAction("Index");
             }
             ViewBag.NotificationWarning = "Account couldn't be modified";
-            return View(moneyAccount);
+            return View(moneyAccountVM);
         }
 
         // GET: MoneyAccounts/Delete/5

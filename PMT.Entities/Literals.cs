@@ -67,6 +67,12 @@ namespace PMT.Entities
             public const string AdjustmentExpense = "AdjustmentExpense";
         }
 
+        public static class GlobalCookies
+        {
+            public const string transactionsPreferencesCookie = "transactionsPreferences";
+            public const string themePreferenceCookie = "themePreference";
+        }
+
     }
    
 

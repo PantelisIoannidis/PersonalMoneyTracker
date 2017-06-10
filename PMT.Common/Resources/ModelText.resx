@@ -186,4 +186,13 @@
   <data name="TransactionTypeTransfer" xml:space="preserve">
     <value>Transfer</value>
   </data>
+  <data name="UserSettingsItemsPerPage" xml:space="preserve">
+    <value>Items per page</value>
+  </data>
+  <data name="UserSettingsLocalization" xml:space="preserve">
+    <value>Localization</value>
+  </data>
+  <data name="UserSettingsTheme" xml:space="preserve">
+    <value>Theme</value>
+  </data>
 </root>

@@ -5,6 +5,7 @@ using System.Web;
 using Microsoft.AspNet.Identity;
 using System.Globalization;
 using System.Web.WebPages;
+using static PMT.Entities.Literals;
 
 namespace PMT.Web.Helpers
 {
@@ -48,6 +49,36 @@ namespace PMT.Web.Helpers
             if (languages.Count ==0)
                 languages.Add(CultureInfo.CurrentCulture.ToString());
             return languages;
+        }
+
+        public void SetTransactionsPreferences(HttpContextBase httpContext, string preferences)
+        {
+            HttpCookie cookie = HttpContext.Current.Request.Cookies[GlobalCookies.transactionsPreferencesCookie] ?? new HttpCookie(GlobalCookies.transactionsPreferencesCookie);
+            httpContext.Request.Cookies.Remove(GlobalCookies.transactionsPreferencesCookie);
+            cookie.Value = preferences;
+            cookie.Expires = DateTime.Now.AddDays(30);
+            httpContext.Response.SetCookie(cookie);
+        }
+
+        public string GetTransactionsPreferences(HttpContextBase httpContext)
+        {
+            HttpCookie cookie = HttpContext.Current.Request.Cookies[GlobalCookies.transactionsPreferencesCookie] ?? new HttpCookie(GlobalCookies.transactionsPreferencesCookie);
+            return cookie.Value;
+        }
+
+        public void SetThemePreference(HttpContextBase httpContext, string theme)
+        {
+            HttpCookie cookie = HttpContext.Current.Request.Cookies[GlobalCookies.themePreferenceCookie] ?? new HttpCookie(GlobalCookies.themePreferenceCookie);
+            httpContext.Request.Cookies.Remove(GlobalCookies.themePreferenceCookie);
+            cookie.Value = theme;
+            cookie.Expires = DateTime.Now.AddDays(30);
+            httpContext.Response.SetCookie(cookie);
+        }
+
+        public string GetThemePreference(HttpContextBase httpContext)
+        {
+            HttpCookie cookie = HttpContext.Current.Request.Cookies[GlobalCookies.themePreferenceCookie] ?? new HttpCookie(GlobalCookies.themePreferenceCookie);
+            return cookie.Value;
         }
     }
 }

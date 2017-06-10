@@ -86,9 +86,11 @@
     <Compile Include="Interfaces\IIdentityEngine.cs" />
     <Compile Include="Interfaces\IMoneyAccountEngine.cs" />
     <Compile Include="Interfaces\ITransactionsEngine.cs" />
+    <Compile Include="IUserSettingsEngine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MoneyAccountEngine.cs" />
     <Compile Include="TransactionsEngine.cs" />
+    <Compile Include="UserSettingsEngine.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PMT.Common\PMT.Common.csproj">

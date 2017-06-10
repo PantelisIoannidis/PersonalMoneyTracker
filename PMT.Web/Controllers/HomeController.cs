@@ -12,36 +12,31 @@ using System.Web.Mvc;
 namespace PMT.Web.Controllers
 {
     [Authorize]
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         ILogger logger;
-        IUserPreferences userPreferences;
         ICommonHelper commonHelper;
         ITransactionsEngine transactionsEngine;
         IChartsEngine chartsEngine;
-        public string userId;
 
         public const string transactionPreferences = "transactionPreferences";
 
         public HomeController(ILoggerFactory logger,
-                                IUserPreferences userPreferences,
                                 ICommonHelper commonHelper,
                                 ITransactionsEngine transactionsEngine,
-                                IChartsEngine chartsEngine)
+                                IChartsEngine chartsEngine) : base(logger, commonHelper)
         {
             this.logger = logger.CreateLogger<HomeController>();
-            this.userPreferences = userPreferences;
             this.commonHelper = commonHelper;
             this.transactionsEngine = transactionsEngine;
             this.chartsEngine = chartsEngine;
 
-            userId = commonHelper.GetUserId(HttpContext);
         }
         public ActionResult Index()
         {
             string objPreferences = TempData[transactionPreferences] as string;
             if (string.IsNullOrEmpty(objPreferences))
-                objPreferences = userPreferences.GetTransactionPreferences(HttpContext);
+                objPreferences = commonHelper.GetTransactionsPreferences(HttpContext);
 
             TransactionFilterVM transactionFilterVM = transactionsEngine.GetFilter(userId, objPreferences);
             ViewBag.ChartIncomeVsExpense = chartsEngine.ChartIncomeVsExpense(userId, transactionFilterVM);

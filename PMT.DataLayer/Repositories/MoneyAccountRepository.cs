@@ -59,15 +59,15 @@ namespace PMT.DataLayer.Repositories
             return db.MoneyAccounts.Where(u => u.UserId == userId && u.MoneyAccountId != moneyAccountId).ToList();
         }
 
-        public void AddNewAccountWithInitialBalance(MoneyAccount moneyAccount, Transaction transaction)
+        public void AddNewAccountWithInitialBalance(MoneyAccount moneyAccount, TransactionVM transactionVM)
         {
             using(var dbTransaction = db.Database.BeginTransaction()) { 
                 try
                 {
                     db.MoneyAccounts.Add(moneyAccount);
                     db.SaveChanges();
-                    transaction.MoneyAccountId = moneyAccount.MoneyAccountId;
-                    db.Transactions.Add(transaction);
+                    transactionVM.MoneyAccountId = moneyAccount.MoneyAccountId;
+                    db.Transactions.Add(transactionVM);
                     db.SaveChanges();
                     dbTransaction.Commit();
                 }
@@ -80,7 +80,7 @@ namespace PMT.DataLayer.Repositories
 
         }
 
-        public void EditAccountNameAdjustBalance(MoneyAccount moneyAccount, Transaction transaction)
+        public void EditAccountNameAdjustBalance(MoneyAccount moneyAccount, TransactionVM transactionVM)
         {
             using (var dbTransaction = db.Database.BeginTransaction())
             {
@@ -89,7 +89,7 @@ namespace PMT.DataLayer.Repositories
                     var accountInDatabase = db.MoneyAccounts.SingleOrDefault(w => w.MoneyAccountId == moneyAccount.MoneyAccountId);
                     accountInDatabase.Name = moneyAccount.Name;
                     db.SaveChanges();
-                    db.Transactions.Add(transaction);
+                    db.Transactions.Add(transactionVM);
                     db.SaveChanges();
                     dbTransaction.Commit();
                 }

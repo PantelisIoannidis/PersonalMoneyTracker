@@ -22,9 +22,9 @@ using static PMT.Entities.Literals;
 namespace PMT.Web.Controllers
 {
     [Authorize]
-    public class TransactionsController : Controller
+    public class TransactionsController : BaseController
     {
-        public string userId;
+        
 
         ILogger logger;
         IPeriod period;
@@ -35,13 +35,11 @@ namespace PMT.Web.Controllers
         IMoneyAccountRepository moneyAccountRepository;
         IMoneyAccountEngine moneyAccountEngine;
         ITransactionsEngine transactionsEngine;
-        IUserPreferences userPreferences;
         IMapping mapping;
 
         public TransactionsController(ILoggerFactory logger,
                                         IPeriod period,
                                         ICommonHelper commonHelper,
-                                        IUserPreferences userPreferences,
                                          ITransactionRepository transactionRepository,
                                         ICategoryRepository categoryRepository,
                                         ISubCategoryRepository subCategoryRepository,
@@ -49,7 +47,7 @@ namespace PMT.Web.Controllers
                                         IMoneyAccountEngine moneyAccountEngine,
                                         ITransactionsEngine transactionsEngine,
                                         IMapping mapping
-                                        )
+                                        ):base(logger,commonHelper)
         {
             
             this.transactionRepository = transactionRepository;
@@ -60,11 +58,10 @@ namespace PMT.Web.Controllers
             this.moneyAccountEngine = moneyAccountEngine;
             this.mapping = mapping;
             this.commonHelper = commonHelper;
-            this.userPreferences = userPreferences;
             this.period = period;
             this.logger = logger.CreateLogger<TransactionsController>();
 
-            userId = commonHelper.GetUserId(HttpContext);
+            
         }
 
         
@@ -87,7 +84,7 @@ namespace PMT.Web.Controllers
 
             string objPreferences = TempData[transactionPreferences] as string;
             if (string.IsNullOrEmpty(objPreferences))
-                objPreferences = userPreferences.GetTransactionPreferences(HttpContext);
+                objPreferences = commonHelper.GetTransactionsPreferences(HttpContext);
 
             TransactionFilterVM transactionFilterVM = transactionsEngine.GetFilter(userId, objPreferences);
             period.Init(DateTime.Parse(transactionFilterVM.SelectedDateFull), (PeriodType)transactionFilterVM.PeriodFilterId);
@@ -121,7 +118,7 @@ namespace PMT.Web.Controllers
         public void SetUserPreferences(string preferences)
         {
             TempData[transactionPreferences] = preferences;
-            userPreferences.SetTransactionPreferences(HttpContext, preferences);
+            commonHelper.SetTransactionsPreferences(HttpContext, preferences);
         }
 
         public ActionResult GetAccountsAvailableForTransfer(int accountId)

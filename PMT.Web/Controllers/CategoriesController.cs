@@ -17,10 +17,8 @@ using static PMT.Entities.Literals;
 namespace PMT.Web.Controllers
 {
     [Authorize]
-    public class CategoriesController : Controller
+    public class CategoriesController : BaseController
     {
-
-        public string userId;
 
         ILogger logger;
         ICommonHelper commonHelper;
@@ -34,7 +32,7 @@ namespace PMT.Web.Controllers
                                         ISubCategoryRepository subCategoryRepository,
                                         ICategoriesEngine categoriesEngine,
                                         IIconRepository iconRepository
-                                        )
+                                        ) : base(logger, commonHelper)
         {
             this.commonHelper = commonHelper;
             this.logger = logger.CreateLogger<CategoriesController>();
@@ -43,7 +41,6 @@ namespace PMT.Web.Controllers
             this.categoriesEngine = categoriesEngine;
             this.iconRepository = iconRepository;
 
-            userId = commonHelper.GetUserId(HttpContext);
         }
 
         [MoveNotificationsDataFilter]

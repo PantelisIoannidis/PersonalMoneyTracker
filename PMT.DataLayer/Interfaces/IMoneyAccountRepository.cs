@@ -12,7 +12,7 @@ namespace PMT.DataLayer.Repositories
         List<MoneyAccount> GetMoneyAccountsExcludingCurrent(string userId, int moneyAccountId);
         List<MoneyAccountVM> GetMoneyAccountsWithBalance(string userId);
         MoneyAccount GetMoneyAccountwithBalance(string userId, int moneyAccountId);
-        void AddNewAccountWithInitialBalance(MoneyAccount moneyAccount, Transaction transaction);
-        void EditAccountNameAdjustBalance(MoneyAccount moneyAccount, Transaction transaction);
+        void AddNewAccountWithInitialBalance(MoneyAccount moneyAccount, TransactionVM transactionVM);
+        void EditAccountNameAdjustBalance(MoneyAccount moneyAccount, TransactionVM transactionVM);
     }
 }

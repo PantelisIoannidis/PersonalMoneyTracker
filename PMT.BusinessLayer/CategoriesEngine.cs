@@ -21,11 +21,11 @@ namespace PMT.BusinessLayer
         ISubCategoryRepository subCategoryRepository;
 
         public CategoriesEngine(ILoggerFactory logger,
-            IActionStatus actionStatux,
+            IActionStatus actionStatus,
             ICategoryRepository categoryRepository,
             ISubCategoryRepository subCategoryRepository)
         {
-            this.actionStatus = actionStatux;
+            this.actionStatus = actionStatus;
             this.logger = logger.CreateLogger<CategoriesEngine>();
             this.categoryRepository = categoryRepository;
             this.subCategoryRepository = subCategoryRepository;

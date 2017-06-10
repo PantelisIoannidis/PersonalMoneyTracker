@@ -11,5 +11,10 @@ namespace PMT.Web.Helpers
         List<CultureInfo> GetClientCultureInfo(HttpContextBase httpContext);
         List<string> GetUserLanguages(HttpContextBase httpContextBase);
         string GetServerCulture();
+
+        void SetTransactionsPreferences(HttpContextBase httpContext, string transactionFilterPreferences);
+        string GetTransactionsPreferences(HttpContextBase httpContext);
+        void SetThemePreference(HttpContextBase httpContext, string theme);
+        string GetThemePreference(HttpContextBase httpContext);
     }
 }
