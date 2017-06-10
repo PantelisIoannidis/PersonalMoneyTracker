@@ -1,0 +1,70 @@
+﻿[
+  {
+    "outputFile": "css/Theme/DefaultCss.css",
+    "inputFile": "css/Theme/DefaultCss.less"
+  },
+  {
+    "outputFile": "css/Theme/ceruleanCss.css",
+    "inputFile": "css/Theme/ceruleanCss.less"
+  },
+  {
+    "outputFile": "css/Theme/cosmoCss.css",
+    "inputFile": "css/Theme/cosmoCss.less"
+  },
+  {
+    "outputFile": "css/Theme/cyborgCss.css",
+    "inputFile": "css/Theme/cyborgCss.less"
+  },
+  {
+    "outputFile": "css/Theme/darklyCss.css",
+    "inputFile": "css/Theme/darklyCss.less"
+  },
+  {
+    "outputFile": "css/Theme/flatlyCss.css",
+    "inputFile": "css/Theme/flatlyCss.less"
+  },
+  {
+    "outputFile": "css/Theme/journalCss.css",
+    "inputFile": "css/Theme/journalCss.less"
+  },
+  {
+    "outputFile": "css/Theme/lumenCss.css",
+    "inputFile": "css/Theme/lumenCss.less"
+  },
+  {
+    "outputFile": "css/Theme/paperCss.css",
+    "inputFile": "css/Theme/paperCss.less"
+  },
+  {
+    "outputFile": "css/Theme/readableCss.css",
+    "inputFile": "css/Theme/readableCss.less"
+  },
+  {
+    "outputFile": "css/Theme/sandstoneCss.css",
+    "inputFile": "css/Theme/sandstoneCss.less"
+  },
+  {
+    "outputFile": "css/Theme/simplexCss.css",
+    "inputFile": "css/Theme/simplexCss.less"
+  },
+  {
+    "outputFile": "css/Theme/slateCss.css",
+    "inputFile": "css/Theme/slateCss.less"
+  },
+  {
+    "outputFile": "css/Theme/spacelabCss.css",
+    "inputFile": "css/Theme/spacelabCss.less"
+  },
+  {
+    "outputFile": "css/Theme/superheroCss.css",
+    "inputFile": "css/Theme/superheroCss.less"
+  },
+  {
+    "outputFile": "css/Theme/unitedCss.css",
+    "inputFile": "css/Theme/unitedCss.less"
+  },
+  {
+    "outputFile": "css/Theme/yetiCss.css",
+    "inputFile": "css/Theme/yetiCss.less"
+  }
+]

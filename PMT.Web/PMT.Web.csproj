@@ -341,7 +341,129 @@
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\images\ajax-loader.gif" />
-    <Content Include="css\Site.css" />
+    <None Include="compilerconfig.json" />
+    <None Include="compilerconfig.json.defaults">
+      <DependentUpon>compilerconfig.json</DependentUpon>
+    </None>
+    <Content Include="css\Theme\ceruleanCss.css">
+      <DependentUpon>ceruleanCss.less</DependentUpon>
+    </Content>
+    <Content Include="css\Theme\ceruleanCss.min.css">
+      <DependentUpon>ceruleanCss.css</DependentUpon>
+    </Content>
+    <Content Include="css\Theme\cosmoCss.css">
+      <DependentUpon>cosmoCss.less</DependentUpon>
+    </Content>
+    <Content Include="css\Theme\cosmoCss.min.css">
+      <DependentUpon>cosmoCss.css</DependentUpon>
+    </Content>
+    <Content Include="css\Theme\cyborgCss.css">
+      <DependentUpon>cyborgCss.less</DependentUpon>
+    </Content>
+    <Content Include="css\Theme\cyborgCss.min.css">
+      <DependentUpon>cyborgCss.css</DependentUpon>
+    </Content>
+    <Content Include="css\Theme\darklyCss.css">
+      <DependentUpon>darklyCss.less</DependentUpon>
+    </Content>
+    <Content Include="css\Theme\darklyCss.min.css">
+      <DependentUpon>darklyCss.css</DependentUpon>
+    </Content>
+    <Content Include="css\Theme\DefaultCss.css">
+      <DependentUpon>DefaultCss.less</DependentUpon>
+    </Content>
+    <Content Include="css\Theme\DefaultCss.less" />
+    <Content Include="css\Theme\ceruleanCss.less" />
+    <Content Include="css\Theme\DefaultCss.min.css">
+      <DependentUpon>DefaultCss.css</DependentUpon>
+    </Content>
+    <Content Include="css\Theme\flatlyCss.css">
+      <DependentUpon>flatlyCss.less</DependentUpon>
+    </Content>
+    <Content Include="css\Theme\flatlyCss.min.css">
+      <DependentUpon>flatlyCss.css</DependentUpon>
+    </Content>
+    <Content Include="css\Theme\journalCss.css">
+      <DependentUpon>journalCss.less</DependentUpon>
+    </Content>
+    <Content Include="css\Theme\journalCss.min.css">
+      <DependentUpon>journalCss.css</DependentUpon>
+    </Content>
+    <Content Include="css\Theme\lumenCss.css">
+      <DependentUpon>lumenCss.less</DependentUpon>
+    </Content>
+    <Content Include="css\Theme\lumenCss.min.css">
+      <DependentUpon>lumenCss.css</DependentUpon>
+    </Content>
+    <Content Include="css\Theme\paperCss.css">
+      <DependentUpon>paperCss.less</DependentUpon>
+    </Content>
+    <Content Include="css\Theme\paperCss.min.css">
+      <DependentUpon>paperCss.css</DependentUpon>
+    </Content>
+    <Content Include="css\Theme\readableCss.css">
+      <DependentUpon>readableCss.less</DependentUpon>
+    </Content>
+    <Content Include="css\Theme\readableCss.min.css">
+      <DependentUpon>readableCss.css</DependentUpon>
+    </Content>
+    <Content Include="css\Theme\sandstoneCss.css">
+      <DependentUpon>sandstoneCss.less</DependentUpon>
+    </Content>
+    <Content Include="css\Theme\sandstoneCss.less" />
+    <Content Include="css\Theme\readableCss.less" />
+    <Content Include="css\Theme\paperCss.less" />
+    <Content Include="css\Theme\lumenCss.less" />
+    <Content Include="css\Theme\journalCss.less" />
+    <Content Include="css\Theme\darklyCss.less" />
+    <Content Include="css\Theme\cyborgCss.less" />
+    <Content Include="css\Theme\cosmoCss.less" />
+    <Content Include="css\Theme\flatlyCss.less" />
+    <Content Include="css\Theme\sandstoneCss.min.css">
+      <DependentUpon>sandstoneCss.css</DependentUpon>
+    </Content>
+    <Content Include="css\Theme\simplexCss.css">
+      <DependentUpon>simplexCss.less</DependentUpon>
+    </Content>
+    <Content Include="css\Theme\simplexCss.min.css">
+      <DependentUpon>simplexCss.css</DependentUpon>
+    </Content>
+    <Content Include="css\Theme\slateCss.css">
+      <DependentUpon>slateCss.less</DependentUpon>
+    </Content>
+    <Content Include="css\Theme\slateCss.min.css">
+      <DependentUpon>slateCss.css</DependentUpon>
+    </Content>
+    <Content Include="css\Theme\spacelabCss.css">
+      <DependentUpon>spacelabCss.less</DependentUpon>
+    </Content>
+    <Content Include="css\Theme\spacelabCss.min.css">
+      <DependentUpon>spacelabCss.css</DependentUpon>
+    </Content>
+    <Content Include="css\Theme\superheroCss.css">
+      <DependentUpon>superheroCss.less</DependentUpon>
+    </Content>
+    <Content Include="css\Theme\superheroCss.min.css">
+      <DependentUpon>superheroCss.css</DependentUpon>
+    </Content>
+    <Content Include="css\Theme\unitedCss.css">
+      <DependentUpon>unitedCss.less</DependentUpon>
+    </Content>
+    <Content Include="css\Theme\unitedCss.less" />
+    <Content Include="css\Theme\superheroCss.less" />
+    <Content Include="css\Theme\spacelabCss.less" />
+    <Content Include="css\Theme\slateCss.less" />
+    <Content Include="css\Theme\simplexCss.less" />
+    <Content Include="css\Theme\unitedCss.min.css">
+      <DependentUpon>unitedCss.css</DependentUpon>
+    </Content>
+    <Content Include="css\Theme\yetiCss.css">
+      <DependentUpon>yetiCss.less</DependentUpon>
+    </Content>
+    <Content Include="css\Theme\yetiCss.less" />
+    <Content Include="css\Theme\yetiCss.min.css">
+      <DependentUpon>yetiCss.css</DependentUpon>
+    </Content>
     <Content Include="css\whhg.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
@@ -359,6 +481,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="css\Theme\commonCss.less" />
     <None Include="js\_references.js" />
     <Content Include="moreFonts\webhostinghub-glyphs.svg" />
     <Content Include="Global.asax" />

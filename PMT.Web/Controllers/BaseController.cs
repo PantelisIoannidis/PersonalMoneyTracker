@@ -41,13 +41,18 @@ namespace PMT.Web.Controllers
             
             if (!string.IsNullOrEmpty(objPreferences))
                 themePreferences = JsonConvert.DeserializeObject<ThemePreferences>(objPreferences);
- 
-            var newHref = "/Content/bootswatch/" + themePreferences.Theme + "/bootstrap.min.css";
+
+            ThemeBootstrap = "/Content/bootswatch/" + themePreferences.Theme + "/bootstrap.min.css";
+            ThemeCustomCss = "/css/Theme/" + themePreferences.Theme + "Css.css";
             if (string.IsNullOrEmpty(themePreferences.Theme) || themePreferences.Theme == "Default")
-                newHref = "/Content/bootstrap.min.css";
-            ThemeBootstrap = newHref;
+            {
+                ThemeBootstrap = "/Content/bootstrap.min.css";
+                ThemeCustomCss = "/css/Theme/DefaultCss.css";
+            }
+                
             ItemsPerPage = themePreferences.ItemsPerPage;
-            ViewBag.ThemeBootstrap = newHref;
+            ViewBag.ThemeBootstrap = ThemeBootstrap;
+            ViewBag.ThemeCss = ThemeCustomCss;
         }
     }
 }

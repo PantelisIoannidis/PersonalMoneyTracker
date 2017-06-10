@@ -30,8 +30,7 @@ namespace PMT.Web
                       "~/Content/font-awesome.css"));
 
             bundles.Add(new StyleBundle("~/css").Include(
-                      "~/css/whhg.css",
-                      "~/css/site.css"));
+                      "~/css/whhg.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/handlebars").Include(
                       "~/Scripts/handlebars.js"));

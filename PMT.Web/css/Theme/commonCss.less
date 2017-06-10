@@ -1,8 +1,9 @@
 ﻿
-.selectdd{
-    text-align:left;
+
+.selectdd {
+    text-align: left;
     max-width: 280px;
-    width:100%;
+    width: 100%;
 }
 
 .table-condensed>thead>tr>th, 
@@ -19,7 +20,7 @@
 }
 
 .nav > li > a {
-  color:#787878;
+    color: @nav_a_FontColor;
 }
 
 .nav-tabs > li, .nav-pills > li {
@@ -50,20 +51,18 @@
 }
 
 .categoryListItem.active {
-    background-color: #337AB7 !important;
-    color:white;
+    background-color: @category_Selection_BackgroundColor !important;
+    color: @category_Selection_FontColor;
 }
 
 .subCategoryListItem.active {
-    background-color: #337AB7 !important;
-    color:white;
+    background-color: @category_Selection_BackgroundColor !important;
+    color: @category_Selection_FontColor;
 }
 
 .subCategoryListItem {
     margin-left:25px;
 }
-
-
 
 input,
 select,
@@ -72,7 +71,7 @@ textarea {
 }
 
 #wrapper {
-    padding-top: 60px;
+    padding-top: @mainPanelTopPadding;
     padding-bottom: 10px;
     padding-left: 2px;
     padding-right: 15px;
@@ -82,22 +81,21 @@ textarea {
     list-style: none;
     text-decoration: none;
     overflow-y: auto;
-    background-color: #2FA4E7;
+    background-color: @myBar_Background_Color;
     overflow-x: hidden;
-    padding:15px 5px 15px 10px;
+    padding: 15px 5px 15px 10px;
 }
 
 .my-bar > li > a {
     display: block;
     text-decoration: none;
-    color: #fff;
+    color: @myBar_SelectionFontColor;
 }
 
 .my-bar li a:hover,
 .my-bar li a:focus {
-
-    color: #fff;
-    background-color: #175589 !important;
+    color: @myBar_SelectionFontColor_Focus;
+    background-color: @myBar_SelectionColor_Focus !important;
 }
 
 .my-bar > li > ul {
@@ -105,7 +103,7 @@ textarea {
 }
 
 .my-bar > li.active {
-    background-color: #277fc8 !important;
+    background-color: @myBar_SelectionColor !important;
 }
 
 .my-bar .iconInTile {
@@ -125,23 +123,23 @@ textarea {
     font-size: 1.2em;
 }
 
-.negativeNumber{
-    color:red;
+.negativeNumber {
+    color: @negativeNumberColor;
 }
 .transactionSummary{
     font-weight:bold;
     margin-bottom:15px;
 }
-.transactionSummary > .income{
-    color:#1a8a1a;
+.transactionSummary > .income {
+    color: @item_IncomeColor;
 }
 
-.transactionSummary > .expenses{
-    color:#b61414;
+.transactionSummary > .expenses {
+    color: @item_ExpenseColor;
 }
 
-.transactionSummary > .balance{
-    color:blue;
+.transactionSummary > .balance {
+    color: @item_BalanceColor;
 }
 
 .underLineItem{
@@ -154,7 +152,7 @@ textarea {
         display: none;
     }
     .use-big-fonts {
-        font-size: 1.3em !important;
+        font-size: @bigFontZoom !important;
     }
 }
 
@@ -164,9 +162,6 @@ textarea {
     }
     .use-big-fonts {
         font-size: 1em !important;
-    }
-    .my-bar{
-       
     }
 }
 
@@ -185,7 +180,7 @@ textarea {
     background-color: #666666; 
     z-index: 30001;
     opacity: .4; 
-    filter: alpha(opacity=70);
+    filter: alpha(opacity=85);
     display:inline;
 }
 #spinner{
