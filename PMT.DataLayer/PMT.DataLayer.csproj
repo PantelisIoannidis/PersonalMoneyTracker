@@ -96,18 +96,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Context\MainMigrations\201706091904251_Change of Transactionperpage type.cs" />
-    <Compile Include="Context\MainMigrations\201706091904251_Change of Transactionperpage type.Designer.cs">
-      <DependentUpon>201706091904251_Change of Transactionperpage type.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Context\MainMigrations\201706092242071_Change ItemsPerPage.cs" />
-    <Compile Include="Context\MainMigrations\201706092242071_Change ItemsPerPage.Designer.cs">
-      <DependentUpon>201706092242071_Change ItemsPerPage.cs</DependentUpon>
-    </Compile>
-    <Compile Include="IdentityDb.cs" />
-    <Compile Include="Context\IdentityMigrations\Configuration.cs" />
+    <Compile Include="ApplicationUser.cs" />
     <Compile Include="MainDb.cs" />
-    <Compile Include="Context\MainMigrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\CategoryRepository.cs" />
     <Compile Include="Interfaces\ICategoryRepository.cs" />
@@ -149,14 +139,6 @@
       <Project>{43D49CB4-2FE4-4F4A-9255-D5071F21136F}</Project>
       <Name>PMT.Models</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Context\MainMigrations\201706091904251_Change of Transactionperpage type.resx">
-      <DependentUpon>201706091904251_Change of Transactionperpage type.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Context\MainMigrations\201706092242071_Change ItemsPerPage.resx">
-      <DependentUpon>201706092242071_Change ItemsPerPage.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

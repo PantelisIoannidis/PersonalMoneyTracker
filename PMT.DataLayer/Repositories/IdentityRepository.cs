@@ -8,10 +8,10 @@ namespace PMT.DataLayer.Repositories
 {
     public class IdentityRepository : IIdentityRepository
     {
-        IdentityDb db;
+        MainDb db;
         public IdentityRepository()
         {
-            db = new IdentityDb();
+            db = new MainDb();
         }
         public string GetUserId(string userName)
         {

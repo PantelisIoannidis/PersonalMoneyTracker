@@ -12,19 +12,22 @@ using static PMT.Entities.Literals;
 
 namespace PMT.Web.Controllers
 {
-    public class SettingsController : BaseController
+    public class SettingsController : Controller
     {
 
         ILogger logger;
         ICommonHelper commonHelper;
         IUserSettingsEngine userSettingsEngine;
+        private string userId;
+
         public SettingsController(ILoggerFactory logger,
                                 ICommonHelper commonHelper,
-                                IUserSettingsEngine userSettingsEngine) : base(logger, commonHelper)
+                                IUserSettingsEngine userSettingsEngine) 
         {
             this.logger = logger.CreateLogger<SettingsController>();
             this.commonHelper = commonHelper;
             this.userSettingsEngine = userSettingsEngine;
+            userId = commonHelper.GetUserId(HttpContext);
         }
 
 
@@ -47,6 +50,7 @@ namespace PMT.Web.Controllers
         {
             if (ModelState.IsValid)
             {
+                TempData[GlobalCookies.themePreferenceCookie] = preferences;
                 commonHelper.SetThemePreference(HttpContext, preferences);
                 var result = userSettingsEngine.StoreUserSettings(userSettings);
                 if (result.Status)

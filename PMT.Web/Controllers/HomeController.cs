@@ -12,7 +12,7 @@ using System.Web.Mvc;
 namespace PMT.Web.Controllers
 {
     [Authorize]
-    public class HomeController : BaseController
+    public class HomeController : Controller
     {
         ILogger logger;
         ICommonHelper commonHelper;
@@ -20,17 +20,18 @@ namespace PMT.Web.Controllers
         IChartsEngine chartsEngine;
 
         public const string transactionPreferences = "transactionPreferences";
+        private string userId;
 
         public HomeController(ILoggerFactory logger,
                                 ICommonHelper commonHelper,
                                 ITransactionsEngine transactionsEngine,
-                                IChartsEngine chartsEngine) : base(logger, commonHelper)
+                                IChartsEngine chartsEngine) 
         {
             this.logger = logger.CreateLogger<HomeController>();
             this.commonHelper = commonHelper;
             this.transactionsEngine = transactionsEngine;
             this.chartsEngine = chartsEngine;
-
+            userId = commonHelper.GetUserId(HttpContext);
         }
         public ActionResult Index()
         {
@@ -49,9 +50,6 @@ namespace PMT.Web.Controllers
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
-            throw new Exception();
-            //Response.StatusCode = 404;
-            //throw new HttpException(404, "HTTP/1.1 404 Not Found");
             return View();
         }
 

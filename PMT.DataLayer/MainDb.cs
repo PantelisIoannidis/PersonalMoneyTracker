@@ -1,5 +1,4 @@
-﻿using PMT.DataLayer.Context;
-using PMT.Entities;
+﻿using PMT.Entities;
 using PMT.DataLayer.Seed;
 using System;
 using System.Collections.Generic;
@@ -9,10 +8,11 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace PMT.DataLayer
 {
-    public class MainDb : DbContext
+    public class MainDb : IdentityDbContext<ApplicationUser>
     {
         public MainDb()
             :base("name=DefaultConnection")
@@ -52,7 +52,7 @@ namespace PMT.DataLayer
 
 
             // We ignore these fields because we want to avoid using seperate modelviews for the simplest occutions
-            //modelBuilder.Entity<MoneyAccount>().Ignore(e => e.Balance);
+            modelBuilder.Entity<MoneyAccount>().Ignore(e => e.Balance);
 
             modelBuilder.Entity<Budget>()
                 .Property(e => e.Amount)
@@ -74,6 +74,10 @@ namespace PMT.DataLayer
             }
         }
 
+        public static MainDb Create()
+        {
+            return new MainDb();
+        }
 
     }
 }

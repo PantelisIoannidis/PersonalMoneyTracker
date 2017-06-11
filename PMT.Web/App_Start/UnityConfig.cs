@@ -3,7 +3,6 @@ using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.Configuration;
 using PMT.DataLayer.Repositories;
 using PMT.DataLayer;
-using PMT.DataLayer.Context;
 using System.Data.Entity;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -70,7 +69,7 @@ namespace PMT.Web.App_Start
             //Account Login
             container.RegisterType<IUserStore<ApplicationUser>, UserStore<ApplicationUser>>();
             container.RegisterType<UserManager<ApplicationUser>>();
-            container.RegisterType<DbContext, IdentityDb>();
+            //container.RegisterType<DbContext, MainDb>();
             container.RegisterType<ApplicationUserManager>();
             container.RegisterType<AccountController>(new InjectionConstructor(new ResolvedParameter<IIdentityEngine>()));
             container.RegisterType<ManageController>(new InjectionConstructor());

@@ -22,7 +22,7 @@ using static PMT.Entities.Literals;
 namespace PMT.Web.Controllers
 {
     [Authorize]
-    public class TransactionsController : BaseController
+    public class TransactionsController : Controller
     {
         
 
@@ -47,7 +47,7 @@ namespace PMT.Web.Controllers
                                         IMoneyAccountEngine moneyAccountEngine,
                                         ITransactionsEngine transactionsEngine,
                                         IMapping mapping
-                                        ):base(logger,commonHelper)
+                                        )
         {
             
             this.transactionRepository = transactionRepository;
@@ -60,13 +60,14 @@ namespace PMT.Web.Controllers
             this.commonHelper = commonHelper;
             this.period = period;
             this.logger = logger.CreateLogger<TransactionsController>();
+            userId = commonHelper.GetUserId(HttpContext);
 
-            
         }
 
         
 
         public const string transactionPreferences = "transactionPreferences";
+        private string userId;
 
         [MoveNotificationsDataFilter]
         public ActionResult Index(int? page=1)

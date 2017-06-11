@@ -16,10 +16,6 @@ namespace PMT.DataLayer.Seed
 
         }
 
-        public void Seed(PMT.DataLayer.IdentityDb context)
-        {
-
-        }
 
         public void Seed(PMT.DataLayer.MainDb context)
         {

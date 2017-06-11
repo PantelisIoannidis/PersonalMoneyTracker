@@ -29,20 +29,20 @@ namespace PMT.BusinessLayer
             this.logger = logger.CreateLogger<MoneyAccountEngine>();
         }
 
-        public void AddNewAccountWithInitialBalance(MoneyAccountVM moneyAccountVM)
+        public void AddNewAccountWithInitialBalance(MoneyAccount moneyAccount)
         {
             try
             {
-                var transaction = new TransactionVM()
+                var transaction = new Transaction()
                 {
-                    UserId = moneyAccountVM.UserId,
-                    MoneyAccountId = moneyAccountVM.MoneyAccountId,
+                    UserId = moneyAccount.UserId,
+                    MoneyAccountId = moneyAccount.MoneyAccountId,
                     TransactionType = TransactionType.Adjustment,
-                    Amount = moneyAccountVM.Balance,
+                    Amount = moneyAccount.Balance,
                     TransactionDate = DateTime.Now,
-                    Description = moneyAccountVM.Name + " " + ViewText.InitialBalance
+                    Description = moneyAccount.Name + " " + ViewText.InitialBalance
                 };
-                moneyAccountRepository.AddNewAccountWithInitialBalance(moneyAccountVM, transaction);
+                moneyAccountRepository.AddNewAccountWithInitialBalance(moneyAccount, transaction);
             }
             catch (Exception ex)
             {
@@ -82,20 +82,20 @@ namespace PMT.BusinessLayer
 
         }
 
-        public void EditAccountNameAdjustBalance(MoneyAccountVM moneyAccountVM)
+        public void EditAccountNameAdjustBalance(MoneyAccount moneyAccount)
         {
             try
             {
-                var transaction = new TransactionVM()
+                var transaction = new Transaction()
                 {
-                    UserId = moneyAccountVM.UserId,
-                    MoneyAccountId = moneyAccountVM.MoneyAccountId,
+                    UserId = moneyAccount.UserId,
+                    MoneyAccountId = moneyAccount.MoneyAccountId,
                     TransactionType = TransactionType.Adjustment,
-                    Amount = moneyAccountVM.Balance,
+                    Amount = moneyAccount.Balance,
                     TransactionDate = DateTime.Now,
                     Description = ModelText.MoneyAccountName + " " + ViewText.Adjustment
                 };
-                moneyAccountRepository.EditAccountNameAdjustBalance(moneyAccountVM, transaction);
+                moneyAccountRepository.EditAccountNameAdjustBalance(moneyAccount, transaction);
             }
             catch (Exception ex)
             {

@@ -9,6 +9,7 @@ namespace PMT.Web
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorExtendedAttribute());
+            filters.Add(new ThemeFilterAttribute());
         }
     }
 }
