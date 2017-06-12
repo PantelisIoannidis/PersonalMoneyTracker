@@ -101,7 +101,7 @@
 	function dropdownMenuToggle() {
 	    $('ul.categoryList > li > a').on("click",function () {
 	        $this = $(this);
-            $this.find("i").toggleClass("glyphicon-chevron-right glyphicon-chevron-down");
+            $this.find("i.facaret").toggleClass("fa-caret-right fa-caret-down");
             var $target = $this.data("target");
             $('#' + $target).toggleClass("in");
 	    });
