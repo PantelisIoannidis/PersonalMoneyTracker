@@ -12,7 +12,6 @@ var pmt = function () {
         commonUI.loadingEvents();
         commonUI.loadingFinished();
         commonUI.showNotifications();
-        commonUI.sideBarCollapse();
     };
 
     var onDocumentLoadHome = function () {

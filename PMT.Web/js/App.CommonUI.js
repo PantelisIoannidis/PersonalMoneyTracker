@@ -66,30 +66,6 @@
         }
     }
 
-    var collapseOnResize = true;
-
-    function checkWidth() {
-        var myBar = $('.my-bar-collapse-side');
-        var windowWidth = $(window).width();
-
-        if (windowWidth < 768) {
-           if (collapseOnResize == true){
-                collapseOnResize = false;
-                myBar.collapse("hide");
-            }
-            else {
-                collapseOnResize = true;
-                myBar.collapse("show");
-            }
-        }
-    }
-
-    function sideBarCollapse() {
-        //$(window).resize(function () {
-        //    checkWidth(false);
-        //});
-    }
-
     return {
         calculateActiveElement: calculateActiveElement,
         loadingEvents: loadingEvents,
@@ -97,7 +73,6 @@
         showNotifications: showNotifications,
         showSuccessNotifications: showSuccessNotifications,
         showDangerNotifications: showDangerNotifications,
-        showWarningNotifications: showWarningNotifications,
-        sideBarCollapse : sideBarCollapse
+        showWarningNotifications: showWarningNotifications
     };
 }();
