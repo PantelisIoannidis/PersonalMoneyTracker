@@ -3,6 +3,7 @@
     var incomeByCategoryChartData = [];
     var expenseByCategoryChartData = [];
     var incomeVsExpenseChartData = [];
+    var chartFontColor = '#eee';
 
     function setIncomeVsExpenseChartData(s) {
         incomeVsExpenseChartData.push(JSON.parse(s));
@@ -15,6 +16,7 @@
     };
 
     function DrawIncomeVsExpenseChart() {
+        Chart.defaults.global.defaultFontColor = chartFontColor;
         var ctx = document.getElementById("incomeVsExpenseChart");
         var myChart = new Chart(ctx, {
             type: 'horizontalBar',
@@ -44,6 +46,7 @@
     }
 
     function DrawExpenseByCategoryChart() {
+        Chart.defaults.global.defaultFontColor = chartFontColor;
         var ctx = document.getElementById("expenseByCategoryChart");
         var myChart = new Chart(ctx, {
             type: 'pie',
@@ -62,6 +65,7 @@
     }
 
     function DrawIncomeByCategoryChart() {
+        Chart.defaults.global.defaultFontColor = chartFontColor;
         var ctx = document.getElementById("incomeByCategoryChart");
         var myChart = new Chart(ctx, {
             type: 'pie',
@@ -79,9 +83,14 @@
         });
     }
 
-
+    function GETproperty(classOrId, property) {
+        var FirstChar = classOrId.charAt(0); var Remaining = classOrId.substring(1);
+        var elem = (FirstChar == '#') ? document.getElementById(Remaining) : document.getElementsByClassName(Remaining)[0];
+        return window.getComputedStyle(elem, null).getPropertyValue(property);
+    }
 
     function onHomeChartsInit() {
+        chartFontColor = GETproperty('#chartFontColor', 'color');
         DrawIncomeVsExpenseChart();
         DrawExpenseByCategoryChart();
         DrawIncomeByCategoryChart();

@@ -1,4 +1,7 @@
-﻿.selectdd {
+﻿#chartFontColor {
+  color: #000;
+}
+.selectdd {
   text-align: left;
   max-width: 280px;
   width: 100%;
@@ -64,6 +67,7 @@ textarea {
   padding-right: 15px;
 }
 .my-bar {
+  border-radius: 5px;
   list-style: none;
   text-decoration: none;
   overflow-y: auto;
