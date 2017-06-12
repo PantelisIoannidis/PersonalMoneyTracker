@@ -14,5 +14,7 @@ namespace PMT.DataLayer.Repositories
         MoneyAccount GetMoneyAccountwithBalance(string userId, int moneyAccountId);
         void AddNewAccountWithInitialBalance(MoneyAccount moneyAccount, Transaction transaction);
         void EditAccountNameAdjustBalance(MoneyAccount moneyAccount, Transaction transaction);
+
+        IActionStatus DeleteAccount(int id);
     }
 }

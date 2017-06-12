@@ -40,6 +40,11 @@ namespace PMT.BusinessLayer
             this.categoriesEngine = categoriesEngine;
         }
 
+        public decimal GetBalance(string userId)
+        {
+            return transactionRepository.GetBalance(userId);
+        }
+
         public ActionStatus InsertNewTransaction(Transaction transaction)
         {
 
@@ -179,6 +184,32 @@ namespace PMT.BusinessLayer
                 logger.LogError(LoggingEvents.POPULATE_OBJECT, ex, "Populate transactions summer view model");
                 return new TransactionsSummaryVM();
             }
+        }
+
+        public TransactionVM GetTransactionVM(int transactionId)
+        {
+            return transactionRepository.GetTransactionVM(transactionId);
+        }
+
+        public IQueryable<TransactionVM> GetTransactionsVM(string userId, Period period, int account)
+        {
+            return transactionRepository.GetTransactionsVM(userId, period, account);
+        }
+
+        public void UpdateTransaction(Transaction transaction)
+        {
+            transactionRepository.Update(transaction);
+        }
+
+        public Transaction GetTransactionById(int id)
+        {
+            return transactionRepository.GetById(id);
+        }
+
+        public void DeleteTransaction(int id)
+        {
+            transactionRepository.Delete(id);
+            transactionRepository.Save();
         }
     }
 }

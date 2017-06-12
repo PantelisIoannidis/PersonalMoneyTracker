@@ -9,8 +9,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using PMT.Web.Models;
-using PMT.DataLayer;
 using PMT.BusinessLayer;
+using PMT.DataLayer;
 
 namespace PMT.Web.Controllers
 {

@@ -13,8 +13,8 @@ namespace PMT.DataLayer.Repositories
     {
         ILogger logger;
         IActionStatus actionStatus;
-        public UserSettingsRepository(ILoggerFactory logger, IActionStatus actionStatus) 
-            :base(new MainDb())
+        public UserSettingsRepository(ILoggerFactory logger, IActionStatus actionStatus)
+            : base(new MainDb())
         {
             this.actionStatus = actionStatus;
             this.logger = logger.CreateLogger<UserSettingsRepository>();
@@ -27,17 +27,28 @@ namespace PMT.DataLayer.Repositories
 
         public IActionStatus StoreSettings(UserSettings userSettings)
         {
-            var entity = db.UserSettings.FirstOrDefault(x => x.UserId == userSettings.UserId);
-            if (entity == null)
+            string errorMessage = "";
+            try
             {
-                db.UserSettings.Add(userSettings);
+                var entity = db.UserSettings.FirstOrDefault(x => x.UserId == userSettings.UserId);
+                if (entity == null)
+                {
+                    errorMessage = "Adding user settings in database";
+                    db.UserSettings.Add(userSettings);
+                }
+                else
+                {
+                    errorMessage = "Updating user settings in database";
+                    db.Entry(entity).CurrentValues.SetValues(userSettings);
+                }
+
+                db.SaveChanges();
             }
-            else
+            catch (Exception ex)
             {
-                db.Entry(entity).CurrentValues.SetValues(userSettings);
+                actionStatus = ActionStatus.CreateFromException(errorMessage, ex);
+                logger.LogError(LoggingEvents.UPDATE_ITEM, ex, errorMessage);
             }
-            
-            db.SaveChanges();
             return actionStatus;
         }
     }

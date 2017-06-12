@@ -64,6 +64,7 @@ namespace PMT.Web.App_Start
             container.RegisterType<ICalculationsEngine, CalculationsEngine>();
             container.RegisterType<IChartsEngine, ChartsEngine>();
             container.RegisterType<IUserSettingsEngine, UserSettingsEngine>();
+            container.RegisterType<IIconsEngine, IconsEngine>();
 
 
             //Account Login

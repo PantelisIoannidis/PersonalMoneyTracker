@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
 using PMT.BusinessLayer;
-using PMT.DataLayer;
 using PMT.Models;
 using PMT.Web.Helpers;
 using System;

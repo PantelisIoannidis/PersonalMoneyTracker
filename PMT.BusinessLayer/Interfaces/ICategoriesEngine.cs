@@ -14,5 +14,8 @@ namespace PMT.BusinessLayer
         IEnumerable<Category> GetAllSpecialGategoriesSubCategories(string userId);
         ActionStatus DeleteCategorySubCategories(string userId, string id);
         void EditCategoryAndSubCategory(CategoryVM categoryVM);
+
+        IEnumerable<Category> GetCategories(string userId, TransactionType type);
+        IEnumerable<SubCategory> GetSubCategories(string userId, int categoryId);
     }
 }

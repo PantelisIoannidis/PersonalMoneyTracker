@@ -19,6 +19,7 @@ namespace PMT.BusinessLayer
         IActionStatus actionStatus;
         ICategoryRepository categoryRepository;
         ISubCategoryRepository subCategoryRepository;
+        
 
         public CategoriesEngine(ILoggerFactory logger,
             IActionStatus actionStatus,
@@ -207,5 +208,17 @@ namespace PMT.BusinessLayer
             return categoryRepository.GetAllGategoriesSubCategories(userId)
                 .Where(x => !string.IsNullOrEmpty(x.SpecialAttribute));
         }
+
+        public IEnumerable<Category> GetCategories(string userId, TransactionType type)
+        {
+            return categoryRepository.GetGategories(userId, type).Where(x => string.IsNullOrEmpty(x.SpecialAttribute));
+        }
+
+        public IEnumerable<SubCategory> GetSubCategories(string userId, int categoryId)
+        {
+            return subCategoryRepository.GetSubCategories(userId, categoryId).Where(x => string.IsNullOrEmpty(x.SpecialAttribute));
+        }
+
+
     }
 }

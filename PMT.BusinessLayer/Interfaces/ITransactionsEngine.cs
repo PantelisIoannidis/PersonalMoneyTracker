@@ -2,6 +2,7 @@
 using PMT.Common.Helpers;
 using PMT.Entities;
 using PMT.Models;
+using System.Linq;
 
 namespace PMT.BusinessLayer
 {
@@ -9,7 +10,12 @@ namespace PMT.BusinessLayer
     {
         TransactionFilterVM GetFilter(string userId, string objPreferences);
         TransactionsSummaryVM PrepareSummary(string userId, TransactionFilterVM transactionFilterVM);
-
+        decimal GetBalance(string userId);
         ActionStatus InsertNewTransaction(Transaction transaction);
+        TransactionVM GetTransactionVM(int transactionId);
+        void UpdateTransaction(Transaction transaction);
+        Transaction GetTransactionById(int id);
+        void DeleteTransaction(int id);
+        IQueryable<TransactionVM> GetTransactionsVM(string userId, Period period, int account);
     }
 }

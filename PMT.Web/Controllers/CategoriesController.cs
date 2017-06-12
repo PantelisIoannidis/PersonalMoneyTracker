@@ -2,7 +2,6 @@
 using PMT.BusinessLayer;
 using PMT.Common;
 using PMT.Common.Resources;
-using PMT.DataLayer.Repositories;
 using PMT.Entities;
 using PMT.Models;
 using PMT.Web.Helpers;
@@ -22,26 +21,20 @@ namespace PMT.Web.Controllers
 
         ILogger logger;
         ICommonHelper commonHelper;
-        ICategoryRepository categoryRepository;
-        ISubCategoryRepository subCategoryRepository;
         ICategoriesEngine categoriesEngine;
-        IIconRepository iconRepository;
+        IIconsEngine iconsEngine;
         private string userId;
 
         public CategoriesController(ILoggerFactory logger,
                                         ICommonHelper commonHelper,
-                                        ICategoryRepository categoryRepository,
-                                        ISubCategoryRepository subCategoryRepository,
                                         ICategoriesEngine categoriesEngine,
-                                        IIconRepository iconRepository
+                                        IIconsEngine iconsEngine
                                         ) 
         {
             this.commonHelper = commonHelper;
             this.logger = logger.CreateLogger<CategoriesController>();
-            this.categoryRepository = categoryRepository;
-            this.subCategoryRepository = subCategoryRepository;
             this.categoriesEngine = categoriesEngine;
-            this.iconRepository = iconRepository;
+            this.iconsEngine = iconsEngine;
             userId = commonHelper.GetUserId(HttpContext);
         }
 
@@ -59,7 +52,7 @@ namespace PMT.Web.Controllers
 
         public JsonResult GetAllIcons()
         {
-            var icons = iconRepository.GetAll().ToList();
+            var icons = iconsEngine.GetAll().ToList();
             return Json(icons, JsonRequestBehavior.AllowGet);
         }
 

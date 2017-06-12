@@ -21,45 +21,39 @@ namespace PMT.Web.Controllers
     public class MoneyAccountsController : Controller
     {
         ILogger logger;
-        IMoneyAccountRepository moneyAccountRepository;
-        ICommonHelper commonHelper;
         IMoneyAccountEngine moneyAccountEngine;
-        ITransactionRepository transactionRepository;
-        ICategoryRepository categoryRepository;
-        ISubCategoryRepository subCategoryRepository;
+        ICommonHelper commonHelper;
+        ICategoriesEngine categoriesEngine;
+        ITransactionsEngine transactionsEngine;
         private string userId;
 
-        public MoneyAccountsController(ICommonHelper commonHelper, 
-                                        IMoneyAccountRepository moneyAccountRepository,
+        public MoneyAccountsController(ICommonHelper commonHelper,
                                         IMoneyAccountEngine moneyAccountEngine,
-                                        ITransactionRepository transactionRepository,
-                                        ICategoryRepository categoryRepository,
-                                        ISubCategoryRepository subCategoryRepository,
+                                        ICategoriesEngine categoriesEngine,
+                                        ITransactionsEngine transactionsEngine,
                                         ILoggerFactory logger) 
         {
-            this.moneyAccountRepository = moneyAccountRepository;
             this.commonHelper = commonHelper;
-            this.categoryRepository = categoryRepository;
-            this.subCategoryRepository = subCategoryRepository;
+            this.categoriesEngine = categoriesEngine;
             this.moneyAccountEngine = moneyAccountEngine;
-            this.transactionRepository = transactionRepository;
             this.logger = logger.CreateLogger<MoneyAccountsController>();
+            this.transactionsEngine = transactionsEngine;
             userId = commonHelper.GetUserId(HttpContext);
         }
 
-        [HttpGet]
-        public ActionResult GetCategories()
-        {
-            //var categories = categoryRepository.GetGategory(type);
-            var categories = categoryRepository.GetAll();
-            return Json(categories, JsonRequestBehavior.AllowGet);
-        }
+        //[HttpGet]
+        //public ActionResult GetCategories()
+        //{
+        //    //var categories = categoryRepository.GetGategory(type);
+        //    var categories = categoryRepository.GetAll();
+        //    return Json(categories, JsonRequestBehavior.AllowGet);
+        //}
 
         [MoveNotificationsDataFilter]
         public ActionResult Index()
         {
             logger.LogInformation("MoneyAccountsController Index");
-            ViewBag.TotalBalance = transactionRepository.GetBalance(userId);
+            ViewBag.TotalBalance = transactionsEngine.GetBalance(userId);
             return View(moneyAccountEngine.GetMoneyAccountsWithBalance(userId));
         }
 
@@ -96,7 +90,7 @@ namespace PMT.Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            MoneyAccount moneyAccount = moneyAccountRepository.GetById(id);
+            MoneyAccount moneyAccount = moneyAccountEngine.GetById(id??0);
             if (moneyAccount == null)
             {
                 return HttpNotFound();
@@ -128,7 +122,7 @@ namespace PMT.Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            MoneyAccount moneyAccount = moneyAccountRepository.GetById(id);
+            MoneyAccount moneyAccount = moneyAccountEngine.GetById(id??0);
             if (moneyAccount == null)
             {
                 return HttpNotFound();
@@ -141,9 +135,7 @@ namespace PMT.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            MoneyAccount moneyAccount = moneyAccountRepository.GetById(id);
-            moneyAccountRepository.Delete(id);
-            moneyAccountRepository.Save();
+            moneyAccountEngine.DeleteAccount(id);
             TempData["NotificationSuccess"] = "Account successfully deleted";
             return RedirectToAction("Index");
         }
@@ -152,7 +144,7 @@ namespace PMT.Web.Controllers
         {
             if (disposing)
             {
-                moneyAccountRepository.Dispose();
+                
             }
             base.Dispose(disposing);
         }

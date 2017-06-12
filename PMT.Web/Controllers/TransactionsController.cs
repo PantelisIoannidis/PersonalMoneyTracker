@@ -6,11 +6,9 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using PMT.DataLayer;
 using PMT.Entities;
 using Microsoft.Extensions.Logging;
 using PMT.Web.Helpers;
-using PMT.DataLayer.Repositories;
 using PMT.Models;
 using PMT.Common;
 using PMT.BusinessLayer;
@@ -29,32 +27,23 @@ namespace PMT.Web.Controllers
         ILogger logger;
         IPeriod period;
         ICommonHelper commonHelper;
-        ITransactionRepository transactionRepository;
-        ICategoryRepository categoryRepository;
-        ISubCategoryRepository subCategoryRepository;
-        IMoneyAccountRepository moneyAccountRepository;
-        IMoneyAccountEngine moneyAccountEngine;
         ITransactionsEngine transactionsEngine;
+        ICategoriesEngine categoriesEngine;
+        IMoneyAccountEngine moneyAccountEngine;
         IMapping mapping;
 
         public TransactionsController(ILoggerFactory logger,
                                         IPeriod period,
                                         ICommonHelper commonHelper,
-                                         ITransactionRepository transactionRepository,
-                                        ICategoryRepository categoryRepository,
-                                        ISubCategoryRepository subCategoryRepository,
-                                        IMoneyAccountRepository moneyAccountRepository,
+                                        ICategoriesEngine categoriesEngine,
                                         IMoneyAccountEngine moneyAccountEngine,
                                         ITransactionsEngine transactionsEngine,
                                         IMapping mapping
                                         )
         {
-            
-            this.transactionRepository = transactionRepository;
+
+            this.categoriesEngine = categoriesEngine;
             this.transactionsEngine = transactionsEngine;
-            this.categoryRepository = categoryRepository;
-            this.subCategoryRepository = subCategoryRepository;
-            this.moneyAccountRepository = moneyAccountRepository;
             this.moneyAccountEngine = moneyAccountEngine;
             this.mapping = mapping;
             this.commonHelper = commonHelper;
@@ -90,7 +79,7 @@ namespace PMT.Web.Controllers
             TransactionFilterVM transactionFilterVM = transactionsEngine.GetFilter(userId, objPreferences);
             period.Init(DateTime.Parse(transactionFilterVM.SelectedDateFull), (PeriodType)transactionFilterVM.PeriodFilterId);
 
-            var transactionsVM = transactionRepository.GetTransactionsVM(userId, (Period)period, transactionFilterVM.AccountFilterId);
+            var transactionsVM = transactionsEngine.GetTransactionsVM(userId, (Period)period, transactionFilterVM.AccountFilterId);
             var cnt = transactionsVM.Count();
             var pager = new Pager(cnt, page.Value, itemsPerPage);
 
@@ -125,27 +114,27 @@ namespace PMT.Web.Controllers
         public ActionResult GetAccountsAvailableForTransfer(int accountId)
         {
 
-            var accounts = moneyAccountRepository.GetMoneyAccountsExcludingCurrent(userId,accountId);
+            var accounts = moneyAccountEngine.GetMoneyAccountsExcludingCurrent(userId,accountId);
             
             return Json(accounts, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult GetCategories(TransactionType type)
         {
-            var categories = categoryRepository.GetGategories(userId,type).Where(x=> string.IsNullOrEmpty(x.SpecialAttribute));
+            var categories = categoriesEngine.GetCategories(userId,type).Where(x=> string.IsNullOrEmpty(x.SpecialAttribute));
             return Json(categories, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult GetSubCategories(int categoryId)
         {
-            var subCategories = subCategoryRepository.GetSubCategories(userId,categoryId).Where(x => string.IsNullOrEmpty(x.SpecialAttribute));
+            var subCategories = categoriesEngine.GetSubCategories(userId,categoryId).Where(x => string.IsNullOrEmpty(x.SpecialAttribute));
             return Json(subCategories, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult Create()
         {
 
-            var moneyAccounts = moneyAccountRepository.GetMoneyAccounts(userId);
+            var moneyAccounts = moneyAccountEngine.GetMoneyAccounts(userId);
             ViewBag.MoneyAccountId = new SelectList(moneyAccounts, "MoneyAccountId", "Name",moneyAccounts.FirstOrDefault());
             var transaction = new Transaction()
             {
@@ -170,7 +159,7 @@ namespace PMT.Web.Controllers
                 }
             }
             ViewBag.NotificationWarning = "New transaction couldn't be created";
-            var moneyAccounts = moneyAccountRepository.GetMoneyAccounts(userId);
+            var moneyAccounts = moneyAccountEngine.GetMoneyAccounts(userId);
             ViewBag.MoneyAccountId = new SelectList(moneyAccounts, "MoneyAccountId", "Name", moneyAccounts.FirstOrDefault());
             return View(transaction);
         }
@@ -178,9 +167,9 @@ namespace PMT.Web.Controllers
         public ActionResult Edit(int? id)
         {
 
-            var moneyAccounts = moneyAccountRepository.GetMoneyAccounts(userId);
+            var moneyAccounts = moneyAccountEngine.GetMoneyAccounts(userId);
             ViewBag.MoneyAccountId = new SelectList(moneyAccounts, "MoneyAccountId", "Name", moneyAccounts.FirstOrDefault());
-            var transaction = transactionRepository.GetById(id);
+            var transaction = transactionsEngine.GetTransactionById(id??0);
             
             return View(transaction);
         }
@@ -193,7 +182,7 @@ namespace PMT.Web.Controllers
             transaction.UserId = userId;
             if (ModelState.IsValid)
             {
-                transactionRepository.Update(transaction);
+                transactionsEngine.UpdateTransaction(transaction);
                 TempData["NotificationSuccess"] = "Transaction has been modified";
                 return RedirectToAction("Index");
             }
@@ -207,7 +196,7 @@ namespace PMT.Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Transaction transactionVM = transactionRepository.GetTransactionVM(id.Value);
+            Transaction transactionVM = transactionsEngine.GetTransactionVM(id.Value);
             if (transactionVM == null)
                 return HttpNotFound();
             return View(transactionVM);
@@ -217,8 +206,7 @@ namespace PMT.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            transactionRepository.Delete(id);
-            transactionRepository.Save();
+            transactionsEngine.DeleteTransaction(id);
             TempData["NotificationSuccess"] = "Transaction successfully deleted";
             return RedirectToAction("Index");
         }
@@ -227,7 +215,7 @@ namespace PMT.Web.Controllers
         {
             if (disposing)
             {
-                transactionRepository.Dispose();
+                
             }
             base.Dispose(disposing);
         }

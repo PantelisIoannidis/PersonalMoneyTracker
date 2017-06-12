@@ -29,6 +29,16 @@ namespace PMT.BusinessLayer
             this.logger = logger.CreateLogger<MoneyAccountEngine>();
         }
 
+        public MoneyAccount GetById(int id)
+        {
+            return moneyAccountRepository.GetById(id);
+        }
+
+        public IActionStatus DeleteAccount(int id)
+        {
+            return moneyAccountRepository.DeleteAccount(id);
+        }
+
         public void AddNewAccountWithInitialBalance(MoneyAccount moneyAccount)
         {
             try
@@ -123,6 +133,11 @@ namespace PMT.BusinessLayer
                 logger.LogError(LoggingEvents.CALL_METHOD, ex, "Call repository, Get MoneyAccounts and All option");
             }
             return moneyAccounts;
+        }
+
+        public List<MoneyAccount> GetMoneyAccountsExcludingCurrent(string userId, int accountId)
+        {
+            return moneyAccountRepository.GetMoneyAccountsExcludingCurrent(userId, accountId);
         }
     }
 }

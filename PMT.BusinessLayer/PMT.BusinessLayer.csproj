@@ -79,6 +79,8 @@
     <Compile Include="CalculationsEngine.cs" />
     <Compile Include="CategoriesEngine.cs" />
     <Compile Include="ChartsEngine.cs" />
+    <Compile Include="IconsEngine.cs" />
+    <Compile Include="IIconsEngine.cs" />
     <Compile Include="Interfaces\ICalculationsEngine.cs" />
     <Compile Include="Interfaces\ICategoriesEngine.cs" />
     <Compile Include="Interfaces\IChartsEngine.cs" />
