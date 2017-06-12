@@ -139,6 +139,10 @@ textarea {
   .use-big-fonts {
     font-size: 1em !important;
   }
+  .my-bar > li {
+    float: left;
+    padding: 5px;
+  }
 }
 .btn {
   min-width: 80px;
