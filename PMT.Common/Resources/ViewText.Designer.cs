@@ -331,6 +331,15 @@ namespace PMT.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Income vs Expenses.
+        /// </summary>
+        public static string IncomevsExpenses {
+            get {
+                return ResourceManager.GetString("IncomevsExpenses", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Initial Balance.
         /// </summary>
         public static string InitialBalance {

@@ -303,4 +303,7 @@
   <data name="Apply" xml:space="preserve">
     <value>Apply</value>
   </data>
+  <data name="IncomevsExpenses" xml:space="preserve">
+    <value>Income vs Expenses</value>
+  </data>
 </root>

@@ -1,6 +1,6 @@
 ﻿@model PMT.Web.Models.AddPhoneNumberViewModel
 @{
-    ViewBag.Title = "Phone Number";
+    ViewBag.Title = IdentityText.PhoneNumber;
 }
 <div class="panel panel-primary use-big-fonts">
     <div class="panel-heading">@ViewBag.Title</div>
@@ -9,7 +9,7 @@
         @using (Html.BeginForm("AddPhoneNumber", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
         {
             @Html.AntiForgeryToken()
-            <h4>Add a phone number</h4>
+            <h4>@IdentityText.AddAPhoneNumber</h4>
             <hr />
             @Html.ValidationSummary("", new { @class = "text-danger" })
             <div class="form-group">
@@ -20,7 +20,7 @@
             </div>
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" class="btn btn-default" value="Submit" />
+                    <input type="submit" class="btn btn-default" value="@IdentityText.Submit" />
                 </div>
             </div>
         }

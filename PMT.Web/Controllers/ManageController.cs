@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using PMT.Web.Models;
+using PMT.Common.Resources;
 
 namespace PMT.Web.Controllers
 {
@@ -55,12 +56,12 @@ namespace PMT.Web.Controllers
         public async Task<ActionResult> Index(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
-                message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
-                : message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."
-                : message == ManageMessageId.SetTwoFactorSuccess ? "Your two-factor authentication provider has been set."
-                : message == ManageMessageId.Error ? "An error has occurred."
-                : message == ManageMessageId.AddPhoneSuccess ? "Your phone number was added."
-                : message == ManageMessageId.RemovePhoneSuccess ? "Your phone number was removed."
+                message == ManageMessageId.ChangePasswordSuccess ? IdentityText.YourPasswordHasBeenChanged
+                : message == ManageMessageId.SetPasswordSuccess ? IdentityText.YourPasswordHasBeenSet
+                : message == ManageMessageId.SetTwoFactorSuccess ? IdentityText.YourTwoFactorAuthenticationProviderHasBeenSet
+                : message == ManageMessageId.Error ? IdentityText.AnErrorHasOccurred
+                : message == ManageMessageId.AddPhoneSuccess ? IdentityText.YourPhoneNumberWasAdded
+                : message == ManageMessageId.RemovePhoneSuccess ? IdentityText.YourPhoneNumberWasRemoved
                 : "";
 
             var userId = User.Identity.GetUserId();
@@ -123,7 +124,7 @@ namespace PMT.Web.Controllers
                 var message = new IdentityMessage
                 {
                     Destination = model.Number,
-                    Body = "Your security code is: " + code
+                    Body = IdentityText.YourSecurityCodeIs + code
                 };
                 await UserManager.SmsService.SendAsync(message);
             }
@@ -190,7 +191,7 @@ namespace PMT.Web.Controllers
                 return RedirectToAction("Index", new { Message = ManageMessageId.AddPhoneSuccess });
             }
             // If we got this far, something failed, redisplay form
-            ModelState.AddModelError("", "Failed to verify phone");
+            ModelState.AddModelError("", IdentityText.FailedToVerifyPhone);
             return View(model);
         }
 
@@ -281,8 +282,8 @@ namespace PMT.Web.Controllers
         public async Task<ActionResult> ManageLogins(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
-                message == ManageMessageId.RemoveLoginSuccess ? "The external login was removed."
-                : message == ManageMessageId.Error ? "An error has occurred."
+                message == ManageMessageId.RemoveLoginSuccess ? IdentityText.TheExternalLoginWasRemoved
+                : message == ManageMessageId.Error ? IdentityText.AnErrorHasOccurred
                 : "";
             var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
             if (user == null)

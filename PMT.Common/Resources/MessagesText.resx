@@ -117,8 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AccountCouldntBeModified" xml:space="preserve">
+    <value>Account couldn't be modified</value>
+  </data>
+  <data name="AccountHasBeenModified" xml:space="preserve">
+    <value>Account has been modified</value>
+  </data>
+  <data name="AccountSuccessfullyDeleted" xml:space="preserve">
+    <value>Account successfully deleted</value>
+  </data>
   <data name="CategoryDeleteWarningLine" xml:space="preserve">
     <value>Are you sure you want to delete this category and all its subcategories?</value>
+  </data>
+  <data name="CategoryHasBeenModified" xml:space="preserve">
+    <value>Category has been modified</value>
   </data>
   <data name="MoneyAccountsDeleteWarningLine1" xml:space="preserve">
     <value>Are you sure you want to delete this account?</value>
@@ -126,10 +138,55 @@
   <data name="MoneyAccountsDeleteWarningLine2" xml:space="preserve">
     <value>Warning, all transactions of the account will be removed.</value>
   </data>
+  <data name="NewAccountCouldntBeCreated" xml:space="preserve">
+    <value>New account couldn't be created</value>
+  </data>
+  <data name="NewAccountHasBeenCreated" xml:space="preserve">
+    <value>New account has been created</value>
+  </data>
+  <data name="NewCategoryCouldntBeCreated" xml:space="preserve">
+    <value>New category couldn't be created</value>
+  </data>
+  <data name="NewCategoryHasBeenCreated" xml:space="preserve">
+    <value>New category has been created</value>
+  </data>
+  <data name="NewSubcategoryCouldntBeCreated" xml:space="preserve">
+    <value>New subcategory couldn't be created</value>
+  </data>
+  <data name="NewSubcategoryHasBeenCreated" xml:space="preserve">
+    <value>New subcategory has been created</value>
+  </data>
+  <data name="NewTransactionCouldntBeCreated" xml:space="preserve">
+    <value>New transaction couldn't be created</value>
+  </data>
+  <data name="NewTransactionHasBeenCreated" xml:space="preserve">
+    <value>New transaction has been created</value>
+  </data>
+  <data name="SettingsCouldntBeUpdated" xml:space="preserve">
+    <value>Settings couldn't be updated</value>
+  </data>
+  <data name="SettingsUpdated" xml:space="preserve">
+    <value>Settings updated</value>
+  </data>
+  <data name="SubcategoryCouldntBeModified" xml:space="preserve">
+    <value>Subcategory couldn't be modified</value>
+  </data>
   <data name="SubCategoryDeleteWarningLine" xml:space="preserve">
     <value>Are you sure you want to delete this subcategory?</value>
   </data>
+  <data name="SuccessfullyDeleted" xml:space="preserve">
+    <value>Successfully deleted</value>
+  </data>
+  <data name="TransactionCouldntBeModified" xml:space="preserve">
+    <value>Transaction couldn't be modified</value>
+  </data>
   <data name="TransactionDeleteWarningLine" xml:space="preserve">
     <value>Are you sure you want to delete this transaction?</value>
+  </data>
+  <data name="TransactionHasBeenModified" xml:space="preserve">
+    <value>Transaction has been modified</value>
+  </data>
+  <data name="TransactionSuccessfullyDeleted" xml:space="preserve">
+    <value>Transaction successfully deleted</value>
   </data>
 </root>

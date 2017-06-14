@@ -1,7 +1,7 @@
 ﻿@model PMT.Web.Models.ManageLoginsViewModel
 @using Microsoft.Owin.Security
 @{
-    ViewBag.Title = "Manage your external logins";
+    ViewBag.Title = IdentityText.ManageYourExternalLogins;
 }
 <div class="panel panel-primary use-big-fonts">
     <div class="panel-heading">@ViewBag.Title</div>
@@ -14,8 +14,8 @@
             {
                 <div>
                     <p>
-                        There are no external authentication services configured. See <a href="https://go.microsoft.com/fwlink/?LinkId=313242">this article</a>
-                        for details on setting up this ASP.NET application to support logging in via external services.
+                        @IdentityText.ManageLogingsMessage1 <a href="https://go.microsoft.com/fwlink/?LinkId=313242">@IdentityText.ManageLogingsMessage3</a>
+                        @IdentityText.ManageLogingsMessage2
                     </p>
                 </div>
             }
@@ -39,7 +39,7 @@
                                                 <div>
                                                     @Html.Hidden("loginProvider", account.LoginProvider)
                                                     @Html.Hidden("providerKey", account.ProviderKey)
-                                                    <input type="submit" class="btn btn-default" value="Remove" title="Remove this @account.LoginProvider login from your account" />
+                                                    <input type="submit" class="btn btn-default" value="@IdentityText.Remove" title="@IdentityText.RemoveThis @account.LoginProvider @IdentityText.LoginFromYourAccount" />
                                                 </div>
                                             }
                                         }
@@ -62,7 +62,7 @@
                             <p>
                                 @foreach (AuthenticationDescription p in Model.OtherLogins)
                                 {
-                                    <button type="submit" class="btn btn-default" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Log in using your @p.Caption account">@p.AuthenticationType</button>
+                                    <button type="submit" class="btn btn-default" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="@IdentityText.LogInUsingYour @p.Caption @IdentityText.Account">@p.AuthenticationType</button>
                                 }
                             </p>
                         </div>

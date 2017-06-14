@@ -38,22 +38,22 @@ namespace PMT.BusinessLayer
         {
             Dictionary<string, string> themes = new Dictionary<string, string>();
             themes.Add("", "Default");
-            themes.Add("cerulean", "cerulean");
-            themes.Add("cosmo", "cosmo");
-            themes.Add("cyborg", "cyborg");
-            themes.Add("darkly", "darkly");
-            themes.Add("flatly", "flatly");
-            themes.Add("journal", "journal");
-            themes.Add("lumen", "lumen");
-            themes.Add("paper", "paper");
-            themes.Add("readable", "readable");
-            themes.Add("sandstone", "sandstone");
-            themes.Add("simplex", "simplex");
-            themes.Add("slate", "slate");
-            themes.Add("spacelab", "spacelab");
-            themes.Add("superhero", "superhero");
-            themes.Add("united", "united");
-            themes.Add("yeti", "yeti");
+            themes.Add("cerulean", "Cerulean");
+            themes.Add("cosmo", "Cosmo");
+            themes.Add("cyborg", "Cyborg");
+            themes.Add("darkly", "Darkly");
+            themes.Add("flatly", "Flatly");
+            themes.Add("journal", "Journal");
+            themes.Add("lumen", "Lumen");
+            themes.Add("paper", "Paper");
+            themes.Add("readable", "Readable");
+            themes.Add("sandstone", "Sandstone");
+            themes.Add("simplex", "Simplex");
+            themes.Add("slate", "Slate");
+            themes.Add("spacelab", "Spacelab");
+            themes.Add("superhero", "Superhero");
+            themes.Add("united", "United");
+            themes.Add("yeti", "Yeti");
             return themes;
         }
     }

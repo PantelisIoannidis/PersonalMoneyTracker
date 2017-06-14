@@ -16,6 +16,7 @@ using PMT.Common.Helpers;
 using System.Collections;
 using Newtonsoft.Json;
 using static PMT.Entities.Literals;
+using PMT.Common.Resources;
 
 namespace PMT.Web.Controllers
 {
@@ -154,11 +155,11 @@ namespace PMT.Web.Controllers
             {
                 var result=transactionsEngine.InsertNewTransaction(transaction);
                 if (!result.ExceptionFromConditions) { 
-                    TempData["NotificationSuccess"] = "New transaction has been created";
+                    TempData[Notifications.NotificationSuccess] = MessagesText.NewTransactionHasBeenCreated;
                     return RedirectToAction("Index");
                 }
             }
-            ViewBag.NotificationWarning = "New transaction couldn't be created";
+            ViewBag.NotificationWarning = MessagesText.NewTransactionCouldntBeCreated;
             var moneyAccounts = moneyAccountEngine.GetMoneyAccounts(userId);
             ViewBag.MoneyAccountId = new SelectList(moneyAccounts, "MoneyAccountId", "Name", moneyAccounts.FirstOrDefault());
             return View(transaction);
@@ -183,10 +184,10 @@ namespace PMT.Web.Controllers
             if (ModelState.IsValid)
             {
                 transactionsEngine.UpdateTransaction(transaction);
-                TempData["NotificationSuccess"] = "Transaction has been modified";
+                TempData[Notifications.NotificationSuccess] = MessagesText.TransactionHasBeenModified;
                 return RedirectToAction("Index");
             }
-            ViewBag.NotificationWarning = "Transaction couldn't be modified";
+            ViewBag.NotificationWarning = MessagesText.TransactionCouldntBeModified;
             return View(transaction);
         }
 
@@ -207,7 +208,7 @@ namespace PMT.Web.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             transactionsEngine.DeleteTransaction(id);
-            TempData["NotificationSuccess"] = "Transaction successfully deleted";
+            TempData[Notifications.NotificationSuccess] = MessagesText.TransactionSuccessfullyDeleted;
             return RedirectToAction("Index");
         }
 

@@ -11,6 +11,7 @@ using Microsoft.Owin.Security;
 using PMT.Web.Models;
 using PMT.BusinessLayer;
 using PMT.DataLayer;
+using PMT.Common.Resources;
 
 namespace PMT.Web.Controllers
 {
@@ -91,7 +92,7 @@ namespace PMT.Web.Controllers
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
                 case SignInStatus.Failure:
                 default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
+                    ModelState.AddModelError("", IdentityText.InvalidLoginAttempt);
                     return View(model);
             }
         }
@@ -134,7 +135,7 @@ namespace PMT.Web.Controllers
                     return View("Lockout");
                 case SignInStatus.Failure:
                 default:
-                    ModelState.AddModelError("", "Invalid code.");
+                    ModelState.AddModelError("", IdentityText.InvalidCode);
                     return View(model);
             }
         }

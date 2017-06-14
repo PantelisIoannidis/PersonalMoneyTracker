@@ -61,11 +61,47 @@ namespace PMT.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Account couldn&apos;t be modified.
+        /// </summary>
+        public static string AccountCouldntBeModified {
+            get {
+                return ResourceManager.GetString("AccountCouldntBeModified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Account has been modified.
+        /// </summary>
+        public static string AccountHasBeenModified {
+            get {
+                return ResourceManager.GetString("AccountHasBeenModified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Account successfully deleted.
+        /// </summary>
+        public static string AccountSuccessfullyDeleted {
+            get {
+                return ResourceManager.GetString("AccountSuccessfullyDeleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to delete this category and all its subcategories?.
         /// </summary>
         public static string CategoryDeleteWarningLine {
             get {
                 return ResourceManager.GetString("CategoryDeleteWarningLine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Category has been modified.
+        /// </summary>
+        public static string CategoryHasBeenModified {
+            get {
+                return ResourceManager.GetString("CategoryHasBeenModified", resourceCulture);
             }
         }
         
@@ -88,6 +124,105 @@ namespace PMT.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to New account couldn&apos;t be created.
+        /// </summary>
+        public static string NewAccountCouldntBeCreated {
+            get {
+                return ResourceManager.GetString("NewAccountCouldntBeCreated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New account has been created.
+        /// </summary>
+        public static string NewAccountHasBeenCreated {
+            get {
+                return ResourceManager.GetString("NewAccountHasBeenCreated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New category couldn&apos;t be created.
+        /// </summary>
+        public static string NewCategoryCouldntBeCreated {
+            get {
+                return ResourceManager.GetString("NewCategoryCouldntBeCreated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New category has been created.
+        /// </summary>
+        public static string NewCategoryHasBeenCreated {
+            get {
+                return ResourceManager.GetString("NewCategoryHasBeenCreated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New subcategory couldn&apos;t be created.
+        /// </summary>
+        public static string NewSubcategoryCouldntBeCreated {
+            get {
+                return ResourceManager.GetString("NewSubcategoryCouldntBeCreated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New subcategory has been created.
+        /// </summary>
+        public static string NewSubcategoryHasBeenCreated {
+            get {
+                return ResourceManager.GetString("NewSubcategoryHasBeenCreated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New transaction couldn&apos;t be created.
+        /// </summary>
+        public static string NewTransactionCouldntBeCreated {
+            get {
+                return ResourceManager.GetString("NewTransactionCouldntBeCreated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New transaction has been created.
+        /// </summary>
+        public static string NewTransactionHasBeenCreated {
+            get {
+                return ResourceManager.GetString("NewTransactionHasBeenCreated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings couldn&apos;t be updated.
+        /// </summary>
+        public static string SettingsCouldntBeUpdated {
+            get {
+                return ResourceManager.GetString("SettingsCouldntBeUpdated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings updated.
+        /// </summary>
+        public static string SettingsUpdated {
+            get {
+                return ResourceManager.GetString("SettingsUpdated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Subcategory couldn&apos;t be modified.
+        /// </summary>
+        public static string SubcategoryCouldntBeModified {
+            get {
+                return ResourceManager.GetString("SubcategoryCouldntBeModified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to delete this subcategory?.
         /// </summary>
         public static string SubCategoryDeleteWarningLine {
@@ -97,11 +232,47 @@ namespace PMT.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Successfully deleted.
+        /// </summary>
+        public static string SuccessfullyDeleted {
+            get {
+                return ResourceManager.GetString("SuccessfullyDeleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Transaction couldn&apos;t be modified.
+        /// </summary>
+        public static string TransactionCouldntBeModified {
+            get {
+                return ResourceManager.GetString("TransactionCouldntBeModified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to delete this transaction?.
         /// </summary>
         public static string TransactionDeleteWarningLine {
             get {
                 return ResourceManager.GetString("TransactionDeleteWarningLine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Transaction has been modified.
+        /// </summary>
+        public static string TransactionHasBeenModified {
+            get {
+                return ResourceManager.GetString("TransactionHasBeenModified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Transaction successfully deleted.
+        /// </summary>
+        public static string TransactionSuccessfullyDeleted {
+            get {
+                return ResourceManager.GetString("TransactionSuccessfullyDeleted", resourceCulture);
             }
         }
     }

@@ -14,6 +14,8 @@ using PMT.Common;
 using PMT.Models;
 using PMT.BusinessLayer;
 using Microsoft.Extensions.Logging;
+using static PMT.Entities.Literals;
+using PMT.Common.Resources;
 
 namespace PMT.Web.Controllers
 {
@@ -52,7 +54,6 @@ namespace PMT.Web.Controllers
         [MoveNotificationsDataFilter]
         public ActionResult Index()
         {
-            logger.LogInformation("MoneyAccountsController Index");
             ViewBag.TotalBalance = transactionsEngine.GetBalance(userId);
             return View(moneyAccountEngine.GetMoneyAccountsWithBalance(userId));
         }
@@ -76,10 +77,10 @@ namespace PMT.Web.Controllers
             {
                 moneyAccount.UserId = userId;
                 moneyAccountEngine.AddNewAccountWithInitialBalance(moneyAccount);
-                TempData["NotificationSuccess"] = "New account has been created";
+                TempData[Notifications.NotificationSuccess] = MessagesText.NewAccountHasBeenCreated;
                 return RedirectToAction("Index");
             }
-            ViewBag.NotificationWarning = "New account couldn't be created";
+            ViewBag.NotificationWarning = MessagesText.NewAccountCouldntBeCreated;
             return View(moneyAccount);
         }
 
@@ -108,10 +109,10 @@ namespace PMT.Web.Controllers
             if (ModelState.IsValid)
             {
                 moneyAccountEngine.EditAccountNameAdjustBalance(moneyAccount);
-                TempData["NotificationSuccess"] = "Account has been modified";
+                TempData[Notifications.NotificationSuccess] = MessagesText.AccountHasBeenModified;
                 return RedirectToAction("Index");
             }
-            ViewBag.NotificationWarning = "Account couldn't be modified";
+            ViewBag.NotificationWarning = MessagesText.AccountCouldntBeModified;
             return View(moneyAccount);
         }
 
@@ -136,7 +137,7 @@ namespace PMT.Web.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             moneyAccountEngine.DeleteAccount(id);
-            TempData["NotificationSuccess"] = "Account successfully deleted";
+            TempData[Notifications.NotificationSuccess] = MessagesText.AccountSuccessfullyDeleted;
             return RedirectToAction("Index");
         }
 

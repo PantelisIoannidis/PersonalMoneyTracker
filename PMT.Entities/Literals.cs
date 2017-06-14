@@ -73,6 +73,12 @@ namespace PMT.Entities
             public const string themePreferenceCookie = "themePreference";
         }
 
+        public static class Notifications
+        {
+            public const string NotificationSuccess = "NotificationSuccess";
+            public const string NotificationWarning = "NotificationWarning";
+        }
+
     }
    
 

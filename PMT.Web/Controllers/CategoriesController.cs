@@ -91,12 +91,12 @@ namespace PMT.Web.Controllers
             {
                 categoryVM.Type = (TransactionType)CategoryType.ParseInt();
                 categoriesEngine.StoreNewCategoryAndSubCategory(categoryVM);
-                TempData["NotificationSuccess"] = "New category has been created";
+                TempData[Notifications.NotificationSuccess] = MessagesText.NewCategoryHasBeenCreated;
                 return RedirectToAction("Index");
             }
             ViewBag.Title = ViewText.CreateNewCategory;
             ViewBag.CategoryType = GetShortTransactionTypeList();
-            ViewBag.NotificationWarning = "New category couldn't be created";
+            ViewBag.NotificationWarning = MessagesText.NewCategoryCouldntBeCreated;
             return View(categoryVM);
         }
 
@@ -119,12 +119,12 @@ namespace PMT.Web.Controllers
             if (ModelState.IsValid)
             {
                 categoriesEngine.StoreNewSubCategory(categoryVM);
-                TempData["NotificationSuccess"] = "New subcategory has been created";
+                TempData[Notifications.NotificationSuccess] = MessagesText.NewSubcategoryHasBeenCreated;
                 return RedirectToAction("Index");
             }
             ViewBag.Title = ViewText.CreateNewSubcategory;
             ViewBag.CategoryType = GetShortTransactionTypeList();
-            ViewBag.NotificationWarning = "New subcategory couldn't be created";
+            ViewBag.NotificationWarning = MessagesText.NewSubcategoryCouldntBeCreated;
             return View(categoryVM);
         }
 
@@ -142,7 +142,7 @@ namespace PMT.Web.Controllers
                 return HttpNotFound();
             }
             if (Request.IsAjaxRequest())
-                return Json(new { message= "Successfully deleted" });
+                return Json(new { message= MessagesText.SuccessfullyDeleted });
             else
                 return RedirectToAction("Index");
         }
@@ -177,16 +177,16 @@ namespace PMT.Web.Controllers
                 categoryVM.Type = (TransactionType)CategoryType.ParseInt();
                 categoriesEngine.EditCategoryAndSubCategory(categoryVM);
                 if (categoryVM.IsCategory)
-                    TempData["NotificationSuccess"] = "Category has been modified";
+                    TempData[Notifications.NotificationSuccess] = "Category has been modified";
                 else
-                    TempData["NotificationSuccess"] = "Subcategory has been modified";
+                    TempData[Notifications.NotificationSuccess] = "Subcategory has been modified";
                 return RedirectToAction("Index");
             }
             ViewBag.CategoryType = GetShortTransactionTypeList();
             if (categoryVM.IsCategory)
-                ViewBag.NotificationWarning = "Category couldn't be modified";
+                ViewBag.NotificationWarning = MessagesText.CategoryHasBeenModified;
             else
-                ViewBag.NotificationWarning = "Subcategory couldn't be modified";
+                ViewBag.NotificationWarning = MessagesText.SubcategoryCouldntBeModified;
             return View(categoryVM);
         }
     }

@@ -96,6 +96,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ErrorText.resx</DependentUpon>
     </Compile>
+    <Compile Include="Resources\IdentityText.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IdentityText.resx</DependentUpon>
+    </Compile>
     <Compile Include="Resources\MessagesText.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -127,6 +132,10 @@
     <EmbeddedResource Include="Resources\ErrorText.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ErrorText.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\IdentityText.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>IdentityText.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\MessagesText.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

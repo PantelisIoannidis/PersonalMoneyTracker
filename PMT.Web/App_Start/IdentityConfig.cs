@@ -12,6 +12,7 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using PMT.Web.Models;
 using PMT.DataLayer;
+using PMT.Common.Resources;
 
 namespace PMT.Web
 {
@@ -70,12 +71,12 @@ namespace PMT.Web
             // You can write your own provider and plug it in here.
             manager.RegisterTwoFactorProvider("Phone Code", new PhoneNumberTokenProvider<ApplicationUser>
             {
-                MessageFormat = "Your security code is {0}"
+                MessageFormat = IdentityText.YourSecurityCodeIs+" {0}"
             });
             manager.RegisterTwoFactorProvider("Email Code", new EmailTokenProvider<ApplicationUser>
             {
                 Subject = "Security Code",
-                BodyFormat = "Your security code is {0}"
+                BodyFormat = IdentityText.YourSecurityCodeIs + " {0}"
             });
             manager.EmailService = new EmailService();
             manager.SmsService = new SmsService();

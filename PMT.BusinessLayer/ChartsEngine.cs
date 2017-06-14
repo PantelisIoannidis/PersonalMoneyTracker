@@ -47,7 +47,7 @@ namespace PMT.BusinessLayer
                 chartDataset.borderColor.Add("#008010");
                 chartDataset.borderColor.Add("#b30010");
                 chartDataset.borderWidth = "1";
-                chartDataset.labels = "Income vs Expenses";
+                chartDataset.labels = ViewText.IncomevsExpenses;
                 chartDataset.data.Add(summary.Income.ToString("0.##"));
                 chartDataset.data.Add(Math.Abs(summary.Expenses).ToString("0.##"));
 

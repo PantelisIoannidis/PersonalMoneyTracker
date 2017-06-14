@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using PMT.BusinessLayer;
+using PMT.Common.Resources;
 using PMT.Entities;
 using PMT.Web.Helpers;
 using System;
@@ -55,11 +56,11 @@ namespace PMT.Web.Controllers
                 var result = userSettingsEngine.StoreUserSettings(userSettings);
                 if (result.Status)
                 {
-                    TempData["NotificationSuccess"] = "Settings updated";
+                    TempData[Notifications.NotificationSuccess] = MessagesText.SettingsUpdated;
                     return RedirectToAction(nameof(SettingsController.Index));
                 }
             }
-            TempData["NotificationWarning"] = "Settings couldn't be updated";
+            TempData[Notifications.NotificationWarning] = MessagesText.SettingsCouldntBeUpdated;
             return RedirectToAction(nameof(SettingsController.Index));
         }
     }
