@@ -674,6 +674,7 @@
     <Content Include="Views\Categories\NewSubCategory.cshtml" />
     <Content Include="Views\Shared\_NotificationAreaPartial.cshtml" />
     <Content Include="Views\Settings\Index.cshtml" />
+    <Content Include="Views\Shared\_LocalizedResources.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

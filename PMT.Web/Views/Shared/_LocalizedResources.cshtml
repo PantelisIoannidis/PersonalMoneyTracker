@@ -1,0 +1,21 @@
+﻿@using System.Collections
+@using System.Globalization
+@using System.Resources
+
+@using PMT.Common.Resources
+
+<script>
+    var Resources = {};
+
+    @{
+        ResourceSet resourceSet =
+          JSText.ResourceManager.GetResourceSet
+            (CultureInfo.CurrentUICulture, true, true);
+    }
+
+
+    @foreach (DictionaryEntry res in resourceSet)
+    {
+        @:Resources.@res.Key = "@Html.Raw(HttpUtility.JavaScriptStringEncode(res.Value.ToString()))";
+    }
+</script>

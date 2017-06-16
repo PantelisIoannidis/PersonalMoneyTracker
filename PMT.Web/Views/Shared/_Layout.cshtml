@@ -74,6 +74,8 @@
         </div>
     </div>
 
+    @Html.Partial("_LocalizedResources")
+
     <input type="hidden" name="myBarSelector" value="@((HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString()) + "Link")">
 
 

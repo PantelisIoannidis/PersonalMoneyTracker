@@ -58,5 +58,11 @@ namespace PMT.Web.Controllers
 
             return View();
         }
+
+        [ChildActionOnly]
+        public ActionResult LocalizedResources()
+        {
+            return View("_LocalizedResources");
+        }
     }
 }

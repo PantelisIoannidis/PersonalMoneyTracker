@@ -24,7 +24,7 @@
             options: {
                 title: {
                     display: true,
-                    text: 'Income vs Expense'
+                    text: Resources.IncomeVsExpense
                 },
                 legend: {
                     display: false
@@ -54,7 +54,7 @@
             options: {
                 title: {
                     display: true,
-                    text: 'Expense by Category'
+                    text: Resources.ExpenseByCategory
                 },
                 legend: {
                     display: true
@@ -73,7 +73,7 @@
             options: {
                 title: {
                     display: true,
-                    text: 'Income by Category'
+                    text: Resources.IncomeByCategory
                 },
                 legend: {
                     display: true

@@ -22,7 +22,7 @@
             var transId = $(".transTable .active .transTableId").val();
             if (!transId) {
                 commonUI.loadingFinished();
-                commonUI.showWarningNotifications("Please select a transaction");
+                commonUI.showWarningNotifications(Resources.PleaseSelectATransaction);
                 return;
             }
             $("#transactionDeleteModal").modal("show");
@@ -33,7 +33,7 @@
             var transId = $(".transTable .active .transTableId").val();
             if (!transId) {
                 commonUI.loadingFinished();
-                commonUI.showWarningNotifications("Please select a transaction");
+                commonUI.showWarningNotifications(Resources.PleaseSelectATransaction);
                 return;
             }
             var token = $('[name=__RequestVerificationToken]').val();
@@ -46,7 +46,7 @@
             var transId = $(".transTable .active .transTableId").val();
             if (!transId) {
                 commonUI.loadingFinished();
-                commonUI.showWarningNotifications("Please select a transaction");
+                commonUI.showWarningNotifications(Resources.PleaseSelectATransaction);
                 return;
             }
             var newUrl = pmt.rootPath+"Transactions/Edit/" + transId;

@@ -16,7 +16,7 @@
                 commonUI.showSuccessNotifications(data.message);
             },
             fail: function (jqXHR, textStatus, errorThrown) {
-                commonUI.showWarningNotifications("action was not completed");
+                commonUI.showWarningNotifications(Resources.ActionWasNotCompleted);
             }
         });
     }
@@ -27,7 +27,7 @@
 	        e.preventDefault();
 	        var deleteId = $("#selectedCategory").val();
             if (!deleteId) {
-                commonUI.showWarningNotifications("Please select a category or subcategory");
+                commonUI.showWarningNotifications(Resources.PleaseSelectACategoryOrSubcategory);
                 return;
             }
 	        var name = $("#" + deleteId).data("name");
@@ -42,7 +42,7 @@
             e.preventDefault();
             var deleteId = $("#selectedCategory").val();
             if (!deleteId) {
-                commonUI.showWarningNotifications("Please select a category");
+                commonUI.showWarningNotifications(Resources.PleaseSelectACategory);
                 return;
             }
             $("#categoryDeleteModal").modal("hide");
@@ -53,7 +53,7 @@
 	        e.preventDefault();
 	        var deleteId = $("#selectedCategory").val();
             if (!deleteId) {
-                commonUI.showWarningNotifications("Please select a subcategory");
+                commonUI.showWarningNotifications(Resources.PleaseSelectASubcategory);
                 return;
             }
             $("#subCategoryDeleteModal").modal("hide");
@@ -64,7 +64,7 @@
 	        e.preventDefault();
 	        var editId = $("#selectedCategory").val();
             if (!editId) {
-                commonUI.showWarningNotifications("Please select a category or subcategory");
+                commonUI.showWarningNotifications(Resources.PleaseSelectACategoryOrSubcategory);
                 return;
             };
 	        var newUrl = pmt.rootPath+"Categories/Edit/" + editId;
