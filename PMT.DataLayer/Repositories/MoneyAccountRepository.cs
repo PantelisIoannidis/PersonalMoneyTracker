@@ -11,13 +11,14 @@ using System.Threading.Tasks;
 
 namespace PMT.DataLayer.Repositories
 {
-    public class MoneyAccountRepository : RepositoryBase<MoneyAccount>, IMoneyAccountRepository
+    public class MoneyAccountRepository :  IMoneyAccountRepository
     {
         ILogger logger;
         IActionStatus actionStatus;
-        public MoneyAccountRepository(ILoggerFactory logger, IActionStatus actionStatus)
-            : base(new MainDb())
+        MainDb db;
+        public MoneyAccountRepository(MainDb db,ILoggerFactory logger, IActionStatus actionStatus)
         {
+            this.db = db;
             this.actionStatus = actionStatus;
             this.logger = logger.CreateLogger<MoneyAccountRepository>();
         }
@@ -120,6 +121,33 @@ namespace PMT.DataLayer.Repositories
                 logger.LogError(LoggingEvents.DELETE_ITEM, ex, errorMessage);
             }
             return actionStatus;
+        }
+
+        public void Insert(MoneyAccount moneyaccount)
+        {
+            try
+            {
+                db.MoneyAccounts.Add(moneyaccount);
+                db.SaveChanges();
+            }
+            catch(Exception ex)
+            {
+                logger.LogError(LoggingEvents.INSERT_ITEM, ex, "Insert account in database");
+            }
+        }
+
+        public MoneyAccount GetById(int id)
+        {
+            MoneyAccount account = new MoneyAccount();
+            try
+            {
+                account = db.MoneyAccounts.FirstOrDefault(x => x.MoneyAccountId == id);
+            }
+            catch(Exception ex)
+            {
+                logger.LogError(LoggingEvents.GET_ITEM, ex, "Get Account from the database");
+            }
+            return account;
         }
     }
 }

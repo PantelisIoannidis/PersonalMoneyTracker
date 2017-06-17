@@ -5,7 +5,7 @@ using PMT.Models;
 
 namespace PMT.DataLayer.Repositories
 {
-    public interface ITransactionRepository : IRepositoryBase<Transaction>
+    public interface ITransactionRepository
     {
         decimal GetBalance(string userId, int moneyAccountId = -1, Period period = null);
         decimal GetBalance(string userId, int moneyAccountId, Period period, TransactionType transactionType);
@@ -15,5 +15,8 @@ namespace PMT.DataLayer.Repositories
         void Update(Transaction transaction);
 
         IQueryable<CategoryGroupByVM> GetTransactionsGroupByCategory(string userId, Period period, int account, TransactionType transactionType);
+        void Insert(Transaction transaction);
+        void Delete(int id);
+        Transaction GetById(int id);
     }
 }

@@ -17,10 +17,10 @@ namespace PMT.DataLayer
         public MainDb()
             :base("name=DefaultConnection")
         {
-            #if DEBUG
-                Database.Log = msg => Debug.WriteLine(msg);
-            #endif
-            Database.SetInitializer(new MainDbInitializer());
+            //#if DEBUG
+            //    Database.Log = msg => Debug.WriteLine(msg);
+            //#endif
+            //Database.SetInitializer(new MainDbInitializer());
         }
 
         public DbSet<Budget> Budgets { get; set; }

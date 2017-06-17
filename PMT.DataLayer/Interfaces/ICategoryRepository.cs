@@ -5,7 +5,7 @@ using PMT.Models;
 
 namespace PMT.DataLayer.Repositories
 {
-    public interface ICategoryRepository : IRepositoryBase<Category>
+    public interface ICategoryRepository 
     {
         IEnumerable<Category> GetGategories(string userId, TransactionType transactionType);
         IEnumerable<Category> GetAllGategoriesSubCategories(string userId);
@@ -14,5 +14,6 @@ namespace PMT.DataLayer.Repositories
         void StoreNewCategoryAndSubCategory(Category category, SubCategory subCategory);
 
         void UpdateCategory(CategoryVM categoryVM);
+        void Delete(Category category);
     }
 }

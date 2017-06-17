@@ -16,6 +16,11 @@ namespace PMT.Web.Helpers
         
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
+            //var rootPath =string.Format("{0}://{1}{2}", filterContext.HttpContext.Request.Url.Scheme,
+            //    filterContext.HttpContext.Request.Url.Authority, filterContext.HttpContext.Request.Path);
+
+            var rootPath = filterContext.HttpContext.Request.ApplicationPath;
+
             IUnityContainer container = UnityConfig.GetConfiguredContainer().Resolve<IUnityContainer>();
             var commonHelper = container.Resolve<ICommonHelper>();
             var TempData = filterContext.Controller.TempData;
@@ -33,12 +38,12 @@ namespace PMT.Web.Helpers
             if (!string.IsNullOrEmpty(objPreferences))
                 themePreferences = JsonConvert.DeserializeObject<ThemePreferences>(objPreferences);
 
-            ViewBag.ThemeBootstrap = "/Content/bootswatch/" + themePreferences.Theme + "/bootstrap.min.css";
-            ViewBag.ThemeCustomCss = "/css/Theme/" + themePreferences.Theme + "Css.css";
+            ViewBag.ThemeBootstrap = rootPath+"/Content/bootswatch/" + themePreferences.Theme + "/bootstrap.min.css";
+            ViewBag.ThemeCustomCss = rootPath+"/css/Theme/" + themePreferences.Theme + "Css.css";
             if (string.IsNullOrEmpty(themePreferences.Theme) || themePreferences.Theme == "Default")
             {
-                ViewBag.ThemeBootstrap = "/Content/bootstrap.min.css";
-                ViewBag.ThemeCustomCss = "/css/Theme/DefaultCss.css";
+                ViewBag.ThemeBootstrap = rootPath+"/Content/bootstrap.min.css";
+                ViewBag.ThemeCustomCss = rootPath+"/css/Theme/DefaultCss.css";
             }
 
             ViewBag.ItemsPerPage = themePreferences.ItemsPerPage;

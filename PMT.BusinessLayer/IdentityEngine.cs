@@ -45,11 +45,9 @@ namespace PMT.BusinessLayer
             try
             {
                 var userId = GetUserId(userName);
-                var db = moneyAccountRepository.GetDB();
-                var moneyaccount=personalizedSeeding.GetDefaultAccountForNewUser(db,userId);
+                var moneyaccount=personalizedSeeding.GetDefaultAccountForNewUser(userId);
                 moneyAccountRepository.Insert(moneyaccount);
-                moneyAccountRepository.Save();
-                personalizedSeeding.Categories(db,userId);
+                personalizedSeeding.Categories(userId);
             }
             catch (Exception ex)
             {

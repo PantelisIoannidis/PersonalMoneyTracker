@@ -8,11 +8,12 @@ using System.Threading.Tasks;
 
 namespace PMT.DataLayer.Repositories
 {
-    public interface ISubCategoryRepository : IRepositoryBase<SubCategory>
+    public interface ISubCategoryRepository
     {
         List<SubCategory> GetSubCategories(string userId, int CategoryId);
         SubCategory GetSubCategoryById(string userId, int SubCategoryId);
         void StoreSubCategory(SubCategory subCategory);
         void UpdateSubCategory(CategoryVM categoryVM);
+        void Delete(SubCategory subCategory);
     }
 }

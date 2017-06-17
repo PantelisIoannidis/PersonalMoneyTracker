@@ -73,7 +73,6 @@ namespace PMT.BusinessLayer
                     || transaction.TransactionType == TransactionType.Expense)
                 {
                     transactionRepository.Insert(transaction);
-                    transactionRepository.Save();
                 }
 
                 if (transaction.TransactionType == TransactionType.Transfer)
@@ -106,7 +105,6 @@ namespace PMT.BusinessLayer
 
                     transactionRepository.Insert(transactionFrom);
                     transactionRepository.Insert(transactionTo);
-                    transactionRepository.Save();
                 }
                 
             }
@@ -209,7 +207,6 @@ namespace PMT.BusinessLayer
         public void DeleteTransaction(int id)
         {
             transactionRepository.Delete(id);
-            transactionRepository.Save();
         }
     }
 }

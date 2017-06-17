@@ -5,7 +5,7 @@ using PMT.Models;
 
 namespace PMT.DataLayer.Repositories
 {
-    public interface IMoneyAccountRepository : IRepositoryBase<MoneyAccount>
+    public interface IMoneyAccountRepository
     {
         IEnumerable<MoneyAccount> GetMoneyAccounts(string userId);
         MoneyAccount GetMoneyAccount(string userId, int moneyAccountId);
@@ -16,5 +16,7 @@ namespace PMT.DataLayer.Repositories
         void EditAccountNameAdjustBalance(MoneyAccount moneyAccount, Transaction transaction);
 
         IActionStatus DeleteAccount(int id);
+        void Insert(MoneyAccount moneyaccount);
+        MoneyAccount GetById(int id);
     }
 }

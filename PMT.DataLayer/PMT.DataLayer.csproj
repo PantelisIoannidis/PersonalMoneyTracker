@@ -110,7 +110,6 @@
     <Compile Include="Interfaces\ISubCategoryRepository.cs" />
     <Compile Include="Interfaces\ITransactionRepository.cs" />
     <Compile Include="Interfaces\IUserSettingsRepository.cs" />
-    <Compile Include="Repositories\RepositoryBase.cs" />
     <Compile Include="Repositories\SubCategoryRepository.cs" />
     <Compile Include="Repositories\TransactionRepository.cs" />
     <Compile Include="Repositories\MoneyAccountRepository.cs" />

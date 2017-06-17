@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace PMT.DataLayer.Repositories
 {
-    public interface IIconRepository :  IRepositoryBase<Icon>
+    public interface IIconRepository
     {
+        IEnumerable<Icon> GetAll();
     }
 }

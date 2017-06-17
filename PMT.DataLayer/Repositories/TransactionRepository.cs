@@ -12,13 +12,14 @@ using static PMT.Entities.Literals;
 
 namespace PMT.DataLayer.Repositories
 {
-    public class TransactionRepository : RepositoryBase<Transaction>, ITransactionRepository
+    public class TransactionRepository : ITransactionRepository
     {
         ILogger logger;
         IActionStatus actionStatus;
-        public TransactionRepository(ILoggerFactory logger, IActionStatus actionStatus)
-            : base(new MainDb())
+        MainDb db;
+        public TransactionRepository(MainDb db,ILoggerFactory logger, IActionStatus actionStatus)
         {
+            this.db = db;
             this.actionStatus = actionStatus;
             this.logger = logger.CreateLogger<TransactionRepository>();
         }
@@ -135,7 +136,7 @@ namespace PMT.DataLayer.Repositories
             return transactions.FirstOrDefault();
         }
 
-        public override void Update(Transaction transaction)
+        public void Update(Transaction transaction)
         {
             try
             {
@@ -182,6 +183,54 @@ namespace PMT.DataLayer.Repositories
                             .Where(x => x.TransactionType == transactionType)
                             .Sum(s => (decimal?)s.Amount) ?? 0;
             return balance;
+        }
+
+        public void Insert(Transaction transaction)
+        {
+            try
+            {
+                db.Transactions.Add(transaction);
+                db.SaveChanges();
+            }
+            catch(Exception ex)
+            {
+                logger.LogError(LoggingEvents.INSERT_ITEM, ex, "Insert transaction in database");
+            }
+        }
+
+        public void Delete(int id)
+        {
+            try
+            {
+                var item = GetById(id);
+                if (item != null)
+                {
+                    db.Transactions.Remove(item);
+                    db.SaveChanges();
+                }
+                else
+                {
+                    logger.LogError(LoggingEvents.GET_ITEM_NOTFOUND, "Item couldn't be found");
+                }
+            }
+            catch(Exception ex)
+            {
+                logger.LogError(LoggingEvents.DELETE_ITEM, ex, "Delete transaction from database");
+            }
+        }
+
+        public Transaction GetById(int id)
+        {
+            Transaction transaction = new Transaction();
+            try
+            {
+                transaction = db.Transactions.FirstOrDefault(x=>x.TransactionId==id);
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(LoggingEvents.GET_ITEM, ex, "Get transaction from database");
+            }
+            return transaction;
         }
 
 

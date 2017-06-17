@@ -10,13 +10,14 @@ using System.Threading.Tasks;
 
 namespace PMT.DataLayer.Repositories
 {
-    public class CategoryRepository : RepositoryBase<Category>, ICategoryRepository
+    public class CategoryRepository : ICategoryRepository
     {
         ILogger logger;
         IActionStatus actionStatus;
-        public CategoryRepository(ILoggerFactory logger, IActionStatus actionStatus)
-            : base(new MainDb())
+        MainDb db;
+        public CategoryRepository(MainDb db,ILoggerFactory logger, IActionStatus actionStatus)
         {
+            this.db = db;
             this.actionStatus = actionStatus;
             this.logger = logger.CreateLogger<CategoryRepository>();
         }
@@ -72,6 +73,19 @@ namespace PMT.DataLayer.Repositories
             catch (Exception ex)
             {
                 logger.LogError(LoggingEvents.UPDATE_ITEM, ex, "Update category in database");
+            }
+        }
+
+        public void Delete(Category category)
+        {
+            try
+            {
+                db.Categories.Remove(category);
+                db.SaveChanges();
+            }
+            catch(Exception ex)
+            {
+                logger.LogError(LoggingEvents.DELETE_ITEM, ex, "Delete category from database");
             }
         }
     }

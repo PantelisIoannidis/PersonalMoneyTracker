@@ -12,18 +12,19 @@ namespace PMT.DataLayer.Seed
     public class PersonalizedSeeding : IPersonalizedSeeding
     {
         ISeedingLists seedingLists;
-
-        public PersonalizedSeeding(ISeedingLists seedingLists)
+        MainDb context;
+        public PersonalizedSeeding(MainDb context,ISeedingLists seedingLists)
         {
+            this.context = context;
             this.seedingLists = seedingLists;
         }
 
-        public MoneyAccount GetDefaultAccountForNewUser(PMT.DataLayer.MainDb context,string userId)
+        public MoneyAccount GetDefaultAccountForNewUser(string userId)
         {
             return new MoneyAccount { UserId = userId, MoneyAccountId = 0, Name =  ViewText.Personal};
         }
 
-        public void Categories(PMT.DataLayer.MainDb context,string userId)
+        public void Categories(string userId)
         {
             List<Category> MainCategoryList = seedingLists.GetMainCategories();
             List<SubCategory> SubCategoryList = seedingLists.GetSubCategries();

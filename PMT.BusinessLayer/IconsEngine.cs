@@ -26,7 +26,7 @@ namespace PMT.BusinessLayer
             this.iconRepository = iconRepository;
         }
 
-        public IQueryable<Icon> GetAll()
+        public IEnumerable<Icon> GetAll()
         {
             return iconRepository.GetAll();
         }

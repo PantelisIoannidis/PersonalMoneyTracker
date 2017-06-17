@@ -9,13 +9,14 @@ using System.Threading.Tasks;
 
 namespace PMT.DataLayer.Repositories
 {
-    public class UserSettingsRepository : RepositoryBase<UserSettings>, IUserSettingsRepository
+    public class UserSettingsRepository : IUserSettingsRepository
     {
         ILogger logger;
         IActionStatus actionStatus;
-        public UserSettingsRepository(ILoggerFactory logger, IActionStatus actionStatus)
-            : base(new MainDb())
+        MainDb db;
+        public UserSettingsRepository(MainDb db,ILoggerFactory logger, IActionStatus actionStatus)
         {
+            this.db = db;
             this.actionStatus = actionStatus;
             this.logger = logger.CreateLogger<UserSettingsRepository>();
         }

@@ -145,7 +145,6 @@ namespace PMT.BusinessLayer
                     if (subCategory != null)
                     {
                         subCategoryRepository.Delete(subCategory);
-                        subCategoryRepository.Save();
                     }else
                     {
                         actionStatus = ActionStatus.CreateFromConditions("Item not found");
@@ -158,7 +157,6 @@ namespace PMT.BusinessLayer
                     if (category != null)
                     {
                         categoryRepository.Delete(category);
-                        categoryRepository.Save();
                     }
                     else
                     {

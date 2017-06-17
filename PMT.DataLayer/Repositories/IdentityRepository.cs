@@ -9,9 +9,9 @@ namespace PMT.DataLayer.Repositories
     public class IdentityRepository : IIdentityRepository
     {
         MainDb db;
-        public IdentityRepository()
+        public IdentityRepository(MainDb db)
         {
-            db = new MainDb();
+            this.db = db;
         }
         public string GetUserId(string userName)
         {

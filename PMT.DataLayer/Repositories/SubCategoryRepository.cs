@@ -10,15 +10,29 @@ using System.Threading.Tasks;
 
 namespace PMT.DataLayer.Repositories
 {
-    public class SubCategoryRepository : RepositoryBase<SubCategory> ,ISubCategoryRepository
+    public class SubCategoryRepository : ISubCategoryRepository
     {
         ILogger logger;
         IActionStatus actionStatus;
-        public SubCategoryRepository(ILoggerFactory logger, IActionStatus actionStatus)
-            : base(new MainDb())
+        MainDb db;
+        public SubCategoryRepository(MainDb db,ILoggerFactory logger, IActionStatus actionStatus)
         {
+            this.db = db;
             this.actionStatus = actionStatus;
             this.logger = logger.CreateLogger<CategoryRepository>();
+        }
+
+        public void Delete(SubCategory subCategory)
+        {
+            try
+            {
+                db.SubCategories.Remove(subCategory);
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(LoggingEvents.DELETE_ITEM, ex, "Delete subcategory from database");
+            }
         }
 
         public List<SubCategory> GetSubCategories(string userId,int CategoryId)
