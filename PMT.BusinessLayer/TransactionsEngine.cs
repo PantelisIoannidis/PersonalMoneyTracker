@@ -2,12 +2,14 @@
 using Newtonsoft.Json;
 using PMT.Common;
 using PMT.Common.Helpers;
+using PMT.Common.Resources;
 using PMT.DataLayer.Repositories;
 using PMT.Entities;
 using PMT.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 using static PMT.Entities.Literals;
@@ -125,6 +127,7 @@ namespace PMT.BusinessLayer
 
             try
             {
+
                 if (!string.IsNullOrEmpty(objPreferences))
                 {
                     var pref = JsonConvert.DeserializeObject<TransactionsFilterPreferences>(objPreferences);
@@ -151,7 +154,14 @@ namespace PMT.BusinessLayer
                     period.Init(DateTime.Parse(transactionFilterVM.SelectedDateFull), PeriodType.Week);
                     transactionFilterVM.PeriodDescription = period.GetDescription();
                 }
-                transactionFilterVM.PeriodEnum = Enum.GetValues(typeof(PeriodType)).Cast<PeriodType>().ToDictionary(e => (int)e, e => e.ToString());
+                
+                var periods = Enum.GetValues(typeof(PeriodType)).Cast<PeriodType>().ToDictionary(e => (int)e, e => e.ToString());
+                foreach(var period in periods)
+                {
+                    var translationFromResources = ModelText.ResourceManager.GetString("Period" + period.Value);
+                    transactionFilterVM.PeriodEnum.Add(period.Key, translationFromResources);
+                }
+
                 transactionFilterVM.MoneyAccountChoiceFilter = moneyAccountEngine.GetMoneyAccountsPlusAll(userId);
             }
             catch (Exception ex)

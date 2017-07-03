@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -118,240 +118,240 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Allowance" xml:space="preserve">
-    <value>Allowance</value>
+    <value>Χαρτζιλίκι</value>
   </data>
   <data name="Appliances" xml:space="preserve">
-    <value>Appliances</value>
-  </data>
-  <data name="Babysitter" xml:space="preserve">
-    <value>Babysitter</value>
+    <value>Συσκευές</value>
   </data>
   <data name="BabySupplies" xml:space="preserve">
-    <value>Baby Supplies</value>
+    <value>Βρεφικά αναλώσιμα</value>
   </data>
   <data name="Bonus" xml:space="preserve">
-    <value>Bonus</value>
+    <value>Δώρο (Bonus)</value>
   </data>
   <data name="Books" xml:space="preserve">
-    <value>Books</value>
+    <value>Βιβλία</value>
   </data>
   <data name="Borrow" xml:space="preserve">
-    <value>Borrow</value>
+    <value>Δανεισμός</value>
   </data>
   <data name="CarInsurance" xml:space="preserve">
-    <value>Car Insurance</value>
+    <value>Ασφάλεια αυτοκινήτου</value>
   </data>
   <data name="CarMaintenance" xml:space="preserve">
-    <value>Car Maintenance</value>
+    <value>Συντήρηση αυτοκινήτου</value>
   </data>
   <data name="City" xml:space="preserve">
-    <value>City</value>
+    <value>Δήμος</value>
   </data>
   <data name="Clinic" xml:space="preserve">
-    <value>Clinic</value>
+    <value>Κλινική</value>
   </data>
   <data name="Clothing" xml:space="preserve">
-    <value>Clothing</value>
+    <value>Ρουχισμός</value>
   </data>
   <data name="CoffeBar" xml:space="preserve">
-    <value>Coffe/Bar</value>
+    <value>Καφετέρια/Μπαρ</value>
   </data>
   <data name="Collectindebts" xml:space="preserve">
-    <value>Collecting debts</value>
+    <value>Συλλογή χρεών</value>
   </data>
   <data name="Cosmetics" xml:space="preserve">
-    <value>Cosmetics</value>
+    <value>Καλλυντικά</value>
   </data>
   <data name="Courses" xml:space="preserve">
-    <value>Courses</value>
+    <value>Μαθήματα</value>
   </data>
   <data name="Daycare" xml:space="preserve">
-    <value>Daycare</value>
+    <value>Ημερήσια φροντίδα</value>
   </data>
   <data name="Dentist" xml:space="preserve">
-    <value>Dentist</value>
+    <value>Οδοντίατρος</value>
   </data>
   <data name="Doctor" xml:space="preserve">
-    <value>Doctor</value>
+    <value>Γιατρός</value>
   </data>
   <data name="Education" xml:space="preserve">
-    <value>Education</value>
+    <value>Εκπαίδευση</value>
   </data>
   <data name="Electricity" xml:space="preserve">
-    <value>Electricity</value>
+    <value>Ηλεκτρική ενέργεια</value>
   </data>
   <data name="Food" xml:space="preserve">
-    <value>Food</value>
+    <value>Φαγητό</value>
   </data>
   <data name="Fuel" xml:space="preserve">
-    <value>Fuel</value>
+    <value>Καύσιμα</value>
   </data>
   <data name="Furniture" xml:space="preserve">
-    <value>Furniture</value>
+    <value>Επίπλωση</value>
   </data>
   <data name="Gambling" xml:space="preserve">
-    <value>Gambling</value>
+    <value>Τζόγος</value>
   </data>
   <data name="Gas" xml:space="preserve">
-    <value>Gas</value>
+    <value>Φυσικό αέριο</value>
   </data>
   <data name="General" xml:space="preserve">
-    <value>General</value>
+    <value>Γενικά</value>
   </data>
   <data name="Gift" xml:space="preserve">
-    <value>Gift</value>
+    <value>Δώρο</value>
   </data>
   <data name="Gifts" xml:space="preserve">
-    <value>Gifts</value>
+    <value>Δώρα</value>
   </data>
   <data name="Glasses" xml:space="preserve">
-    <value>Glasses</value>
+    <value>Γυαλιά</value>
   </data>
   <data name="Groceries" xml:space="preserve">
-    <value>Groceries</value>
+    <value>Είδη παντοπωλείου</value>
   </data>
   <data name="Grooming" xml:space="preserve">
-    <value>Grooming</value>
+    <value>Περιποίηση</value>
   </data>
   <data name="Gym" xml:space="preserve">
-    <value>Gym</value>
+    <value>Γυμναστήριο</value>
   </data>
   <data name="Health" xml:space="preserve">
-    <value>Health</value>
+    <value>Υγεία</value>
   </data>
   <data name="Hobbies" xml:space="preserve">
-    <value>Hobbies</value>
+    <value>Χόμπι</value>
   </data>
   <data name="Home" xml:space="preserve">
-    <value>Home</value>
+    <value>Σπίτι</value>
   </data>
   <data name="HomeInsurance" xml:space="preserve">
-    <value>Home Insurance</value>
+    <value>Ασφάλιση κατοικίας</value>
   </data>
   <data name="HomeMaintenance" xml:space="preserve">
-    <value>Home Maintenance</value>
+    <value>Συντήρηση σπιτιού</value>
   </data>
   <data name="HomePhone" xml:space="preserve">
-    <value>Home Phone</value>
+    <value>Τηλέφωνο οικίας</value>
   </data>
   <data name="HomeServices" xml:space="preserve">
-    <value>Home Services</value>
+    <value>Οικιακές υπηρεσίες</value>
   </data>
   <data name="Interest" xml:space="preserve">
-    <value>Interest</value>
+    <value>Ενδιαφέροντα</value>
   </data>
   <data name="Internet" xml:space="preserve">
-    <value>Internet</value>
+    <value>Ίντερνετ</value>
   </data>
   <data name="Jewelry" xml:space="preserve">
-    <value>Jewelry</value>
+    <value>Κοσμήματα</value>
   </data>
   <data name="Kids" xml:space="preserve">
-    <value>Kids</value>
+    <value>Παιδιά</value>
   </data>
   <data name="Lend" xml:space="preserve">
-    <value>Lend</value>
+    <value>Δανεισμός</value>
   </data>
   <data name="MedicalInsurance" xml:space="preserve">
-    <value>Medical Insurance</value>
+    <value>Ιατρική ασφάλιση</value>
   </data>
   <data name="Medicines" xml:space="preserve">
-    <value>Medicines</value>
+    <value>Φάρμακα</value>
   </data>
   <data name="Misc" xml:space="preserve">
-    <value>Misc.</value>
+    <value>Λοιπά</value>
   </data>
   <data name="MobilePhone" xml:space="preserve">
-    <value>Mobile Phone</value>
+    <value>Κινητό τηλέφωνο</value>
   </data>
   <data name="Μortgage" xml:space="preserve">
-    <value>Μortgage</value>
+    <value>Υποθήκη</value>
   </data>
   <data name="Movies" xml:space="preserve">
-    <value>Movies</value>
+    <value>Ταινίες</value>
   </data>
   <data name="Music" xml:space="preserve">
-    <value>Music</value>
+    <value>Μουσική</value>
   </data>
   <data name="Parking" xml:space="preserve">
-    <value>Parking</value>
+    <value>Στάθμευση</value>
   </data>
   <data name="Parks" xml:space="preserve">
-    <value>Parks</value>
+    <value>Πάρκα</value>
   </data>
   <data name="Personal" xml:space="preserve">
-    <value>Personal</value>
+    <value>Προσωπικά</value>
   </data>
   <data name="Pets" xml:space="preserve">
-    <value>Pets</value>
+    <value>Κατοικίδια</value>
   </data>
   <data name="PublicTransport" xml:space="preserve">
-    <value>Public Transport</value>
+    <value>Δημόσια συγκοινωνία</value>
   </data>
   <data name="Recreation" xml:space="preserve">
-    <value>Recreation</value>
+    <value>Ψυχαγωγία</value>
   </data>
   <data name="Rent" xml:space="preserve">
-    <value>Rent</value>
+    <value>Ενοίκιο</value>
   </data>
   <data name="Repayment" xml:space="preserve">
-    <value>Repayment</value>
+    <value>Αποπληρωμή</value>
   </data>
   <data name="Restaurant" xml:space="preserve">
-    <value>Restaurant</value>
+    <value>Εστιατόρια</value>
   </data>
   <data name="Salary" xml:space="preserve">
-    <value>Salary</value>
+    <value>Μισθός</value>
   </data>
   <data name="Shoes" xml:space="preserve">
-    <value>Shoes</value>
+    <value>Υποδήματα</value>
   </data>
   <data name="Sport" xml:space="preserve">
-    <value>Sport</value>
+    <value>Αθλήματα</value>
   </data>
   <data name="Taxes" xml:space="preserve">
-    <value>Taxes</value>
+    <value>Φόροι</value>
   </data>
   <data name="Taxi" xml:space="preserve">
-    <value>Taxi</value>
+    <value>Ταξί</value>
   </data>
   <data name="Television" xml:space="preserve">
-    <value>Television</value>
+    <value>Τηλεόραση</value>
   </data>
   <data name="Therapy" xml:space="preserve">
-    <value>Therapy</value>
+    <value>Θεραπεία</value>
   </data>
   <data name="Tolls" xml:space="preserve">
-    <value>Tolls</value>
+    <value>Διόδια</value>
   </data>
   <data name="Toys" xml:space="preserve">
-    <value>Toys</value>
+    <value>Παιχνίδια</value>
   </data>
   <data name="Transport" xml:space="preserve">
-    <value>Transport</value>
+    <value>Μεταφορά</value>
   </data>
   <data name="Travel" xml:space="preserve">
-    <value>Travel</value>
+    <value>Ταξίδια</value>
   </data>
   <data name="Tuition" xml:space="preserve">
-    <value>Tuition</value>
+    <value>Δίδακτρα</value>
   </data>
   <data name="Utilities" xml:space="preserve">
-    <value>Utilities</value>
+    <value>Κοινής ωφελείας</value>
   </data>
   <data name="Vacation" xml:space="preserve">
-    <value>Vacation</value>
+    <value>Διακοπές</value>
   </data>
   <data name="Water" xml:space="preserve">
-    <value>Water</value>
+    <value>Ύδρευση</value>
   </data>
   <data name="TransferFrom" xml:space="preserve">
-    <value>Transfer from</value>
+    <value>Μεταφορά από</value>
   </data>
   <data name="TransferTo" xml:space="preserve">
-    <value>Transfer to</value>
+    <value>Μεταφορά σε</value>
   </data>
   <data name="Adjustment" xml:space="preserve">
-    <value>Adjustment</value>
+    <value>Προσαρμογή</value>
+  </data>
+  <data name="Babysitter" xml:space="preserve">
+    <value>Νταντά</value>
   </data>
 </root>

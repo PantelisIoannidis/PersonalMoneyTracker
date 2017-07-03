@@ -15,7 +15,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
-    <Optimize>true</Optimize>
+    <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
@@ -138,22 +138,27 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ErrorText.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\IdentityText.el.resx" />
     <EmbeddedResource Include="Resources\IdentityText.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>IdentityText.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\JSText.el.resx" />
     <EmbeddedResource Include="Resources\JSText.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>JSText.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\MessagesText.el.resx" />
     <EmbeddedResource Include="Resources\MessagesText.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>MessagesText.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ModelText.el.resx" />
     <EmbeddedResource Include="Resources\ModelText.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ModelText.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\SeedingDataText.el.resx" />
     <EmbeddedResource Include="Resources\SeedingDataText.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>SeedingDataText.Designer.cs</LastGenOutput>

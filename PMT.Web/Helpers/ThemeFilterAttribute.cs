@@ -38,12 +38,12 @@ namespace PMT.Web.Helpers
             if (!string.IsNullOrEmpty(objPreferences))
                 themePreferences = JsonConvert.DeserializeObject<ThemePreferences>(objPreferences);
 
-            ViewBag.ThemeBootstrap = rootPath+"/Content/bootswatch/" + themePreferences.Theme + "/bootstrap.min.css";
-            ViewBag.ThemeCustomCss = rootPath+"/css/Theme/" + themePreferences.Theme + "Css.css";
+            ViewBag.ThemeBootstrap = rootPath+"Content/bootswatch/" + themePreferences.Theme + "/bootstrap.min.css";
+            ViewBag.ThemeCustomCss = rootPath+"css/Theme/" + themePreferences.Theme + "Css.css";
             if (string.IsNullOrEmpty(themePreferences.Theme) || themePreferences.Theme == "Default")
             {
-                ViewBag.ThemeBootstrap = rootPath+"/Content/bootstrap.min.css";
-                ViewBag.ThemeCustomCss = rootPath+"/css/Theme/DefaultCss.css";
+                ViewBag.ThemeBootstrap = rootPath+"Content/bootstrap.min.css";
+                ViewBag.ThemeCustomCss = rootPath+"css/Theme/DefaultCss.css";
             }
 
             ViewBag.ItemsPerPage = themePreferences.ItemsPerPage;

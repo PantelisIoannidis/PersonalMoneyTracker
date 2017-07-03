@@ -106,8 +106,7 @@ namespace PMT.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please enter a user name for this site below and click the Register button to finish
-        ///                logging in..
+        ///   Looks up a localized string similar to Please enter a user name for this site below and click the Register button to finish logging in..
         /// </summary>
         public static string AssociationFormMessage2 {
             get {
@@ -224,11 +223,11 @@ namespace PMT.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter your emai.
+        ///   Looks up a localized string similar to Enter your email.
         /// </summary>
-        public static string EnterYourEmai {
+        public static string EnterYourEmail {
             get {
-                return ResourceManager.GetString("EnterYourEmai", resourceCulture);
+                return ResourceManager.GetString("EnterYourEmail", resourceCulture);
             }
         }
         
@@ -323,6 +322,15 @@ namespace PMT.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Log off.
+        /// </summary>
+        public static string Logoff {
+            get {
+                return ResourceManager.GetString("Logoff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Manage.
         /// </summary>
         public static string Manage {
@@ -400,6 +408,15 @@ namespace PMT.Common.Resources {
         public static string RegisterAsANewUser {
             get {
                 return ResourceManager.GetString("RegisterAsANewUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remeber Me.
+        /// </summary>
+        public static string RememberMe {
+            get {
+                return ResourceManager.GetString("RememberMe", resourceCulture);
             }
         }
         

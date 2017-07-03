@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -117,94 +117,28 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BudgetAmount" xml:space="preserve">
-    <value>Amount</value>
+  <data name="ActionWasNotCompleted" xml:space="preserve">
+    <value>Η ενέργεια δεν ολοκληρώθηκε</value>
   </data>
-  <data name="BudgetFromDate" xml:space="preserve">
-    <value>From Date</value>
+  <data name="ExpenseByCategory" xml:space="preserve">
+    <value>Έξοδα ανά κατηγορία</value>
   </data>
-  <data name="BudgetMoveForward" xml:space="preserve">
-    <value>Move Forward</value>
+  <data name="IncomeByCategory" xml:space="preserve">
+    <value>Έσοδα ανά κατηγορία</value>
   </data>
-  <data name="BudgetName" xml:space="preserve">
-    <value>Budget Name</value>
+  <data name="IncomeVsExpense" xml:space="preserve">
+    <value>Έσοδα και Έξοδα</value>
   </data>
-  <data name="Category" xml:space="preserve">
-    <value>Category</value>
+  <data name="PleaseSelectACategory" xml:space="preserve">
+    <value>Παρακαλώ διαλέξτε μια κατηγορία</value>
   </data>
-  <data name="CategoryName" xml:space="preserve">
-    <value>Category Name</value>
+  <data name="PleaseSelectACategoryOrSubcategory" xml:space="preserve">
+    <value>Παρακαλώ διαλέξτε μια κατηγορία ή υποκατηγορία</value>
   </data>
-  <data name="CategoryType" xml:space="preserve">
-    <value>Transaction Type</value>
+  <data name="PleaseSelectASubcategory" xml:space="preserve">
+    <value>Παρακαλώ διαλέξτε μια υποκατηγορία</value>
   </data>
-  <data name="IconName" xml:space="preserve">
-    <value>Icon Name</value>
-  </data>
-  <data name="MoneyAccountBalance" xml:space="preserve">
-    <value>Balance</value>
-  </data>
-  <data name="MoneyAccountName" xml:space="preserve">
-    <value>Account</value>
-  </data>
-  <data name="PeriodAll" xml:space="preserve">
-    <value>All</value>
-  </data>
-  <data name="PeriodMonth" xml:space="preserve">
-    <value>Month</value>
-  </data>
-  <data name="PeriodWeek" xml:space="preserve">
-    <value>Week</value>
-  </data>
-  <data name="PeriodYear" xml:space="preserve">
-    <value>Year</value>
-  </data>
-  <data name="RepeatDescription" xml:space="preserve">
-    <value>Description</value>
-  </data>
-  <data name="SubCategory" xml:space="preserve">
-    <value>Subcategory</value>
-  </data>
-  <data name="SubCategoryName" xml:space="preserve">
-    <value>Subcategory Name</value>
-  </data>
-  <data name="TransactionAmount" xml:space="preserve">
-    <value>Amount</value>
-  </data>
-  <data name="TransactionDate" xml:space="preserve">
-    <value>Date</value>
-  </data>
-  <data name="TransactionDescription" xml:space="preserve">
-    <value>Description</value>
-  </data>
-  <data name="TransactionSummary" xml:space="preserve">
-    <value>Summary</value>
-  </data>
-  <data name="TransactionTransactionType" xml:space="preserve">
-    <value>Transaction Type</value>
-  </data>
-  <data name="TransactionTransferTo" xml:space="preserve">
-    <value>Transfer To</value>
-  </data>
-  <data name="TransactionTypeAdjustment" xml:space="preserve">
-    <value>Adjustment</value>
-  </data>
-  <data name="TransactionTypeExpense" xml:space="preserve">
-    <value>Expense</value>
-  </data>
-  <data name="TransactionTypeIncome" xml:space="preserve">
-    <value>Income</value>
-  </data>
-  <data name="TransactionTypeTransfer" xml:space="preserve">
-    <value>Transfer</value>
-  </data>
-  <data name="UserSettingsItemsPerPage" xml:space="preserve">
-    <value>Items per page</value>
-  </data>
-  <data name="UserSettingsLocalization" xml:space="preserve">
-    <value>Localization</value>
-  </data>
-  <data name="UserSettingsTheme" xml:space="preserve">
-    <value>Theme</value>
+  <data name="PleaseSelectATransaction" xml:space="preserve">
+    <value>Παρακαλώ διαλέξτε μια συναλλαγή</value>
   </data>
 </root>

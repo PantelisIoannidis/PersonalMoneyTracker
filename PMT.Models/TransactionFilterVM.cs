@@ -10,6 +10,11 @@ namespace PMT.Models
 {
     public class TransactionFilterVM : TransactionsFilterPreferences
     {
+        public TransactionFilterVM()
+        {
+            PeriodEnum = new Dictionary<int, string>();
+        }
+
         public Dictionary<int, string> PeriodEnum { get; set; }
 
         public List<MoneyAccount> MoneyAccountChoiceFilter { get; set; }

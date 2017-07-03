@@ -139,7 +139,7 @@
     <value>Διόρθωση</value>
   </data>
   <data name="Home" xml:space="preserve">
-    <value>Σπίτι</value>
+    <value>Αρχική</value>
   </data>
   <data name="New" xml:space="preserve">
     <value>Νέο</value>
@@ -164,5 +164,146 @@
   </data>
   <data name="Transactions" xml:space="preserve">
     <value>Συναλλαγές</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>Προσθήκη</value>
+  </data>
+  <data name="Adjustment" xml:space="preserve">
+    <value>Προσαρμογή</value>
+  </data>
+  <data name="Balance" xml:space="preserve">
+    <value>Υπόλοιπο</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Ακύρωση</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>Δημιουργία</value>
+  </data>
+  <data name="CreateNew" xml:space="preserve">
+    <value>Δημιουργία Νέου</value>
+  </data>
+  <data name="InitialBalance" xml:space="preserve">
+    <value>Αρχικό υπόλοιπο</value>
+  </data>
+  <data name="MoneyAccountsViewCreateTitle" xml:space="preserve">
+    <value>Νέος λογαριασμού</value>
+  </data>
+  <data name="MoneyAccountsViewDeleteTitle" xml:space="preserve">
+    <value>Διαγραφή λογαριασμού</value>
+  </data>
+  <data name="MoneyAccountsViewEditTitle" xml:space="preserve">
+    <value>Διόρθωση λογαριασμού</value>
+  </data>
+  <data name="MoneyAccountsViewIndexTitle" xml:space="preserve">
+    <value>Οι λογαριασμοί σας</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Αποθήκευση</value>
+  </data>
+  <data name="Total" xml:space="preserve">
+    <value>Σύνολο</value>
+  </data>
+  <data name="TransactionViewIndexTitle" xml:space="preserve">
+    <value>Οι Συναλλαγές σας</value>
+  </data>
+  <data name="QuickView" xml:space="preserve">
+    <value>Γρήγορη απεικόνιση</value>
+  </data>
+  <data name="TransactionViewCreateTitle" xml:space="preserve">
+    <value>Νέα συναλλαγή</value>
+  </data>
+  <data name="TransactionViewDeleteTitle" xml:space="preserve">
+    <value>Διαγραφή συναλλαγής</value>
+  </data>
+  <data name="TransactionViewEditTitle" xml:space="preserve">
+    <value>Διόρθωση συναλλαγής</value>
+  </data>
+  <data name="NoneSelected" xml:space="preserve">
+    <value>κανένα επιλεγμένο</value>
+  </data>
+  <data name="Page" xml:space="preserve">
+    <value>Σελίδα</value>
+  </data>
+  <data name="Account" xml:space="preserve">
+    <value>Λογαριασμός</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>Όλα</value>
+  </data>
+  <data name="First" xml:space="preserve">
+    <value>Πρώτο</value>
+  </data>
+  <data name="Last" xml:space="preserve">
+    <value>Τελευταίο</value>
+  </data>
+  <data name="AllAccounts" xml:space="preserve">
+    <value>Όλοι οι λογαριασμοί</value>
+  </data>
+  <data name="Years" xml:space="preserve">
+    <value>Έτη</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Επαναφορά</value>
+  </data>
+  <data name="Expenses" xml:space="preserve">
+    <value>Έξοδα</value>
+  </data>
+  <data name="Income" xml:space="preserve">
+    <value>Έσοδα</value>
+  </data>
+  <data name="CategoriesViewIndexTitle" xml:space="preserve">
+    <value>Κατηγορίες</value>
+  </data>
+  <data name="CategoryViewDeleteTitle" xml:space="preserve">
+    <value>Διαγραφή κατηγορίας</value>
+  </data>
+  <data name="SubCategoryViewDeleteTitle" xml:space="preserve">
+    <value>Διαγραφή υποκατηγορίας</value>
+  </data>
+  <data name="CreateNewCategory" xml:space="preserve">
+    <value>Νέα κατηγορία</value>
+  </data>
+  <data name="CreateNewSubcategory" xml:space="preserve">
+    <value>Νέα υποκατηγορία</value>
+  </data>
+  <data name="EditCategory" xml:space="preserve">
+    <value>Διόρθωση κατηγορίας</value>
+  </data>
+  <data name="EditSubcategory" xml:space="preserve">
+    <value>Διόρθωση υποκατηγορίας</value>
+  </data>
+  <data name="Expense" xml:space="preserve">
+    <value>Έξοδα</value>
+  </data>
+  <data name="Others" xml:space="preserve">
+    <value>Άλλα</value>
+  </data>
+  <data name="Transfer" xml:space="preserve">
+    <value>Μεταφορά</value>
+  </data>
+  <data name="PleaseWait" xml:space="preserve">
+    <value>Παρακαλώ περιμένετε</value>
+  </data>
+  <data name="About" xml:space="preserve">
+    <value>Σχετικά</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Κλείσιμο</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>Προειδοποίηση</value>
+  </data>
+  <data name="Personal" xml:space="preserve">
+    <value>Προσωπικά</value>
+  </data>
+  <data name="SettingsViewTitle" xml:space="preserve">
+    <value>Ρυθμίσεις</value>
+  </data>
+  <data name="Apply" xml:space="preserve">
+    <value>Εφαρμογή</value>
+  </data>
+  <data name="IncomevsExpenses" xml:space="preserve">
+    <value>Έσοδα και Έξοδα</value>
   </data>
 </root>

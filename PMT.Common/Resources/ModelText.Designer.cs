@@ -151,6 +151,42 @@ namespace PMT.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to All.
+        /// </summary>
+        public static string PeriodAll {
+            get {
+                return ResourceManager.GetString("PeriodAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Month.
+        /// </summary>
+        public static string PeriodMonth {
+            get {
+                return ResourceManager.GetString("PeriodMonth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Week.
+        /// </summary>
+        public static string PeriodWeek {
+            get {
+                return ResourceManager.GetString("PeriodWeek", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Year.
+        /// </summary>
+        public static string PeriodYear {
+            get {
+                return ResourceManager.GetString("PeriodYear", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Description.
         /// </summary>
         public static string RepeatDescription {

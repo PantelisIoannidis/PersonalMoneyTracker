@@ -24,6 +24,7 @@ namespace PMT.Entities
         public string Name { get; set; }
 
         [DataType(DataType.Currency)]
+        [Display(Name = nameof(ModelText.MoneyAccountBalance), ResourceType = typeof(ModelText))]
         public decimal Balance { get; set; }
 
         public ICollection<Transaction> Transactions { get; set; }

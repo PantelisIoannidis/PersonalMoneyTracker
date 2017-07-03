@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -117,94 +117,76 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BudgetAmount" xml:space="preserve">
-    <value>Amount</value>
+  <data name="AccountCouldntBeModified" xml:space="preserve">
+    <value>Ο λογαριασμός δεν ήταν δυνατό να τροποποιηθεί</value>
   </data>
-  <data name="BudgetFromDate" xml:space="preserve">
-    <value>From Date</value>
+  <data name="AccountHasBeenModified" xml:space="preserve">
+    <value>Ο λογαριασμός τροποποιήθηκε</value>
   </data>
-  <data name="BudgetMoveForward" xml:space="preserve">
-    <value>Move Forward</value>
+  <data name="AccountSuccessfullyDeleted" xml:space="preserve">
+    <value>Ο λογαριασμός διαγράφηκε</value>
   </data>
-  <data name="BudgetName" xml:space="preserve">
-    <value>Budget Name</value>
+  <data name="CategoryDeleteWarningLine" xml:space="preserve">
+    <value>Είστε σίγουροι ότι θέλετε να διαγράψετε αυτή την κατηγορία και όλες τις υποκατηγορίες της;</value>
   </data>
-  <data name="Category" xml:space="preserve">
-    <value>Category</value>
+  <data name="CategoryHasBeenModified" xml:space="preserve">
+    <value>Η κατηγορία έχει τροποποιηθεί</value>
   </data>
-  <data name="CategoryName" xml:space="preserve">
-    <value>Category Name</value>
+  <data name="MoneyAccountsDeleteWarningLine1" xml:space="preserve">
+    <value>Είστε σίγουροι ότι θέλετε να διαγράψετε αυτό τον λογαριασμό;</value>
   </data>
-  <data name="CategoryType" xml:space="preserve">
-    <value>Transaction Type</value>
+  <data name="MoneyAccountsDeleteWarningLine2" xml:space="preserve">
+    <value>Προειδοποίηση, όλες οι συναλλαγές του λογαριασμού θα διαγραφούν.</value>
   </data>
-  <data name="IconName" xml:space="preserve">
-    <value>Icon Name</value>
+  <data name="NewAccountCouldntBeCreated" xml:space="preserve">
+    <value>Ο νέος λογαριασμός δεν ήταν δυνατό να δημιουργηθεί</value>
   </data>
-  <data name="MoneyAccountBalance" xml:space="preserve">
-    <value>Balance</value>
+  <data name="NewAccountHasBeenCreated" xml:space="preserve">
+    <value>Δημιουργήθηκε ο νέος λογαριασμός</value>
   </data>
-  <data name="MoneyAccountName" xml:space="preserve">
-    <value>Account</value>
+  <data name="NewCategoryCouldntBeCreated" xml:space="preserve">
+    <value>Η νέα κατηγορία δεν ήταν δυνατό να δημιουργηθεί</value>
   </data>
-  <data name="PeriodAll" xml:space="preserve">
-    <value>All</value>
+  <data name="NewCategoryHasBeenCreated" xml:space="preserve">
+    <value>Η νέα κατηγορία δημιουργήθηκε</value>
   </data>
-  <data name="PeriodMonth" xml:space="preserve">
-    <value>Month</value>
+  <data name="NewSubcategoryCouldntBeCreated" xml:space="preserve">
+    <value>Η νέα υποκατηγορία δεν ήταν δυνατό να δημιουργηθεί</value>
   </data>
-  <data name="PeriodWeek" xml:space="preserve">
-    <value>Week</value>
+  <data name="NewSubcategoryHasBeenCreated" xml:space="preserve">
+    <value>Η νέα υποκατηγορία δημιουργήθηκε</value>
   </data>
-  <data name="PeriodYear" xml:space="preserve">
-    <value>Year</value>
+  <data name="NewTransactionCouldntBeCreated" xml:space="preserve">
+    <value>Η συναλλαγή δεν ήταν δυνατό να δημιουργηθεί</value>
   </data>
-  <data name="RepeatDescription" xml:space="preserve">
-    <value>Description</value>
+  <data name="NewTransactionHasBeenCreated" xml:space="preserve">
+    <value>Η συναλλαγή δημιουργήθηκε</value>
   </data>
-  <data name="SubCategory" xml:space="preserve">
-    <value>Subcategory</value>
+  <data name="SettingsCouldntBeUpdated" xml:space="preserve">
+    <value>Οι ρυθμίσεις δεν ήταν δυνατό να τροποποιηθούν</value>
   </data>
-  <data name="SubCategoryName" xml:space="preserve">
-    <value>Subcategory Name</value>
+  <data name="SettingsUpdated" xml:space="preserve">
+    <value>Οι ρυθμίσεις τροποποιήθηκαν</value>
   </data>
-  <data name="TransactionAmount" xml:space="preserve">
-    <value>Amount</value>
+  <data name="SubcategoryCouldntBeModified" xml:space="preserve">
+    <value>Η υποκατηγορία δεν ήταν δυνατό να τροποποιηθεί</value>
   </data>
-  <data name="TransactionDate" xml:space="preserve">
-    <value>Date</value>
+  <data name="SubCategoryDeleteWarningLine" xml:space="preserve">
+    <value>Είστε σίγουρος ότι θέλετε να διαγράψετε αυτή την υποκατηγορία;</value>
   </data>
-  <data name="TransactionDescription" xml:space="preserve">
-    <value>Description</value>
+  <data name="SuccessfullyDeleted" xml:space="preserve">
+    <value>Επιτυχημένη διαγραφή</value>
   </data>
-  <data name="TransactionSummary" xml:space="preserve">
-    <value>Summary</value>
+  <data name="TransactionCouldntBeModified" xml:space="preserve">
+    <value>Η συναλλαγή δεν ήταν δυνατό να τροποποιηθεί</value>
   </data>
-  <data name="TransactionTransactionType" xml:space="preserve">
-    <value>Transaction Type</value>
+  <data name="TransactionDeleteWarningLine" xml:space="preserve">
+    <value>Είστε σίγουρος ότι θέλετε να διαγράψετε αυτή την συναλλαγή;</value>
   </data>
-  <data name="TransactionTransferTo" xml:space="preserve">
-    <value>Transfer To</value>
+  <data name="TransactionHasBeenModified" xml:space="preserve">
+    <value>Η συναλλαγή τροποποιήθηκε</value>
   </data>
-  <data name="TransactionTypeAdjustment" xml:space="preserve">
-    <value>Adjustment</value>
-  </data>
-  <data name="TransactionTypeExpense" xml:space="preserve">
-    <value>Expense</value>
-  </data>
-  <data name="TransactionTypeIncome" xml:space="preserve">
-    <value>Income</value>
-  </data>
-  <data name="TransactionTypeTransfer" xml:space="preserve">
-    <value>Transfer</value>
-  </data>
-  <data name="UserSettingsItemsPerPage" xml:space="preserve">
-    <value>Items per page</value>
-  </data>
-  <data name="UserSettingsLocalization" xml:space="preserve">
-    <value>Localization</value>
-  </data>
-  <data name="UserSettingsTheme" xml:space="preserve">
-    <value>Theme</value>
+  <data name="TransactionSuccessfullyDeleted" xml:space="preserve">
+    <value>Η συναλλαγή διαγράφηκε</value>
   </data>
 </root>

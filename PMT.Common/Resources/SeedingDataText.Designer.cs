@@ -187,7 +187,7 @@ namespace PMT.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Collectin debts.
+        ///   Looks up a localized string similar to Collecting debts.
         /// </summary>
         public static string Collectindebts {
             get {
@@ -403,11 +403,11 @@ namespace PMT.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Home Maintance.
+        ///   Looks up a localized string similar to Home Maintenance.
         /// </summary>
-        public static string HomeMaintance {
+        public static string HomeMaintenance {
             get {
-                return ResourceManager.GetString("HomeMaintance", resourceCulture);
+                return ResourceManager.GetString("HomeMaintenance", resourceCulture);
             }
         }
         
@@ -511,15 +511,6 @@ namespace PMT.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mortage.
-        /// </summary>
-        public static string Mortage {
-            get {
-                return ResourceManager.GetString("Mortage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Movies.
         /// </summary>
         public static string Movies {
@@ -601,11 +592,11 @@ namespace PMT.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Repaiment.
+        ///   Looks up a localized string similar to Repayment.
         /// </summary>
-        public static string Repaiment {
+        public static string Repayment {
             get {
-                return ResourceManager.GetString("Repaiment", resourceCulture);
+                return ResourceManager.GetString("Repayment", resourceCulture);
             }
         }
         
@@ -768,6 +759,15 @@ namespace PMT.Common.Resources {
         public static string Water {
             get {
                 return ResourceManager.GetString("Water", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Μortgage.
+        /// </summary>
+        public static string Μortgage {
+            get {
+                return ResourceManager.GetString("Μortgage", resourceCulture);
             }
         }
     }

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -118,204 +118,204 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Account" xml:space="preserve">
-    <value>account</value>
+    <value>λογαριασμός</value>
   </data>
   <data name="AddAPhoneNumber" xml:space="preserve">
-    <value>Add a phone number</value>
+    <value>Προσθήκη τηλεφώνου</value>
   </data>
   <data name="AnErrorHasOccurred" xml:space="preserve">
-    <value>An error has occurred.</value>
+    <value>Συνέβη ένα λάθος.</value>
   </data>
   <data name="AssociationForm" xml:space="preserve">
-    <value>Association Form</value>
+    <value>Φόρμα σύνδεσης</value>
   </data>
   <data name="AssociationFormMessage1" xml:space="preserve">
-    <value>You've successfully authenticated with</value>
+    <value>Με επιτυχία έχετε πιστοποιηθεί</value>
   </data>
   <data name="AssociationFormMessage2" xml:space="preserve">
-    <value>Please enter a user name for this site below and click the Register button to finish logging in.</value>
+    <value>Παρακαλώ εισάγετε ένα όνομα χρήστη για αυτή την σελίδα και πατήστε το κουμπί Εγγραφή για να ολοκληρώσετε την είσοδο στην σελίδα</value>
   </data>
   <data name="ChangePassword" xml:space="preserve">
-    <value>Change Password</value>
+    <value>Αλλαγή κωδικού πρόσβασης</value>
   </data>
   <data name="ChangePasswordForm" xml:space="preserve">
-    <value>Change Password Form</value>
+    <value>Φόρμα αλλαγής κωδικού πρόσβασης</value>
   </data>
   <data name="ChangeYourAccountSettings" xml:space="preserve">
-    <value>Change your account settings</value>
+    <value>Αλλαγή των ρυθμίσεων του λογαριασμού σας</value>
   </data>
   <data name="ChangeYourPassword" xml:space="preserve">
-    <value>Change your password</value>
+    <value>Αλλάξτε τον κωδικό πρόσβασης σας</value>
   </data>
   <data name="ClickHereToLogIn" xml:space="preserve">
-    <value>click here to log in</value>
+    <value>πατήστε εδώ για να συνδεθείτε</value>
   </data>
   <data name="ConfirmEmail" xml:space="preserve">
-    <value>ConfirmEmail</value>
+    <value>Email επιβεβαίωσης</value>
   </data>
   <data name="Create" xml:space="preserve">
-    <value>Create</value>
+    <value>Δημιουργία</value>
   </data>
   <data name="CreateANewAccount" xml:space="preserve">
-    <value>Create a new account</value>
+    <value>Δημιουργία νέου λογαριασμού</value>
   </data>
   <data name="CreateLocalLogin" xml:space="preserve">
-    <value>Create Local Login</value>
+    <value>Δημιουργία τοπικής σύνδεσης</value>
   </data>
   <data name="CreatePassword" xml:space="preserve">
-    <value>Create Password</value>
+    <value>Δημιουργία κωδικού πρόσβασης</value>
   </data>
   <data name="EmailLink" xml:space="preserve">
-    <value>Email Link</value>
+    <value>Σύνδεσμος  email</value>
   </data>
   <data name="EnterVerificationCode" xml:space="preserve">
-    <value>Enter verification code</value>
+    <value>Εισάγετε κωδικό επαλήθευσης</value>
   </data>
   <data name="EnterYourEmail" xml:space="preserve">
-    <value>Enter your email</value>
+    <value>Εισάγετε το email σας</value>
   </data>
   <data name="ExternalLogins" xml:space="preserve">
-    <value>External Logins</value>
+    <value>Εξωτερικές συνδέσεις</value>
   </data>
   <data name="FailedToVerifyPhone" xml:space="preserve">
-    <value>Failed to verify phone</value>
+    <value>Αποτυχία πιστοποίησης του τηλεφώνου</value>
   </data>
   <data name="ForgotPasswordConfirmation" xml:space="preserve">
-    <value>Forgot Password Confirmation</value>
+    <value>Υπενθύμιση κωδικού πρόσβασης</value>
   </data>
   <data name="ForgotYourPassword" xml:space="preserve">
-    <value>Forgot your password?</value>
+    <value>Ξεχάσατε τον κωδικό πρόσβασης σας</value>
   </data>
   <data name="InvalidCode" xml:space="preserve">
-    <value>Invalid code.</value>
+    <value>Άκυρος κωδικός.</value>
   </data>
   <data name="InvalidLoginAttempt" xml:space="preserve">
-    <value>Invalid login attempt.</value>
+    <value>Άκυρη προσπάθεια σύνδεσης.</value>
   </data>
   <data name="LogIn" xml:space="preserve">
-    <value>Log in</value>
+    <value>Σύνδεση</value>
   </data>
   <data name="LoginFailure" xml:space="preserve">
-    <value>Login Failure</value>
+    <value>Αποτυχία σύνδεσης</value>
   </data>
   <data name="LoginFromYourAccount" xml:space="preserve">
-    <value>login from your account</value>
+    <value>σύνδεση από τον λογαριασμό σας</value>
   </data>
   <data name="LogInUsingYour" xml:space="preserve">
-    <value>Log in using your</value>
+    <value>Συνδεθείτε χρησιμοποιώντας το δικό σας</value>
   </data>
   <data name="Manage" xml:space="preserve">
-    <value>Manage</value>
+    <value>Διαχείριση</value>
   </data>
   <data name="ManageLogingsMessage1" xml:space="preserve">
-    <value>There are no external authentication services configured. See</value>
+    <value>Δεν έχουν ρυθμιστεί υπηρεσίες εξωτερικού ελέγχου ταυτότητας. Δείτε</value>
   </data>
   <data name="ManageLogingsMessage2" xml:space="preserve">
-    <value>for details on setting up this ASP.NET application to support logging in via external services.</value>
+    <value>για λεπτομέρειες πως να ρυθμίσετε αυτή την εφαρμογή ASP.NET να υποστηρίζει εξωτερικές υπηρεσίες σύνδεσης</value>
   </data>
   <data name="ManageLogingsMessage3" xml:space="preserve">
-    <value>this article</value>
+    <value>αυτό το άθρο</value>
   </data>
   <data name="ManageYourExternalLogins" xml:space="preserve">
-    <value>Manage your external logins</value>
+    <value>Διαχείριση εξωτερικών συνδέσεων</value>
   </data>
   <data name="PhoneNumber" xml:space="preserve">
-    <value>Phone Number</value>
+    <value>Αριθμός τηλεφώνου</value>
   </data>
   <data name="PleaseCheckYourEmailToResetYourPassword" xml:space="preserve">
-    <value>Please check your email to reset your password</value>
+    <value>Παρακαλώ εισάγετε το email σας για να επαναφέρετε τον κωδικό πρόσβασης σας</value>
   </data>
   <data name="Register" xml:space="preserve">
-    <value>Register</value>
+    <value>Εγγραφή</value>
   </data>
   <data name="RegisterAsANewUser" xml:space="preserve">
-    <value>Register as a new user</value>
+    <value>Εγγραφή ως νέος χρήστης</value>
   </data>
   <data name="Remove" xml:space="preserve">
-    <value>Remove</value>
+    <value>Αφαίρεση</value>
   </data>
   <data name="RemoveThis" xml:space="preserve">
-    <value>Remove this</value>
+    <value>Αφαίρεσε αυτό</value>
   </data>
   <data name="Reset" xml:space="preserve">
-    <value>Reset</value>
+    <value>Επαναφορά</value>
   </data>
   <data name="ResetPassword" xml:space="preserve">
-    <value>Reset password</value>
+    <value>Επαναφορά κωδικού πρόσβασης</value>
   </data>
   <data name="ResetPasswordConfirmation" xml:space="preserve">
-    <value>Reset password confirmation</value>
+    <value>Επαναφορά επιβεβαίωσης κωδικού πρόσβασης</value>
   </data>
   <data name="ResetYourPassword" xml:space="preserve">
-    <value>Reset your password</value>
+    <value>Επαναγορά του κωδικού πρόσβασης σας</value>
   </data>
   <data name="SelectTwoFactorAuthenticationProvider" xml:space="preserve">
-    <value>Select Two-Factor Authentication Provider</value>
+    <value>Επιλέξτε τον παροχέα ελέγχου ταυτότητας δύο παραγόντων</value>
   </data>
   <data name="Send" xml:space="preserve">
-    <value>Send</value>
+    <value>Αποστολή</value>
   </data>
   <data name="SendVerificationCode" xml:space="preserve">
-    <value>Send verification code</value>
+    <value>Αποστολή κωδικού επιβεβαίωσης</value>
   </data>
   <data name="SetPassword" xml:space="preserve">
-    <value>Set password</value>
+    <value>Ορίστε κωδικό πρόσβασης</value>
   </data>
   <data name="SetPasswordMessage1" xml:space="preserve">
-    <value>You do not have a local username/password for this site. Add a local</value>
+    <value>Δεν έχετε τοπικό όνομα χρήστη / κωδικό πρόσβασης για αυτόν τον ιστότοπο. Προσθέστε ένα τοπικό</value>
   </data>
   <data name="SetPasswordMessage2" xml:space="preserve">
-    <value>account so you can log in without an external login.</value>
+    <value>ώστε να μπορείτε να συνδεθείτε χωρίς εξωτερική σύνδεση.</value>
   </data>
   <data name="Submit" xml:space="preserve">
-    <value>Submit</value>
+    <value>Υποβολή</value>
   </data>
   <data name="ThankYouForConfirmingYourEmailPlease" xml:space="preserve">
-    <value>Thank you for confirming your email. Please</value>
+    <value>Σας ευχαριστούμε που πιστοποιήσατε το email σας. Παρακαλώ</value>
   </data>
   <data name="TheExternalLoginWasRemoved" xml:space="preserve">
-    <value>The external login was removed.</value>
+    <value>Η εξωτερική σύνδεση αφαιρέθηκε</value>
   </data>
   <data name="ThereAreNoExternalAuthenticationServicesConfigured" xml:space="preserve">
-    <value>There are no external authentication services configured</value>
+    <value>Δεν έχουν ρυθμιστεί υπηρεσίες εξωτερικού ελέγχου ταυτότητας</value>
   </data>
   <data name="UnsuccessfulLoginWithService" xml:space="preserve">
-    <value>Unsuccessful login with service</value>
+    <value>Μη επιτυχής σύνδεση με υπηρεσία</value>
   </data>
   <data name="UseALocalAccountToLogIn" xml:space="preserve">
-    <value>Use a local account to log in</value>
+    <value>Χρησιμοποιήστε έναν τοπικό λογαριασμό για να συνδεθείτε</value>
   </data>
   <data name="Verify" xml:space="preserve">
-    <value>Verify</value>
+    <value>Επαλήθευση</value>
   </data>
   <data name="VerifyPhoneNumber" xml:space="preserve">
-    <value>Verify Phone Number</value>
+    <value>Επαλήθευση του  αριθμό τηλεφώνου</value>
   </data>
   <data name="YourPasswordHasBeenChanged" xml:space="preserve">
-    <value>Your password has been changed.</value>
+    <value>Ο κωδικός σας έχει αλλάξει.</value>
   </data>
   <data name="YourPasswordHasBeenResetPlease" xml:space="preserve">
-    <value>Your password has been reset. Please</value>
+    <value>Ο κωδικός σας έχει επαναφερθεί. Παρακαλώ</value>
   </data>
   <data name="YourPasswordHasBeenSet" xml:space="preserve">
-    <value>Your password has been set.</value>
-  </data>
-  <data name="YourPhoneNumberWasAdded" xml:space="preserve">
-    <value>Your phone number was added.</value>
+    <value>Ο κωδικός πρόσβασής σας έχει ρυθμιστεί.</value>
   </data>
   <data name="YourPhoneNumberWasRemoved" xml:space="preserve">
-    <value>Your phone number was removed.</value>
+    <value>Ο αριθμός τηλεφώνου σας καταργήθηκε.</value>
+  </data>
+  <data name="YourPhoneNumberWasAdded" xml:space="preserve">
+    <value>Ο αριθμός τηλεφώνου σας προστέθηκε.</value>
   </data>
   <data name="YourSecurityCodeIs" xml:space="preserve">
-    <value>Your security code is:</value>
+    <value>Ο κωδικός ασφαλείας είναι:</value>
   </data>
   <data name="YourTwoFactorAuthenticationProviderHasBeenSet" xml:space="preserve">
-    <value>Your two-factor authentication provider has been set.</value>
+    <value>Ο παροχέας επαλήθευσης ταυτότητας δύο παραγόντων έχει οριστεί.</value>
   </data>
   <data name="Logoff" xml:space="preserve">
-    <value>Log off</value>
+    <value>Αποσύνδεση</value>
   </data>
   <data name="RememberMe" xml:space="preserve">
-    <value>Remeber Me</value>
+    <value>Να παραμένω σε σύνδεση</value>
   </data>
 </root>
