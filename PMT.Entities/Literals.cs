@@ -71,6 +71,8 @@ namespace PMT.Entities
         {
             public const string transactionsPreferencesCookie = "transactionsPreferences";
             public const string themePreferenceCookie = "themePreference";
+            public const string DisplayLanguageCookie = "displayLanguage";
+            public const string LanguageFormatting = "languageFormatting";
         }
 
         public static class Notifications

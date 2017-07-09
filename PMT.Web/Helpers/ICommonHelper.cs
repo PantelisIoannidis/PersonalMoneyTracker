@@ -6,15 +6,16 @@ namespace PMT.Web.Helpers
 {
     public interface ICommonHelper
     {
+        void ApplyServerCulture(HttpContextBase httpContext);
+        List<CultureInfo> GetClientCultureInfo(HttpContextBase httpContext);
+        string GetDisplayLanguage(HttpContextBase httpContext);
+        string GetLanguageFormatting(HttpContextBase httpContext);
+        string GetThemePreference(HttpContextBase httpContext);
+        string GetTransactionsPreferences(HttpContextBase httpContext);
         string GetUserId(HttpContextBase httpContext);
         string GetUserName(HttpContextBase httpContext);
-        List<CultureInfo> GetClientCultureInfo(HttpContextBase httpContext);
-        List<string> GetUserLanguages(HttpContextBase httpContextBase);
-        string GetServerCulture();
-
-        void SetTransactionsPreferences(HttpContextBase httpContext, string transactionFilterPreferences);
-        string GetTransactionsPreferences(HttpContextBase httpContext);
+        void SetServerCulture(HttpContextBase httpContext, string displayLanguage, string languageFormatting);
         void SetThemePreference(HttpContextBase httpContext, string theme);
-        string GetThemePreference(HttpContextBase httpContext);
+        void SetTransactionsPreferences(HttpContextBase httpContext, string preferences);
     }
 }

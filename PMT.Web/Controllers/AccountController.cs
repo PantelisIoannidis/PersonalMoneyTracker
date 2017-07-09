@@ -12,26 +12,31 @@ using PMT.Web.Models;
 using PMT.BusinessLayer;
 using PMT.DataLayer;
 using PMT.Common.Resources;
+using PMT.Web.Helpers;
+using PMT.Common;
 
 namespace PMT.Web.Controllers
 {
     [Authorize]
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
         private IIdentityEngine identityEngine;
+        private ICommonHelper commonHelper;
 
-        public AccountController(IIdentityEngine identityEngine)
+        public AccountController(IIdentityEngine identityEngine,ICommonHelper commonHelper)
+            :base(commonHelper)
         {
             this.identityEngine = identityEngine;
+            this.commonHelper = commonHelper;
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, ICommonHelper commonHelper)
+            :base(commonHelper)
         {
             UserManager = userManager;
             SignInManager = signInManager;
-            
         }
 
         public ApplicationSignInManager SignInManager
@@ -145,6 +150,10 @@ namespace PMT.Web.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            var currentClientLanguage = commonHelper.GetLanguageFormatting(HttpContext);
+            var currentImplementedLanguage = commonHelper.GetDisplayLanguage(HttpContext);
+            ViewBag.DisplayLanguage = new SelectList(CultureHelper.GetImplementedDisplayLanguages(), "Key", "Value", currentImplementedLanguage);
+            ViewBag.LanguageFormatting = new SelectList(commonHelper.GetClientCultureInfo(HttpContext), "Name", "NativeName", currentClientLanguage);
             return View();
         }
 
@@ -153,10 +162,11 @@ namespace PMT.Web.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model)
+        public async Task<ActionResult> Register(RegisterViewModel model,string DisplayLanguage,string LanguageFormatting)
         {
             if (ModelState.IsValid)
             {
+                commonHelper.SetServerCulture(HttpContext,DisplayLanguage,LanguageFormatting);
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)

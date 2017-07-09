@@ -1,8 +1,11 @@
 ﻿using Microsoft.Extensions.Logging;
 using PMT.BusinessLayer;
+using PMT.Common;
 using PMT.Common.Resources;
 using PMT.Entities;
+using PMT.Models;
 using PMT.Web.Helpers;
+using PMT.Web.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -13,7 +16,8 @@ using static PMT.Entities.Literals;
 
 namespace PMT.Web.Controllers
 {
-    public class SettingsController : Controller
+    [Authorize]
+    public class SettingsController : BaseController
     {
 
         ILogger logger;
@@ -23,7 +27,7 @@ namespace PMT.Web.Controllers
 
         public SettingsController(ILoggerFactory logger,
                                 ICommonHelper commonHelper,
-                                IUserSettingsEngine userSettingsEngine) 
+                                IUserSettingsEngine userSettingsEngine) : base(commonHelper)
         {
             this.logger = logger.CreateLogger<SettingsController>();
             this.commonHelper = commonHelper;
@@ -34,25 +38,38 @@ namespace PMT.Web.Controllers
 
         public ActionResult Index()
         {
-            var settings = userSettingsEngine.GetUserSettings(userId);
+
+
+            var currentClientLanguage = commonHelper.GetLanguageFormatting(HttpContext);
+            var currentImplementedLanguage = commonHelper.GetDisplayLanguage(HttpContext);
+
+            var settings = (UserSettings)userSettingsEngine.GetUserSettings(userId);
             if (settings == null)
             {
-                settings = new UserSettings() { UserId = userId, ItemsPerPage = 10,Theme="Default" };
+                settings = new UserSettings() {
+                    UserId = userId,
+                    ItemsPerPage = 10,
+                    Theme = "Default",
+                    DisplayLanguage = currentClientLanguage,
+                    LanguageFormatting = currentImplementedLanguage
+                };
             }
-            var dict = userSettingsEngine.GetThemes();
-            SelectList SelectList = new SelectList((IEnumerable)dict, "Key", "Value", settings.Theme);
-            ViewBag.Theme = SelectList;
-            
+
+            ViewBag.DisplayLanguage = new SelectList(CultureHelper.GetImplementedDisplayLanguages(), "Key", "Value", currentImplementedLanguage);
+            ViewBag.LanguageFormatting = new SelectList(commonHelper.GetClientCultureInfo(HttpContext), "Name", "NativeName", currentClientLanguage);
+            ViewBag.Theme = new SelectList(userSettingsEngine.GetThemes(), "Key", "Value", settings.Theme); 
+
             return View(settings);
         }
 
         [HttpPost]
-        public ActionResult SaveSettings(UserSettings userSettings, string preferences)
+        public ActionResult SaveSettings(UserSettings userSettings, string preferences, FormCollection form)
         {
             if (ModelState.IsValid)
             {
                 TempData[GlobalCookies.themePreferenceCookie] = preferences;
                 commonHelper.SetThemePreference(HttpContext, preferences);
+                commonHelper.SetServerCulture(HttpContext, userSettings.DisplayLanguage, userSettings.LanguageFormatting);
                 var result = userSettingsEngine.StoreUserSettings(userSettings);
                 if (result.Status)
                 {

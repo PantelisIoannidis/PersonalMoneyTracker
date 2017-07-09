@@ -67,13 +67,7 @@ namespace PMT.Web.App_Start
             container.RegisterType<IIconsEngine, IconsEngine>();
 
 
-            //Account Login
-            container.RegisterType<IUserStore<ApplicationUser>, UserStore<ApplicationUser>>();
-            container.RegisterType<UserManager<ApplicationUser>>();
-            //container.RegisterType<DbContext, MainDb>();
-            container.RegisterType<ApplicationUserManager>();
-            container.RegisterType<AccountController>(new InjectionConstructor(new ResolvedParameter<IIdentityEngine>()));
-            container.RegisterType<ManageController>(new InjectionConstructor());
+
 
             //Helpers
             container.RegisterType<IActionStatus, ActionStatus>();
@@ -94,7 +88,13 @@ namespace PMT.Web.App_Start
             container.RegisterType<IIconRepository, IconRepository>();
             container.RegisterType<IUserSettingsRepository, UserSettingsRepository>();
 
-
+            //Account Login
+            container.RegisterType<IUserStore<ApplicationUser>, UserStore<ApplicationUser>>();
+            container.RegisterType<UserManager<ApplicationUser>>();
+            //container.RegisterType<DbContext, MainDb>();
+            container.RegisterType<ApplicationUserManager>();
+            container.RegisterType<AccountController>(new InjectionConstructor(new ResolvedParameter<IIdentityEngine>(), new ResolvedParameter<ICommonHelper>()));
+            container.RegisterType<ManageController>(new InjectionConstructor(new ResolvedParameter<ICommonHelper>()));
 
         }
     }

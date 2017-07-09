@@ -8,7 +8,7 @@
     };
 
     function applyThemeButtonEvent() {
-        $(".applyTheme").on("click", function (e) {
+        $(".applyTheme(invalid)").on("click", function (e) {
             e.preventDefault();
             SetPreferences();
         });

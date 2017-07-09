@@ -304,6 +304,15 @@ namespace PMT.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Display Language.
+        /// </summary>
+        public static string UserSettingsDisplayLanguage {
+            get {
+                return ResourceManager.GetString("UserSettingsDisplayLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Items per page.
         /// </summary>
         public static string UserSettingsItemsPerPage {
@@ -313,20 +322,20 @@ namespace PMT.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Localization.
-        /// </summary>
-        public static string UserSettingsLocalization {
-            get {
-                return ResourceManager.GetString("UserSettingsLocalization", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Theme.
         /// </summary>
         public static string UserSettingsTheme {
             get {
                 return ResourceManager.GetString("UserSettingsTheme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Language Formatting.
+        /// </summary>
+        public static string UsersSettingsLanguageFormatting {
+            get {
+                return ResourceManager.GetString("UsersSettingsLanguageFormatting", resourceCulture);
             }
         }
     }

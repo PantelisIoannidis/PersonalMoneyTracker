@@ -16,7 +16,7 @@ using static PMT.Entities.Literals;
 namespace PMT.Web.Controllers
 {
     [Authorize]
-    public class CategoriesController : Controller
+    public class CategoriesController : BaseController
     {
 
         ILogger logger;
@@ -29,7 +29,7 @@ namespace PMT.Web.Controllers
                                         ICommonHelper commonHelper,
                                         ICategoriesEngine categoriesEngine,
                                         IIconsEngine iconsEngine
-                                        ) 
+                                        ) : base(commonHelper)
         {
             this.commonHelper = commonHelper;
             this.logger = logger.CreateLogger<CategoriesController>();

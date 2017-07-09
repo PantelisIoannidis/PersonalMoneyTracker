@@ -11,7 +11,7 @@ using System.Web.Mvc;
 namespace PMT.Web.Controllers
 {
     [Authorize]
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         ILogger logger;
         ICommonHelper commonHelper;
@@ -24,7 +24,7 @@ namespace PMT.Web.Controllers
         public HomeController(ILoggerFactory logger,
                                 ICommonHelper commonHelper,
                                 ITransactionsEngine transactionsEngine,
-                                IChartsEngine chartsEngine) 
+                                IChartsEngine chartsEngine) :base(commonHelper)
         {
             this.logger = logger.CreateLogger<HomeController>();
             this.commonHelper = commonHelper;

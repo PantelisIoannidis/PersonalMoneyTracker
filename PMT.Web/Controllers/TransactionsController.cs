@@ -21,7 +21,7 @@ using PMT.Common.Resources;
 namespace PMT.Web.Controllers
 {
     [Authorize]
-    public class TransactionsController : Controller
+    public class TransactionsController : BaseController
     {
         
 
@@ -40,7 +40,7 @@ namespace PMT.Web.Controllers
                                         IMoneyAccountEngine moneyAccountEngine,
                                         ITransactionsEngine transactionsEngine,
                                         IMapping mapping
-                                        )
+                                        ) : base(commonHelper)
         {
 
             this.categoriesEngine = categoriesEngine;

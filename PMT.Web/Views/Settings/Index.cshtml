@@ -6,42 +6,60 @@
 <div class="panel panel-primary use-big-fonts">
     <div class="panel-heading">@ViewBag.Title</div>
     <div class="panel-body">
-        @using (Html.BeginForm("SaveSettings", "Settings", FormMethod.Post,
-                new { id = "userSettingsForm", @class = "userSettingsForm" }))
-        {
-            @Html.HiddenFor(model=>model.UserId)
+        @*@using (Html.BeginForm("SaveSettings", "Settings", FormMethod.Post,
+                        new { id = "userSettingsForm", @class = "userSettingsForm" }))
+            {*@
+        <form action="/Settings/SaveSettings" class="userSettingsForm" id="userSettingsForm" method="post">
+            @Html.HiddenFor(model => model.UserId)
             @Html.ValidationSummary()
             <div class="form-horizontal row">
                 <div class="col-md-3"></div>
                 <div class="col-md-5">
                     <div class="form-group">
-                        @Html.LabelFor(model=>model.Theme,ModelText.UserSettingsTheme,htmlAttributes: new { @class="control-label col-md-4" })
+                        @Html.LabelFor(model => model.Theme, ModelText.UserSettingsTheme, htmlAttributes: new { @class = "control-label col-md-4" })
                         <div class="col-md-7">
-                            @Html.DropDownList("Theme", null, htmlAttributes: new { @class="form-control"})
-                            @Html.ValidationMessageFor(model=>model.Theme,"",new { @class="text-danger"})
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        @Html.LabelFor(model=>model.ItemsPerPage,ModelText.UserSettingsItemsPerPage, htmlAttributes: new { @class="control-label col-md-4" })
-                        <div class="col-md-7">
-                            @Html.EditorFor(model=>model.ItemsPerPage, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.ItemsPerPage, "", new { @class = "text-danger" })
+                            @Html.DropDownList("Theme", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Theme, "", new { @class = "text-danger" })
                         </div>
                     </div>
                     
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ItemsPerPage, ModelText.UserSettingsItemsPerPage, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-7">
+                            @Html.EditorFor(model => model.ItemsPerPage, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.ItemsPerPage, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DisplayLanguage, ModelText.UserSettingsDisplayLanguage, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-7">
+                            @Html.DropDownList("DisplayLanguage", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.DisplayLanguage, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.Label(ModelText.UsersSettingsLanguageFormatting, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-7">
+                            @Html.DropDownList("LanguageFormatting", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.LanguageFormatting, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+
                 </div>
                 <div class="col-md-4"></div>
             </div>
             <div class="row">
                 <div class="form-group">
                     <div class="col-md-offset-3 col-md-9">
-                        @*<button type="submit" class="btn btn-success"><i class="applyTheme fa fa-fw fa-save longProcess"></i> @ViewText.Save</button>*@
-                        <button class="applyTheme btn btn-success"><i class="fa fa-fw fa-save"></i> @ViewText.Apply</button>
+                        <button type="submit" class="applyTheme btn btn-success"><i class="fa fa-fw fa-save"></i> @ViewText.Apply</button>
                         <a href="@Url.Action("Index","Settings",null)" class="btn btn-default longProcess"><i class="fa fa-fw fa-remove"></i> @ViewText.Cancel</a>
                     </div>
                 </div>
             </div>
-        }
+        </form>
     </div>
 </div>
 @section Scripts {

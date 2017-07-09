@@ -8,20 +8,23 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using PMT.Web.Models;
 using PMT.Common.Resources;
+using PMT.Web.Helpers;
 
 namespace PMT.Web.Controllers
 {
     [Authorize]
-    public class ManageController : Controller
+    public class ManageController : BaseController
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
-        public ManageController()
+        public ManageController(ICommonHelper commonHelper)
+            :base(commonHelper)
         {
         }
 
-        public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager,ICommonHelper commonHelper)
+            :base(commonHelper)
         {
             UserManager = userManager;
             SignInManager = signInManager;

@@ -85,8 +85,8 @@
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/js/app")
     @{
-            var commonHelper = new CommonHelper();
-            var serverCulture = commonHelper.GetServerCulture();
+        var commonHelper = new CommonHelper();
+        var serverCulture = Html.Action("GetCulture","Base",null);
     }
     <script type="text/javascript">
         pmt.rootPath = '@string.Format("{0}://{1}{2}", Request.Url.Scheme, Request.Url.Authority, Url.Content("~"))';

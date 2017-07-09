@@ -6,6 +6,9 @@ using Microsoft.AspNet.Identity;
 using System.Globalization;
 using System.Web.WebPages;
 using static PMT.Entities.Literals;
+using PMT.Entities;
+using PMT.Common;
+using System.Threading;
 
 namespace PMT.Web.Helpers
 {
@@ -23,32 +26,102 @@ namespace PMT.Web.Helpers
         public List<CultureInfo> GetClientCultureInfo(HttpContextBase httpContext)
         {
             List<CultureInfo> cultures = new List<CultureInfo>();
-            foreach(string locale in httpContext.Request.UserLanguages)
+            var clientLanguages = httpContext.Request.UserLanguages.Select(c=>c.Split(';')[0]).ToList();
+            var implementedLanguages = CultureHelper.GetImplementedDisplayLanguages().Keys.Select(c => c).ToList();
+            clientLanguages.AddRange(implementedLanguages);
+            clientLanguages = clientLanguages.Distinct().ToList();
+            foreach (string locale in clientLanguages)
             {
-                locale.Replace(";", "");
                 try {
                     cultures.Add(new CultureInfo(locale, false));
                 }
-                catch { continue; }
+                catch(Exception ex)
+                { continue; }
             }
             if (cultures.Count == 0)
                 cultures.Add(CultureInfo.CurrentCulture);
 
-            cultures.Add(CultureInfo.InvariantCulture);
             return cultures;
         }
 
-        public string GetServerCulture()
+        public string GetDisplayLanguage(HttpContextBase httpContext)
         {
-            return CultureInfo.CurrentUICulture.ToString();
+            string cultureName = null;
+
+            HttpCookie cultureCookie = httpContext.Request.Cookies[Literals.GlobalCookies.DisplayLanguageCookie];
+            if (cultureCookie != null)
+                cultureName = cultureCookie.Value;
+            else
+                cultureName = httpContext.Request.UserLanguages != null && httpContext.Request.UserLanguages.Length > 0 ?
+                        httpContext.Request.UserLanguages[0] :
+                        null;
+
+            cultureName = CultureHelper.GetImplementedCulture(cultureName);
+
+            return cultureName;
         }
 
-        public List<string> GetUserLanguages(HttpContextBase httpContextBase)
+        public string GetLanguageFormatting(HttpContextBase httpContext)
         {
-            var languages = httpContextBase.Request.UserLanguages.ToList();
-            if (languages.Count ==0)
-                languages.Add(CultureInfo.CurrentCulture.ToString());
-            return languages;
+            string cultureName = null;
+
+            HttpCookie cultureCookie = httpContext.Request.Cookies[Literals.GlobalCookies.LanguageFormatting];
+            if (cultureCookie != null)
+                cultureName = cultureCookie.Value;
+            else
+                cultureName = httpContext.Request.UserLanguages != null && httpContext.Request.UserLanguages.Length > 0 ?
+                        httpContext.Request.UserLanguages[0] :
+                        null;
+
+            cultureName = CultureHelper.GetImplementedCulture(cultureName);
+
+            return cultureName;
+        }
+
+        public void SetServerCulture(HttpContextBase httpContext,string displayLanguage,string languageFormatting)
+        {
+
+            if (!string.IsNullOrEmpty(displayLanguage))
+            {
+                HttpCookie cultureCookie = httpContext.Request.Cookies[Literals.GlobalCookies.DisplayLanguageCookie];
+                if (cultureCookie != null)
+                {
+                    cultureCookie.Value = displayLanguage;
+                }
+                else
+                {
+                    cultureCookie = new HttpCookie(Literals.GlobalCookies.DisplayLanguageCookie);
+                    cultureCookie.Value = displayLanguage;
+                    cultureCookie.Expires = DateTime.Now.AddYears(1);
+                }
+                httpContext.Response.SetCookie(cultureCookie);
+                Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(displayLanguage);
+            }
+            if (!string.IsNullOrEmpty(languageFormatting))
+            {
+                HttpCookie cultureCookie = httpContext.Request.Cookies[Literals.GlobalCookies.LanguageFormatting];
+                if (cultureCookie != null)
+                {
+                    cultureCookie.Value = languageFormatting;
+                }
+                else
+                {
+                    cultureCookie = new HttpCookie(Literals.GlobalCookies.LanguageFormatting);
+                    cultureCookie.Value = languageFormatting;
+                    cultureCookie.Expires = DateTime.Now.AddYears(1);
+                }
+                httpContext.Response.SetCookie(cultureCookie);
+                Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(languageFormatting);
+            }
+        }
+
+        public void ApplyServerCulture(HttpContextBase httpContext)
+        {
+            var languageFormatting = GetLanguageFormatting(httpContext);
+            var displayLanguage = GetDisplayLanguage(httpContext);
+            
+            Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(languageFormatting);
+            Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(displayLanguage);
         }
 
         public void SetTransactionsPreferences(HttpContextBase httpContext, string preferences)

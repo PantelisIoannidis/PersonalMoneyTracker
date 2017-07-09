@@ -20,7 +20,7 @@ using PMT.Common.Resources;
 namespace PMT.Web.Controllers
 {
     [Authorize]
-    public class MoneyAccountsController : Controller
+    public class MoneyAccountsController :BaseController
     {
         ILogger logger;
         IMoneyAccountEngine moneyAccountEngine;
@@ -33,7 +33,7 @@ namespace PMT.Web.Controllers
                                         IMoneyAccountEngine moneyAccountEngine,
                                         ICategoriesEngine categoriesEngine,
                                         ITransactionsEngine transactionsEngine,
-                                        ILoggerFactory logger) 
+                                        ILoggerFactory logger) : base(commonHelper)
         {
             this.commonHelper = commonHelper;
             this.categoriesEngine = categoriesEngine;

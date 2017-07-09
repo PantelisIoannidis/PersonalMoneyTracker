@@ -19,7 +19,10 @@ namespace PMT.Entities
         [Display(Name = nameof(ModelText.UserSettingsItemsPerPage),ResourceType =typeof(ModelText))]
         public int ItemsPerPage { get; set; }
 
-        [Display(Name = nameof(ModelText.UserSettingsLocalization), ResourceType = typeof(ModelText))]
-        public string Localization { get; set; }
+        [Display(Name = nameof(ModelText.UserSettingsDisplayLanguage), ResourceType = typeof(ModelText))]
+        public string DisplayLanguage { get; set; }
+
+        [Display(Name = nameof(ModelText.UsersSettingsLanguageFormatting), ResourceType = typeof(ModelText))]
+        public string LanguageFormatting { get; set; }
     }
 }

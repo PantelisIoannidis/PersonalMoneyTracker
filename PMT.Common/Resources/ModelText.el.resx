@@ -189,9 +189,6 @@
   <data name="UserSettingsItemsPerPage" xml:space="preserve">
     <value>Γραμμές ανά σελίδα</value>
   </data>
-  <data name="UserSettingsLocalization" xml:space="preserve">
-    <value>Τοπική προσαρμογή</value>
-  </data>
   <data name="UserSettingsTheme" xml:space="preserve">
     <value>Θέμα</value>
   </data>
@@ -206,5 +203,11 @@
   </data>
   <data name="PeriodYear" xml:space="preserve">
     <value>Έτος</value>
+  </data>
+  <data name="UserSettingsDisplayLanguage" xml:space="preserve">
+    <value>Γλώσσα απεικόνισης </value>
+  </data>
+  <data name="UsersSettingsLanguageFormatting" xml:space="preserve">
+    <value>Γλώσσα μορφοποίησης</value>
   </data>
 </root>
