@@ -274,7 +274,8 @@
                 });
             });
         $('.datepicker').datepicker({
-            locale: pmt.currentLocal
+            locale: pmt.currentLocal,
+            format: dateTimeCalculations.getLocaleDateString()
         });
         
     };

@@ -73,6 +73,7 @@ namespace PMT.Entities
             public const string themePreferenceCookie = "themePreference";
             public const string DisplayLanguageCookie = "displayLanguage";
             public const string LanguageFormatting = "languageFormatting";
+            public const string TimeZoneCookie = "_timeZoneCookie";
         }
 
         public static class Notifications

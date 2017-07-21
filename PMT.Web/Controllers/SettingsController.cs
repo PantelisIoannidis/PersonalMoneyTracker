@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using PMT.BusinessLayer;
 using PMT.Common;
 using PMT.Common.Resources;
@@ -67,8 +68,9 @@ namespace PMT.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                TempData[GlobalCookies.themePreferenceCookie] = preferences;
-                commonHelper.SetThemePreference(HttpContext, preferences);
+                var serializedSettings = JsonConvert.SerializeObject(userSettings);
+                TempData[GlobalCookies.themePreferenceCookie] = serializedSettings;
+                commonHelper.SetThemePreference(HttpContext, serializedSettings);
                 commonHelper.SetServerCulture(HttpContext, userSettings.DisplayLanguage, userSettings.LanguageFormatting);
                 var result = userSettingsEngine.StoreUserSettings(userSettings);
                 if (result.Status)

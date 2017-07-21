@@ -39,7 +39,7 @@ namespace PMT.BusinessLayer
             return moneyAccountRepository.DeleteAccount(id);
         }
 
-        public void AddNewAccountWithInitialBalance(MoneyAccount moneyAccount)
+        public void AddNewAccountWithInitialBalance(MoneyAccount moneyAccount, int timeZoneOffset = 0)
         {
             try
             {
@@ -49,7 +49,8 @@ namespace PMT.BusinessLayer
                     MoneyAccountId = moneyAccount.MoneyAccountId,
                     TransactionType = TransactionType.Adjustment,
                     Amount = moneyAccount.Balance,
-                    TransactionDate = DateTime.Now,
+                    TransactionDate = DateTime.UtcNow,
+                    TimeZoneOffset = timeZoneOffset,
                     Description = moneyAccount.Name + " " + ViewText.InitialBalance
                 };
                 moneyAccountRepository.AddNewAccountWithInitialBalance(moneyAccount, transaction);
@@ -92,7 +93,7 @@ namespace PMT.BusinessLayer
 
         }
 
-        public void EditAccountNameAdjustBalance(MoneyAccount moneyAccount)
+        public void EditAccountNameAdjustBalance(MoneyAccount moneyAccount, int timeZoneOffset=0)
         {
             try
             {
@@ -102,7 +103,8 @@ namespace PMT.BusinessLayer
                     MoneyAccountId = moneyAccount.MoneyAccountId,
                     TransactionType = TransactionType.Adjustment,
                     Amount = moneyAccount.Balance,
-                    TransactionDate = DateTime.Now,
+                    TransactionDate = DateTime.UtcNow,
+                    TimeZoneOffset = timeZoneOffset,
                     Description = ModelText.MoneyAccountName + " " + ViewText.Adjustment
                 };
                 moneyAccountRepository.EditAccountNameAdjustBalance(moneyAccount, transaction);

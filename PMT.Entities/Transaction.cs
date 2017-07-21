@@ -12,7 +12,6 @@ namespace PMT.Entities
     public class Transaction
     {
         private decimal _amount;
-        private DateTime _date;
 
         public int TransactionId { get; set; }
 
@@ -28,14 +27,9 @@ namespace PMT.Entities
 
         [DataType(DataType.Date)]
         [Display(Name = nameof(ModelText.TransactionDate), ResourceType = typeof(ModelText))]
-        public DateTime TransactionDate {
-            get {
-                return _date.ToLocalTime();
-            }
-            set {
-                _date = value.ToUniversalTime();
-            }
-        }
+        public DateTime TransactionDate { get; set; }
+
+        public int TimeZoneOffset { get; set; }
 
         [Display(Name = nameof(ModelText.TransactionDescription), ResourceType = typeof(ModelText))]
         public string Description { get; set; }

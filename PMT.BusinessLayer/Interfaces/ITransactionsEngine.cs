@@ -8,7 +8,7 @@ namespace PMT.BusinessLayer
 {
     public interface ITransactionsEngine
     {
-        TransactionFilterVM GetFilter(string userId, string objPreferences);
+        TransactionFilterVM GetFilter(string userId, string objPreferences, int timeZoneOffset=0);
         TransactionsSummaryVM PrepareSummary(string userId, TransactionFilterVM transactionFilterVM);
         decimal GetBalance(string userId);
         ActionStatus InsertNewTransaction(Transaction transaction);

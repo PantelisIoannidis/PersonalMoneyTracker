@@ -153,5 +153,11 @@ namespace PMT.Web.Helpers
             HttpCookie cookie = HttpContext.Current.Request.Cookies[GlobalCookies.themePreferenceCookie] ?? new HttpCookie(GlobalCookies.themePreferenceCookie);
             return cookie.Value;
         }
+
+        public string GetTimeZoneOffset(HttpContextBase httpContext)
+        {
+            HttpCookie cookie = HttpContext.Current.Request.Cookies[GlobalCookies.TimeZoneCookie] ?? new HttpCookie(GlobalCookies.TimeZoneCookie);
+            return cookie.Value;
+        }
     }
 }

@@ -116,6 +116,10 @@
     <script type="text/javascript">
         $(function () {
             pmt.onDocumentTransactionCreate();
+            var format = (dateTimeCalculations.getLocaleDateString()).toUpperCase();
+            $.validator.methods.date = function (value, element) {
+                return this.optional(element) || moment(value,format , true).isValid();
+            }
         });
     </script>
 }

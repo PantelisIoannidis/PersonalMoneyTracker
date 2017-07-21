@@ -17,5 +17,6 @@ namespace PMT.Web.Helpers
         void SetServerCulture(HttpContextBase httpContext, string displayLanguage, string languageFormatting);
         void SetThemePreference(HttpContextBase httpContext, string theme);
         void SetTransactionsPreferences(HttpContextBase httpContext, string preferences);
+        string GetTimeZoneOffset(HttpContextBase httpContext);
     }
 }

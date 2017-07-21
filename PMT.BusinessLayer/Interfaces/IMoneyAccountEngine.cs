@@ -7,8 +7,8 @@ namespace PMT.BusinessLayer
 {
     public interface IMoneyAccountEngine
     {
-        void AddNewAccountWithInitialBalance(MoneyAccount moneyAccount);
-        void EditAccountNameAdjustBalance(MoneyAccount moneyAccount);
+        void AddNewAccountWithInitialBalance(MoneyAccount moneyAccount, int timeZoneOffset=0);
+        void EditAccountNameAdjustBalance(MoneyAccount moneyAccount, int timeZoneOffset=0);
         List<MoneyAccount> GetMoneyAccounts(string userId);
         List<MoneyAccountVM> GetMoneyAccountsWithBalance(string userId);
         List<MoneyAccount> GetMoneyAccountsPlusAll(string userId);

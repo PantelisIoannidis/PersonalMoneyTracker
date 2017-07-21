@@ -90,9 +90,9 @@
     }
     <script type="text/javascript">
         pmt.rootPath = '@string.Format("{0}://{1}{2}", Request.Url.Scheme, Request.Url.Authority, Url.Content("~"))';
-        pmt.currentLocal = navigator.language || navigator.userLanguage;
+        pmt.currentLocal = '@serverCulture';
         if (!pmt.currentLocal)
-            pmt.currentLocal = '@serverCulture';
+            pmt.currentLocal = navigator.language || navigator.userLanguage;
 
         $(function () {
             pmt.onDocumentLoadMaster();

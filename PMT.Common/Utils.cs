@@ -49,6 +49,16 @@ namespace PMT.Common
             return tmp;
         }
 
+        public static DateTime ToLocalTime(this DateTime dateTime, TimeSpan offset)
+        {
+            return dateTime.ToUniversalTime().Add(offset);
+        }
+
+        public static DateTime ToLocalTime(this DateTime dateTime, int offsetInMinutes)
+        {
+            return dateTime.ToUniversalTime().Add(TimeSpan.FromMinutes(offsetInMinutes));
+        }
+
 
     }
 }

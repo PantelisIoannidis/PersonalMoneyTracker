@@ -28,7 +28,7 @@ namespace PMT.Web.Controllers
 
         public string GetCulture()
         {
-            return commonHelper.GetDisplayLanguage(HttpContext);
+            return commonHelper.GetLanguageFormatting(HttpContext);
         }
     }
 }

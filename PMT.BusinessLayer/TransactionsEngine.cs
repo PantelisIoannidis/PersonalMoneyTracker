@@ -120,10 +120,10 @@ namespace PMT.BusinessLayer
             return (ActionStatus)actionStatus;
         }
 
-        public TransactionFilterVM GetFilter(string userId, string objPreferences)
+        public TransactionFilterVM GetFilter(string userId, string objPreferences, int timeZoneOffset = 0)
         {
             TransactionFilterVM transactionFilterVM = new TransactionFilterVM();
-            DateTime selectedDate = DateTime.Now;
+            DateTime selectedDate = DateTime.UtcNow.ToLocalTime(timeZoneOffset);
 
             try
             {
@@ -138,7 +138,7 @@ namespace PMT.BusinessLayer
                     if (pref.Operation == TransactionFilterOperation.MoveToPrevious)
                         period.MoveToPrevious();
                     if (pref.Operation == TransactionFilterOperation.Reset)
-                        period.ResetSelectedDate(DateTime.Now);
+                        period.ResetSelectedDate(DateTime.UtcNow.ToLocalTime(timeZoneOffset));
 
                     transactionFilterVM.PeriodFilterId = pref.PeriodFilterId;
                     transactionFilterVM.AccountFilterId = pref.AccountFilterId;

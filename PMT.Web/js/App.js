@@ -12,6 +12,7 @@ var pmt = function () {
         commonUI.loadingEvents();
         commonUI.loadingFinished();
         commonUI.showNotifications();
+        dateTimeCalculations.onDateTimeInit();
     };
 
     var onDocumentLoadHome = function () {
@@ -56,7 +57,6 @@ var pmt = function () {
         onDocumentLoadIndexAccounts: onDocumentLoadIndexAccounts,
         onDocumentLoadIndexCategories: onDocumentLoadIndexCategories,
         onDocumentLoadCategoriesCreate: onDocumentLoadCategoriesCreate
-
     };
 
 }(); 

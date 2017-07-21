@@ -47,6 +47,12 @@ namespace PMT.Web.Helpers
             }
 
             ViewBag.ItemsPerPage = themePreferences.ItemsPerPage;
+
+
+            var TimeZoneOffset = TimeSpan.FromMinutes(0);
+            var TimeZoneCookie = commonHelper.GetTimeZoneOffset(filterContext.HttpContext);
+            ViewBag.TimeZoneOffset = TimeZoneCookie;
+            TempData[GlobalCookies.TimeZoneCookie] = TimeZoneOffset;
         }
     }
 }

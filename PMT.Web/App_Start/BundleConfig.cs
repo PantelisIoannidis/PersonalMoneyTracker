@@ -47,6 +47,7 @@ namespace PMT.Web
                         "~/js/App.CategoriesCreateUI.js",
                         "~/js/App.HomeCharts.js",
                         "~/js/App.ThemeSelector.js",
+                        "~/js/App.DateTime.js",
                         "~/js/App.js"
                         ));
         }
