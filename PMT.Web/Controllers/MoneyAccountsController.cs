@@ -6,9 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using PMT.DataLayer;
 using PMT.Entities;
-using PMT.DataLayer.Repositories;
 using PMT.Web.Helpers;
 using PMT.Common;
 using PMT.Models;
@@ -43,13 +41,6 @@ namespace PMT.Web.Controllers
             userId = commonHelper.GetUserId(HttpContext);
         }
 
-        //[HttpGet]
-        //public ActionResult GetCategories()
-        //{
-        //    //var categories = categoryRepository.GetGategory(type);
-        //    var categories = categoryRepository.GetAll();
-        //    return Json(categories, JsonRequestBehavior.AllowGet);
-        //}
 
         [MoveNotificationsDataFilter]
         public ActionResult Index()

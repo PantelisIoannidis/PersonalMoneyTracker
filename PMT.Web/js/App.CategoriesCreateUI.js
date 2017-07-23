@@ -72,6 +72,7 @@
             var id = $(this).val();
             $("#Type").val(id);
             $('#CategoryBtn').val("");
+            $('#CategoryId').val("");
             fillCategory();
         });
     };

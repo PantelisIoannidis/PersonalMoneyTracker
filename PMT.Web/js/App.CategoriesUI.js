@@ -79,8 +79,8 @@
 	    });
 
 	    $("#newSubCategoryBtn").click(function (e) {
-	        e.preventDefault();
-	        var newUrl = pmt.rootPath + "Categories/NewSubCategory/";
+            e.preventDefault();
+            var newUrl = pmt.rootPath + "Categories/NewSubCategory/";
 	        document.location.href = newUrl;
 
 	    });

@@ -105,7 +105,7 @@ namespace PMT.Web.Controllers
             var categoryVM = new CategoryVM()
             {
                 IconId = DefaultCategoryValues.IconId,
-                UserId=userId
+                UserId = userId
             };
             ViewBag.Title = ViewText.CreateNewSubcategory;
             ViewBag.CategoryType = GetShortTransactionTypeList();

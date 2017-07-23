@@ -11,8 +11,8 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using PMT.Web.Models;
-using PMT.DataLayer;
 using PMT.Common.Resources;
+using PMT.DataLayer;
 
 namespace PMT.Web
 {
