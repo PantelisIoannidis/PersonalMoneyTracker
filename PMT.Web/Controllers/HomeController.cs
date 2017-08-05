@@ -48,16 +48,14 @@ namespace PMT.Web.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            var language = commonHelper.GetDisplayLanguage(HttpContext);
+            if (language.Equals("el"))
+            {
+                return View("About.el");
+            }
             return View();
         }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
 
         [ChildActionOnly]
         public ActionResult LocalizedResources()

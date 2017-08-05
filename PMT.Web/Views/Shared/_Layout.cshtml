@@ -28,9 +28,6 @@
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse-header">
                         <i class="fa fa-fw fa-user"></i>
                     </button>
-                    @*<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".my-bar-collapse-side">
-                        <i class="fa fa-fw fa-dollar"></i>
-                    </button>*@
                     @Html.ActionLink(@ViewText.ApplicationName, "Index", "Home", new { area = "" }, new { @class = "navbar-brand navbar-brand-full" })
                     @Html.ActionLink("PMT", "Index", "Home", new { area = "" }, new { @class = "navbar-brand navbar-brand-short" })
                 </div>
@@ -44,22 +41,22 @@
             <div class=" col-sm-3 col-md-2">
                 <ul class="my-bar-collapse-side my-bar text-center use-big-fonts">
                     <li>
-                        <a href="@Url.Action("Index","Home",null)" id="HomeLink"><div class="iconInTile longProcess"><i class="fa fa-fw fa-home"></i></div> @ViewText.QuickView</a>
+                        <a href="@Url.Action("Index","Home",null)" id="HomeIndexLink"><div class="iconInTile longProcess"><i class="fa fa-fw fa-home"></i></div> @ViewText.QuickView</a>
                     </li>
                     <li>
-                        <a href="@Url.Action("Index","Transactions",null)" id="TransactionsLink"><div class="iconInTile longProcess"><i class="fa fa-fw icon-wallet"></i></div> @ViewText.Transactions</a>
+                        <a href="@Url.Action("Index","Transactions",null)" id="TransactionsIndexLink"><div class="iconInTile longProcess"><i class="fa fa-fw icon-wallet"></i></div> @ViewText.Transactions</a>
                     </li>
                     <li>
-                        <a href="@Url.Action("Index","MoneyAccounts",null)" id="MoneyAccountsLink"><div class="iconInTile longProcess"><i class="fa fa-fw fa-book"></i></div> @ViewText.Accounts</a>
+                        <a href="@Url.Action("Index","MoneyAccounts",null)" id="MoneyIndexAccountsLink"><div class="iconInTile longProcess"><i class="fa fa-fw fa-book"></i></div> @ViewText.Accounts</a>
                     </li>
                     <li>
-                        <a href="@Url.Action("Index","Categories",null)" id="CategoriesLink"><div class="iconInTile longProcess"><i class="fa fa-fw icon-list-alt"></i></div> @ViewText.Categories</a>
+                        <a href="@Url.Action("Index","Categories",null)" id="CategoriesIndexLink"><div class="iconInTile longProcess"><i class="fa fa-fw icon-list-alt"></i></div> @ViewText.Categories</a>
                     </li>
                     <li>
-                        <a href="@Url.Action("Index","Settings",null)" id="SettingsLink"><div class="iconInTile longProcess"><i class="fa fa-fw fa-wrench"></i></div> @ViewText.Settings</a>
+                        <a href="@Url.Action("Index","Settings",null)" id="SettingsIndexLink"><div class="iconInTile longProcess"><i class="fa fa-fw fa-wrench"></i></div> @ViewText.Settings</a>
                     </li>
                     <li>
-                        <a href="@Url.Action("About","Home",null)" id="SettingsLink"><div class="iconInTile longProcess"><i class="fa fa-fw fa-info"></i></div> @ViewText.About</a>
+                        <a href="@Url.Action("About","Home",null)" id="HomeAboutLink"><div class="iconInTile longProcess"><i class="fa fa-fw fa-info"></i></div> @ViewText.About</a>
                     </li>
                 </ul>
             </div>
@@ -75,8 +72,11 @@
     </div>
 
     @Html.Partial("_LocalizedResources")
-
-    <input type="hidden" name="myBarSelector" value="@((HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString()) + "Link")">
+    @{
+        var ControllerAction = (HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString())
+            + (HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString());
+    }
+    <input type="hidden" name="myBarSelector" value="@(ControllerAction + "Link")">
 
 
     @Scripts.Render("~/bundles/jquery")

@@ -36,6 +36,15 @@ namespace PMT.Web
             Server.ClearError();
             Response.Redirect("/Errors/Error");
         }
+
+        public override string GetVaryByCustomString(HttpContext context, string custom)
+        {
+            if (custom.Equals("lang"))
+            {
+                return Thread.CurrentThread.CurrentUICulture.Name;
+            }
+            return base.GetVaryByCustomString(context, custom);
+        }
     }
 }
     
