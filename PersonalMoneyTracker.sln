@@ -1,14 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.6
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMT.Web", "PMT.Web\PMT.Web.csproj", "{BEBF9219-A627-48A6-8F5C-AA80DE0D0720}"
 	ProjectSection(ProjectDependencies) = postProject
 		{C111441D-1853-418D-99A8-421A8F534AFD} = {C111441D-1853-418D-99A8-421A8F534AFD}
 	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMT.Web.Tests", "PMT.Web.Tests\PMT.Web.Tests.csproj", "{6262612B-1037-42F7-92FC-504A9D65B91B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMT.Entities", "PMT.Entities\PMT.Entities.csproj", "{9463F7D5-F927-4886-B9D3-5E67324752B4}"
 EndProject
@@ -20,10 +18,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMT.BusinessLayer", "PMT.Bu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMT.Models", "PMT.Models\PMT.Models.csproj", "{43D49CB4-2FE4-4F4A-9255-D5071F21136F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMT.Tests", "PMT.Tests\PMT.Tests.csproj", "{9E43BC03-CAAC-423C-96AE-9BD680462398}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{DE4E58F9-DE50-46F9-83F8-ACC47ADC47EF}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -34,10 +28,6 @@ Global
 		{BEBF9219-A627-48A6-8F5C-AA80DE0D0720}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BEBF9219-A627-48A6-8F5C-AA80DE0D0720}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BEBF9219-A627-48A6-8F5C-AA80DE0D0720}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6262612B-1037-42F7-92FC-504A9D65B91B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6262612B-1037-42F7-92FC-504A9D65B91B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6262612B-1037-42F7-92FC-504A9D65B91B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6262612B-1037-42F7-92FC-504A9D65B91B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9463F7D5-F927-4886-B9D3-5E67324752B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9463F7D5-F927-4886-B9D3-5E67324752B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9463F7D5-F927-4886-B9D3-5E67324752B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -58,16 +48,8 @@ Global
 		{43D49CB4-2FE4-4F4A-9255-D5071F21136F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{43D49CB4-2FE4-4F4A-9255-D5071F21136F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{43D49CB4-2FE4-4F4A-9255-D5071F21136F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9E43BC03-CAAC-423C-96AE-9BD680462398}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9E43BC03-CAAC-423C-96AE-9BD680462398}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9E43BC03-CAAC-423C-96AE-9BD680462398}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9E43BC03-CAAC-423C-96AE-9BD680462398}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{6262612B-1037-42F7-92FC-504A9D65B91B} = {DE4E58F9-DE50-46F9-83F8-ACC47ADC47EF}
-		{9E43BC03-CAAC-423C-96AE-9BD680462398} = {DE4E58F9-DE50-46F9-83F8-ACC47ADC47EF}
 	EndGlobalSection
 EndGlobal
