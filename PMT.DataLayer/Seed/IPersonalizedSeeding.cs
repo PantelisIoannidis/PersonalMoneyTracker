@@ -1,4 +1,5 @@
 ﻿using PMT.Entities;
+using System.Collections.Generic;
 
 namespace PMT.DataLayer.Seed
 {
@@ -6,5 +7,7 @@ namespace PMT.DataLayer.Seed
     {
         void Categories(string userId);
         MoneyAccount GetDefaultAccountForNewUser(string userId);
+
+        List<Transaction> GetDemoData(string userId);
     }
 }

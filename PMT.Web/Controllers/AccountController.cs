@@ -18,6 +18,7 @@ using PMT.Common;
 namespace PMT.Web.Controllers
 {
     [Authorize]
+    [RequireHttps]
     public class AccountController : BaseController
     {
         private ApplicationSignInManager _signInManager;
@@ -154,6 +155,7 @@ namespace PMT.Web.Controllers
             var currentImplementedLanguage = commonHelper.GetDisplayLanguage(HttpContext);
             ViewBag.DisplayLanguage = new SelectList(CultureHelper.GetImplementedDisplayLanguages(), "Key", "Value", currentImplementedLanguage);
             ViewBag.LanguageFormatting = new SelectList(commonHelper.GetClientCultureInfo(HttpContext), "Name", "NativeName", currentClientLanguage);
+            ViewBag.DemoData = true;
             return View();
         }
 
@@ -171,7 +173,7 @@ namespace PMT.Web.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    identityEngine.InitializeNewUser(user.Email);
+                    identityEngine.InitializeNewUser(user.Email,model.DemoData);
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771

@@ -18,6 +18,7 @@ using PMT.Common.Resources;
 namespace PMT.Web.Controllers
 {
     [Authorize]
+    [RequireHttps]
     public class MoneyAccountsController :BaseController
     {
         ILogger logger;

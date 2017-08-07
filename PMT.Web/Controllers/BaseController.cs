@@ -11,6 +11,7 @@ using System.Web.Routing;
 
 namespace PMT.Web.Controllers
 {
+    [RequireHttps]
     public class BaseController : Controller
     {
         ICommonHelper commonHelper;

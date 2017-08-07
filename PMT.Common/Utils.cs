@@ -59,6 +59,11 @@ namespace PMT.Common
             return dateTime.ToUniversalTime().Add(TimeSpan.FromMinutes(offsetInMinutes));
         }
 
+        public static DateTime OffsetInCurrentMonth(this DateTime date, int days)
+        {
+            return new DateTime(date.Year, date.Month, 1).AddDays(days);
+        }
+
 
     }
 }

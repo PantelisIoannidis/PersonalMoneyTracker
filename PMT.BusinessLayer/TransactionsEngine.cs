@@ -149,9 +149,9 @@ namespace PMT.BusinessLayer
                 else
                 {
                     transactionFilterVM.AccountFilterId = AccountType.All;
-                    transactionFilterVM.PeriodFilterId = (int)PeriodType.Week;
+                    transactionFilterVM.PeriodFilterId = (int)PeriodType.Month;
                     transactionFilterVM.SelectedDateFull = selectedDate.ToString("s");
-                    period.Init(DateTime.Parse(transactionFilterVM.SelectedDateFull), PeriodType.Week);
+                    period.Init(DateTime.Parse(transactionFilterVM.SelectedDateFull), PeriodType.Month);
                     transactionFilterVM.PeriodDescription = period.GetDescription();
                 }
                 

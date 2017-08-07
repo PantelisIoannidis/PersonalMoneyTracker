@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using PMT.Common.Resources;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace PMT.Web.Models
@@ -79,6 +80,9 @@ namespace PMT.Web.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Display(Name = nameof(ModelText.DemoData), ResourceType = typeof(ModelText))]
+        public bool DemoData { get; set; }
     }
 
     public class ResetPasswordViewModel

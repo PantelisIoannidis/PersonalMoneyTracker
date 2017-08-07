@@ -124,6 +124,15 @@ namespace PMT.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Demonstration data.
+        /// </summary>
+        public static string DemoData {
+            get {
+                return ResourceManager.GetString("DemoData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Icon Name.
         /// </summary>
         public static string IconName {

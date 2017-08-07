@@ -210,4 +210,7 @@
   <data name="UsersSettingsLanguageFormatting" xml:space="preserve">
     <value>Γλώσσα μορφοποίησης</value>
   </data>
+  <data name="DemoData" xml:space="preserve">
+    <value>Δοκιμαστικές καταχωρήσεις</value>
+  </data>
 </root>

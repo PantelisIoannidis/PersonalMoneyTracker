@@ -94,6 +94,7 @@ namespace PMT.Web.Helpers
                     cultureCookie.Value = displayLanguage;
                     cultureCookie.Expires = DateTime.Now.AddYears(1);
                 }
+                cultureCookie.HttpOnly = true;
                 httpContext.Response.SetCookie(cultureCookie);
                 Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(displayLanguage);
             }
@@ -110,6 +111,7 @@ namespace PMT.Web.Helpers
                     cultureCookie.Value = languageFormatting;
                     cultureCookie.Expires = DateTime.Now.AddYears(1);
                 }
+                cultureCookie.HttpOnly = true;
                 httpContext.Response.SetCookie(cultureCookie);
                 Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(languageFormatting);
             }
@@ -130,6 +132,7 @@ namespace PMT.Web.Helpers
             httpContext.Request.Cookies.Remove(GlobalCookies.transactionsPreferencesCookie);
             cookie.Value = preferences;
             cookie.Expires = DateTime.Now.AddDays(30);
+            cookie.HttpOnly = true;
             httpContext.Response.SetCookie(cookie);
         }
 
@@ -145,6 +148,7 @@ namespace PMT.Web.Helpers
             httpContext.Request.Cookies.Remove(GlobalCookies.themePreferenceCookie);
             cookie.Value = theme;
             cookie.Expires = DateTime.Now.AddDays(30);
+            cookie.HttpOnly = true;
             httpContext.Response.SetCookie(cookie);
         }
 

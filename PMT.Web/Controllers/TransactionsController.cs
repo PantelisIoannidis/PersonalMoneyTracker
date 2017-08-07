@@ -21,6 +21,7 @@ using PMT.Common.Resources;
 namespace PMT.Web.Controllers
 {
     [Authorize]
+    [RequireHttps]
     public class TransactionsController : BaseController
     {
         

@@ -13,6 +13,7 @@ using PMT.Web.Helpers;
 namespace PMT.Web.Controllers
 {
     [Authorize]
+    [RequireHttps]
     public class ManageController : BaseController
     {
         private ApplicationSignInManager _signInManager;

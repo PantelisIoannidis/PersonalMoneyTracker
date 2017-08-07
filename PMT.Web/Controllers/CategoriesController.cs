@@ -16,6 +16,7 @@ using static PMT.Entities.Literals;
 namespace PMT.Web.Controllers
 {
     [Authorize]
+    [RequireHttps]
     public class CategoriesController : BaseController
     {
 

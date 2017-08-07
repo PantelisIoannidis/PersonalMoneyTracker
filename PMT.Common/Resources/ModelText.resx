@@ -138,6 +138,9 @@
   <data name="CategoryType" xml:space="preserve">
     <value>Transaction Type</value>
   </data>
+  <data name="DemoData" xml:space="preserve">
+    <value>Demonstration data</value>
+  </data>
   <data name="IconName" xml:space="preserve">
     <value>Icon Name</value>
   </data>

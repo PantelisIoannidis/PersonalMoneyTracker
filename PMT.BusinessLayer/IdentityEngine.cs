@@ -17,13 +17,15 @@ namespace PMT.BusinessLayer
         ISeedingLists seedingLists;
         ILogger logger;
         IPersonalizedSeeding personalizedSeeding;
-        public IdentityEngine(ILoggerFactory logger, IIdentityRepository identityRepository,
+        ITransactionsEngine transactionsEngine;
+        public IdentityEngine(ILoggerFactory logger, IIdentityRepository identityRepository, ITransactionsEngine transactionsEngine,
             IMoneyAccountRepository moneyAccountRepository, ISeedingLists seedingLists, IPersonalizedSeeding personalizedSeeding)
         {
             this.identityRepository = identityRepository;
             this.moneyAccountRepository = moneyAccountRepository;
             this.seedingLists = seedingLists;
             this.personalizedSeeding = personalizedSeeding;
+            this.transactionsEngine = transactionsEngine;
             this.logger = logger.CreateLogger<IdentityEngine>();
         }
 
@@ -40,7 +42,7 @@ namespace PMT.BusinessLayer
             }
         }
 
-        public void InitializeNewUser(string userName)
+        public void InitializeNewUser(string userName, bool demoData)
         {
             try
             {
@@ -48,6 +50,11 @@ namespace PMT.BusinessLayer
                 var moneyaccount=personalizedSeeding.GetDefaultAccountForNewUser(userId);
                 moneyAccountRepository.Insert(moneyaccount);
                 personalizedSeeding.Categories(userId);
+                if (demoData) { 
+                    var demoDataList = personalizedSeeding.GetDemoData(userId);
+                    foreach (var transaction in demoDataList)
+                        transactionsEngine.InsertNewTransaction(transaction);
+                }
             }
             catch (Exception ex)
             {

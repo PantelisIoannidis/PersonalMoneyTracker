@@ -11,6 +11,7 @@ using System.Web.Mvc;
 namespace PMT.Web.Controllers
 {
     [Authorize]
+    [RequireHttps]
     public class HomeController : BaseController
     {
         ILogger logger;
