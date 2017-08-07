@@ -172,9 +172,10 @@ namespace PMT.DataLayer.Repositories
 
         public decimal GetBalance(string userId, int moneyAccountId = AccountType.All, Period period = null)
         {
-            var balance = GetBalanceBase(userId, moneyAccountId, period)
-                .Sum(s => (decimal?)s.Amount) ?? 0;
-            return balance;
+            var income = GetBalance(userId, moneyAccountId, period, TransactionType.Income);
+
+            var expense = GetBalance(userId, moneyAccountId, period, TransactionType.Expense);
+            return (income-expense);
         }
 
         public decimal GetBalance(string userId, int moneyAccountId, Period period,TransactionType transactionType)

@@ -36,6 +36,10 @@ namespace PMT.DataLayer.Repositories
         {
             return db.Categories.FirstOrDefault(w => w.CategoryId == id && w.UserId == userId);
         }
+        public Category GetGategoryByName(string userId, string name)
+        {
+            return db.Categories.FirstOrDefault(w => w.Name == name && w.UserId == userId);
+        }
 
         public void StoreNewCategoryAndSubCategory(Category category, SubCategory subCategory)
         {

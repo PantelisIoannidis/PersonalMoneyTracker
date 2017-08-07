@@ -12,6 +12,7 @@ namespace PMT.DataLayer.Repositories
     {
         List<SubCategory> GetSubCategories(string userId, int CategoryId);
         SubCategory GetSubCategoryById(string userId, int SubCategoryId);
+        SubCategory GetSubCategoryByName(string userId, string name);
         void StoreSubCategory(SubCategory subCategory);
         void UpdateSubCategory(CategoryVM categoryVM);
         void Delete(SubCategory subCategory);

@@ -10,7 +10,7 @@ namespace PMT.DataLayer.Repositories
         IEnumerable<Category> GetGategories(string userId, TransactionType transactionType);
         IEnumerable<Category> GetAllGategoriesSubCategories(string userId);
         Category GetGategoryById(string userId, int id);
-
+        Category GetGategoryByName(string userId, string name);
         void StoreNewCategoryAndSubCategory(Category category, SubCategory subCategory);
 
         void UpdateCategory(CategoryVM categoryVM);

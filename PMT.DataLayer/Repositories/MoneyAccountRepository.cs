@@ -36,16 +36,22 @@ namespace PMT.DataLayer.Repositories
         {
             var moneyAccounts = (from m in db.MoneyAccounts
                                  where (m.UserId == userId)
-                                 let bal = (from t in db.Transactions
+                                 let income = (from t in db.Transactions
                                             where t.MoneyAccountId == m.MoneyAccountId &&
+                                            t.TransactionType==TransactionType.Income &&
                                             t.UserId == userId
                                             select t).Sum(s => (decimal?)s.Amount) ?? 0
+                                 let expense = (from t in db.Transactions
+                                               where t.MoneyAccountId == m.MoneyAccountId &&
+                                               t.TransactionType == TransactionType.Expense &&
+                                               t.UserId == userId
+                                               select t).Sum(s => (decimal?)s.Amount) ?? 0
                                  select new MoneyAccountVM
                                  {
                                      MoneyAccountId = m.MoneyAccountId,
                                      UserId = m.UserId,
                                      Name = m.Name,
-                                     Balance = bal
+                                     Balance = income-expense
                                  }).ToList();
 
             return moneyAccounts;

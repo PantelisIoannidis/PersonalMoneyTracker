@@ -1,5 +1,6 @@
 ﻿using PMT.Common;
 using PMT.Common.Resources;
+using PMT.DataLayer.Repositories;
 using PMT.Entities;
 using System;
 using System.Collections.Generic;
@@ -13,11 +14,16 @@ namespace PMT.DataLayer.Seed
     public class PersonalizedSeeding : IPersonalizedSeeding
     {
         ISeedingLists seedingLists;
+        ICategoryRepository categoryRepository;
+        ISubCategoryRepository subCategoryRepository;
         MainDb context;
-        public PersonalizedSeeding(MainDb context,ISeedingLists seedingLists)
+        public PersonalizedSeeding(MainDb context,ISeedingLists seedingLists, 
+            ICategoryRepository categoryRepository, ISubCategoryRepository subCategoryRepository)
         {
             this.context = context;
             this.seedingLists = seedingLists;
+            this.categoryRepository = categoryRepository;
+            this.subCategoryRepository = subCategoryRepository;
         }
 
         public List<Transaction> GetDemoData(string userId,int moneyAccountId)
@@ -29,8 +35,8 @@ namespace PMT.DataLayer.Seed
                 MoneyAccountId= moneyAccountId,
                 TransactionDate=DateTime.UtcNow.OffsetInCurrentMonth(1),
                 Description="My Salary",
-                CategoryId=5,
-                SubCategoryId=5,
+                CategoryId=categoryRepository.GetGategoryByName(userId,SeedingDataText.Salary).CategoryId,
+                SubCategoryId=subCategoryRepository.GetSubCategoryByName(userId,SeedingDataText.Salary).SubCategoryId,
                 TransactionType=TransactionType.Income
             });
             list.Add(new Transaction()
@@ -40,8 +46,8 @@ namespace PMT.DataLayer.Seed
                 MoneyAccountId = moneyAccountId,
                 TransactionDate = DateTime.UtcNow.OffsetInCurrentMonth(15),
                 Description = "My Bonus",
-                CategoryId = 6,
-                SubCategoryId = 6,
+                CategoryId = categoryRepository.GetGategoryByName(userId, SeedingDataText.Bonus).CategoryId,
+                SubCategoryId = subCategoryRepository.GetSubCategoryByName(userId, SeedingDataText.Bonus).SubCategoryId,
                 TransactionType = TransactionType.Income
             });
 
@@ -52,8 +58,8 @@ namespace PMT.DataLayer.Seed
                 MoneyAccountId = moneyAccountId,
                 TransactionDate = DateTime.UtcNow.OffsetInCurrentMonth(4),
                 Description = "Home sweet home",
-                CategoryId = 19,
-                SubCategoryId = 35,
+                CategoryId = categoryRepository.GetGategoryByName(userId, SeedingDataText.Home).CategoryId,
+                SubCategoryId = subCategoryRepository.GetSubCategoryByName(userId, SeedingDataText.Rent).SubCategoryId,
                 TransactionType = TransactionType.Expense
             });
 
@@ -64,8 +70,8 @@ namespace PMT.DataLayer.Seed
                 MoneyAccountId = moneyAccountId,
                 TransactionDate = DateTime.UtcNow.OffsetInCurrentMonth(7),
                 Description = "Everything for Garfield",
-                CategoryId = 26,
-                SubCategoryId = 55,
+                CategoryId = categoryRepository.GetGategoryByName(userId, SeedingDataText.Pets).CategoryId,
+                SubCategoryId = subCategoryRepository.GetSubCategoryByName(userId, SeedingDataText.Pets).SubCategoryId,
                 TransactionType = TransactionType.Expense
             });
 
@@ -76,8 +82,8 @@ namespace PMT.DataLayer.Seed
                 MoneyAccountId = moneyAccountId,
                 TransactionDate = DateTime.UtcNow.OffsetInCurrentMonth(11),
                 Description = "",
-                CategoryId = 29,
-                SubCategoryId = 70,
+                CategoryId = categoryRepository.GetGategoryByName(userId, SeedingDataText.Transport).CategoryId,
+                SubCategoryId = subCategoryRepository.GetSubCategoryByName(userId, SeedingDataText.PublicTransport).SubCategoryId,
                 TransactionType = TransactionType.Expense
             });
 
@@ -88,8 +94,8 @@ namespace PMT.DataLayer.Seed
                 MoneyAccountId = moneyAccountId,
                 TransactionDate = DateTime.UtcNow.OffsetInCurrentMonth(7),
                 Description = "Food for vegans and stuff",
-                CategoryId = 16,
-                SubCategoryId = 22,
+                CategoryId = categoryRepository.GetGategoryByName(userId, SeedingDataText.Food).CategoryId,
+                SubCategoryId = subCategoryRepository.GetSubCategoryByName(userId, SeedingDataText.Groceries).SubCategoryId,
                 TransactionType = TransactionType.Expense
             });
 
@@ -100,8 +106,8 @@ namespace PMT.DataLayer.Seed
                 MoneyAccountId = moneyAccountId,
                 TransactionDate = DateTime.UtcNow.OffsetInCurrentMonth(16),
                 Description = "",
-                CategoryId = 30,
-                SubCategoryId = 73,
+                CategoryId = categoryRepository.GetGategoryByName(userId, SeedingDataText.Utilities).CategoryId,
+                SubCategoryId = subCategoryRepository.GetSubCategoryByName(userId, SeedingDataText.Electricity).SubCategoryId,
                 TransactionType = TransactionType.Expense
             });
 
