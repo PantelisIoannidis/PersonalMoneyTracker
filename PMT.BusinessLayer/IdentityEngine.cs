@@ -51,7 +51,7 @@ namespace PMT.BusinessLayer
                 moneyAccountRepository.Insert(moneyaccount);
                 personalizedSeeding.Categories(userId);
                 if (demoData) { 
-                    var demoDataList = personalizedSeeding.GetDemoData(userId);
+                    var demoDataList = personalizedSeeding.GetDemoData(userId,moneyaccount.MoneyAccountId);
                     foreach (var transaction in demoDataList)
                         transactionsEngine.InsertNewTransaction(transaction);
                 }

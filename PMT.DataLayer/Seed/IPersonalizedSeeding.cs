@@ -8,6 +8,6 @@ namespace PMT.DataLayer.Seed
         void Categories(string userId);
         MoneyAccount GetDefaultAccountForNewUser(string userId);
 
-        List<Transaction> GetDemoData(string userId);
+        List<Transaction> GetDemoData(string userId,int moneyAccountId);
     }
 }

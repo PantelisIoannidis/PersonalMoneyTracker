@@ -20,13 +20,13 @@ namespace PMT.DataLayer.Seed
             this.seedingLists = seedingLists;
         }
 
-        public List<Transaction> GetDemoData(string userId)
+        public List<Transaction> GetDemoData(string userId,int moneyAccountId)
         {
             var list = new List<Transaction>();
             list.Add(new Transaction() {
                 UserId = userId,
-                Amount=4400,
-                MoneyAccountId=1,
+                Amount=2000,
+                MoneyAccountId= moneyAccountId,
                 TransactionDate=DateTime.UtcNow.OffsetInCurrentMonth(1),
                 Description="My Salary",
                 CategoryId=5,
@@ -36,8 +36,8 @@ namespace PMT.DataLayer.Seed
             list.Add(new Transaction()
             {
                 UserId = userId,
-                Amount = 1200,
-                MoneyAccountId = 1,
+                Amount = 400,
+                MoneyAccountId = moneyAccountId,
                 TransactionDate = DateTime.UtcNow.OffsetInCurrentMonth(15),
                 Description = "My Bonus",
                 CategoryId = 6,
@@ -49,7 +49,7 @@ namespace PMT.DataLayer.Seed
             {
                 UserId = userId,
                 Amount = 640,
-                MoneyAccountId = 1,
+                MoneyAccountId = moneyAccountId,
                 TransactionDate = DateTime.UtcNow.OffsetInCurrentMonth(4),
                 Description = "Home sweet home",
                 CategoryId = 19,
@@ -61,7 +61,7 @@ namespace PMT.DataLayer.Seed
             {
                 UserId = userId,
                 Amount = 65,
-                MoneyAccountId = 1,
+                MoneyAccountId = moneyAccountId,
                 TransactionDate = DateTime.UtcNow.OffsetInCurrentMonth(7),
                 Description = "Everything for Garfield",
                 CategoryId = 26,
@@ -73,7 +73,7 @@ namespace PMT.DataLayer.Seed
             {
                 UserId = userId,
                 Amount = 80,
-                MoneyAccountId = 1,
+                MoneyAccountId = moneyAccountId,
                 TransactionDate = DateTime.UtcNow.OffsetInCurrentMonth(11),
                 Description = "",
                 CategoryId = 29,
@@ -85,7 +85,7 @@ namespace PMT.DataLayer.Seed
             {
                 UserId = userId,
                 Amount = 442,
-                MoneyAccountId = 1,
+                MoneyAccountId = moneyAccountId,
                 TransactionDate = DateTime.UtcNow.OffsetInCurrentMonth(7),
                 Description = "Food for vegans and stuff",
                 CategoryId = 16,
@@ -96,20 +96,8 @@ namespace PMT.DataLayer.Seed
             list.Add(new Transaction()
             {
                 UserId = userId,
-                Amount = 900,
-                MoneyAccountId = 1,
-                TransactionDate = DateTime.UtcNow.OffsetInCurrentMonth(16),
-                Description = "mi casa",
-                CategoryId = 19,
-                SubCategoryId = 34,
-                TransactionType = TransactionType.Expense
-            });
-
-            list.Add(new Transaction()
-            {
-                UserId = userId,
                 Amount = 270,
-                MoneyAccountId = 1,
+                MoneyAccountId = moneyAccountId,
                 TransactionDate = DateTime.UtcNow.OffsetInCurrentMonth(16),
                 Description = "",
                 CategoryId = 30,
