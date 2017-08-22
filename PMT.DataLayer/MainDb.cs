@@ -23,10 +23,8 @@ namespace PMT.DataLayer
             Database.SetInitializer(new MainDbInitializer());
         }
 
-        public DbSet<Budget> Budgets { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Icon> Icons { get; set; }
-        public DbSet<Repeat> Repeats { get; set; }
         public DbSet<SubCategory> SubCategories { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
         public DbSet<MoneyAccount> MoneyAccounts { get; set; }
@@ -35,17 +33,10 @@ namespace PMT.DataLayer
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
 
-
-            modelBuilder.Entity<Budget>().HasKey<int>(e => e.BudgetId);
-            //modelBuilder.Entity<Category>().HasKey(e => new {e.UserId, e.CategoryId });
-            //modelBuilder.Entity<SubCategory>().HasKey(e => new { e.UserId, e.SubCategoryId });
-            modelBuilder.Entity<Repeat>().HasKey<int>(e => e.RepeatId);
             modelBuilder.Entity<Transaction>().HasKey<int>(e => e.TransactionId);
             modelBuilder.Entity<MoneyAccount>().HasKey<int>(e => e.MoneyAccountId);
 
-            modelBuilder.Entity<Budget>().Property(e => e.BudgetId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             modelBuilder.Entity<Category>().Property(e => e.CategoryId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
-            modelBuilder.Entity<Repeat>().Property(e => e.RepeatId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             modelBuilder.Entity<SubCategory>().Property(e => e.SubCategoryId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             modelBuilder.Entity<Transaction>().Property(e => e.TransactionId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             modelBuilder.Entity<MoneyAccount>().Property(e => e.MoneyAccountId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
@@ -53,10 +44,6 @@ namespace PMT.DataLayer
 
             // We ignore these fields because we want to avoid using seperate modelviews for the simplest occutions
             modelBuilder.Entity<MoneyAccount>().Ignore(e => e.Balance);
-
-            modelBuilder.Entity<Budget>()
-                .Property(e => e.Amount)
-                .HasPrecision(19, 4);
 
             modelBuilder.Entity<Transaction>()
                 .Property(e => e.Amount)

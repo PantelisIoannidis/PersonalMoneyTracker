@@ -9,7 +9,7 @@ namespace PMT.Web
     {
         public Startup()
         {
-            new LoggingHelper();
+            new LoggingHelper().GetLogger();
         }
         public void Configuration(IAppBuilder app)
         {

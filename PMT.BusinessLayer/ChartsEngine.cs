@@ -35,8 +35,10 @@ namespace PMT.BusinessLayer
         public string ChartIncomeVsExpense(string userId, TransactionFilterVM transactionFilterVM)
         {
             string data="";
+            
             try
             {
+                logger.LogError("testtest");
                 ChartDataVM chartData = new ChartDataVM();
                 ChartDatasetsVM chartDataset = new ChartDatasetsVM();
                 period.Init(DateTime.Parse(transactionFilterVM.SelectedDateFull), (PeriodType)transactionFilterVM.PeriodFilterId);

@@ -7,7 +7,6 @@ namespace PMT.DataLayer.Seed
     {
         List<Icon> GetIcons();
         List<Category> GetMainCategories();
-        List<Repeat> GetRepeats();
         List<SubCategory> GetSubCategries();
         void PrepareIcons();
     }

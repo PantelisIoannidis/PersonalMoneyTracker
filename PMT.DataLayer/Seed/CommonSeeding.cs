@@ -24,7 +24,6 @@ namespace PMT.DataLayer.Seed
 
             List<Category> MainCategoryList = seedingLists.GetMainCategories();
             List<SubCategory> SubCategoryList = seedingLists.GetSubCategries();
-            List<Repeat> RepeatList = seedingLists.GetRepeats();
             List<Icon> IconList = seedingLists.GetIcons();
 
 
@@ -35,22 +34,6 @@ namespace PMT.DataLayer.Seed
                 context.Icons.AddRange(IconList);
                 context.SaveChanges();
             }
-
-
-
-            foreach (var item in RepeatList)
-                context.Repeats.AddOrUpdate(
-                    p => p.RepeatId,
-                    new Repeat
-                    {
-                        RepeatId = item.RepeatId,
-                        Description = item.Description,
-                        AddDays = item.AddDays,
-                        AddWeeks = item.AddWeeks,
-                        AddMonths = item.AddMonths,
-                        AddYears = item.AddYears
-                    });
-
         }
     }
 }
