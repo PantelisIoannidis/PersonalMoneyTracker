@@ -38,7 +38,6 @@ namespace PMT.BusinessLayer
             
             try
             {
-                logger.LogError("testtest");
                 ChartDataVM chartData = new ChartDataVM();
                 ChartDatasetsVM chartDataset = new ChartDatasetsVM();
                 period.Init(DateTime.Parse(transactionFilterVM.SelectedDateFull), (PeriodType)transactionFilterVM.PeriodFilterId);
