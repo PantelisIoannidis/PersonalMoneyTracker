@@ -40,10 +40,10 @@ namespace PMT.BusinessLayer
             {
                 string categoryId = "";
                 string subCategoryId = "";
-                if (id.Contains("categoryId_"))
-                    categoryId = id.Replace("categoryId_", "");
-                if (id.Contains("subCategoryId_"))
-                    subCategoryId = id.Replace("subCategoryId_", "");
+                if (id.Contains(Literals.MiscMagicStrings.CategoryIdPrefix))
+                    categoryId = id.Replace(Literals.MiscMagicStrings.CategoryIdPrefix, "");
+                if (id.Contains(Literals.MiscMagicStrings.SubcategoryIdPrefix))
+                    subCategoryId = id.Replace(Literals.MiscMagicStrings.SubcategoryIdPrefix, "");
 
                 if (!string.IsNullOrEmpty(subCategoryId))
                 {
@@ -132,10 +132,10 @@ namespace PMT.BusinessLayer
             {
                 string categoryId = "";
                 string subCategoryId = "";
-                if (id.Contains("categoryId_"))
-                    categoryId = id.Replace("categoryId_", "");
-                if (id.Contains("subCategoryId_"))
-                    subCategoryId = id.Replace("subCategoryId_", "");
+                if (id.Contains(Literals.MiscMagicStrings.CategoryIdPrefix))
+                    categoryId = id.Replace(Literals.MiscMagicStrings.CategoryIdPrefix, "");
+                if (id.Contains(Literals.MiscMagicStrings.SubcategoryIdPrefix))
+                    subCategoryId = id.Replace(Literals.MiscMagicStrings.SubcategoryIdPrefix, "");
 
                 CategoryVM categoryVM = new CategoryVM();
 

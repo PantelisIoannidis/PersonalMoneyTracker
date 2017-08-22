@@ -82,6 +82,12 @@ namespace PMT.Entities
             public const string NotificationWarning = "NotificationWarning";
         }
 
+        public static class MiscMagicStrings
+        {
+            public const string CategoryIdPrefix = "categoryId_";
+            public const string SubcategoryIdPrefix = "subCategoryId_";
+        }
+
     }
    
 
