@@ -14,16 +14,14 @@ namespace PMT.BusinessLayer
     {
         IIdentityRepository identityRepository;
         IMoneyAccountRepository moneyAccountRepository;
-        ISeedingLists seedingLists;
         ILogger logger;
         IPersonalizedSeeding personalizedSeeding;
         ITransactionsEngine transactionsEngine;
         public IdentityEngine(ILoggerFactory logger, IIdentityRepository identityRepository, ITransactionsEngine transactionsEngine,
-            IMoneyAccountRepository moneyAccountRepository, ISeedingLists seedingLists, IPersonalizedSeeding personalizedSeeding)
+            IMoneyAccountRepository moneyAccountRepository,  IPersonalizedSeeding personalizedSeeding)
         {
             this.identityRepository = identityRepository;
             this.moneyAccountRepository = moneyAccountRepository;
-            this.seedingLists = seedingLists;
             this.personalizedSeeding = personalizedSeeding;
             this.transactionsEngine = transactionsEngine;
             this.logger = logger.CreateLogger<IdentityEngine>();

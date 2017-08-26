@@ -25,7 +25,7 @@ namespace PMT.Common.Helpers
 
         private CultureInfo currentCulture;
 
-        public PeriodType Type { get; private set; }
+        public PeriodType Type { get; set; }
 
         public void Init(DateTime current,PeriodType type=PeriodType.Month, CultureInfo currentCulture = null)
         {

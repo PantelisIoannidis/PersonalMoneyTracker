@@ -25,13 +25,15 @@ namespace PMT.BusinessLayer
         ITransactionRepository transactionRepository;
         IMoneyAccountRepository moneyAccountRepository;
         ICategoriesEngine categoriesEngine;
+        ICurrentDateTime currentDateTime;
         public TransactionsEngine(ILoggerFactory logger,
                                     IPeriod period,
                                     IActionStatus actionStatus,
                                     IMoneyAccountEngine moneyAccountEngine,
                                     IMoneyAccountRepository moneyAccountRepository,
                                     ITransactionRepository transactionRepository,
-                                    ICategoriesEngine categoriesEngine)
+                                    ICategoriesEngine categoriesEngine,
+                                    ICurrentDateTime currentDateTime)
         {
             this.actionStatus = actionStatus;
             this.period = period;
@@ -40,6 +42,7 @@ namespace PMT.BusinessLayer
             this.moneyAccountRepository = moneyAccountRepository;
             this.transactionRepository = transactionRepository;
             this.categoriesEngine = categoriesEngine;
+            this.currentDateTime = currentDateTime;
         }
 
         public decimal GetBalance(string userId)
@@ -67,8 +70,6 @@ namespace PMT.BusinessLayer
                         transaction.SubCategoryId = specialCategories.FirstOrDefault(x => x.SpecialAttribute == SpecialAttributes.AdjustmentExpense)
                             .SubCategories.FirstOrDefault(x => x.SpecialAttribute == SpecialAttributes.AdjustmentExpense).SubCategoryId;
                     }
-
-
                 }
 
                 if (transaction.TransactionType==TransactionType.Income
@@ -123,7 +124,7 @@ namespace PMT.BusinessLayer
         public TransactionFilterVM GetFilter(string userId, string objPreferences, int timeZoneOffset = 0)
         {
             TransactionFilterVM transactionFilterVM = new TransactionFilterVM();
-            DateTime selectedDate = DateTime.UtcNow.ToLocalTime(timeZoneOffset);
+            DateTime selectedDate = currentDateTime.DateTimeUtcNow().ToLocalTime(timeZoneOffset);
 
             try
             {
@@ -138,7 +139,7 @@ namespace PMT.BusinessLayer
                     if (pref.Operation == TransactionFilterOperation.MoveToPrevious)
                         period.MoveToPrevious();
                     if (pref.Operation == TransactionFilterOperation.Reset)
-                        period.ResetSelectedDate(DateTime.UtcNow.ToLocalTime(timeZoneOffset));
+                        period.ResetSelectedDate(currentDateTime.DateTimeUtcNow().ToLocalTime(timeZoneOffset));
 
                     transactionFilterVM.PeriodFilterId = pref.PeriodFilterId;
                     transactionFilterVM.AccountFilterId = pref.AccountFilterId;

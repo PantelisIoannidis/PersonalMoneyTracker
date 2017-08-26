@@ -18,14 +18,17 @@ namespace PMT.BusinessLayer
         IMoneyAccountRepository moneyAccountRepository;
         IActionStatus actionStatus;
         ITransactionRepository transactionRepository;
+        ICurrentDateTime currentDateTime;
         public MoneyAccountEngine(ILoggerFactory logger,
                                 IMoneyAccountRepository MoneyAccountRepository,
                                 ITransactionRepository transactionRepository,
+                                ICurrentDateTime currentDateTime,
                                 IActionStatus actionStatux)
         {
             this.moneyAccountRepository = MoneyAccountRepository;
             this.actionStatus = actionStatux;
             this.transactionRepository = transactionRepository;
+            this.currentDateTime = currentDateTime;
             this.logger = logger.CreateLogger<MoneyAccountEngine>();
         }
 
@@ -49,7 +52,7 @@ namespace PMT.BusinessLayer
                     MoneyAccountId = moneyAccount.MoneyAccountId,
                     TransactionType = TransactionType.Adjustment,
                     Amount = moneyAccount.Balance,
-                    TransactionDate = DateTime.UtcNow,
+                    TransactionDate = currentDateTime.DateTimeUtcNow(),
                     TimeZoneOffset = timeZoneOffset,
                     Description = moneyAccount.Name + " " + ViewText.InitialBalance
                 };
@@ -103,7 +106,7 @@ namespace PMT.BusinessLayer
                     MoneyAccountId = moneyAccount.MoneyAccountId,
                     TransactionType = TransactionType.Adjustment,
                     Amount = moneyAccount.Balance,
-                    TransactionDate = DateTime.UtcNow,
+                    TransactionDate = currentDateTime.DateTimeUtcNow(),
                     TimeZoneOffset = timeZoneOffset,
                     Description = ModelText.MoneyAccountName + " " + ViewText.Adjustment
                 };

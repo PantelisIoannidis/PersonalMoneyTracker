@@ -139,7 +139,7 @@
     <Compile Include="CategoriesEngine.cs" />
     <Compile Include="ChartsEngine.cs" />
     <Compile Include="IconsEngine.cs" />
-    <Compile Include="IIconsEngine.cs" />
+    <Compile Include="Interfaces\IIconsEngine.cs" />
     <Compile Include="Interfaces\ICalculationsEngine.cs" />
     <Compile Include="Interfaces\ICategoriesEngine.cs" />
     <Compile Include="Interfaces\IChartsEngine.cs" />
@@ -147,7 +147,7 @@
     <Compile Include="Interfaces\IIdentityEngine.cs" />
     <Compile Include="Interfaces\IMoneyAccountEngine.cs" />
     <Compile Include="Interfaces\ITransactionsEngine.cs" />
-    <Compile Include="IUserSettingsEngine.cs" />
+    <Compile Include="Interfaces\IUserSettingsEngine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MoneyAccountEngine.cs" />
     <Compile Include="TransactionsEngine.cs" />

@@ -76,6 +76,7 @@ namespace PMT.Web.App_Start
             container.RegisterType<IUnityFactory, UnityFactory>();
             container.RegisterType<IMapping, Mapping>();
             container.RegisterType<IPeriod, Period>();
+            container.RegisterType<ICurrentDateTime, CurrentDateTime>();
 
             //Repositories
             container.RegisterType<MainDb>();

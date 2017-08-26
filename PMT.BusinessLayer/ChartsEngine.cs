@@ -40,7 +40,6 @@ namespace PMT.BusinessLayer
             {
                 ChartDataVM chartData = new ChartDataVM();
                 ChartDatasetsVM chartDataset = new ChartDatasetsVM();
-                period.Init(DateTime.Parse(transactionFilterVM.SelectedDateFull), (PeriodType)transactionFilterVM.PeriodFilterId);
                 TransactionsSummaryVM summary = transactionsEngine.PrepareSummary(userId, transactionFilterVM);
 
                 chartDataset.backgroundColor.Add("#008000");

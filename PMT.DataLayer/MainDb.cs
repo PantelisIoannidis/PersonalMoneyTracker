@@ -18,8 +18,11 @@ namespace PMT.DataLayer
             :base("name=DefaultConnection")
         {
             #if DEBUG
-                        Database.Log = msg => Debug.WriteLine(msg);
+                Database.Log = msg => Debug.WriteLine(msg);
             #endif
+
+            Configuration.LazyLoadingEnabled = false;
+
             Database.SetInitializer(new MainDbInitializer());
         }
 

@@ -149,10 +149,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CultureHelper.cs" />
+    <Compile Include="CurrentDateTime.cs" />
+    <Compile Include="Interfaces\ICurrentDateTime.cs" />
     <Compile Include="Interfaces\IActionStatus.cs" />
     <Compile Include="Interfaces\IUnityFactory.cs" />
     <Compile Include="ActionStatus.cs" />
-    <Compile Include="IPeriod.cs" />
+    <Compile Include="Interfaces\IPeriod.cs" />
     <Compile Include="LoggingEvents.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\ErrorText.Designer.cs">
