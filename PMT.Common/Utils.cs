@@ -49,19 +49,20 @@ namespace PMT.Common
             return tmp;
         }
 
-        public static DateTime ToLocalTime(this DateTime dateTime, TimeSpan offset)
-        {
-            return dateTime.ToUniversalTime().Add(offset);
-        }
-
         public static DateTime ToLocalTime(this DateTime dateTime, int offsetInMinutes)
         {
             return dateTime.ToUniversalTime().Add(TimeSpan.FromMinutes(offsetInMinutes));
         }
-
+        /// <summary>
+        /// select a date giving an offset from the beginning of the month
+        /// </summary>
+        /// <param name="date"></param>
+        /// <param name="days"></param>
+        /// <returns></returns>
         public static DateTime OffsetInCurrentMonth(this DateTime date, int days)
         {
-            return new DateTime(date.Year, date.Month, 1).AddDays(days);
+            if (days == 0) days = 1;
+            return new DateTime(date.Year, date.Month, 1).AddDays(days-1);
         }
 
 

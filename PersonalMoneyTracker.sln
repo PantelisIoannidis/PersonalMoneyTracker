@@ -22,6 +22,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{95E5C32C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMT.BusinessLayer.UnitTests", "PMT.BusinessLayer.UnitTests\PMT.BusinessLayer.UnitTests.csproj", "{D0263012-1D7A-4B7F-ADE1-4135419C4470}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMT.Common.UnitTests", "PMT.Common.UnitTests\PMT.Common.UnitTests.csproj", "{B2747DE0-D931-4C87-A4AA-99E107798AE7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -56,11 +58,16 @@ Global
 		{D0263012-1D7A-4B7F-ADE1-4135419C4470}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D0263012-1D7A-4B7F-ADE1-4135419C4470}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D0263012-1D7A-4B7F-ADE1-4135419C4470}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2747DE0-D931-4C87-A4AA-99E107798AE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2747DE0-D931-4C87-A4AA-99E107798AE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2747DE0-D931-4C87-A4AA-99E107798AE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2747DE0-D931-4C87-A4AA-99E107798AE7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{D0263012-1D7A-4B7F-ADE1-4135419C4470} = {95E5C32C-6E55-49ED-A0D7-5A3438580B2B}
+		{B2747DE0-D931-4C87-A4AA-99E107798AE7} = {95E5C32C-6E55-49ED-A0D7-5A3438580B2B}
 	EndGlobalSection
 EndGlobal
