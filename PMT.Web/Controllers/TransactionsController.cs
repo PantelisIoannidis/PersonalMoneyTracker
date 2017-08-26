@@ -72,7 +72,7 @@ namespace PMT.Web.Controllers
         {
             DateTime selectedDate = DateTime.Now;
 
-            var itemsPerPage = 8;
+            int itemsPerPage = ViewBag.ItemsPerPage;
 
             string objPreferences = TempData[transactionPreferences] as string;
             if (string.IsNullOrEmpty(objPreferences))
