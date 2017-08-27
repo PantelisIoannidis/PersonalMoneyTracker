@@ -46,12 +46,17 @@ namespace PMT.DataLayer.Repositories
                                                t.TransactionType == TransactionType.Expense &&
                                                t.UserId == userId
                                                select t).Sum(s => (decimal?)s.Amount) ?? 0
+                                 let adjustment = (from t in db.Transactions
+                                                where t.MoneyAccountId == m.MoneyAccountId &&
+                                                t.TransactionType == TransactionType.Adjustment &&
+                                                t.UserId == userId
+                                                select t).Sum(s => (decimal?)s.Amount) ?? 0
                                  select new MoneyAccountVM
                                  {
                                      MoneyAccountId = m.MoneyAccountId,
                                      UserId = m.UserId,
                                      Name = m.Name,
-                                     Balance = income-expense
+                                     Balance = income + expense + adjustment
                                  }).ToList();
 
             return moneyAccounts;

@@ -1,0 +1,15 @@
+{
+  "name": "iana-tz-data",
+  "homepage": "https://github.com/rxaviers/iana-tz-data",
+  "version": "2017.1.0",
+  "_release": "2017.1.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v2017.1.0",
+    "commit": "a0b7d7fb0cbc151940504ff6c7992a6b07fcccca"
+  },
+  "_source": "https://github.com/rxaviers/iana-tz-data.git",
+  "_target": "v2017.1.0",
+  "_originalSource": "iana-tz-data",
+  "_direct": true
+}

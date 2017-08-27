@@ -1,0 +1,8 @@
+{
+  "name": "myproject",
+  "version": "1.0.0",
+  "devDependencies": {
+    "cldr-data": "^31.0.2",
+    "iana-tz-data": "^2017.1.0"
+  }
+}

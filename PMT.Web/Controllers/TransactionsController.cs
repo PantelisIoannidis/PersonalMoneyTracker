@@ -189,6 +189,8 @@ namespace PMT.Web.Controllers
                 TempData[Notifications.NotificationSuccess] = MessagesText.TransactionHasBeenModified;
                 return RedirectToAction("Index");
             }
+            var moneyAccounts = moneyAccountEngine.GetMoneyAccounts(userId);
+            ViewBag.MoneyAccountId = new SelectList(moneyAccounts, "MoneyAccountId", "Name", moneyAccounts.FirstOrDefault());
             ViewBag.NotificationWarning = MessagesText.TransactionCouldntBeModified;
             return View(transaction);
         }
