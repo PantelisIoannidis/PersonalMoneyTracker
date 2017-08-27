@@ -56,7 +56,7 @@ namespace PMT.DataLayer.Repositories
                                      MoneyAccountId = m.MoneyAccountId,
                                      UserId = m.UserId,
                                      Name = m.Name,
-                                     Balance = income + expense + adjustment
+                                     Balance = income - expense + adjustment
                                  }).ToList();
 
             return moneyAccounts;

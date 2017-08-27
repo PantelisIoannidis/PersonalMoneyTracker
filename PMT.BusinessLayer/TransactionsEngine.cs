@@ -180,7 +180,7 @@ namespace PMT.BusinessLayer
                 var income = transactionRepository.GetBalance(userId, transactionFilterVM.AccountFilterId, (Period)period, TransactionType.Income);
                 var expenses = transactionRepository.GetBalance(userId, transactionFilterVM.AccountFilterId, (Period)period, TransactionType.Expense);
                 var adjustments = transactionRepository.GetBalance(userId, transactionFilterVM.AccountFilterId, (Period)period, TransactionType.Adjustment);
-                var Balance = income + expenses + adjustments;
+                var Balance = income - expenses + adjustments;
 
                 var summary = new TransactionsSummaryVM()
                 {
