@@ -10,24 +10,26 @@ namespace PMT.Common.Helpers
 {
     public enum PeriodType
     {
-        Week =0,
-        Month=1,
-        Year=2,
-        All=3
+        Week = 0,
+        Month = 1,
+        Year = 2,
+        All = 3
     }
 
     public class Period : IPeriod
     {
         public DateTime FromDate { get; set; }
         public DateTime ToDate { get; set; }
-
+        /// <summary>
+        /// SelectedDate is the first day of the week of the selected period(year,month,week)
+        /// </summary>
         public DateTime SelectedDate { get; set; }
 
         private CultureInfo currentCulture;
 
         public PeriodType Type { get; set; }
 
-        public void Init(DateTime current,PeriodType type=PeriodType.Month, CultureInfo currentCulture = null)
+        public void Init(DateTime current, PeriodType type = PeriodType.Month, CultureInfo currentCulture = null)
         {
             if (currentCulture == null)
                 this.currentCulture = CultureInfo.CurrentUICulture;
@@ -35,7 +37,7 @@ namespace PMT.Common.Helpers
                 this.currentCulture = currentCulture;
 
             this.SelectedDate = current;
-            SelectedDate = FirstDayOfTheWeek(SelectedDate);
+            //SelectedDate = FirstDayOfTheWeek(SelectedDate);
             this.Type = type;
 
             CalculateDates();
@@ -44,7 +46,7 @@ namespace PMT.Common.Helpers
         public void ResetSelectedDate(DateTime date)
         {
             SelectedDate = date;
-            SelectedDate = FirstDayOfTheWeek(SelectedDate);
+
             CalculateDates();
         }
 
@@ -69,8 +71,9 @@ namespace PMT.Common.Helpers
             return description;
         }
 
-        private void CalculateDates()
+        public void CalculateDates()
         {
+            SelectedDate = FirstDayOfTheWeek(SelectedDate);
             switch (Type)
             {
                 case PeriodType.Week:
@@ -97,7 +100,7 @@ namespace PMT.Common.Helpers
             switch (Type)
             {
                 case PeriodType.Week:
-                    SelectedDate=SelectedDate.AddDays(7);
+                    SelectedDate = SelectedDate.AddDays(7);
                     break;
                 case PeriodType.Month:
                     SelectedDate = SelectedDate.AddMonths(1);
@@ -106,7 +109,7 @@ namespace PMT.Common.Helpers
                     SelectedDate = SelectedDate.AddYears(1);
                     break;
                 case PeriodType.All:
-                    SelectedDate = DateTime.MaxValue;
+                    /// intentionally blank space
                     break;
             }
             CalculateDates();
@@ -126,7 +129,7 @@ namespace PMT.Common.Helpers
                     SelectedDate = SelectedDate.AddYears(-1);
                     break;
                 case PeriodType.All:
-                    SelectedDate = DateTime.MinValue;
+                    /// intentionally blank space
                     break;
             }
             CalculateDates();
@@ -154,14 +157,16 @@ namespace PMT.Common.Helpers
 
         public DateTime FirstDayOfTheWeek(DateTime date)
         {
+            if (date == DateTime.MaxValue || date == DateTime.MinValue)
+                return date;
             DayOfWeek firstDayFromCulture = currentCulture.DateTimeFormat.FirstDayOfWeek;
-            int daysPassed =date.DayOfWeek - firstDayFromCulture;
+            int daysPassed = date.DayOfWeek - firstDayFromCulture;
             return date.AddDays(-daysPassed);
         }
 
         public DateTime LastDayOfTheWeek(DateTime date)
         {
-            return FirstDayOfTheWeek(date).AddDays(6);
+            return FirstDayOfTheWeek(date).AddDays(7).AddTicks(-1);
         }
 
         public int WeekOfTheYearNet(DateTime date)

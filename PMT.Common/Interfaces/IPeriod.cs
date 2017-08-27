@@ -23,5 +23,7 @@ namespace PMT.Common.Helpers
         void ResetSelectedDate(DateTime date);
         int WeekOfTheYear(DateTime date);
         int WeekOfTheYearNet(DateTime date);
+
+        void CalculateDates();
     }
 }

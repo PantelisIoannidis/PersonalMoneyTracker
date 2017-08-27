@@ -62,9 +62,25 @@ namespace PMT.Common
         public static DateTime OffsetInCurrentMonth(this DateTime date, int days)
         {
             if (days == 0) days = 1;
-            return new DateTime(date.Year, date.Month, 1).AddDays(days-1);
+            return new DateTime(date.Year, date.Month, 1).AddDays(days - 1);
         }
 
+        public static TimeSpan FullDateMinusTickSpan()
+        {
+            DateTime a = new DateTime(2016, 1, 1);
+            DateTime b = a.AddDays(1).AddTicks(-1);
+            return b.Subtract(a);
+        }
+
+        public static DateTime SetTimeTo235959(this DateTime date)
+        {
+            return date.Date.Add(FullDateMinusTickSpan());
+        }
+
+        public static DateTime SetTimeTo000000(this DateTime date)
+        {
+            return date.Date;
+        }
 
     }
 }

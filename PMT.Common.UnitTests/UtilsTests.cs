@@ -90,5 +90,36 @@ namespace PMT.Common.UnitTests
             Assert.AreEqual(formattedNumber3_de, "10,11 €");
 
         }
+
+        [Test]
+        public void FullDateMinusTickSpan_is_the_value_235959_a_day_minus_a_tick()
+        {
+            DateTime a = new DateTime(2016, 1, 1);
+            DateTime b = new DateTime(2016, 1, 2).AddTicks(-1);
+            var almost_a_day = Utils.FullDateMinusTickSpan();
+            var a_day_timespan = b.Subtract(a);
+
+            Assert.AreEqual(almost_a_day, a_day_timespan);
+        }
+
+        [Test]
+        public void SetTimeTo000000_should_set_time_to_midnight()
+        {
+            var original_date = new DateTime(2016, 1, 1, 15, 12, 34);
+            var expected_date = new DateTime(2016, 1, 1);
+            var only_date = original_date.SetTimeTo000000();
+
+            Assert.AreEqual(expected_date, only_date);
+        }
+
+        [Test]
+        public void SetTimeTo235959_should_set_time_a_tick_before_midnight()
+        {
+            var original_date = new DateTime(2016, 1, 1, 15, 12, 34);
+            var expected_date = new DateTime(2016, 1, 1).SetTimeTo235959();
+            var full_day = original_date.Date.Add(Utils.FullDateMinusTickSpan());
+
+            Assert.AreEqual(expected_date, full_day);
+        }
     }
 }

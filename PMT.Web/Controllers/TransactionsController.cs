@@ -24,7 +24,7 @@ namespace PMT.Web.Controllers
     [RequireHttps]
     public class TransactionsController : BaseController
     {
-        
+
 
         ILogger logger;
         IPeriod period;
@@ -55,13 +55,13 @@ namespace PMT.Web.Controllers
 
         }
 
-        
+
 
         public const string transactionPreferences = "transactionPreferences";
         private string userId;
 
         [MoveNotificationsDataFilter]
-        public ActionResult Index(int? page=1)
+        public ActionResult Index(int? page = 1)
         {
             var tuple = PrepareTransactionVM(page);
             return View(tuple);
@@ -116,20 +116,20 @@ namespace PMT.Web.Controllers
         public ActionResult GetAccountsAvailableForTransfer(int accountId)
         {
 
-            var accounts = moneyAccountEngine.GetMoneyAccountsExcludingCurrent(userId,accountId);
-            
+            var accounts = moneyAccountEngine.GetMoneyAccountsExcludingCurrent(userId, accountId);
+
             return Json(accounts, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult GetCategories(TransactionType type)
         {
-            var categories = categoriesEngine.GetCategories(userId,type).Where(x=> string.IsNullOrEmpty(x.SpecialAttribute));
+            var categories = categoriesEngine.GetCategories(userId, type).Where(x => string.IsNullOrEmpty(x.SpecialAttribute));
             return Json(categories, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult GetSubCategories(int categoryId)
         {
-            var subCategories = categoriesEngine.GetSubCategories(userId,categoryId).Where(x => string.IsNullOrEmpty(x.SpecialAttribute));
+            var subCategories = categoriesEngine.GetSubCategories(userId, categoryId).Where(x => string.IsNullOrEmpty(x.SpecialAttribute));
             return Json(subCategories, JsonRequestBehavior.AllowGet);
         }
 
@@ -137,7 +137,7 @@ namespace PMT.Web.Controllers
         {
 
             var moneyAccounts = moneyAccountEngine.GetMoneyAccounts(userId);
-            ViewBag.MoneyAccountId = new SelectList(moneyAccounts, "MoneyAccountId", "Name",moneyAccounts.FirstOrDefault());
+            ViewBag.MoneyAccountId = new SelectList(moneyAccounts, "MoneyAccountId", "Name", moneyAccounts.FirstOrDefault());
             var transaction = new Transaction()
             {
                 TransactionType = TransactionType.Expense,
@@ -154,8 +154,9 @@ namespace PMT.Web.Controllers
             transaction.UserId = userId;
             if (ModelState.IsValid)
             {
-                var result=transactionsEngine.InsertNewTransaction(transaction);
-                if (!result.ExceptionFromConditions) { 
+                var result = transactionsEngine.InsertNewTransaction(transaction);
+                if (!result.ExceptionFromConditions)
+                {
                     TempData[Notifications.NotificationSuccess] = MessagesText.NewTransactionHasBeenCreated;
                     return RedirectToAction("Index");
                 }
@@ -171,8 +172,8 @@ namespace PMT.Web.Controllers
 
             var moneyAccounts = moneyAccountEngine.GetMoneyAccounts(userId);
             ViewBag.MoneyAccountId = new SelectList(moneyAccounts, "MoneyAccountId", "Name", moneyAccounts.FirstOrDefault());
-            var transaction = transactionsEngine.GetTransactionById(id??0);
-            
+            var transaction = transactionsEngine.GetTransactionById(id ?? 0);
+
             return View(transaction);
         }
 
@@ -217,7 +218,7 @@ namespace PMT.Web.Controllers
         {
             if (disposing)
             {
-                
+
             }
             base.Dispose(disposing);
         }
