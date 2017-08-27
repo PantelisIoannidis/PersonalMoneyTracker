@@ -108,8 +108,6 @@
             }
             
             $.validator.methods.number = function (value, element) {
-                var a = Globalize.parseFloat(value);
-                var b = jQuery.isNumeric(Globalize.parseFloat(value));
                 return this.optional(element) || jQuery.isNumeric(Globalize.parseFloat(value));
             };
         });

@@ -120,6 +120,9 @@
             $.validator.methods.date = function (value, element) {
                 return this.optional(element) || moment(value,format , true).isValid();
             }
+            $.validator.methods.number = function (value, element) {
+                return this.optional(element) || jQuery.isNumeric(Globalize.parseFloat(value));
+            };
         });
     </script>
 }
