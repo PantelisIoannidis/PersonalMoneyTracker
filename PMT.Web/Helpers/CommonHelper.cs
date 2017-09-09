@@ -9,6 +9,9 @@ using static PMT.Entities.Literals;
 using PMT.Entities;
 using PMT.Common;
 using System.Threading;
+using System.Web.SessionState;
+using System.IO;
+using System.Reflection;
 
 namespace PMT.Web.Helpers
 {
@@ -162,6 +165,28 @@ namespace PMT.Web.Helpers
         {
             HttpCookie cookie = HttpContext.Current.Request.Cookies[GlobalCookies.TimeZoneCookie] ?? new HttpCookie(GlobalCookies.TimeZoneCookie);
             return cookie.Value;
+        }
+
+        public HttpContext FakeHttpContext()
+        {
+            var httpRequest = new HttpRequest("", "http://localhost/", "");
+            var stringWriter = new StringWriter();
+            var httpResponse = new HttpResponse(stringWriter);
+            var httpContext = new HttpContext(httpRequest, httpResponse);
+
+            var sessionContainer = new HttpSessionStateContainer("id", new SessionStateItemCollection(),
+                                                    new HttpStaticObjectsCollection(), 10, true,
+                                                    HttpCookieMode.AutoDetect,
+                                                    SessionStateMode.InProc, false);
+
+            httpContext.Items["AspSession"] = typeof(HttpSessionState).GetConstructor(
+                                        BindingFlags.NonPublic | BindingFlags.Instance,
+                                        null, CallingConventions.Standard,
+                                        new[] { typeof(HttpSessionStateContainer) },
+                                        null)
+                                .Invoke(new object[] { sessionContainer });
+
+            return httpContext;
         }
     }
 }

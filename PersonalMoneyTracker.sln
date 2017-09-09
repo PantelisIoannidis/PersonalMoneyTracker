@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.6
+VisualStudioVersion = 15.0.26730.10
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMT.Web", "PMT.Web\PMT.Web.csproj", "{BEBF9219-A627-48A6-8F5C-AA80DE0D0720}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -23,6 +23,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMT.BusinessLayer.UnitTests", "PMT.BusinessLayer.UnitTests\PMT.BusinessLayer.UnitTests.csproj", "{D0263012-1D7A-4B7F-ADE1-4135419C4470}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMT.Common.UnitTests", "PMT.Common.UnitTests\PMT.Common.UnitTests.csproj", "{B2747DE0-D931-4C87-A4AA-99E107798AE7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMT.DataLayer.IntegrationTests", "PMT.DataLayer.IntegrationTests\PMT.DataLayer.IntegrationTests.csproj", "{BAE01747-0B2F-4D41-87E5-FAB51AE4AF54}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -62,6 +64,10 @@ Global
 		{B2747DE0-D931-4C87-A4AA-99E107798AE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B2747DE0-D931-4C87-A4AA-99E107798AE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B2747DE0-D931-4C87-A4AA-99E107798AE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAE01747-0B2F-4D41-87E5-FAB51AE4AF54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAE01747-0B2F-4D41-87E5-FAB51AE4AF54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAE01747-0B2F-4D41-87E5-FAB51AE4AF54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAE01747-0B2F-4D41-87E5-FAB51AE4AF54}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -69,5 +75,9 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{D0263012-1D7A-4B7F-ADE1-4135419C4470} = {95E5C32C-6E55-49ED-A0D7-5A3438580B2B}
 		{B2747DE0-D931-4C87-A4AA-99E107798AE7} = {95E5C32C-6E55-49ED-A0D7-5A3438580B2B}
+		{BAE01747-0B2F-4D41-87E5-FAB51AE4AF54} = {95E5C32C-6E55-49ED-A0D7-5A3438580B2B}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F4FDB790-4EA6-46EA-96BA-D2D8CD7B7D1C}
 	EndGlobalSection
 EndGlobal

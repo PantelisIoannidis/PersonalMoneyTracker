@@ -15,7 +15,7 @@ namespace PMT.DataLayer
     public class MainDb : IdentityDbContext<ApplicationUser>
     {
         public MainDb()
-            :base("name=DefaultConnection")
+            :base(Literals.ConnectionStrings.MainConnectionStringName)
         {
             #if DEBUG
                 Database.Log = msg => Debug.WriteLine(msg);
@@ -25,6 +25,7 @@ namespace PMT.DataLayer
 
             Database.SetInitializer(new MainDbInitializer());
         }
+
 
         public DbSet<Category> Categories { get; set; }
         public DbSet<Icon> Icons { get; set; }

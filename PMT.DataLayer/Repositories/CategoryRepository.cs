@@ -15,11 +15,13 @@ namespace PMT.DataLayer.Repositories
         ILogger logger;
         IActionStatus actionStatus;
         MainDb db;
+
         public CategoryRepository(MainDb db,ILoggerFactory logger, IActionStatus actionStatus)
         {
             this.db = db;
             this.actionStatus = actionStatus;
             this.logger = logger.CreateLogger<CategoryRepository>();
+
         }
 
         public IEnumerable<Category> GetGategories(string userId,TransactionType transactionType)
@@ -57,6 +59,7 @@ namespace PMT.DataLayer.Repositories
                 catch (Exception ex)
                 {
                     dbTransaction.Rollback();
+                    throw ex;
                     logger.LogError(LoggingEvents.INSERT_ITEM, ex, "Store new category to database");
                 }
             }
@@ -76,6 +79,7 @@ namespace PMT.DataLayer.Repositories
             }
             catch (Exception ex)
             {
+                throw ex;
                 logger.LogError(LoggingEvents.UPDATE_ITEM, ex, "Update category in database");
             }
         }
@@ -89,6 +93,7 @@ namespace PMT.DataLayer.Repositories
             }
             catch(Exception ex)
             {
+                throw ex;
                 logger.LogError(LoggingEvents.DELETE_ITEM, ex, "Delete category from database");
             }
         }

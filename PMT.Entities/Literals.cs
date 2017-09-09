@@ -88,6 +88,11 @@ namespace PMT.Entities
             public const string SubcategoryIdPrefix = "subCategoryId_";
         }
 
+        public static class ConnectionStrings
+        {
+            public const string MainConnectionStringName = "name=DefaultConnection";
+        }
+
     }
    
 

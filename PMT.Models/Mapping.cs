@@ -42,5 +42,18 @@ namespace PMT.Models
             };
         }
 
+        public CategoryVM CategoryToCategoryVM(Category category)
+        {
+            return new CategoryVM() {
+                CategoryId=category.CategoryId,
+                Color=category.Color,
+                IconId=category.IconId,
+                IsCategory=true,
+                Name=category.Name,
+                Type=category.Type,
+                UserId=category.UserId
+            };
+        }
+
     }
 }
